@@ -51,7 +51,7 @@ export default function TeamPage() {
                     </svg>
                   </a>
                   <a
-                    href="https://linkedin.com/in/bradroth"
+                    href="https://www.linkedin.com/in/brad-roth-8a4a8619a/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-gold-500 transition-colors"
