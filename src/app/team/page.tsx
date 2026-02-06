@@ -15,9 +15,6 @@ export default function TeamPage() {
         <div className="container-wide">
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold text-white">Our Team</h1>
-            <p className="mt-4 text-xl text-gray-300">
-              Market experts, PhDs, and engineers working together to deliver risk-managed investing.
-            </p>
           </div>
         </div>
       </section>
