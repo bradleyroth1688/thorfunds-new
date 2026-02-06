@@ -1,0 +1,566 @@
+[
+  {
+    "id": "18580525",
+    "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/18580525-raymond-micaletti-relative-sentiment-technologies-mood-etf.mp3",
+    "guest": "Raymond Micaletti"
+  },
+  {
+    "id": "17606312",
+    "slug": "sam-rahman-john-mcnamara-hedgeye-asset-managment",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17606312-sam-rahman-john-mcnamara-hedgeye-asset-managment.mp3",
+    "guest": "Sam Rahman & John McNamara"
+  },
+  {
+    "id": "17529585",
+    "slug": "seth-cogswell-running-oak",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17529585-seth-cogswell-running-oak.mp3",
+    "guest": "Seth Cogswell"
+  },
+  {
+    "id": "17496282",
+    "slug": "eric-lutton-sound-income-strategies",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17496282-eric-lutton-sound-income-strategies.mp3",
+    "guest": "Eric Lutton"
+  },
+  {
+    "id": "17417025",
+    "slug": "ryan-thomes-hotchkis-wiley",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17417025-ryan-thomes-hotchkis-wiley.mp3",
+    "guest": "Ryan Thomes"
+  },
+  {
+    "id": "17335420",
+    "slug": "kirk-mcdonald-argent-capital",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17335420-kirk-mcdonald-argent-capital.mp3",
+    "guest": "Kirk McDonald"
+  },
+  {
+    "id": "17297139",
+    "slug": "rob-thummel-tortoise-capital",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17297139-rob-thummel-tortoise-capital.mp3",
+    "guest": "Rob Thummel"
+  },
+  {
+    "id": "17222141",
+    "slug": "bob-elliot-unlimited-funds",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17222141-bob-elliot-unlimited-funds.mp3",
+    "guest": "Bob Elliot"
+  },
+  {
+    "id": "17140478",
+    "slug": "brad-neuman-alger",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17140478-brad-neuman-alger.mp3",
+    "guest": "Brad Neuman"
+  },
+  {
+    "id": "17103327",
+    "slug": "wayne-penello-nextgen-emp",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17103327-wayne-penello-nextgen-emp.mp3",
+    "guest": "Wayne Penello"
+  },
+  {
+    "id": "17050339",
+    "slug": "rob-harvey-dfa",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17050339-rob-harvey-dfa.mp3",
+    "guest": "Rob Harvey"
+  },
+  {
+    "id": "17011027",
+    "slug": "clark-allen-horizon-investments",
+    "url": "https://www.buzzsprout.com/2162961/episodes/17011027-clark-allen-horizon-investments.mp3",
+    "guest": "Clark Allen"
+  },
+  {
+    "id": "16924098",
+    "slug": "paisley-nardini-simplify",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16924098-paisley-nardini-simplify.mp3",
+    "guest": "Paisley Nardini"
+  },
+  {
+    "id": "16875452",
+    "slug": "matt-kaufman-calamos",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16875452-matt-kaufman-calamos.mp3",
+    "guest": "Matt Kaufman"
+  },
+  {
+    "id": "16846928",
+    "slug": "jeff-cullen-schafer-cullen",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16846928-jeff-cullen-schafer-cullen.mp3",
+    "guest": "Jeff Cullen"
+  },
+  {
+    "id": "16797128",
+    "slug": "dan-petersen-new-york-life",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16797128-dan-petersen-new-york-life.mp3",
+    "guest": "Dan Petersen"
+  },
+  {
+    "id": "16759457",
+    "slug": "kirsten-chang-vettafi",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16759457-kirsten-chang-vettafi.mp3",
+    "guest": "Kirsten Chang"
+  },
+  {
+    "id": "16673252",
+    "slug": "adam-patti-vistashares",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16673252-adam-patti-vistashares.mp3",
+    "guest": "Adam Patti"
+  },
+  {
+    "id": "16627106",
+    "slug": "emma-harper-sage-advisory",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16627106-emma-harper-sage-advisory.mp3",
+    "guest": "Emma Harper"
+  },
+  {
+    "id": "16570789",
+    "slug": "rob-arnott-research-affiliates",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16570789-rob-arnott-research-affiliates.mp3",
+    "guest": "Rob Arnott"
+  },
+  {
+    "id": "16543594",
+    "slug": "john-davi-astoria-advisors",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16543594-john-davi-astoria-advisors.mp3",
+    "guest": "John Davi"
+  },
+  {
+    "id": "16500845",
+    "slug": "mike-loukas-trueshares",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16500845-mike-loukas-trueshares.mp3",
+    "guest": "Mike Loukas"
+  },
+  {
+    "id": "16463751",
+    "slug": "catherine-legraw-gmo",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16463751-catherine-legraw-gmo.mp3",
+    "guest": "Catherine LeGraw"
+  },
+  {
+    "id": "16419024",
+    "slug": "kevin-carter-emqq-global",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16419024-kevin-carter-emqq-global.mp3",
+    "guest": "Kevin Carter"
+  },
+  {
+    "id": "16281040",
+    "slug": "david-dziekanski-quantify-funds",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16281040-david-dziekanski-quantify-funds.mp3",
+    "guest": "David Dziekanski- Quantify Funds"
+  },
+  {
+    "id": "16240064",
+    "slug": "ai-in-finance-ut-catt-2024-global-analytics-conference-kyle-wiggs-suhir-holla-ta",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16240064-ai-in-finance-ut-catt-2024-global-analytics-conference-kyle-wiggs-suhir-holla-tal-schwartz.mp3",
+    "guest": "Ai in Finance"
+  },
+  {
+    "id": "16200465",
+    "slug": "al-chu-american-beacon-glg-natural-resources-etf-mgnr",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16200465-al-chu-american-beacon-glg-natural-resources-etf-mgnr.mp3",
+    "guest": "Al Chu"
+  },
+  {
+    "id": "16163375",
+    "slug": "raymond-holst-practus",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16163375-raymond-holst-practus.mp3",
+    "guest": "Raymond Holst"
+  },
+  {
+    "id": "16117620",
+    "slug": "garrett-stevens-rich-malinowski-exchange-traded-concepts",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16117620-garrett-stevens-rich-malinowski-exchange-traded-concepts.mp3",
+    "guest": "Garrett Stevens & Rich Malinowski"
+  },
+  {
+    "id": "16078399",
+    "slug": "brett-eichenberger-cohen-co",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16078399-brett-eichenberger-cohen-co.mp3",
+    "guest": "Brett Eichenberger"
+  },
+  {
+    "id": "16038462",
+    "slug": "petra-bakosova-hull-tactical",
+    "url": "https://www.buzzsprout.com/2162961/episodes/16038462-petra-bakosova-hull-tactical.mp3",
+    "guest": "Petra Bakosova"
+  },
+  {
+    "id": "15997509",
+    "slug": "joe-benoit-grimes-co",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15997509-joe-benoit-grimes-co.mp3",
+    "guest": "Joe Benoit"
+  },
+  {
+    "id": "15953265",
+    "slug": "david-allen-octane-investments",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15953265-david-allen-octane-investments.mp3",
+    "guest": "David Allen"
+  },
+  {
+    "id": "15916284",
+    "slug": "federico-brokate-21shares",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15916284-federico-brokate-21shares.mp3",
+    "guest": "Federico Brokate"
+  },
+  {
+    "id": "15873205",
+    "slug": "nancy-davis-quadratic-capital",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15873205-nancy-davis-quadratic-capital.mp3",
+    "guest": "Nancy Davis"
+  },
+  {
+    "id": "15834498",
+    "slug": "mike-venuto-tidal-the-etf-masters",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15834498-mike-venuto-tidal-the-etf-masters.mp3",
+    "guest": "Mike Venuto"
+  },
+  {
+    "id": "15791286",
+    "slug": "sylvia-jablonski-defiance-etfs",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15791286-sylvia-jablonski-defiance-etfs.mp3",
+    "guest": "Sylvia Jablonski"
+  },
+  {
+    "id": "15707534",
+    "slug": "james-st-aubin-ocean-park-asset-management",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15707534-james-st-aubin-ocean-park-asset-management.mp3",
+    "guest": "James St. Aubin"
+  },
+  {
+    "id": "15633947",
+    "slug": "springer-harris-get-etf-39-d",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15633947-springer-harris-get-etf-d.mp3",
+    "guest": "Springer Harris"
+  },
+  {
+    "id": "15597367",
+    "slug": "howard-chan-kurv-investment-management",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15597367-howard-chan-kurv-investment-management.mp3",
+    "guest": "Howard Chan"
+  },
+  {
+    "id": "15561979",
+    "slug": "joanna-gallegos-bondbloxx",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15561979-joanna-gallegos-bondbloxx.mp3",
+    "guest": "Joanna Gallegos"
+  },
+  {
+    "id": "15523679",
+    "slug": "taylor-krystkowiak-themesetfs",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15523679-taylor-krystkowiak-themesetfs.mp3",
+    "guest": "Taylor Krystkowiak"
+  },
+  {
+    "id": "15484014",
+    "slug": "will-rhind-graniteshares",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15484014-will-rhind-graniteshares.mp3",
+    "guest": "Will Rhind"
+  },
+  {
+    "id": "15446649",
+    "slug": "tim-kramer-cnic-funds",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15446649-tim-kramer-cnic-funds.mp3",
+    "guest": "Tim Kramer"
+  },
+  {
+    "id": "15412002",
+    "slug": "meb-faber-cambria-investments",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15412002-meb-faber-cambria-investments.mp3",
+    "guest": "Meb Faber"
+  },
+  {
+    "id": "15365878",
+    "slug": "john-mchugh-wealthtrust-asset-management",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15365878-john-mchugh-wealthtrust-asset-management.mp3",
+    "guest": "John McHugh"
+  },
+  {
+    "id": "15328898",
+    "slug": "andrew-skatoff-bancreek",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15328898-andrew-skatoff-bancreek.mp3",
+    "guest": "Andrew Skatoff"
+  },
+  {
+    "id": "15290519",
+    "slug": "danielle-gilbert-panagram",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15290519-danielle-gilbert-panagram.mp3",
+    "guest": "Danielle Gilbert"
+  },
+  {
+    "id": "15249561",
+    "slug": "yang-tang-arch-indicies-vwi",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15249561-yang-tang-arch-indicies-vwi.mp3",
+    "guest": "Yang Tang"
+  },
+  {
+    "id": "15204348",
+    "slug": "burke-ashenden-innovator-etfs",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15204348-burke-ashenden-innovator-etfs.mp3",
+    "guest": "Burke Ashenden"
+  },
+  {
+    "id": "15169399",
+    "slug": "jerry-parker-chesapeake-capital",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15169399-jerry-parker-chesapeake-capital.mp3",
+    "guest": "Jerry Parker"
+  },
+  {
+    "id": "15087917",
+    "slug": "bob-elliott-hfnd",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15087917-bob-elliott-hfnd.mp3",
+    "guest": "Bob Elliott"
+  },
+  {
+    "id": "15045033",
+    "slug": "andrew-beer-dbmf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15045033-andrew-beer-dbmf.mp3",
+    "guest": "Andrew Beer"
+  },
+  {
+    "id": "15002973",
+    "slug": "matt-kaufman-calamos-cpsm",
+    "url": "https://www.buzzsprout.com/2162961/episodes/15002973-matt-kaufman-calamos-cpsm.mp3",
+    "guest": "Matt Kaufman"
+  },
+  {
+    "id": "14960359",
+    "slug": "jason-hsu-rayliant",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14960359-jason-hsu-rayliant.mp3",
+    "guest": "Jason Hsu"
+  },
+  {
+    "id": "14928654",
+    "slug": "greg-reid-westwood-mdst",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14928654-greg-reid-westwood-mdst.mp3",
+    "guest": "Greg Reid"
+  },
+  {
+    "id": "14877292",
+    "slug": "kim-mayer-gmo",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14877292-kim-mayer-gmo.mp3",
+    "guest": "Kim Mayer"
+  },
+  {
+    "id": "14791937",
+    "slug": "simeon-hyman-proshares",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14791937-simeon-hyman-proshares.mp3",
+    "guest": "Simeon Hyman"
+  },
+  {
+    "id": "14754333",
+    "slug": "dodd-kittsley-davis-funds",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14754333-dodd-kittsley-davis-funds.mp3",
+    "guest": "Dodd Kittsley"
+  },
+  {
+    "id": "14695784",
+    "slug": "sal-esposito-zacks",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14695784-sal-esposito-zacks.mp3",
+    "guest": "Sal Esposito"
+  },
+  {
+    "id": "14653028",
+    "slug": "johan-grahn-allianz",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14653028-johan-grahn-allianz.mp3",
+    "guest": "Johan Grahn"
+  },
+  {
+    "id": "14607775",
+    "slug": "weldon-rice-qraft-ai",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14607775-weldon-rice-qraft-ai.mp3",
+    "guest": "Weldon Rice"
+  },
+  {
+    "id": "14560794",
+    "slug": "david-lavalle-grayscale-gbtc",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14560794-david-lavalle-grayscale-gbtc.mp3",
+    "guest": "David LaValle"
+  },
+  {
+    "id": "14516737",
+    "slug": "keri-riemer-hazel-doyle-k-l-gates",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14516737-keri-riemer-hazel-doyle-k-l-gates.mp3",
+    "guest": "Keri Riemer & Hazel Doyle"
+  },
+  {
+    "id": "14427475",
+    "slug": "adam-curran-yall",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14427475-adam-curran-yall.mp3",
+    "guest": "Adam Curran"
+  },
+  {
+    "id": "14384503",
+    "slug": "todd-rosenbluth-vettafi-exchange-etf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14384503-todd-rosenbluth-vettafi-exchange-etf.mp3",
+    "guest": "Todd Rosenbluth"
+  },
+  {
+    "id": "14072045",
+    "slug": "matt-barry-touchstone-funds",
+    "url": "https://www.buzzsprout.com/2162961/episodes/14072045-matt-barry-touchstone-funds.mp3",
+    "guest": "Matt Barry"
+  },
+  {
+    "id": "13990413",
+    "slug": "andrew-chanin-procuream-ufo-fixt",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13990413-andrew-chanin-procuream-ufo-fixt.mp3",
+    "guest": "Andrew Chanin"
+  },
+  {
+    "id": "13946987",
+    "slug": "yuri-khodjamirian-tema-etfs-toll",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13946987-yuri-khodjamirian-tema-etfs-toll.mp3",
+    "guest": "Yuri Khodjamirian"
+  },
+  {
+    "id": "13902113",
+    "slug": "ragen-stienke-ballast-asset-management-mgmt",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13902113-ragen-stienke-ballast-asset-management-mgmt.mp3",
+    "guest": "Ragen Stienke"
+  },
+  {
+    "id": "13860065",
+    "slug": "steve-cook-harbor-funds",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13860065-steve-cook-harbor-funds.mp3",
+    "guest": "Steve Cook"
+  },
+  {
+    "id": "13816952",
+    "slug": "katie-stockton-fairlead-strategies-tack",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13816952-katie-stockton-fairlead-strategies-tack.mp3",
+    "guest": "Katie Stockton"
+  },
+  {
+    "id": "13775950",
+    "slug": "will-rhind-graniteshares",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13775950-will-rhind-graniteshares.mp3",
+    "guest": "Will Rhind"
+  },
+  {
+    "id": "13744894",
+    "slug": "paul-weisbruch-gts",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13744894-paul-weisbruch-gts.mp3",
+    "guest": "Paul Weisbruch"
+  },
+  {
+    "id": "13684993",
+    "slug": "kyle-wiggs-ux-wealth",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13684993-kyle-wiggs-ux-wealth.mp3",
+    "guest": "Kyle Wiggs"
+  },
+  {
+    "id": "13640621",
+    "slug": "john-davi-frank-tedesco-roe",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13640621-john-davi-frank-tedesco-roe.mp3",
+    "guest": "John Davi & Frank Tedesco"
+  },
+  {
+    "id": "13596923",
+    "slug": "elysabeth-alfano-eatv",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13596923-elysabeth-alfano-eatv.mp3",
+    "guest": "Elysabeth Alfano"
+  },
+  {
+    "id": "13555401",
+    "slug": "ryan-pannell-dip",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13555401-ryan-pannell-dip.mp3",
+    "guest": "Ryan Pannell"
+  },
+  {
+    "id": "13471022",
+    "slug": "alejandro-garza-aztd",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13471022-alejandro-garza-aztd.mp3",
+    "guest": "Alejandro Garza"
+  },
+  {
+    "id": "13428351",
+    "slug": "david-schulhof-musq",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13428351-david-schulhof-musq.mp3",
+    "guest": "David Schulhof"
+  },
+  {
+    "id": "13389794",
+    "slug": "adam-eagleston-formidable-forh",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13389794-adam-eagleston-formidable-forh.mp3",
+    "guest": "Adam Eagleston"
+  },
+  {
+    "id": "13350151",
+    "slug": "neil-azous-rareview-rsee",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13350151-neil-azous-rareview-rsee.mp3",
+    "guest": "Neil Azous"
+  },
+  {
+    "id": "13307234",
+    "slug": "john-forlines-donoghue-forlines-dfra",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13307234-john-forlines-donoghue-forlines-dfra.mp3",
+    "guest": "John Forlines"
+  },
+  {
+    "id": "13262726",
+    "slug": "john-davi-astoria-advisors-ppi",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13262726-john-davi-astoria-advisors-ppi.mp3",
+    "guest": "John Davi"
+  },
+  {
+    "id": "13223762",
+    "slug": "michael-gayed-roro-jojo",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13223762-michael-gayed-roro-jojo.mp3",
+    "guest": "Michael Gayed"
+  },
+  {
+    "id": "13180068",
+    "slug": "michael-venuto-tidal-blok",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13180068-michael-venuto-tidal-blok.mp3",
+    "guest": "Michael Venuto"
+  },
+  {
+    "id": "13097117",
+    "slug": "dan-cupkovic-black-swan",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13097117-dan-cupkovic-black-swan.mp3",
+    "guest": "Dan Cupkovic"
+  },
+  {
+    "id": "13051888",
+    "slug": "david-cohen-handls-indexes",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13051888-david-cohen-handls-indexes.mp3",
+    "guest": "David Cohen"
+  },
+  {
+    "id": "13008475",
+    "slug": "dave-mazza-chat-etf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/13008475-dave-mazza-chat-etf.mp3",
+    "guest": "Dave Mazza"
+  },
+  {
+    "id": "12968557",
+    "slug": "garrett-stevens-exchange-traded-concepts",
+    "url": "https://www.buzzsprout.com/2162961/episodes/12968557-garrett-stevens-exchange-traded-concepts.mp3",
+    "guest": "Garrett Stevens"
+  },
+  {
+    "id": "12927779",
+    "slug": "daniel-snover-arp-etf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/12927779-daniel-snover-arp-etf.mp3",
+    "guest": "Daniel Snover"
+  },
+  {
+    "id": "12880061",
+    "slug": "patricia-lizarraga-wceo-etf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/12880061-patricia-lizarraga-wceo-etf.mp3",
+    "guest": "Patricia Lizarraga"
+  },
+  {
+    "id": "12831013",
+    "slug": "tommy-mancuso-the-bad-etf",
+    "url": "https://www.buzzsprout.com/2162961/episodes/12831013-tommy-mancuso-the-bad-etf.mp3",
+    "guest": "Tommy Mancuso"
+  },
+  {
+    "id": "12650016",
+    "slug": "introduction-to-behind-the-ticker",
+    "url": "https://www.buzzsprout.com/2162961/episodes/12650016-introduction-to-behind-the-ticker.mp3",
+    "guest": "Introduction to Behind the Ticker"
+  }
+]

@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import episodes from "@/data/episodes.json";
+import Link from 'next/link';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import episodes from '@/data/episodes.json';
 
-interface Episode {
+type Episode = {
   id: string;
   slug: string;
   title: string;
@@ -18,13 +18,13 @@ interface Episode {
   mp3Url: string;
   duration: number;
   durationFormatted: string;
-}
+};
 
-const typedEpisodes = episodes as unknown as Episode[];
-
-interface EpisodePageProps {
+type Props = {
   params: Promise<{ slug: string }>;
-}
+};
+
+const typedEpisodes = episodes as Episode[];
 
 export async function generateStaticParams() {
   return typedEpisodes.map((episode) => ({
@@ -32,38 +32,42 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: EpisodePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const episode = typedEpisodes.find((ep) => ep.slug === slug);
-
+  
   if (!episode) {
-    return { title: "Episode Not Found" };
+    return { title: 'Episode Not Found' };
   }
 
-  const description = episode.summary || episode.description?.substring(0, 160);
+  const metaDescription = episode.summary || episode.description.substring(0, 160);
 
   return {
-    title: `${episode.guest}${episode.company ? ` - ${episode.company}` : ''} | Behind the Ticker`,
-    description,
+    title: `${episode.title} | Behind the Ticker`,
+    description: metaDescription,
     openGraph: {
-      title: `${episode.guest}${episode.company ? ` - ${episode.company}` : ''}`,
-      description,
-      type: "article",
+      title: episode.title,
+      description: metaDescription,
+      type: 'article',
       publishedTime: episode.publishedAt,
-      authors: ["Brad Roth"],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: episode.title,
+      description: metaDescription,
     },
   };
 }
 
-function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 }
 
-export default async function EpisodePage({ params }: EpisodePageProps) {
+export default async function EpisodePage({ params }: Props) {
   const { slug } = await params;
   const episode = typedEpisodes.find((ep) => ep.slug === slug);
 
@@ -71,154 +75,224 @@ export default async function EpisodePage({ params }: EpisodePageProps) {
     notFound();
   }
 
+  // Find related episodes (nearby in list)
+  const episodeIndex = typedEpisodes.findIndex((ep) => ep.slug === slug);
   const relatedEpisodes = typedEpisodes
-    .filter((ep) => ep.slug !== slug)
-    .slice(0, 4);
+    .filter((ep, idx) => ep.slug !== slug && Math.abs(idx - episodeIndex) <= 5)
+    .slice(0, 3);
 
   return (
     <>
-      <section className="bg-navy-800 py-12 lg:py-16">
-        <div className="container-wide">
-          <nav className="flex items-center text-sm text-gray-400 mb-4">
-            <Link href="/insights" className="hover:text-gold-500">Insights</Link>
-            <span className="mx-2">/</span>
-            <span className="text-white">{episode.guest}</span>
+      {/* Hero */}
+      <section className="gradient-navy text-white py-12 md:py-16">
+        <div className="container-max mx-auto px-4 md:px-8">
+          <nav className="text-sm mb-4">
+            <Link href="/insights" className="text-white/60 hover:text-white">Insights</Link>
+            <span className="mx-2 text-white/40">/</span>
+            <span className="text-white/80">Podcast</span>
           </nav>
-          
-          <div className="max-w-4xl">
-            <span className="inline-block bg-gold-500 text-navy-900 px-3 py-1 rounded text-sm font-medium mb-4">
-              Behind the Ticker
+          <span className="text-gold-400 text-sm font-medium uppercase tracking-wider">
+            Behind the Ticker
+          </span>
+          <h1 className="text-2xl md:text-4xl font-bold mt-2 mb-4">{episode.title}</h1>
+          <div className="flex flex-wrap items-center gap-4 text-white/70 text-sm">
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              {episode.guest}
             </span>
-            <h1 className="text-3xl lg:text-4xl font-bold text-white">{episode.guest}</h1>
             {episode.company && (
-              <p className="mt-2 text-xl text-gold-500">{episode.company}</p>
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                {episode.company}
+              </span>
             )}
-            <div className="mt-4 flex items-center gap-4 text-sm text-gray-400">
-              <span>{formatDate(episode.publishedAt)}</span>
-              {episode.durationFormatted && (
-                <>
-                  <span>•</span>
-                  <span>{episode.durationFormatted}</span>
-                </>
-              )}
-            </div>
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              {formatDate(episode.publishedAt)}
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {episode.durationFormatted}
+            </span>
           </div>
         </div>
       </section>
 
-      {episode.mp3Url && (
-        <section className="bg-navy-700 py-6">
-          <div className="container-wide">
-            <div className="max-w-4xl">
-              <audio controls className="w-full" preload="metadata">
-                <source src={episode.mp3Url} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-          </div>
-        </section>
-      )}
-
-      <article className="section-padding">
-        <div className="container-wide">
+      {/* Main Content */}
+      <section className="section-padding">
+        <div className="container-max mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
+            {/* Main Content */}
             <div className="lg:col-span-2">
-              <div className="prose-content">
-                <h2>Episode Summary</h2>
+              {/* Audio Player */}
+              <div className="bg-navy-700 rounded-xl p-6 mb-8">
+                <h2 className="text-white font-semibold mb-4">Listen to Episode</h2>
+                <audio 
+                  controls 
+                  className="w-full"
+                  preload="metadata"
+                >
+                  <source src={episode.mp3Url} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+                <div className="flex gap-4 mt-4">
+                  <a 
+                    href={episode.mp3Url} 
+                    download
+                    className="text-gold-400 text-sm hover:text-gold-300 flex items-center gap-1"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download MP3
+                  </a>
+                </div>
+              </div>
+
+              {/* Episode Description */}
+              <div className="prose prose-lg max-w-none">
+                <h2 className="text-2xl font-bold mb-4">Episode Summary</h2>
                 <div 
-                  dangerouslySetInnerHTML={{ 
-                    __html: episode.descriptionHtml || `<p>${episode.description}</p>` 
-                  }} 
+                  className="text-gray-700"
+                  dangerouslySetInnerHTML={{ __html: episode.descriptionHtml }}
                 />
               </div>
 
-              <div className="mt-12 pt-8 border-t border-gray-200">
-                <h3 className="font-semibold text-navy-800 mb-4">Share this episode</h3>
+              {/* Transcript Section (placeholder for when transcripts are ready) */}
+              <div className="mt-12 pt-8 border-t">
+                <h2 className="text-2xl font-bold mb-4">Full Transcript</h2>
+                <p className="text-gray-600 italic">
+                  Transcript coming soon. Subscribe to our newsletter to be notified when transcripts are available.
+                </p>
+              </div>
+
+              {/* Share */}
+              <div className="mt-8 pt-8 border-t">
+                <h3 className="font-semibold mb-4">Share This Episode</h3>
                 <div className="flex gap-4">
                   <a
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out this episode of Behind the Ticker: ${episode.guest}`)}&url=${encodeURIComponent(`https://thorfunds.com/insights/${episode.slug}`)}`}
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(episode.title)}&url=${encodeURIComponent(`https://thorfunds.com/insights/${episode.slug}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-navy-800 transition-colors"
+                    className="btn-outline text-sm"
                   >
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
+                    Share on X
                   </a>
                   <a
                     href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://thorfunds.com/insights/${episode.slug}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-navy-800 transition-colors"
+                    className="btn-outline text-sm"
                   >
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
+                    Share on LinkedIn
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-8">
-              <div className="card bg-navy-800 text-white">
-                <h3 className="text-lg font-semibold mb-2">Guest</h3>
-                <p className="text-xl font-bold text-gold-500">{episode.guest}</p>
-                {episode.company && (
-                  <p className="text-gray-300 mt-1">{episode.company}</p>
-                )}
+            {/* Sidebar */}
+            <div className="space-y-6">
+              {/* Guest Card */}
+              <div className="card">
+                <h3 className="font-semibold mb-4">Featured Guest</h3>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-navy-100 rounded-full flex items-center justify-center">
+                    <span className="text-xl font-bold text-navy-700">
+                      {episode.guest.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-navy-700">{episode.guest}</div>
+                    {episode.company && (
+                      <div className="text-sm text-gray-600">{episode.company}</div>
+                    )}
+                  </div>
+                </div>
               </div>
 
+              {/* Episode Details */}
               <div className="card">
-                <h3 className="text-lg font-semibold text-navy-800 mb-4">Subscribe</h3>
-                <div className="space-y-3">
-                  <a href="https://podcasts.apple.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-gold-600">
+                <h3 className="font-semibold mb-4">Episode Details</h3>
+                <dl className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500">Published</dt>
+                    <dd className="font-medium">{formatDate(episode.publishedAt)}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500">Duration</dt>
+                    <dd className="font-medium">{episode.durationFormatted}</dd>
+                  </div>
+                  {episode.topic && (
+                    <div className="flex justify-between">
+                      <dt className="text-gray-500">Topic</dt>
+                      <dd className="font-medium">{episode.topic}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+
+              {/* Listen Elsewhere */}
+              <div className="card">
+                <h3 className="font-semibold mb-4">Listen Elsewhere</h3>
+                <div className="space-y-2">
+                  <a href="https://podcasts.apple.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-navy-700 hover:text-gold-600">
                     Apple Podcasts
                   </a>
-                  <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 hover:text-gold-600">
+                  <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-navy-700 hover:text-gold-600">
                     Spotify
+                  </a>
+                  <a href="https://www.youtube.com/@BRoth_THOR" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-navy-700 hover:text-gold-600">
+                    YouTube
                   </a>
                 </div>
               </div>
 
-              {relatedEpisodes.length > 0 && (
-                <div className="card">
-                  <h3 className="text-lg font-semibold text-navy-800 mb-4">More Episodes</h3>
-                  <div className="space-y-4">
-                    {relatedEpisodes.map((ep) => (
-                      <Link
-                        key={ep.id}
-                        href={`/insights/${ep.slug}`}
-                        className="block hover:text-gold-600 transition-colors"
-                      >
-                        <p className="font-medium text-navy-800">{ep.guest}</p>
-                        {ep.company && (
-                          <p className="text-sm text-gray-500">{ep.company}</p>
-                        )}
-                      </Link>
-                    ))}
-                  </div>
-                  <Link href="/insights" className="mt-4 inline-flex items-center text-gold-600 font-medium text-sm">
-                    View All Episodes
-                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </Link>
-                </div>
-              )}
+              {/* Subscribe CTA */}
+              <div className="card bg-navy-700 text-white">
+                <h3 className="font-semibold mb-2">Never Miss an Episode</h3>
+                <p className="text-white/80 text-sm mb-4">
+                  Subscribe to our newsletter for new episodes and market insights.
+                </p>
+                <Link href="/newsletter" className="btn-primary w-full text-center">
+                  Subscribe
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
 
-      <section className="section-padding bg-gold-500">
-        <div className="container-wide text-center">
-          <h2 className="text-3xl font-bold text-navy-900">Get Weekly Insights</h2>
-          <p className="mt-4 text-lg text-navy-800 max-w-2xl mx-auto">
-            Episode summaries, market commentary, and educational content delivered to your inbox.
-          </p>
-          <Link href="/newsletter" className="mt-8 inline-block btn-secondary">
-            Subscribe to Newsletter
-          </Link>
+          {/* Related Episodes */}
+          {relatedEpisodes.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold mb-8">More Episodes</h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {relatedEpisodes.map((ep) => (
+                  <Link key={ep.slug} href={`/insights/${ep.slug}`} className="card-hover">
+                    <span className="text-xs font-medium text-gold-600 uppercase tracking-wider">
+                      Podcast
+                    </span>
+                    <h3 className="font-semibold text-navy-700 mt-2 line-clamp-2">{ep.title}</h3>
+                    <p className="text-sm text-gold-600 mt-1">{ep.guest}</p>
+                    {ep.company && (
+                      <p className="text-sm text-gray-600">{ep.company}</p>
+                    )}
+                    <div className="flex items-center gap-3 text-xs text-gray-500 mt-3">
+                      <span>{formatDate(ep.publishedAt)}</span>
+                      <span>•</span>
+                      <span>{ep.durationFormatted}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </>
