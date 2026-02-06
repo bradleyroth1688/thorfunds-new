@@ -7,52 +7,51 @@ interface FundStatsProps {
   showReturns?: boolean;
 }
 
-interface NavData {
-  nav: string;
-  nav_change: string;
-  nav_change_pct: string;
-  aum: string;
-  shares_outstanding: string;
-  as_of_date: string;
-  ytd_return: string;
-  one_year_return: string;
-  three_year_return: string;
-  since_inception_return: string;
+interface UltimusData {
+  performDate: string;
+  fundName: string;
+  naV_NoLoad: number;
+  navDailyChange: number;
+  oneDay_NoLoad: number;
+  totalNetAssets: number;
+  sharesOutstanding: number;
+  yearToDate_NoLoad: number;
+  oneYear_NoLoad: number;
+  threeYear_NoLoad: number | null;
+  sinceInception_NoLoad: number;
+  marketPrice: number;
+  marketOneDay: number;
+  premiumDiscount: number;
+  premiumDiscountPct: number;
+  volume: number;
 }
 
-const FUND_IDS = {
-  THIR: 1469,
-  THLV: 1468,
+const AUTH_URL = "https://uauth.ultimusfundsolutions.com/server/api/login";
+const DATA_URL = "https://funddata.ultimusfundsolutions.com/funds";
+
+const FUND_IDS: Record<string, string> = {
+  THIR: '1469',
+  THLV: '1468',
 };
 
-function formatCurrency(value: string | number): string {
-  const num = typeof value === 'string' ? parseFloat(value) : value;
-  if (isNaN(num)) return '$0.00';
+function formatCurrency(value: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(num);
+  }).format(value);
 }
 
-function formatAUM(value: string | number): string {
-  const num = typeof value === 'string' ? parseFloat(value) : value;
-  if (isNaN(num)) return '$0';
-  
-  if (num >= 1e9) {
-    return `$${(num / 1e9).toFixed(2)}B`;
-  }
-  if (num >= 1e6) {
-    return `$${(num / 1e6).toFixed(1)}M`;
-  }
-  return formatCurrency(num);
+function formatAUM(value: number): string {
+  if (value >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;
+  if (value >= 1e6) return `$${(value / 1e6).toFixed(1)}M`;
+  return formatCurrency(value);
 }
 
-function formatPercent(value: string | number): string {
-  const num = typeof value === 'string' ? parseFloat(value) : value;
-  if (isNaN(num)) return '0.00%';
-  return `${num >= 0 ? '+' : ''}${num.toFixed(2)}%`;
+function formatPercent(value: number | null): string {
+  if (value === null) return '—';
+  return `${value >= 0 ? '+' : ''}${value.toFixed(2)}%`;
 }
 
 function formatDate(dateString: string): string {
@@ -69,27 +68,45 @@ function formatDate(dateString: string): string {
 }
 
 export default function FundStats({ ticker, showReturns = false }: FundStatsProps) {
-  const [data, setData] = useState<NavData | null>(null);
+  const [data, setData] = useState<UltimusData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://filepoint.live/thor_getnav_cached4.php', {
+        // Get auth token
+        const authResponse = await fetch(AUTH_URL, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `fundID=${FUND_IDS[ticker]}`,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: 'broth@thoranalytics.com',
+            password: '000b6e14-48a9-46fb-8113-f1d0cc2166ef',
+          }),
         });
 
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
+        if (!authResponse.ok) throw new Error('Auth failed');
+        const token = (await authResponse.text()).replace(/"/g, '');
 
-        const navData = await response.json();
-        setData(navData);
+        // Get performance data
+        const perfResponse = await fetch(
+          `${DATA_URL}/${FUND_IDS[ticker]}/performance`,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        if (!perfResponse.ok) throw new Error(`API error: ${perfResponse.status}`);
+        const perfData = await perfResponse.json();
+
+        if (Array.isArray(perfData) && perfData.length > 0) {
+          setData(perfData[0]);
+        } else {
+          throw new Error('No data returned');
+        }
       } catch (err) {
         setError('Unable to load fund data');
         console.error(err);
@@ -104,9 +121,9 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
     return (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-pulse">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-gray-100 dark:bg-navy-700/50 rounded-lg p-4">
-            <div className="h-8 bg-gray-200 dark:bg-navy-600 rounded mb-2"></div>
-            <div className="h-4 bg-gray-200 dark:bg-navy-600 rounded w-16 mx-auto"></div>
+          <div key={i} className="bg-gray-100 rounded-lg p-4">
+            <div className="h-8 bg-gray-200 rounded mb-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-16 mx-auto"></div>
           </div>
         ))}
       </div>
@@ -115,75 +132,93 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
 
   if (error || !data) {
     return (
-      <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+      <div className="text-center py-8 text-gray-500">
         {error || 'Unable to load data'}
       </div>
     );
   }
 
-  const change = parseFloat(data.nav_change_pct);
-  const isPositive = change >= 0;
+  const isPositive = (data.oneDay_NoLoad || 0) >= 0;
 
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700 dark:text-white">{formatCurrency(data.nav)}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">NAV</div>
-          <div className={`text-sm mt-1 ${isPositive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-            {formatPercent(data.nav_change_pct)}
+        <div className="bg-gray-50 rounded-lg p-4 text-center">
+          <div className="text-2xl font-bold text-navy-700">{formatCurrency(data.naV_NoLoad)}</div>
+          <div className="text-sm text-gray-600">NAV</div>
+          <div className={`text-sm mt-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+            {formatPercent(data.oneDay_NoLoad)}
           </div>
         </div>
-        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700 dark:text-white">{formatAUM(data.aum)}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">AUM</div>
+        <div className="bg-gray-50 rounded-lg p-4 text-center">
+          <div className="text-2xl font-bold text-navy-700">{formatAUM(data.totalNetAssets)}</div>
+          <div className="text-sm text-gray-600">AUM</div>
         </div>
-        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700 dark:text-white">
-            {parseInt(data.shares_outstanding).toLocaleString()}
+        <div className="bg-gray-50 rounded-lg p-4 text-center">
+          <div className="text-2xl font-bold text-navy-700">
+            {(data.sharesOutstanding || 0).toLocaleString()}
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">Shares</div>
+          <div className="text-sm text-gray-600">Shares</div>
         </div>
-        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-          <div className={`text-2xl font-bold ${parseFloat(data.ytd_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-            {formatPercent(data.ytd_return)}
+        <div className="bg-gray-50 rounded-lg p-4 text-center">
+          <div className={`text-2xl font-bold ${(data.yearToDate_NoLoad || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+            {formatPercent(data.yearToDate_NoLoad)}
           </div>
-          <div className="text-sm text-gray-600 dark:text-gray-300">YTD</div>
+          <div className="text-sm text-gray-600">YTD</div>
         </div>
       </div>
 
-      {showReturns && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.ytd_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-              {formatPercent(data.ytd_return)}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">YTD</div>
+      {data.marketPrice > 0 && (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className="text-xl font-bold text-navy-700">{formatCurrency(data.marketPrice)}</div>
+            <div className="text-sm text-gray-600">Market Price</div>
           </div>
-          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.one_year_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-              {formatPercent(data.one_year_return)}
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${(data.premiumDiscountPct || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {formatPercent(data.premiumDiscountPct)}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">1 Year</div>
+            <div className="text-sm text-gray-600">Premium/Discount</div>
           </div>
-          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.three_year_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-              {formatPercent(data.three_year_return)}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">3 Year</div>
-          </div>
-          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.since_inception_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-              {formatPercent(data.since_inception_return)}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">Since Inception</div>
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className="text-xl font-bold text-navy-700">{(data.volume || 0).toLocaleString()}</div>
+            <div className="text-sm text-gray-600">Volume</div>
           </div>
         </div>
       )}
 
-      <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-        Data as of {formatDate(data.as_of_date)}. Past performance does not guarantee future results.
-      </p>
+      {showReturns && (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${(data.yearToDate_NoLoad || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {formatPercent(data.yearToDate_NoLoad)}
+            </div>
+            <div className="text-sm text-gray-600">YTD</div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${(data.oneYear_NoLoad || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {formatPercent(data.oneYear_NoLoad)}
+            </div>
+            <div className="text-sm text-gray-600">1 Year</div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${(data.threeYear_NoLoad || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {formatPercent(data.threeYear_NoLoad)}
+            </div>
+            <div className="text-sm text-gray-600">3 Year</div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${(data.sinceInception_NoLoad || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {formatPercent(data.sinceInception_NoLoad)}
+            </div>
+            <div className="text-sm text-gray-600">Since Inception</div>
+          </div>
+        </div>
+      )}
+
+      <div className="text-xs text-gray-400 text-center">
+        As of {formatDate(data.performDate)} • Source: Ultimus Fund Solutions
+      </div>
     </div>
   );
 }

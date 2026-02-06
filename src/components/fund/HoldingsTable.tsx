@@ -8,52 +8,81 @@ interface HoldingsTableProps {
 }
 
 interface Holding {
-  name: string;
-  ticker: string;
-  weight: string;
-  shares: string;
-  market_value: string;
-  sector?: string;
+  securityDescriptionLong: string;
+  securityDescriptionShort: string;
+  securityTicker: string;
+  marketValuePercent: number;
+  shares: number;
+  marketValueBase: number;
+  category?: string;
+  asOfDate?: string;
 }
 
-const FUND_IDS = {
-  THIR: 1469,
-  THLV: 1468,
+const AUTH_URL = "https://uauth.ultimusfundsolutions.com/server/api/login";
+const DATA_URL = "https://funddata.ultimusfundsolutions.com/funds";
+
+const FUND_IDS: Record<string, string> = {
+  THIR: '1469',
+  THLV: '1468',
 };
 
-function formatCurrency(value: string | number): string {
-  const num = typeof value === 'string' ? parseFloat(value) : value;
-  if (isNaN(num)) return '$0.00';
+function formatCurrency(value: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(num);
+  }).format(value);
 }
 
 export default function HoldingsTable({ ticker, limit }: HoldingsTableProps) {
   const [holdings, setHoldings] = useState<Holding[]>([]);
+  const [asOfDate, setAsOfDate] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchHoldings() {
       try {
-        const response = await fetch('https://filepoint.live/thor_getholdings_cached4.php', {
+        // Get auth token
+        const authResponse = await fetch(AUTH_URL, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `fundID=${FUND_IDS[ticker]}`,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: 'broth@thoranalytics.com',
+            password: '000b6e14-48a9-46fb-8113-f1d0cc2166ef',
+          }),
         });
 
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
+        if (!authResponse.ok) throw new Error('Auth failed');
+        const token = (await authResponse.text()).replace(/"/g, '');
 
-        const data = await response.json();
-        setHoldings(limit ? data.slice(0, limit) : data);
+        // Get holdings
+        const holdResponse = await fetch(
+          `${DATA_URL}/${FUND_IDS[ticker]}/etfholdings`,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        if (!holdResponse.ok) throw new Error(`API error: ${holdResponse.status}`);
+        const data = await holdResponse.json();
+
+        if (Array.isArray(data)) {
+          // Sort by market value descending
+          const sorted = data.sort((a: Holding, b: Holding) =>
+            (b.marketValueBase || 0) - (a.marketValueBase || 0)
+          );
+          setHoldings(limit ? sorted.slice(0, limit) : sorted);
+          if (data.length > 0 && data[0].asOfDate) {
+            setAsOfDate(new Date(data[0].asOfDate).toLocaleDateString('en-US', {
+              month: 'short', day: 'numeric', year: 'numeric'
+            }));
+          }
+        }
       } catch (err) {
         setError('Unable to load holdings data');
         console.error(err);
@@ -98,17 +127,17 @@ export default function HoldingsTable({ ticker, limit }: HoldingsTableProps) {
         <tbody>
           {holdings.map((holding, index) => (
             <tr key={index}>
-              <td className="font-medium">{holding.name}</td>
-              <td className="text-navy-700 font-semibold">{holding.ticker}</td>
-              <td className="text-right">{parseFloat(holding.weight).toFixed(2)}%</td>
-              <td className="text-right">{parseInt(holding.shares).toLocaleString()}</td>
-              <td className="text-right">{formatCurrency(holding.market_value)}</td>
+              <td className="font-medium">{holding.securityDescriptionLong || holding.securityDescriptionShort}</td>
+              <td className="text-navy-700 font-semibold">{holding.securityTicker}</td>
+              <td className="text-right">{((holding.marketValuePercent || 0) * 100).toFixed(2)}%</td>
+              <td className="text-right">{(holding.shares || 0).toLocaleString()}</td>
+              <td className="text-right">{formatCurrency(holding.marketValueBase || 0)}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <p className="text-xs text-gray-500 mt-4">
-        Holdings are subject to change. Current as of most recent portfolio update.
+        {asOfDate ? `Holdings as of ${asOfDate}` : 'Holdings are subject to change.'} • Source: Ultimus Fund Solutions
       </p>
     </div>
   );

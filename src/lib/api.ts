@@ -1,4 +1,8 @@
-const API_BASE = "https://filepoint.live";
+// Ultimus Fund Solutions API
+const AUTH_URL = "https://uauth.ultimusfundsolutions.com/server/api/login";
+const DATA_URL = "https://funddata.ultimusfundsolutions.com/funds";
+const API_EMAIL = "broth@thoranalytics.com";
+const API_PASSWORD = "000b6e14-48a9-46fb-8113-f1d0cc2166ef";
 
 export interface FundInfo {
   ticker: string;
@@ -35,29 +39,20 @@ export const FUNDS: Record<string, FundInfo> = {
 };
 
 export interface NavData {
-  // Core NAV data
   nav: number;
   navDate: string;
   navDailyChange: number;
   navDailyChangePct: number;
-  
-  // Market data
   marketPrice: number;
   marketDailyChange: number;
   marketDailyChangePct: number;
-  
-  // Premium/discount
   premiumDiscount: number;
   premiumDiscountPct: number;
-  
-  // Fund info
   aum: number;
   shares: number;
   cusip: string;
   inceptionDate: string;
   fundName: string;
-  
-  // NAV-based returns (all periods)
   returns: {
     oneDay: number;
     fiveDay: number;
@@ -74,8 +69,6 @@ export interface NavData {
     sinceInception: number;
     cummSinceInception: number;
   };
-  
-  // Market price returns
   marketReturns: {
     oneDay: number;
     fiveDay: number;
@@ -92,15 +85,11 @@ export interface NavData {
     sinceInception: number;
     cummSinceInception: number;
   };
-  
-  // Dividend info
   dividendPerShare: number;
   distributionFactor: number;
   exDate: string;
   recordDate: string;
   paymentDate: string;
-  
-  // Volume
   volume: number;
 }
 
@@ -134,14 +123,47 @@ export interface QuarterlyPremiumDiscount {
   premiumDiscounts: PremiumDiscountRecord[];
 }
 
-async function fetchApi(endpoint: string, fundId: string) {
+// Token cache
+let cachedToken: string | null = null;
+let tokenExpiry: number = 0;
+
+async function getToken(): Promise<string> {
+  // Token is valid for ~12 hours, cache it
+  if (cachedToken && Date.now() < tokenExpiry) {
+    return cachedToken;
+  }
+
   try {
-    const response = await fetch(`${API_BASE}${endpoint}`, {
+    const response = await fetch(AUTH_URL, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: API_EMAIL, password: API_PASSWORD }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Auth error: ${response.status}`);
+    }
+
+    const token = await response.text();
+    cachedToken = token.replace(/"/g, "");
+    tokenExpiry = Date.now() + 10 * 60 * 60 * 1000; // 10 hours
+    return cachedToken;
+  } catch (error) {
+    console.error("Error getting Ultimus token:", error);
+    throw error;
+  }
+}
+
+async function fetchUltimus(endpoint: string) {
+  try {
+    const token = await getToken();
+    const response = await fetch(`${DATA_URL}${endpoint}`, {
+      method: "GET",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
       },
-      body: `fundID=${fundId}`,
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
 
@@ -151,7 +173,7 @@ async function fetchApi(endpoint: string, fundId: string) {
 
     return response.json();
   } catch (error) {
-    console.error(`Error fetching ${endpoint} for fund ${fundId}:`, error);
+    console.error(`Error fetching ${endpoint}:`, error);
     return null;
   }
 }
@@ -160,44 +182,34 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund) return null;
 
-  const data = await fetchApi("/thor_getnav_cached4.php", fund.fundId);
+  const data = await fetchUltimus(`/${fund.fundId}/performance`);
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
-  
-  // Parse date from ISO format
-  const performDate = d.performDate ? new Date(d.performDate).toLocaleDateString('en-US', { 
-    month: 'short', day: 'numeric', year: 'numeric' 
+
+  const performDate = d.performDate ? new Date(d.performDate).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric'
   }) : "";
-  
-  const inceptionDate = d.fundInceptionDate ? new Date(d.fundInceptionDate).toLocaleDateString('en-US', { 
-    month: 'short', day: 'numeric', year: 'numeric' 
+
+  const inceptionDate = d.fundInceptionDate ? new Date(d.fundInceptionDate).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric'
   }) : "";
 
   return {
-    // Core NAV data
     nav: parseFloat(d.naV_NoLoad) || 0,
     navDate: performDate,
     navDailyChange: parseFloat(d.navDailyChange) || 0,
     navDailyChangePct: parseFloat(d.oneDay_NoLoad) || 0,
-    
-    // Market data
     marketPrice: parseFloat(d.marketPrice) || 0,
     marketDailyChange: parseFloat(d.marketDailyChange) || 0,
     marketDailyChangePct: parseFloat(d.marketOneDay) || 0,
-    
-    // Premium/discount
     premiumDiscount: parseFloat(d.premiumDiscount) || 0,
     premiumDiscountPct: parseFloat(d.premiumDiscountPct) || 0,
-    
-    // Fund info
     aum: parseFloat(d.totalNetAssets) || 0,
     shares: parseFloat(d.sharesOutstanding) || 0,
     cusip: String(d.cusip || ""),
     inceptionDate: inceptionDate,
     fundName: String(d.fundName || ""),
-    
-    // NAV-based returns
     returns: {
       oneDay: parseFloat(d.oneDay_NoLoad) || 0,
       fiveDay: parseFloat(d.fiveDay_NoLoad) || 0,
@@ -214,8 +226,6 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
       sinceInception: parseFloat(d.sinceInception_NoLoad) || 0,
       cummSinceInception: parseFloat(d.cummSinceInception_NoLoad) || 0,
     },
-    
-    // Market price returns
     marketReturns: {
       oneDay: parseFloat(d.marketOneDay) || 0,
       fiveDay: parseFloat(d.marketFiveDay) || 0,
@@ -232,15 +242,11 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
       sinceInception: parseFloat(d.marketInception) || 0,
       cummSinceInception: parseFloat(d.marketCummSinceInception) || 0,
     },
-    
-    // Dividend info
     dividendPerShare: parseFloat(d.dividendPerShare) || 0,
     distributionFactor: parseFloat(d.distributionFactor) || 0,
     exDate: d.exDate || "",
     recordDate: d.recordDate || "",
     paymentDate: d.paymentDate || "",
-    
-    // Volume
     volume: parseFloat(d.volume) || 0,
   };
 }
@@ -249,60 +255,64 @@ export async function getHoldings(ticker: string): Promise<Holding[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund) return null;
 
-  const data = await fetchApi("/thor_getholdings_cached4.php", fund.fundId);
+  const data = await fetchUltimus(`/${fund.fundId}/etfholdings`);
   if (!data || !Array.isArray(data)) return null;
 
-  return data.map((h: Record<string, unknown>) => ({
-    ticker: String(h.ticker || ""),
-    name: String(h.name || ""),
-    weight: parseFloat(String(h.weight)) || 0,
-    shares: parseFloat(String(h.shares)) || 0,
-    marketValue: parseFloat(String(h.marketValue)) || 0,
-    sector: h.sector ? String(h.sector) : undefined,
-  }));
+  return data
+    .map((h: Record<string, unknown>) => ({
+      ticker: String(h.securityTicker || ""),
+      name: String(h.securityDescriptionLong || h.securityDescriptionShort || ""),
+      weight: (parseFloat(String(h.marketValuePercent)) || 0) * 100,
+      shares: parseFloat(String(h.shares)) || 0,
+      marketValue: parseFloat(String(h.marketValueBase)) || 0,
+      sector: h.category ? String(h.category) : undefined,
+    }))
+    .sort((a: Holding, b: Holding) => b.marketValue - a.marketValue);
 }
 
 export async function getQuarterlyPerformance(ticker: string): Promise<PerformanceData[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund) return null;
 
-  const data = await fetchApi("/thor_get_q_performance_cached4.php", fund.fundId);
-  if (!data || !Array.isArray(data)) return null;
+  const data = await fetchUltimus(`/${fund.fundId}/performance/LastQuarter`);
+  if (!data || !Array.isArray(data) || data.length === 0) return null;
 
-  return data.map((p: Record<string, unknown>) => ({
-    period: String(p.period || ""),
-    fundReturn: parseFloat(String(p.fundReturn)) || 0,
-    benchmarkReturn: parseFloat(String(p.benchmarkReturn)) || 0,
-    date: String(p.date || ""),
-  }));
+  const d = data[0];
+  return [{
+    period: "Last Quarter",
+    fundReturn: parseFloat(d.threeMonth_NoLoad) || 0,
+    benchmarkReturn: 0,
+    date: d.performDate || "",
+  }];
 }
 
 export async function getMonthlyPerformance(ticker: string): Promise<PerformanceData[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund) return null;
 
-  const data = await fetchApi("/thor_get_m_performance_cached4.php", fund.fundId);
-  if (!data || !Array.isArray(data)) return null;
+  const data = await fetchUltimus(`/${fund.fundId}/performance/LastMonth`);
+  if (!data || !Array.isArray(data) || data.length === 0) return null;
 
-  return data.map((p: Record<string, unknown>) => ({
-    period: String(p.period || ""),
-    fundReturn: parseFloat(String(p.fundReturn)) || 0,
-    benchmarkReturn: parseFloat(String(p.benchmarkReturn)) || 0,
-    date: String(p.date || ""),
-  }));
+  const d = data[0];
+  return [{
+    period: "Last Month",
+    fundReturn: parseFloat(d.oneMonth_NoLoad) || 0,
+    benchmarkReturn: 0,
+    date: d.performDate || "",
+  }];
 }
 
 export async function getPremiumDiscount(ticker: string): Promise<QuarterlyPremiumDiscount[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund) return null;
 
-  const data = await fetchApi("/thor_getpremium_cached4.php", fund.fundId);
+  const data = await fetchUltimus(`/${fund.fundId}/premiumdiscount`);
   if (!data || !Array.isArray(data)) return null;
 
   return data.map((q: Record<string, unknown>) => ({
     quarterStartDate: String(q.quarterStartDate || ""),
     quarterEndDate: String(q.quarterEndDate || ""),
-    premiumDiscounts: Array.isArray(q.premiumDiscounts) 
+    premiumDiscounts: Array.isArray(q.premiumDiscounts)
       ? q.premiumDiscounts.map((pd: Record<string, unknown>) => ({
           asOfDate: String(pd.asOfDate || ""),
           marketPrice: parseFloat(String(pd.marketPrice)) || 0,
@@ -312,6 +322,37 @@ export async function getPremiumDiscount(ticker: string): Promise<QuarterlyPremi
         }))
       : [],
   }));
+}
+
+export async function getDistributions(ticker: string) {
+  const fund = FUNDS[ticker.toUpperCase()];
+  if (!fund) return null;
+
+  return fetchUltimus(`/${fund.fundId}/distribution`);
+}
+
+export async function getAnalytics(ticker: string) {
+  const fund = FUNDS[ticker.toUpperCase()];
+  if (!fund) return null;
+
+  return fetchUltimus(`/${fund.fundId}/analytics`);
+}
+
+export async function getGrowth(ticker: string) {
+  const fund = FUNDS[ticker.toUpperCase()];
+  if (!fund) return null;
+
+  return fetchUltimus(`/${fund.fundId}/growth`);
+}
+
+export async function getHistoricalPrices(ticker: string, startDate?: string, endDate?: string) {
+  const fund = FUNDS[ticker.toUpperCase()];
+  if (!fund) return null;
+
+  if (startDate && endDate) {
+    return fetchUltimus(`/${fund.fundId}/pricing/range/${startDate}/${endDate}`);
+  }
+  return fetchUltimus(`/${fund.fundId}/pricing`);
 }
 
 // Utility functions
