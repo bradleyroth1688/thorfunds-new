@@ -15,7 +15,6 @@ const footerNavigation = {
     { name: "Dynamic Allocation", href: "/investing/tactical-allocation" },
     { name: "What is an ETF?", href: "/learn/what-is-an-etf" },
     { name: "Glossary", href: "/learn/glossary" },
-    { name: "The Book", href: "/book" },
   ],
   tools: [
     { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
@@ -25,7 +24,6 @@ const footerNavigation = {
     { name: "About Us", href: "/about" },
     { name: "Investment Philosophy", href: "/about/philosophy" },
     { name: "Team", href: "/team" },
-    { name: "The Book", href: "/book" },
     { name: "Press", href: "/press" },
     { name: "Careers", href: "/about/careers" },
     { name: "Contact", href: "/contact" },

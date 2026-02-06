@@ -28,13 +28,6 @@ const navigation = [
     ],
   },
   {
-    name: "Insights",
-    href: "/book",
-    children: [
-      { name: "The Book", href: "/book" },
-    ],
-  },
-  {
     name: "Tools",
     href: "/tools",
     children: [
