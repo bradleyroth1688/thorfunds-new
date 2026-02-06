@@ -18,7 +18,6 @@ const footerNavigation = {
   ],
   tools: [
     { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
-    { name: "Investment Calculator", href: "/tools/calculator" },
     { name: "Compare Funds", href: "/funds/compare" },
   ],
   company: [
@@ -164,9 +163,27 @@ export function Footer() {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-12 border-t border-navy-700 pt-8">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            <strong>Important Disclosures:</strong> Investors should consider the investment objectives, risks, charges, and expenses carefully before investing. The prospectus contains this and other information about the funds. Please read the prospectus carefully before investing. Investing involves risk, including the possible loss of principal. Past performance does not guarantee future results. ETF shares are bought and sold at market price (not NAV) and are not individually redeemed from the fund. THOR ETFs are distributed by PINE Distributors LLC.
+        <div className="mt-12 border-t border-navy-700 pt-8 space-y-4">
+          <p className="text-xs text-gray-400 leading-relaxed">
+            An investor should consider the investment objectives, risks, charges, and expenses of the Fund carefully before investing. The prospectus and, if available, the summary prospectus contain this and other information about the Funds. You may obtain a prospectus and, if available, a summary prospectus by visiting thorfunds.com or calling 1-800-974-6964. Please read the prospectus or summary prospectus carefully before investing.
+          </p>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            All investments are subject to risks, including the possible loss of principal. There is no assurance that the objectives of any strategy or fund will be achieved or will be successful.
+          </p>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            ETFs trade like stocks, are subject to investment risk, fluctuate in market value and may trade at prices above or below the ETF&apos;s net asset value. Brokerage commissions and ETF expenses will reduce returns.
+          </p>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            The information provided on this website is for informational purposes only. This site is not a recommendation nor an offer to sell (or solicitation of an offer to buy) securities in the United States or in any other jurisdiction.
+          </p>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            PINE Distributors LLC, Member FINRA is the distributor for the THOR Funds. Learn more at{" "}
+            <a href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-gold-400 underline">
+              FINRA&apos;s BrokerCheck
+            </a>.
+          </p>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            THOR Financial Technologies, LLC is the investment adviser to the THOR Funds and is not affiliated with PINE Distributors LLC.
           </p>
         </div>
 

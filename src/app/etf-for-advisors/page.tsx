@@ -42,20 +42,16 @@ export default function ETFForAdvisorsPage() {
             <div className="bg-white/10 rounded-2xl p-8">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-gold-400">1,000+</div>
-                  <div className="text-gray-300 text-sm mt-1">Advisors Trust THOR</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-gold-400">$1.1B+</div>
-                  <div className="text-gray-300 text-sm mt-1">Total AUM</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-gold-400">20+</div>
-                  <div className="text-gray-300 text-sm mt-1">Years of Research</div>
-                </div>
-                <div className="text-center">
                   <div className="text-4xl font-bold text-gold-400">2</div>
                   <div className="text-gray-300 text-sm mt-1">Tactical ETFs</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-gold-400">15+</div>
+                  <div className="text-gray-300 text-sm mt-1">Years of Research</div>
+                </div>
+                <div className="text-center col-span-2">
+                  <div className="text-2xl font-bold text-gold-400">Robust Model Offerings</div>
+                  <div className="text-gray-300 text-sm mt-1">And Growing</div>
                 </div>
               </div>
             </div>

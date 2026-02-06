@@ -258,10 +258,10 @@ export default function RiskProfileQuiz() {
                 View {profile.fundTicker} Details
               </Link>
               <Link 
-                href="/tools/calculator"
+                href="/funds/compare"
                 className="btn-outline flex-1 text-center"
               >
-                Try Investment Calculator
+                Compare Our Funds
               </Link>
             </div>
           </div>

@@ -16,7 +16,7 @@ const faqs = [
       },
       {
         q: "How much does THOR manage?",
-        a: "THOR Financial Technologies manages over $1.1 billion in assets across our strategies, including ETFs and separately managed accounts.",
+        a: "THOR Financial Technologies offers robust model offerings across two tactical ETFs and separately managed accounts.",
       },
       {
         q: "Who is THOR designed for?",

@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Investment Tools | Free Calculators & Quizzes",
-  description: "Free investment tools including risk profile assessment, growth calculator, and fund comparison. Make smarter investment decisions with THOR Funds.",
+  description: "Free investment tools including risk profile assessment and fund comparison. Make smarter investment decisions with THOR Funds.",
 };
 
 const tools = [
@@ -19,17 +19,6 @@ const tools = [
     ),
     badge: "Popular",
     time: "5 min",
-  },
-  {
-    name: "Investment Calculator",
-    description: "Project your investment growth over time. Compare THOR funds to traditional buy-and-hold strategies.",
-    href: "/tools/calculator",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-    ),
-    time: "Interactive",
   },
   {
     name: "Fund Comparison",

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Why THOR? - What Makes Us Different',
-  description: 'Discover what makes THOR Funds different from traditional ETFs. Science-based risk management, ability to go to cash, and 20+ years of research.',
+  description: 'Discover what makes THOR Funds different from traditional ETFs. Science-based risk management, ability to go to cash, and 15+ years of research.',
 };
 
 export default function WhyTHORPage() {

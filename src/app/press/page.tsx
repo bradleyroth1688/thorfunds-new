@@ -24,9 +24,9 @@ export default function PressPage() {
               <div className="space-y-6">
                 <div className="card">
                   <span className="text-xs text-gold-600 font-medium">PRESS RELEASE</span>
-                  <h3 className="font-semibold text-lg mt-1 mb-2">THOR Funds Surpasses $1 Billion in AUM</h3>
+                  <h3 className="font-semibold text-lg mt-1 mb-2">THOR Funds Expands Tactical ETF Offerings</h3>
                   <p className="text-gray-600 text-sm mb-3">
-                    THOR Financial Technologies announces a significant milestone as total assets under management exceed $1 billion.
+                    THOR Financial Technologies continues to grow with robust model offerings across two tactical ETFs.
                   </p>
                   <span className="text-xs text-gray-500">January 2026</span>
                 </div>

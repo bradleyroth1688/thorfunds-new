@@ -11,7 +11,7 @@ const timeline = [
   { year: "2010s", event: "Developed and refined digital signal processing methodology for markets" },
   { year: "2020", event: "Launched SMA strategy for index rotation" },
   { year: "2024", event: "Launched THIR and THLV ETFs for broader investor access" },
-  { year: "Today", event: "$1.1B+ in assets under management across strategies" },
+  { year: "Today", event: "Robust model offerings across two ETFs and growing" },
 ];
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold text-white">About THOR Funds</h1>
             <p className="mt-6 text-xl text-gray-300 leading-relaxed">
-              We use science, not math, to react to changes in market cycles in real time. Our mission: help investors participate in upside while protecting against significant drawdowns.
+              We use science, not math, to react to changes in market cycles in real time. Tactical ETFs where managing risk is top of mind.
             </p>
             <p className="mt-4 text-2xl text-gold-500 font-medium">
               Participate. Protect. Prosper.

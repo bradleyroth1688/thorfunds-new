@@ -42,7 +42,6 @@ const navigation = [
     children: [
       { name: "Fund Comparison", href: "/funds/compare" },
       { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
-      { name: "Investment Calculator", href: "/tools/calculator" },
     ],
   },
   {
@@ -158,6 +157,9 @@ export function Header() {
 
           {/* Right side buttons */}
           <div className="hidden lg:flex lg:items-center lg:gap-4">
+            <a href="tel:1-800-974-6964" className="text-sm text-gray-300 hover:text-gold-500 transition-colors">
+              1-800-974-6964
+            </a>
             <DarkModeToggle />
             <Link
               href="/newsletter"

@@ -9,11 +9,11 @@ export default function Home() {
         <div className="container-max mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-gold-500">Participate.</span> Protect. Prosper.
+              Tactical ETFs with the <span className="text-gold-500">downside</span> in mind.
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
               We use science not math to react to changes in market cycles in real time.
-              Tactical ETFs designed to capture upside while managing downside risk.
+              Where managing risk is top of mind.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/funds" className="btn-primary text-lg px-8 py-4">
@@ -27,23 +27,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AUM Banner */}
+      {/* Stats Banner */}
       <section className="bg-gold-500 py-4">
         <div className="container-max mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 text-navy-700">
-            <div className="text-center">
-              <span className="font-bold text-2xl md:text-3xl">$1.1B+</span>
-              <span className="ml-2">Total AUM</span>
-            </div>
-            <div className="hidden md:block w-px h-8 bg-navy-700/30"></div>
             <div className="text-center">
               <span className="font-bold text-2xl md:text-3xl">2</span>
               <span className="ml-2">Tactical ETFs</span>
             </div>
             <div className="hidden md:block w-px h-8 bg-navy-700/30"></div>
             <div className="text-center">
-              <span className="font-bold text-2xl md:text-3xl">20+</span>
+              <span className="font-bold text-2xl md:text-3xl">15+</span>
               <span className="ml-2">Years of Research</span>
+            </div>
+            <div className="hidden md:block w-px h-8 bg-navy-700/30"></div>
+            <div className="text-center">
+              <span className="font-bold text-lg md:text-xl">Robust model offerings</span>
+              <span className="ml-2">and growing</span>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our ETFs</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Two distinct strategies designed to help investors participate in market upside while protecting against downside risk.
+              Two distinct tactical strategies designed with risk management as a core principle.
             </p>
           </div>
 
@@ -225,8 +225,8 @@ export default function Home() {
       {/* For Advisors CTA */}
       <section className="section-padding bg-gray-50">
         <div className="container-max mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1">
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="max-w-2xl">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">For Financial Advisors</h2>
               <p className="text-gray-600 mb-6">
                 Access institutional-quality research and learn how THOR can complement your client portfolios.
@@ -238,12 +238,6 @@ export default function Home() {
                 <Link href="/contact" className="btn-outline">
                   Schedule a Call
                 </Link>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3">
-              <div className="bg-navy-700 rounded-xl p-6 text-center text-white">
-                <div className="text-4xl font-bold text-gold-400 mb-2">1,000+</div>
-                <div className="text-white/80">Advisors Trust THOR</div>
               </div>
             </div>
           </div>

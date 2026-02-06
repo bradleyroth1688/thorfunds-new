@@ -57,7 +57,7 @@ const relatedContent = [
   { title: "Market Cycles", href: "/learn/market-cycles", description: "Understanding bull and bear markets" },
   { title: "THIR ETF Details", href: "/funds/thir", description: "Explore our index rotation ETF" },
   { title: "Going to Cash Strategy", href: "/learn/going-to-cash", description: "When and why funds move to treasuries" },
-  { title: "Investment Calculator", href: "/tools/calculator", description: "Project tactical strategy returns" },
+  { title: "Compare Our Funds", href: "/funds/compare", description: "Compare THIR and THLV strategies" },
 ];
 
 export default function TacticalAllocationPillarPage() {
