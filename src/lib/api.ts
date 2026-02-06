@@ -251,6 +251,79 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
   };
 }
 
+export async function getStandardizedPerformance(ticker: string): Promise<NavData | null> {
+  const fund = FUNDS[ticker.toUpperCase()];
+  if (!fund) return null;
+
+  const data = await fetchUltimus(`/${fund.fundId}/performance/LastMonth`);
+  if (!data || !Array.isArray(data) || data.length === 0) return null;
+
+  const d = data[0];
+
+  const performDate = d.performDate ? new Date(d.performDate).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric'
+  }) : "";
+
+  const inceptionDate = d.fundInceptionDate ? new Date(d.fundInceptionDate).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric'
+  }) : "";
+
+  return {
+    nav: parseFloat(d.naV_NoLoad) || 0,
+    navDate: performDate,
+    navDailyChange: parseFloat(d.navDailyChange) || 0,
+    navDailyChangePct: parseFloat(d.oneDay_NoLoad) || 0,
+    marketPrice: parseFloat(d.marketPrice) || 0,
+    marketDailyChange: parseFloat(d.marketDailyChange) || 0,
+    marketDailyChangePct: parseFloat(d.marketOneDay) || 0,
+    premiumDiscount: parseFloat(d.premiumDiscount) || 0,
+    premiumDiscountPct: parseFloat(d.premiumDiscountPct) || 0,
+    aum: parseFloat(d.totalNetAssets) || 0,
+    shares: parseFloat(d.sharesOutstanding) || 0,
+    cusip: String(d.cusip || ""),
+    inceptionDate: inceptionDate,
+    fundName: String(d.fundName || ""),
+    returns: {
+      oneDay: parseFloat(d.oneDay_NoLoad) || 0,
+      fiveDay: parseFloat(d.fiveDay_NoLoad) || 0,
+      sevenDay: parseFloat(d.sevenDay_NoLoad) || 0,
+      monthToDate: parseFloat(d.monthToDate_NoLoad) || 0,
+      oneMonth: parseFloat(d.oneMonth_NoLoad) || 0,
+      quarterToDate: parseFloat(d.quarterEndToDate_NoLoad) || 0,
+      threeMonth: parseFloat(d.threeMonth_NoLoad) || 0,
+      sixMonth: parseFloat(d.sixMonth_NoLoad) || 0,
+      ytd: parseFloat(d.yearToDate_NoLoad) || 0,
+      oneYear: parseFloat(d.oneYear_NoLoad) || 0,
+      threeYear: d.threeYear_NoLoad != null ? parseFloat(d.threeYear_NoLoad) : null,
+      fiveYear: d.fiveYear_NoLoad != null ? parseFloat(d.fiveYear_NoLoad) : null,
+      sinceInception: parseFloat(d.sinceInception_NoLoad) || 0,
+      cummSinceInception: parseFloat(d.cummSinceInception_NoLoad) || 0,
+    },
+    marketReturns: {
+      oneDay: parseFloat(d.marketOneDay) || 0,
+      fiveDay: parseFloat(d.marketFiveDay) || 0,
+      sevenDay: parseFloat(d.marketSevenDay) || 0,
+      monthToDate: parseFloat(d.marketMonthToDate) || 0,
+      oneMonth: parseFloat(d.marketOneMonth) || 0,
+      quarterToDate: parseFloat(d.marketQuarterEndToDate) || 0,
+      threeMonth: parseFloat(d.marketThreeMonth) || 0,
+      sixMonth: parseFloat(d.marketSixMonth) || 0,
+      ytd: parseFloat(d.marketYearToDate) || 0,
+      oneYear: parseFloat(d.marketYear) || 0,
+      threeYear: d.marketThreeYear != null ? parseFloat(d.marketThreeYear) : null,
+      fiveYear: d.marketFiveYear != null ? parseFloat(d.marketFiveYear) : null,
+      sinceInception: parseFloat(d.marketInception) || 0,
+      cummSinceInception: parseFloat(d.marketCummSinceInception) || 0,
+    },
+    dividendPerShare: parseFloat(d.dividendPerShare) || 0,
+    distributionFactor: parseFloat(d.distributionFactor) || 0,
+    exDate: d.exDate || "",
+    recordDate: d.recordDate || "",
+    paymentDate: d.paymentDate || "",
+    volume: parseFloat(d.volume) || 0,
+  };
+}
+
 export async function getHoldings(ticker: string): Promise<Holding[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund) return null;

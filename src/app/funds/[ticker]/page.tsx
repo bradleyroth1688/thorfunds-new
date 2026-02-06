@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FUNDS, getNavData, getHoldings, getPremiumDiscount, getDistributions, formatCurrency, formatPercent, formatNav, formatNumber } from "@/lib/api";
+import { FUNDS, getNavData, getStandardizedPerformance, getHoldings, getPremiumDiscount, getDistributions, formatCurrency, formatPercent, formatNav, formatNumber } from "@/lib/api";
 
 interface FundPageProps {
   params: Promise<{ ticker: string }>;
@@ -41,12 +41,16 @@ export default async function FundPage({ params }: FundPageProps) {
     notFound();
   }
 
-  const [navData, holdings, premiumDiscountData, distributionsRaw] = await Promise.all([
+  const [navData, perfData, holdings, premiumDiscountData, distributionsRaw] = await Promise.all([
     getNavData(fund.ticker),
+    getStandardizedPerformance(fund.ticker),
     getHoldings(fund.ticker),
     getPremiumDiscount(fund.ticker),
     getDistributions(fund.ticker),
   ]);
+
+  // Use month-end standardized data for performance table, daily data for pricing
+  const standardPerf = perfData || navData;
 
   // Process premium/discount data into calendar year summaries
   const premiumDiscountSummary: { year: string; daysAtPremium: number; daysAtNav: number; daysAtDiscount: number }[] = [];
@@ -218,20 +222,20 @@ export default async function FundPage({ params }: FundPageProps) {
               <div className="text-xs text-gray-400">Total Net Assets</div>
             </div>
             <div>
-              <div className={`text-lg font-bold ${navData && navData.returns.ytd >= 0 ? "text-green-400" : "text-red-400"}`}>
-                {navData ? formatPercent(navData.returns.ytd) : "—"}
+              <div className={`text-lg font-bold ${standardPerf && standardPerf.returns.ytd >= 0 ? "text-green-400" : "text-red-400"}`}>
+                {standardPerf ? formatPercent(standardPerf.returns.ytd) : "—"}
               </div>
               <div className="text-xs text-gray-400">YTD Return</div>
             </div>
             <div>
-              <div className={`text-lg font-bold ${navData && navData.returns.oneYear >= 0 ? "text-green-400" : "text-red-400"}`}>
-                {navData ? formatPercent(navData.returns.oneYear) : "—"}
+              <div className={`text-lg font-bold ${standardPerf && standardPerf.returns.oneYear >= 0 ? "text-green-400" : "text-red-400"}`}>
+                {standardPerf ? formatPercent(standardPerf.returns.oneYear) : "—"}
               </div>
               <div className="text-xs text-gray-400">1-Year Return</div>
             </div>
             <div>
-              <div className={`text-lg font-bold ${navData && navData.returns.sinceInception >= 0 ? "text-green-400" : "text-red-400"}`}>
-                {navData ? formatPercent(navData.returns.sinceInception) : "—"}
+              <div className={`text-lg font-bold ${standardPerf && standardPerf.returns.sinceInception >= 0 ? "text-green-400" : "text-red-400"}`}>
+                {standardPerf ? formatPercent(standardPerf.returns.sinceInception) : "—"}
               </div>
               <div className="text-xs text-gray-400">Since Inception (Ann.)</div>
             </div>
@@ -261,7 +265,7 @@ export default async function FundPage({ params }: FundPageProps) {
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-navy-800 dark:text-white">Performance</h2>
                 <span className="text-xs text-gray-500 dark:text-gray-400">
-                  As of {navData?.navDate || "—"}
+                  As of {standardPerf?.navDate || "—"}
                 </span>
               </div>
               
@@ -281,29 +285,29 @@ export default async function FundPage({ params }: FundPageProps) {
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">1 Day</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.oneDay >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.oneDay) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.oneDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.oneDay) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.oneDay >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.oneDay) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.oneDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.oneDay) : "—"}
                       </td>
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">5 Day</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.fiveDay >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.fiveDay) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.fiveDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.fiveDay) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.fiveDay >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.fiveDay) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.fiveDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.fiveDay) : "—"}
                       </td>
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">7 Day</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.sevenDay >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.sevenDay) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.sevenDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.sevenDay) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.sevenDay >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.sevenDay) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.sevenDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.sevenDay) : "—"}
                       </td>
                     </tr>
                     
@@ -313,20 +317,20 @@ export default async function FundPage({ params }: FundPageProps) {
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">MTD (Month-to-Date)</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.monthToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.monthToDate) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.monthToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.monthToDate) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.monthToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.monthToDate) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.monthToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.monthToDate) : "—"}
                       </td>
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">1 Month</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.oneMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.oneMonth) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.oneMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.oneMonth) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.oneMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.oneMonth) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.oneMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.oneMonth) : "—"}
                       </td>
                     </tr>
 
@@ -336,29 +340,29 @@ export default async function FundPage({ params }: FundPageProps) {
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">QTD (Quarter-to-Date)</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.quarterToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.quarterToDate) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.quarterToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.quarterToDate) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.quarterToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.quarterToDate) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.quarterToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.quarterToDate) : "—"}
                       </td>
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">3 Month</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.threeMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.threeMonth) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.threeMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.threeMonth) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.threeMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.threeMonth) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.threeMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.threeMonth) : "—"}
                       </td>
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">6 Month</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.sixMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.sixMonth) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.sixMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.sixMonth) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.sixMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.sixMonth) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.sixMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.sixMonth) : "—"}
                       </td>
                     </tr>
 
@@ -368,41 +372,41 @@ export default async function FundPage({ params }: FundPageProps) {
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">YTD (Year-to-Date)</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.ytd) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.ytd) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.ytd) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.ytd) : "—"}
                       </td>
                     </tr>
                     <tr>
                       <td className="py-3 text-gray-700 dark:text-gray-300">1 Year</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.oneYear) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.returns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.oneYear) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.oneYear) : "—"}
+                      <td className={`py-3 text-right font-medium ${standardPerf && standardPerf.marketReturns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.oneYear) : "—"}
                       </td>
                     </tr>
-                    {navData && navData.returns.threeYear !== null && (
+                    {standardPerf && standardPerf.returns.threeYear !== null && (
                       <tr>
                         <td className="py-3 text-gray-700 dark:text-gray-300">3 Year (Annualized)</td>
-                        <td className={`py-3 text-right font-medium ${navData.returns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                          {formatPercent(navData.returns.threeYear)}
+                        <td className={`py-3 text-right font-medium ${standardPerf.returns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {formatPercent(standardPerf.returns.threeYear)}
                         </td>
-                        <td className={`py-3 text-right font-medium ${navData.marketReturns.threeYear && navData.marketReturns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                          {formatPercent(navData.marketReturns.threeYear)}
+                        <td className={`py-3 text-right font-medium ${standardPerf.marketReturns.threeYear && standardPerf.marketReturns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {formatPercent(standardPerf.marketReturns.threeYear)}
                         </td>
                       </tr>
                     )}
-                    {navData && navData.returns.fiveYear !== null && (
+                    {standardPerf && standardPerf.returns.fiveYear !== null && (
                       <tr>
                         <td className="py-3 text-gray-700 dark:text-gray-300">5 Year (Annualized)</td>
-                        <td className={`py-3 text-right font-medium ${navData.returns.fiveYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                          {formatPercent(navData.returns.fiveYear)}
+                        <td className={`py-3 text-right font-medium ${standardPerf.returns.fiveYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {formatPercent(standardPerf.returns.fiveYear)}
                         </td>
-                        <td className={`py-3 text-right font-medium ${navData.marketReturns.fiveYear && navData.marketReturns.fiveYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                          {formatPercent(navData.marketReturns.fiveYear)}
+                        <td className={`py-3 text-right font-medium ${standardPerf.marketReturns.fiveYear && standardPerf.marketReturns.fiveYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {formatPercent(standardPerf.marketReturns.fiveYear)}
                         </td>
                       </tr>
                     )}
@@ -415,20 +419,20 @@ export default async function FundPage({ params }: FundPageProps) {
                           Inception: {navData?.inceptionDate || "—"}
                         </div>
                       </td>
-                      <td className={`py-4 text-right font-bold text-lg ${navData && navData.returns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.sinceInception) : "—"}
+                      <td className={`py-4 text-right font-bold text-lg ${standardPerf && standardPerf.returns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.sinceInception) : "—"}
                       </td>
-                      <td className={`py-4 text-right font-bold text-lg ${navData && navData.marketReturns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.sinceInception) : "—"}
+                      <td className={`py-4 text-right font-bold text-lg ${standardPerf && standardPerf.marketReturns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.sinceInception) : "—"}
                       </td>
                     </tr>
                     <tr className="bg-gray-50 dark:bg-navy-700">
                       <td className="py-3 text-gray-700 dark:text-gray-300">Cumulative Return (Since Inception)</td>
-                      <td className={`py-3 text-right font-semibold ${navData && navData.returns.cummSinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.cummSinceInception) : "—"}
+                      <td className={`py-3 text-right font-semibold ${standardPerf && standardPerf.returns.cummSinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.returns.cummSinceInception) : "—"}
                       </td>
-                      <td className={`py-3 text-right font-semibold ${navData && navData.marketReturns.cummSinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.marketReturns.cummSinceInception) : "—"}
+                      <td className={`py-3 text-right font-semibold ${standardPerf && standardPerf.marketReturns.cummSinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {standardPerf ? formatPercent(standardPerf.marketReturns.cummSinceInception) : "—"}
                       </td>
                     </tr>
                   </tbody>
