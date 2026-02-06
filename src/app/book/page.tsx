@@ -191,8 +191,8 @@ export default function BookPage() {
               <Link href="/team" className="btn-primary">
                 Meet the Team
               </Link>
-              <Link href="/insights" className="btn-outline border-white text-white hover:bg-white hover:text-navy-800">
-                Listen to Podcast
+              <Link href="/press" className="btn-outline border-white text-white hover:bg-white hover:text-navy-800">
+                Press & Media
               </Link>
             </div>
           </div>

@@ -176,14 +176,14 @@ export default function ETFForAdvisorsPage() {
               <p className="text-sm text-gray-600">In-depth articles on our methodology</p>
             </Link>
 
-            <Link href="/insights" className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
+            <Link href="/press" className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-navy-100 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-navy-800" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-navy-800 mb-2">Podcast</h3>
-              <p className="text-sm text-gray-600">Industry insights from Behind the Ticker</p>
+              <h3 className="font-semibold text-navy-800 mb-2">Press & Media</h3>
+              <p className="text-sm text-gray-600">THOR in the news and industry coverage</p>
             </Link>
           </div>
         </div>

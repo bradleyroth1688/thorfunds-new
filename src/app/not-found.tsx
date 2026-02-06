@@ -107,8 +107,8 @@ export default function NotFound() {
             <Link href="/learn" className="btn-ghost btn-sm">
               Education
             </Link>
-            <Link href="/insights" className="btn-ghost btn-sm">
-              Podcast
+            <Link href="/press" className="btn-ghost btn-sm">
+              Press
             </Link>
             <Link href="/contact" className="btn-ghost btn-sm">
               Contact

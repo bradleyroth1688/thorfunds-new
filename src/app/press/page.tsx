@@ -317,9 +317,9 @@ export default function PressPage() {
                 <p className="text-gray-600 text-sm mb-4">
                   Listen to Behind the Ticker, Brad Roth&apos;s ETF-focused podcast featuring industry leaders. Now on ETF.com.
                 </p>
-                <Link href="/podcast" className="btn-outline w-full text-center text-sm">
-                  Listen Now
-                </Link>
+                <a href="https://open.spotify.com/show/1TJpgOAqctOCnjij9KTxNS" target="_blank" rel="noopener noreferrer" className="btn-outline w-full text-center text-sm">
+                  Listen on Spotify
+                </a>
               </div>
 
               <div className="card bg-navy-700 text-white">
