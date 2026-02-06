@@ -67,7 +67,7 @@ export default function PodcastPage() {
               Listen on Spotify
             </a>
             <a
-              href="https://www.youtube.com/@thorfunds"
+              href="https://www.youtube.com/playlist?list=PL6wvA-EH7M41bn5LPaWA9kpZgI5_Pxzyn"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline border-white text-white hover:bg-white hover:text-navy-700 text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
@@ -165,7 +165,7 @@ export default function PodcastPage() {
                 Follow on Spotify
               </a>
               <a
-                href="https://www.youtube.com/@thorfunds?sub_confirmation=1"
+                href="https://www.youtube.com/playlist?list=PL6wvA-EH7M41bn5LPaWA9kpZgI5_Pxzyn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline border-white text-white hover:bg-white hover:text-navy-700 text-lg px-8 py-4 inline-flex items-center justify-center gap-2"
