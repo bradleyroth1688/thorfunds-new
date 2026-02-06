@@ -46,6 +46,12 @@ function formatAUM(value: number): string {
   return formatCurrency(value);
 }
 
+function formatShares(value: number): string {
+  if (value >= 1e6) return `${(value / 1e6).toFixed(2)}M`;
+  if (value >= 1e3) return `${(value / 1e3).toFixed(0)}K`;
+  return value.toLocaleString();
+}
+
 function formatPercent(value: number | null): string {
   if (value === null) return '—';
   return `${value >= 0 ? '+' : ''}${value.toFixed(2)}%`;
@@ -122,9 +128,9 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
           <div className="text-2xl font-bold text-navy-700">{formatAUM(data.totalNetAssets)}</div>
           <div className="text-sm text-gray-600">AUM</div>
         </div>
-        <div className="bg-gray-50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700">
-            {(data.sharesOutstanding || 0).toLocaleString()}
+        <div className="bg-gray-50 rounded-lg p-4 text-center overflow-hidden">
+          <div className="text-2xl font-bold text-navy-700 truncate">
+            {formatShares(data.sharesOutstanding || 0)}
           </div>
           <div className="text-sm text-gray-600">Shares</div>
         </div>
