@@ -1,6 +1,25 @@
-# Robots.txt for thorfunds.com
+# THOR Funds Robots.txt
+# https://thorfunds.com
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
 
-# Sitemap
+# Googlebot-specific
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# Allow image indexing
+User-agent: Googlebot-Image
+Allow: /
+
+# Sitemaps
 Sitemap: https://thorfunds.com/sitemap.xml
+
+# Host
+Host: https://thorfunds.com

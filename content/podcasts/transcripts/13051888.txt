@@ -1,0 +1,355 @@
+Welcome to Behind the Ticker.
+I'm Brad Roth, Chief Investment Officer of Thor Financial Technologies, and portfolio manager
+of THLV, the Thor Low Volatility ETF.
+Behind the Ticker, uncovers the inner workings of the ETF industry.
+We will interview portfolio managers and ETF service providers to dive deep into their
+work lives and their businesses.
+We will learn the inner workings of their strategies and what drives them as they continue
+to grow their company.
+Many of these individuals are entrepreneurs, and will have unique and compelling insights
+to share as much goes on behind the Ticker.
+Please note, nothing in this show is investment advice, and it is meant solely for
+educational and entertainment purposes only.
+Welcome to Behind the Ticker.
+Today we have David Cohen.
+He runs the Handles Index.
+He is an industry veteran.
+He has been in the industry for a very, very long time.
+Primarily building and creating strategies that can be utilized in ETFs.
+And the Handles Index is behind the ETF HNDL.
+It's a very successfully ETF, but I could have talked to David for hours.
+We talked a little bit after the show as well.
+A wealth of knowledge.
+You're definitely going to want to listen to this episode with David Cohen.
+David, welcome to the show.
+Thanks, Brad.
+So you run the Handles Indexes.
+Before we get into that, can you tell me about your background and how you got into the position you
+are today?
+Sure, I'd love to.
+So I came out of the Chicago ETF and mutual fund business that kind of was this West Wing of
+in Chicago and the Western suburbs.
+And a lot of that came out of a company called Niveen that did a lot of stuff in the early 2000s
+and tried to get into the ETF business and backtracked and went away.
+And things like Power Shares, a guy like Bruce Bond who created Power Shares,
+worked with Hannah Dave Hooten, who created Claymore, Claymore ETFs, which later became
+Google and I'm ETFs, and I worked in the...
+I worked for David and Claymore and we created Claymore ETFs back in the day.
+And Christian McGoon, who's an amplifier.
+A lot of people, a lot of the...
+It was quite a center of the ETF universe out in the Western suburbs of Chicago.
+So I came from there and we developed a lot of innovative products that Claymore back in the
+day and we were early to the... to the game.
+We did the first brick ETF back in, it was 2000 and so 2003, our six, 2006, I think it was.
+We did a lot of first-first-to-market concepts and that was things we focused on and we brought
+the first multi-acet, a multi-acet product, which was called the yield hog back in.
+It did a lot of interesting products and went through that.
+And so there I met my partner, Matt Patterson, who came with a couple of other gentlemen
+created a concept called Bullet Shares Indexes and Bullet Shares became an enormous successful product,
+and it really addressed the bond market and made bonds ETFs into act-like bonds, not like bond fund.
+And so from there we kind of learned that ETFs have to have kind of a purpose and we focused on that.
+And that's where handles kind of came.
+So you ran around with the originals of the ETF industry.
+It sounds like, I mean, you've been in the game for a very long time.
+Uh, there's so many people who are in this business in a long time.
+I mean, yeah, I was, I rang the Belty American Stock Exchange a few times.
+Yeah, so yeah, so a lot of us did.
+And there are a lot of people out there and a lot of us are still, you know, in the game.
+A lot of the innovation you're seeing is coming from from those people.
+And then the people I worked with in those times, yes.
+So yeah, it was a pretty dynamic business, a long time ago and of it's grown up quite fast.
+Yeah, so what about personally, what do you like to do when you're not working,
+what are some of your hobbies and things you like to do?
+Uh, I've taken up, you know, as I was telling you before we started the, uh,
+we recently kind of bought a little gentleman's farm in the middle of, uh,
+in the middle of Long Island and we're redoing that and we're kind of,
+we're raising, uh, we're raising birds and animals and things and rescue and, uh, cats and dogs and things.
+It's, it's a kind of a, it's a very peaceful existence.
+A little bit more relaxed than, than working on a monster.
+Yeah, well, it's funny you say, you know, birds, my, uh, my mother-in-law, uh, two weeks ago,
+a baby crow fell out of a nest and now she's raising it.
+I'm like, are you sure you, you can raise a crow and things still come together?
+Yeah, I don't go rescue any birds out in the middle of the wilderness.
+It's certainly not close.
+Yeah, exactly.
+That's what my son said, you're doing this.
+We have some, there are some crazy crowds, but like, you know, we have, it's just, it's, um,
+you know, more like, uh, long Island has a lot of ferrocats that get, you know, rehosted,
+re-house and things like that, so the alphorecatic sheep's and so it's, it's a nice,
+it's a nice way to kind of get in touch with me.
+Sure, that's great. Good for you.
+So let's pivot a little bit to handles.
+So how did the indexes come about and were you running strategies or were you running money on
+these strategies before they came indexes?
+Like, can you talk about the story of how this, how this, how this came about?
+To be clear, my partner Matt and I come from the product development side.
+He's a securities lawyer.
+I, you know, worked in product development and came up with new ideas and concepts and new ways
+about how the powder bring.
+And a lot of what we did back in the Claymore days was closed in funds.
+And we came out of the closed-end fund market.
+And handles was really, you know, in closed-end fund markets, it's an interesting nuance
+part of the business where, you know, a big company like BlackRock or an eating vans or whatever,
+we'll bring a fund to market market and syndicate it through advisors and they'll distribute it.
+And then they manage the money and they believe that, in fact, they have the money and perpetuity
+they provide. Essentially, most of them are leveraged income strategies or a large portion of the
+and from that has, you know, what was, there was a derivative market was more and packaging up
+the secondary closed-end fund market and reselling those to a investor, right?
+So that's where we came from. That was kind of our market. That's one of the areas we focused on.
+And so, as we did that, we went forward, we saw, okay, there's a real transition going on
+in the marketplace. And that transition is that people are going to retire 10,000 people like that.
+You cannot miss where the salmon are going. They are going upstream, they need the retiring,
+they need income. And we had zero percent interest rates, interest rates were really well.
+There was nothing in the marketplace. And we said, okay, close-end funds have been a fantastic
+way for people to do leveraged income strategy. And packaging them has been very successful.
+Can we do it more efficiently through an open-end vehicle like an ETF? And that was essentially
+the concept behind hand was to essentially make a beta play of these package products of
+closed-end funds that were used to drive income strategy.
+But that's interesting. So we didn't run the money. We were not portfolio managers.
+We are not portfolio managers now. We created indexes. And there's a reason why we created it.
+Yeah, so you're supposed to talk about, yeah, I'm sorry.
+Can you talk a little bit about the strategy behind handles and how it operates?
+Yeah, I'll be out of the time. And let me just go back to what I was saying,
+just finish what I was saying, or which was, there's a reason why we like indexes. And that's
+because indexes have rules. And rules can't, and they don't change, they don't deviate.
+There is an argument in the world for active management for your product, your THL, which I
+love, fantastic fun, very well thought out, nicely done. And there is a room for that in the market.
+There's a place for that. There are also people who are, you know, true believers in passive
+strategies, things like the S&P 500, or just buying, you know, buy the market and they're
+there's room for things in between. And handles tries to be in between, right? It's kind of in the
+middle. And the strategy is based on the fact that sometimes, you know, the passive are right,
+and sometimes the actions are right, okay? And so there's two songs. And so one side is we call the
+core and one side we call the explorer. The explorer, the core is 70, 30, fixed income equity, okay?
+All the time. Rebalance is every month. The explorer side is made up of a handful of different
+income-based strategies that Dorsey write uses their algorithms to wait and select. And the
+marketplace based off of a factor that has a proven, the proof, one of the proven factors in
+active management, which is moment, right? They're very good at it. So it plays off the two of those.
+But both of them are kind of in the same pinwheels, so to say, in terms of asset allocations. And
+so you can vary a little bit. There's a little bit of deviation. But the truth is,
+sometimes passive wins, sometimes active wins. We want to be somewhere in the middle. Because
+what we're trying to do is focus on total return. And not really focus on the components of total
+return, which are yield and price appreciation, okay? Those two things are kind of inter- they don't
+mean as much as the aggregate number, which is total return. It's the only number that really
+me. And so handles is like, let's create a high risk adjusted return product or fund or
+not fund, but an index. So to say, portfolio. And how to use that to deliver an income strategy
+because it's based in an ETF. And it's actually funny. We were working on this idea called
+Stactical, which would combine, you know, static holdings like the SPY and some other things
+with tactical. Very similar to what you do. It wasn't a yield play. But it was more of a
+more of a take on when there's times where you should be strategic, there's times where you should
+be tactical. And, you know, how do you find when that time period is, which is, you know,
+very hard thing to do, but it's something we've been working on. So it's really hard,
+you're right. And it's really hard to do that, not only to do that, but to do that and create
+something that people invest in a timely manner, because there's so much of the effect on going
+into something when it feels good, which is usually not the time you should go into something. But in
+fact, you should go into it when it doesn't feel good. And investors do the same things when they
+go in and out of our products and the funds and things that they buys, is some things are designed
+to be long-term holdings and they're designed to look over the long-term and smooth performance
+over a long time. And when you trade, you're actually working against yourself, because you can be
+right, you can be wrong, or you can be, you know, dead. And it's like, okay, not to make a change.
+And see if you're right, make sure you're right, because trading's expensive.
+Yeah, yeah, I was, I found that out early when I thought day trading was, was fun and
+too blow, but a counter to in college and then you're like, all right, let's find a way to be
+invested more often than not. But back to back to handle. So handles seven is an index that runs
+in ETF with a ticker H and D L. We talk about that strategy in particular, because that's,
+there's over a billion dollars in that ETF. Yes, that's correct. It is, it was our first ETF.
+And it's really, the idea behind handles is we don't fancy ourselves to be stockpickers or things
+of that nature. It's just not our, that's not what we do, that's not what we're saying. We look
+at the market. And if you look at markets, you know, Harry Mark, who's a father modern portfolio
+theory, basically, showed that diversification is the only free-launch in investment. And so we are
+looking, what we were looking to do when we created this index that is tracked by the H and D L ETF
+is to have a very diversified portfolio. So, you know, we used other ETFs, which gives us,
+you know, an S in somewhere in the neighborhood of exposure to 20,000 individual securities.
+I think we counted up one day. We were sitting around and saying, okay, how many are we,
+and we added them up? And it looked like about 20,000 when we did ran the spreadsheet.
+And that's, that's way more diversification than diversification needs. So, we've answered that
+prof. And, and so the, again, the idea was how to create a good risk adjusted portfolio.
+And so, when we did that, we, we looked historically at what were the best,
+what was the best allocation over time. Over, over the last 50, 60, 70 years. What allocation
+for providing you the highest risk adjusted returns? Because sharp ratio is all of matters. We,
+way all understand that. That's the ride that you go on investing. When you, when you, when you,
+what the, the data point at the end of the year, if what the S and P did or what a stocked
+did or what something did is, is the total return. But the ride is the volatility. And the volatility
+is risk and risk adjusted returns. You want the smoothest ride you can. And so, we looked
+historically, and it was 70% fixed and come 30% equity, which people can argue, okay, well,
+it was a great bond mark, you know, in the last 50, 60. Okay, well, things are cyclical. We don't
+know what the next 50 or 60 years are going to look like either. So, but we do know over the last 50
+years or so, 70, 30 had, let's say, about the best risk adjusted. So, that was the, the target
+kind of allocation within the portfolio. Now, what modern portfolio theory tells you is, is that
+you just leverage or de-leverage the optimal portfolio. Because there is no difference in the
+optimal portfolio, whether it's an income portfolio or regular portfolio. You, you just leverage
+or de-leverage to increase to the risk level that you as an investor prefer. And so, to get to where
+we thought we could deliver 70% over a period of time and through an index, what we needed to do
+was say, okay, you needed to have some form of leverage and that in a bit of order to do that.
+And that's another function that we learned from closed. And that's another advantage that an
+ETF can bring, you know, because the ETF brings a lot of really good advantages to investors. Number
+one, they're incredibly efficient. So, the trading is very efficient. The real allocation is incredibly
+efficient. You know, for an investor to run a portfolio and reallocate it on a monthly basis,
+it's very expensive and very time consuming and very complicated. But it's a very beneficial thing
+that portfolio management, there's due bring to the table. And then handle does another thing,
+which is essentially through the index it allocates a portion equal to 1, 12th of 7% or whatever
+the number is the 7 number on a monthly basis to for distribution. It takes it out because the idea
+of buying yield or chasing yield is what gets most investors in Trump. And so, we just said, let's
+start with the yield number and deliver the optimal portfolio and adjust the risk level to create the
+index that's going to deliver that. That's the concept. That's the strategy behind what we did.
+And we think it makes sense and it hasn't done 7% every year, certainly didn't last year,
+but I challenged you to find anything that did or can't. There's nothing much you can do.
+It is a passive strategy. It is the market. But for the last five years, it's done, you know,
+the index is as delivered. It's done pretty well. And again, that idea that total return
+is really the important thing in the yield is just a number. One of the things I like to illustrate
+or look back at is AT&T and the stock of AT&T. And if you look at that since over the last decade
+or so or even 20 years, and it has people buying because it's a yield stock. But, you know, the total return
+hasn't been particularly good. In fact, you know, and they've just been returning your money to you over a period of time
+diluting. That's what. So it's not that's not to pick on AT&T. That's just to pick on chasing yield as a
+strap. You said a lot of interesting things there that I want to touch based on and ask some follow-up.
+So how does the leverage component work? I understand what you're doing in terms of leveraging
+and delivering, but this is a rules-based index. So what triggers a leveraging event and what
+triggers a dealething event? There is no triggering on the lever. The number, the number of the
+handle triggers the leverage. The five handle is the base index. It's on level. The seven handle is
+levered at one point. It's 23% a leverage, essentially because it's a 1.3x version. And then the
+10 handle is 2x. So that's 2 times less. So the number is work proportionally. It's mostly just
+math. The whole thing's gone. Got it. That makes sense. Now the distribution or the yield side.
+So I read somewhere that there could be a more favorable tax treatment with the type of distribution
+that you're doing. I read that somewhere on the website. I'm sure that's very situational,
+but could you explain that or how the distribution works? Well, the way the distribution, and again,
+return a capital, just in general, is in a count. It's a measurement of a counting term,
+a counting. Again, this is something else we learned from the closed end fund industry, which
+is being able to distribute, treating things as a return a capital. MLPs have done this for years.
+It's a way of passing back or returning your principle. This has happened to be a side effect
+of ETFs that I think a lot of people maybe are overlooking, which is an ETF can basically,
+because of the way the rebalancing aspect works, you can shift your long-term capital gains.
+You don't have to recognize them. You defer to them, right? That's why investors buy ETFs
+because their capital gains are deferred to the future, right? One of the positive things
+that you're not getting in capital gains. You're not going to tax on manual basis.
+It's up to you to decide when you sell. Because it's a total return strategy and you're looking
+at trying to deliver that return, whether it be through dividends or through capital gains,
+there's an ability to essentially defer capital gains to future, and it becomes retreated,
+treated as a return of capital. Some of the dividend is not even an up tax that the end of the year.
+It's something that a lot of people think might be, that I think with a lot of people treated as
+being a negative, and it's not a negative. It's actually not bad at all, because returning,
+if you experience a capital gain and you earn the income, you deliver the distribution,
+you receive the distribution, then in fact, and you're not taxed on it, you defer it off into
+the future. You can defer it to a later date, and even potentially to when your state settles
+at some point in time, you have a step-up of cost basis. So, the speed at which you return a
+capital can be a problem, if some things, there's some things out there that are delivering,
+return a capital very quickly, but minor amounts of return a capital are just attractive from
+tax perspective. Got it. Thanks for that. I was trying to dig through the perspective,
+stand out a little bit, but that was thanks for clarifying that.
+Yeah. So, I think it's the issue of return a capital, it's very individual, but it's also not a
+scarce scary as people think it should be. It's really, it's, again, total returns what map.
+If your fund is making, if you're fund, whatever fund or your index, whatever it is that you're
+looking at is earning more than you're distributing, then you are doing, well, if you're not,
+it doesn't matter how they trade it from a tax perspective. It doesn't make any difference.
+So, you briefly touched on the explore side of the portfolio, which is run by a Dorsey Wright.
+Is that a go anywhere, sleeve, or is there certain parameters of how that explore portfolio
+work? No, the, the, the, the different categories of the explore portfolio that were chosen,
+which include, but there, there areas that people income investors tend to like to invest.
+So, there's things in there like high yield bond. There's investment grade corporates.
+There's a, a, build America bonds, which are taxable meanings. There are, uh, covered call funds,
+uh, you know, Jepi is, is, is in there. There's a growth and income fund.
+Um, so there's different things that people like to invest in. The part of having Dorsey Wright
+select them is that it's based on momentum within the market, which has actually been pretty good,
+because they ever waited like MLPs in the last, you know, the last year. Who called that?
+You know, it was good, it was good, it was good, it was good, it was good.
+Well, sometimes they do, sometimes they don't. In the end of the time,
+day, it adds value to the, you know, total, it's over time.
+Yeah, I mean, over, with any, you know, taxable strategy you hope would,
+you know, over three and five year cycle periods are delivering close to the benchmark with a
+smoother return and better sharp as you put it, uh, and if they're doing that, then, you know,
+that's, that's all you can ask for. So you briefly touched on this as well, as far as a
+rebalance period. So you re, you rebalance the strategic side, as you said, on a monthly basis,
+does the infrastructure, so that's a rebalance. Okay. So that's a rebalance within your
+buckets, and then also a rebalance of the buckets. Yeah. Yes. Okay. What's on a change in the
+constituents change on a net once a year, but and the, and the constituents election process is
+really only geared towards, you know, finding the least cost representatives of each of the
+areas. It's, it's not overly robust in the selection process, but it did lead to some good
+fine, some good funds that, you know, in the end of that process, we went full good. Yeah. So if you're
+sitting down with someone talking about the handle suite, where do you see this fitting inside
+and overall model portfolio, and can it be just a standalone strategy of one size fits all?
+Well, I mean, theoretically, it's like the market. It's basically representative of the market.
+It's a 70% fixed income, a 30% equity strategy, because it's the most of the market representation.
+That's, you know, but, but portfolios are per personal. They're not, they're not one size fits all.
+But the product or the concept, the handles concept was designed to deliver a high level of
+current income. I mean, it's basically designed to give you high income. That's it. That's what it's,
+if you're, if you want to depend on something delivering you income, because it's defined by rules,
+these are the rules. It delivers one 12th of what, you know, one 12th of 7% of a monthly basis back to you,
+and uses the ETF structure to rebalance and recalibrate, make sure everything's perfect on a monthly
+basis, and make sure you get your, you know, your check is delivered on the, on the, on the day,
+you know, whatever it's supposed to be delivered. This is how it works. These are the rules that are,
+if all alternatively, people can choose to go and chase yield. That invariably tends to end
+poorly when you chase the highest yielding items. This is really a benchmark for what I,
+I think it's a benchmark for what a 7% return should look like or 7% yield should look like in the
+marketplace, and people can go, they can find something they like better or find something when
+they're like worse. I think they'll be hard pressed to find things on a risky just the basis
+that deliver better than a 70% fixed income, 30% equity, 1.3x leverage index. It's a nice risky just
+return. So is there, is there an environment or market environment? I would assume
+environment like 2022 might be a little bit difficult on the strategy. Is there certain environments
+for this works, you know, really well and it's 20% easier to make? You're absolutely right. I mean,
+20% might be it was a really bad environment for this for the product, and it was a bad environment
+for a lot of products. And, and what I take comfort in is the fact that over, you know, I think
+it's, what I hear once in 50 years that they, they both acted like that, okay? I don't know,
+it's like that the market's kind of pre-disastered over once in 50 years we got it last. That was,
+that was, that was a really bad, that was probably the worst of. The tends to do, you know,
+we're looking over a period of time, we would, we would, if you look over the longer periods of time,
+balance portfolios tend to outperform on a risk of justice basis. It's just housed just
+all they always do. And it doesn't matter if it's 70, 30, or it's 65, 35, or 75, 25.
+You're going to, it's hard to predict exactly what the future's going to be. But we do know from,
+you know, that diversification is the only free option. So, let's pivot just a little bit.
+Let's talk about the marketing side of the index and the fund. How do you guys go about marketing
+and how are you out there kind of distributing, I know you're not involved with the portfolio
+management of the actual product or the, or the ETF itself through the index provider. But you
+guys have done a really wonderful job, I think, with marketing and getting this out there. I mean,
+the AAUM tells us the story. So, how are you guys out there marketing and telling the story and
+raising those assets? Yeah. Well, we have excellent, excellent partners on the fund,
+fun side strategy shares. These are gentlemen, David Miller, Michael Shinover, and Jerry
+Solaji, who have built, you know, kind of a really impressive fund group for catalysts and
+strategy shares and their various entities out. And they've done a lot of the, they do the,
+you know, the primarily responsible for marketing and distribution of things. So, that night,
+and they've done a really great job. I think it's a testament. But it's a testament to finding
+the right product and fitting it with the right firm. Okay. You, one of the things you asked me was,
+was, why did we focus on indexes if you had asked me earlier? But why we had focused on indexes?
+And that happens to me what we're really good at. And I like indexes because indexes are rules
+driven. And they, you know, in my history of active management, I've experienced in the past,
+active managers who didn't necessarily follow their own investment philosophy. Whereas index
+follows its own investment philosophy. And as long as it's well thought out and, you, you,
+you know, live with the basic tenants and rules, it's going to be there and it's going to last
+and it's going to go on. And similarly, a distributor has to do what they do well. And they have
+their areas of expertise and things of it. And I think that this was a nice match for these two
+products. Now, what we did, from the perspectives, we were very keen on our story and our points
+and what, you know, what the product was and what the product was. Okay. It's not a guaranteed
+we're going to earn 7%. It's, what's the best approach to try to take 7% out? How do you fit
+that into your market? How do you fit out Mr. Viser? Where am I going to go again? A 7%
+you know, constant return that's going to be a dependable, you know, some, a dependable
+stream of risky, a risky gesture return level with a dependable set of distribution. That's
+what ultimately somebody's looking. So, you know, it's, it's matching up with the right the right
+distributor and the message and the product. And, and I think that that was what it was and it was
+having a consistent, uh, I think a consistent, uh, rational story for why it, you were doing what
+you were doing. And, and I think the index does speak to that, the index does, you know,
+force that kind of, the kind of, kind of, diligence in the process. Yeah, it's funny you say,
+you've seen active managers deviate from the process. One thing I've never understood like,
+are everything we do is rules based, our indexes is passion rules based. And I've never understood
+why an active manager would create a process and then deviate from the process if they've done
+all of the due diligence and testing on the front end to make sure that it was robust. It just,
+it never ceases to amaze me how many times they want to go in and tweak things or change things
+just because maybe they had a bad run for a month or two months. I mean, it's just human nature.
+I think it's the same thing that affects everybody else in the market and that's fear and greed.
+And, you know, it's that or in this time that it's different. Those are the big dangerous words.
+This time it's different. It's just not. Over time it's not. Okay. Last year it was unusual.
+It's an unusual year forever. You know, it's a mix, the one thing that, you know,
+my partner mad at at least points out and he goes, hey, it makes it much better entry point.
+You know, and it's true. The truth of the matter is, is corrections are good from the market
+because they make good entry. And if you enter at a proper time, you're here in a good shape.
+Well, David, I really appreciate your time. I could talk to you for a long time, but I
+would like to keep these two about 30 minutes of someone can listen to them on the way to work.
+But I would love an opportunity, continue to dialogue with you and, you know,
+continue to pick your brain on certain things. But before we go, working people are more about
+your firm and where can people learn more about the handles ETF? Well, we have, we put out a
+monthly, just a monthly report, that that just takes all of the constituents and shows the
+performances. It's pretty straightforward and simple to read. You can get that either out in a
+catalyst insights or NASDAQ or throw out a LinkedIn page, which is handles indexes. We have handles
+indexes.com as a website that goes through and shows a lot of the things that we publish.
+And wrote about it. And we wrote those things six and seven years ago. Those were not just written,
+like, now, you know, we wrote those in advance of the concept and, and, and since I said it proved
+out, but thank you very much. So handles indexes, which is H-A-N-D-L-S-I-N-D-E-X-E-S. The Nightmare
+was built. Unbelievable. Well, David, again, thank you very much for joining us. I appreciate your
+time. And again, I hope to, I hope to run into you some point in future. And thanks for,
+thanks for taking some time with me. Thank you, Brad. Thanks for the time. Appreciate it.

@@ -10,11 +10,16 @@ const footerNavigation = {
   ],
   learn: [
     { name: "Education Hub", href: "/learn" },
+    { name: "Low Volatility Guide", href: "/investing/low-volatility" },
+    { name: "Tactical Allocation", href: "/investing/tactical-allocation" },
     { name: "What is an ETF?", href: "/learn/what-is-an-etf" },
-    { name: "Index Rotation", href: "/learn/index-rotation-explained" },
-    { name: "Low Volatility Investing", href: "/learn/low-volatility-investing" },
     { name: "Glossary", href: "/learn/glossary" },
     { name: "The Book", href: "/book" },
+  ],
+  tools: [
+    { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
+    { name: "Investment Calculator", href: "/tools/calculator" },
+    { name: "Compare Funds", href: "/funds/compare" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -121,9 +126,19 @@ export function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-white">Company</h3>
+                <h3 className="text-sm font-semibold text-white">Tools</h3>
                 <ul role="list" className="mt-4 space-y-3">
-                  {footerNavigation.company.map((item) => (
+                  {footerNavigation.tools.map((item) => (
+                    <li key={item.name}>
+                      <Link href={item.href} className="text-sm text-gray-400 hover:text-gold-500 transition-colors">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <h3 className="text-sm font-semibold text-white mt-8">Legal</h3>
+                <ul role="list" className="mt-4 space-y-3">
+                  {footerNavigation.legal.map((item) => (
                     <li key={item.name}>
                       <Link href={item.href} className="text-sm text-gray-400 hover:text-gold-500 transition-colors">
                         {item.name}
@@ -133,9 +148,9 @@ export function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold text-white">Legal</h3>
+                <h3 className="text-sm font-semibold text-white">Company</h3>
                 <ul role="list" className="mt-4 space-y-3">
-                  {footerNavigation.legal.map((item) => (
+                  {footerNavigation.company.map((item) => (
                     <li key={item.name}>
                       <Link href={item.href} className="text-sm text-gray-400 hover:text-gold-500 transition-colors">
                         {item.name}

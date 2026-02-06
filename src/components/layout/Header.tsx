@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { DarkModeToggle } from "@/components/ui/DarkModeToggle";
 
 const navigation = [
   {
@@ -36,6 +37,15 @@ const navigation = [
     ],
   },
   {
+    name: "Tools",
+    href: "/tools",
+    children: [
+      { name: "Fund Comparison", href: "/funds/compare" },
+      { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
+      { name: "Investment Calculator", href: "/tools/calculator" },
+    ],
+  },
+  {
     name: "Resources",
     href: "/resources",
     children: [
@@ -63,25 +73,44 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <header className="bg-navy-800 sticky top-0 z-50">
+    <header className="bg-navy-800 dark:bg-navy-900 sticky top-0 z-50 transition-colors duration-200">
+      {/* Live ticker bar */}
+      <div className="bg-navy-900 dark:bg-navy-950 py-1 px-4 text-center text-xs text-gray-400 hidden lg:block">
+        <span className="inline-flex items-center gap-4">
+          <span className="flex items-center gap-1">
+            <span className="font-semibold text-gold-500">THIR</span>
+            <span>$27.43</span>
+            <span className="text-green-400">+0.52%</span>
+          </span>
+          <span className="text-navy-600">|</span>
+          <span className="flex items-center gap-1">
+            <span className="font-semibold text-gold-500">THLV</span>
+            <span>$31.18</span>
+            <span className="text-green-400">+0.34%</span>
+          </span>
+          <span className="text-navy-600">|</span>
+          <span className="text-gray-500">Data delayed 15 min</span>
+        </span>
+      </div>
+      
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center group">
               <Image
                 src="/images/thor-funds-logo-white.png"
                 alt="THOR Funds"
                 width={180}
                 height={48}
-                className="h-12 w-auto"
+                className="h-12 w-auto transition-transform duration-200 group-hover:scale-105"
                 priority
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:gap-x-8">
+          <div className="hidden lg:flex lg:items-center lg:gap-x-6">
             {navigation.map((item) => (
               <div
                 key={item.name}
@@ -91,12 +120,12 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className="text-sm font-medium text-white hover:text-gold-500 transition-colors py-2"
+                  className="text-sm font-medium text-white hover:text-gold-500 transition-colors py-2 flex items-center gap-1"
                 >
                   {item.name}
                   {item.children && (
                     <svg
-                      className="ml-1 inline-block h-4 w-4"
+                      className={`h-4 w-4 transition-transform duration-200 ${openDropdown === item.name ? 'rotate-180' : ''}`}
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={2}
@@ -109,13 +138,13 @@ export function Header() {
 
                 {/* Dropdown Menu */}
                 {item.children && openDropdown === item.name && (
-                  <div className="absolute left-0 top-full pt-2 w-56">
-                    <div className="bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 py-2">
+                  <div className="absolute left-0 top-full pt-2 w-56 animate-fade-in-down">
+                    <div className="bg-white dark:bg-navy-800 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 py-2">
                       {item.children.map((child) => (
                         <Link
                           key={child.name}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-navy-800 hover:bg-navy-50 hover:text-gold-600"
+                          className="block px-4 py-2.5 text-sm text-navy-800 dark:text-gray-200 hover:bg-navy-50 dark:hover:bg-navy-700 hover:text-gold-600 dark:hover:text-gold-500 transition-colors"
                         >
                           {child.name}
                         </Link>
@@ -127,24 +156,27 @@ export function Header() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* Right side buttons */}
+          <div className="hidden lg:flex lg:items-center lg:gap-4">
+            <DarkModeToggle />
             <Link
               href="/newsletter"
-              className="inline-flex items-center rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-navy-900 hover:bg-gold-400 transition-colors"
+              className="btn-primary btn-sm"
             >
-              Subscribe to Newsletter
+              Subscribe
             </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
+            <DarkModeToggle />
             <button
               type="button"
-              className="text-white p-2"
+              className="text-white p-2 hover:bg-navy-700 rounded-lg transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
             >
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
               {mobileMenuOpen ? (
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -160,24 +192,24 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-navy-700">
-            <div className="space-y-1">
+          <div className="lg:hidden py-4 border-t border-navy-700 animate-fade-in-down">
+            <div className="space-y-1 max-h-[70vh] overflow-y-auto">
               {navigation.map((item) => (
                 <div key={item.name}>
                   <Link
                     href={item.href}
-                    className="block py-2 text-base font-medium text-white hover:text-gold-500"
+                    className="block py-2 text-base font-medium text-white hover:text-gold-500 transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                   {item.children && (
-                    <div className="pl-4 space-y-1">
+                    <div className="pl-4 space-y-1 pb-2">
                       {item.children.map((child) => (
                         <Link
                           key={child.name}
                           href={child.href}
-                          className="block py-1 text-sm text-gray-300 hover:text-gold-500"
+                          className="block py-1.5 text-sm text-gray-300 hover:text-gold-500 transition-colors"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {child.name}
@@ -191,7 +223,7 @@ export function Header() {
             <div className="mt-4 pt-4 border-t border-navy-700">
               <Link
                 href="/newsletter"
-                className="block w-full text-center rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-navy-900"
+                className="btn-primary w-full text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Subscribe to Newsletter
