@@ -295,7 +295,7 @@ export default function TacticalAllocationPillarPage() {
                   </div>
                   <h4 className="font-semibold mb-2">Track 3 Major Indexes</h4>
                   <p className="text-white/70 text-sm">
-                    SPY (S&P 500), DIA (Dow), QQQ (Nasdaq) are monitored with independent signals.
+                    The S&P 500, Dow Jones, and Nasdaq 100 are each monitored with independent signals.
                   </p>
                 </div>
                 <div>

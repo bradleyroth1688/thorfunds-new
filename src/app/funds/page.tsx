@@ -47,7 +47,7 @@ export default function FundsPage() {
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Universe</span>
-                    <span className="font-medium text-navy-800">SPY, DIA, QQQ</span>
+                    <span className="font-medium text-navy-800">S&P 500, Dow Jones, Nasdaq 100</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Cash Position</span>
@@ -179,7 +179,7 @@ export default function FundsPage() {
                   <tbody className="divide-y divide-gray-100">
                     <tr>
                       <td className="py-2 text-gray-600">3 of 3</td>
-                      <td className="py-2 text-navy-800">33.3% each (SPY, DIA, QQQ)</td>
+                      <td className="py-2 text-navy-800">33.3% each across all three indexes</td>
                     </tr>
                     <tr>
                       <td className="py-2 text-gray-600">2 of 3</td>

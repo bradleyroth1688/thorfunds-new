@@ -29,7 +29,7 @@ const faqs = [
     questions: [
       {
         q: "What's the difference between THIR and THLV?",
-        a: "THIR (Index Rotation) dynamically rotates between three major U.S. equity indexes—SPY, DIA, and QQQ—and is best used as a satellite allocation. THLV (Low Volatility) equal-weights 10 S&P 500 sectors and is designed as a core equity holding. Both can move to 100% cash when conditions warrant.",
+        a: "THIR (Index Rotation) dynamically rotates between three major U.S. equity indexes—S&P 500, Dow Jones, and Nasdaq 100—and is best used as a satellite allocation. THLV (Low Volatility) equal-weights 10 S&P 500 sectors and is designed as a core equity holding. Both can move to 100% cash when conditions warrant.",
       },
       {
         q: "Can THOR's ETFs really go to 100% cash?",
@@ -50,7 +50,7 @@ const faqs = [
     questions: [
       {
         q: "How do your risk signals work?",
-        a: "We use digital signal processing techniques—including the True Strength Index and Ehlers High-Pass Filter—to convert noisy price data into smooth waveforms. From these, we identify trend direction and momentum to generate risk-on/risk-off signals for each asset we monitor.",
+        a: "We use proprietary digital signal processing techniques to convert noisy price data into smooth waveforms. From these, we identify trend direction and momentum to generate risk-on/risk-off signals for each asset we monitor.",
       },
       {
         q: "Isn't this just market timing?",

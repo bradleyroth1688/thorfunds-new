@@ -35,7 +35,7 @@ const commonFAQs = {
     },
     {
       q: "Which indexes does THIR rotate between?",
-      a: "THIR rotates between three major U.S. equity indexes: the S&P 500 (SPY), Dow Jones Industrial Average (DIA), and Nasdaq 100 (QQQ).",
+      a: "THIR rotates between three major U.S. equity indexes: the S&P 500, Dow Jones Industrial Average, and Nasdaq 100.",
     },
     {
       q: "How often does THIR rebalance?",

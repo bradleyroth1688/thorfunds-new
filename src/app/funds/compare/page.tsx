@@ -133,15 +133,15 @@ export default function ComparePage() {
                   <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                     <li className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-gold-500 rounded-full"></span>
-                      <strong>SPY</strong> — S&P 500 (Large Cap)
+                      <strong>S&P 500</strong> — Large Cap Broad Market
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-gold-500 rounded-full"></span>
-                      <strong>DIA</strong> — Dow Jones Industrial Average
+                      <strong>Dow Jones</strong> — Industrial Average
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-gold-500 rounded-full"></span>
-                      <strong>QQQ</strong> — Nasdaq 100 (Tech-Heavy)
+                      <strong>Nasdaq 100</strong> — Growth &amp; Technology
                     </li>
                   </ul>
                 </div>
@@ -176,7 +176,7 @@ export default function ComparePage() {
                     Invests in index ETFs that are market-cap weighted. Larger companies have bigger positions.
                   </p>
                   <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300">
-                    <strong>Example:</strong> In SPY, Apple and Microsoft alone can represent 10%+ of the fund.
+                    <strong>Example:</strong> In the S&P 500, Apple and Microsoft alone can represent 10%+ of the fund.
                   </div>
                 </div>
                 <div className="p-6">

@@ -32,7 +32,7 @@ export default function IndexRotationPage() {
             Index rotation is an adaptive investment strategy that shifts allocation between different market indexes based on their relative strength and risk characteristics. Unlike static index investing where you buy and hold a single benchmark, index rotation actively adjusts which indexes you own—and how much of each—based on changing market conditions.
           </p>
           <p>
-            THOR&apos;s THIR ETF implements a specific version of this approach: it monitors three major U.S. equity indexes—the S&P 500 (SPY), Dow Jones Industrial Average (DIA), and Nasdaq 100 (QQQ)—and dynamically allocates between them based on proprietary risk signals.
+            THOR&apos;s THIR ETF implements a specific version of this approach: it monitors three major U.S. equity indexes—the S&P 500, Dow Jones Industrial Average, and Nasdaq 100—and dynamically allocates between them based on proprietary risk signals.
           </p>
 
           <h2>The THIR Approach</h2>
@@ -52,7 +52,7 @@ export default function IndexRotationPage() {
               <tbody className="divide-y divide-gray-100">
                 <tr>
                   <td className="py-3 text-gray-600">3 of 3</td>
-                  <td className="py-3 text-navy-800">33.3% SPY, 33.3% DIA, 33.3% QQQ</td>
+                  <td className="py-3 text-navy-800">33.3% each across all three indexes</td>
                 </tr>
                 <tr>
                   <td className="py-3 text-gray-600">2 of 3</td>
@@ -86,35 +86,12 @@ export default function IndexRotationPage() {
               <strong>Convert price data to a smooth waveform</strong>—Raw price data is noisy. We apply filters to isolate the underlying trend from day-to-day fluctuations.
             </li>
             <li>
-              <strong>Apply signal processing algorithms</strong>—Using techniques like the True Strength Index (TSI) and Ehlers High-Pass Filter, we identify both momentum and cyclical movements in the data.
+              <strong>Apply signal processing algorithms</strong>—Using proprietary momentum and cycle-detection techniques, we identify both trend direction and cyclical movements in the data.
             </li>
             <li>
               <strong>Generate risk-on/risk-off signals</strong>—When the combined signal shows increasing trend with positive momentum, we&apos;re risk-on. When it shows decreasing trend with negative momentum, we&apos;re risk-off.
             </li>
           </ol>
-
-          <h2>When Index Rotation Works Best</h2>
-          <p>
-            THIR is designed to excel in specific market environments:
-          </p>
-          <ul>
-            <li><strong>Severe drawdowns (15%+):</strong> The strategy&apos;s ability to go to cash provides significant protection during major market declines</li>
-            <li><strong>Quick selloffs after sustained rallies:</strong> Q4 2018, March 2020—these &quot;fast crashes&quot; are exactly what the signal is designed to detect</li>
-            <li><strong>Sharp reversals:</strong> Capitulation days near bear market bottoms often trigger risk-on signals, getting back in early</li>
-          </ul>
-
-          <h2>When Index Rotation Struggles</h2>
-          <p>
-            No strategy works in all environments. THIR can underperform during:
-          </p>
-          <ul>
-            <li><strong>&quot;Staircasing&quot; markets:</strong> Up 10-15%, down 8-10%, repeat. The signals may whipsaw in this environment.</li>
-            <li><strong>Medium-sized channels:</strong> Markets that move up 10%, down 10% repeatedly without clear direction</li>
-            <li><strong>Low-volatility grinds:</strong> Steady, slow uptrends may trigger fewer opportunities for the strategy to add value</li>
-          </ul>
-          <p>
-            The sweet spot is moves greater than 15% in either direction (where THIR shines) or moves less than 7% (where it stays out of the way). The middle range—10-15% moves—can cause chop.
-          </p>
 
           <h2>Portfolio Positioning</h2>
           <p>

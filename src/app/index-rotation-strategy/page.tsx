@@ -5,7 +5,7 @@ import FundStats from "@/components/fund/FundStats";
 export const metadata: Metadata = {
   title: "Index Rotation Strategy | THIR ETF - Adaptive Index Switching",
   description: "THIR rotates between S&P 500, Dow Jones, and Nasdaq based on risk signals. Learn how our index rotation strategy provides adaptive equity exposure with downside protection.",
-  keywords: ["index rotation", "THIR", "adaptive ETF", "SPY", "QQQ", "DIA", "index switching", "rotation strategy"],
+  keywords: ["index rotation", "THIR", "adaptive ETF", "index switching", "rotation strategy"],
   openGraph: {
     title: "Index Rotation Strategy | THIR - THOR Funds",
     description: "Adaptive ETF that rotates between major U.S. indexes with the ability to move to 100% treasuries.",
@@ -63,24 +63,24 @@ export default function IndexRotationStrategyPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-sm text-center">
-              <div className="text-4xl font-bold text-navy-800 mb-2">SPY</div>
-              <div className="text-lg text-gray-600 mb-4">S&P 500</div>
+              <div className="text-4xl font-bold text-navy-800 mb-2">S&P 500</div>
+              <div className="text-lg text-gray-600 mb-4">Large-Cap Broad Market</div>
               <p className="text-sm text-gray-500">
                 500 largest U.S. companies by market cap. The benchmark for U.S. large-cap equities.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm text-center">
-              <div className="text-4xl font-bold text-navy-800 mb-2">DIA</div>
-              <div className="text-lg text-gray-600 mb-4">Dow Jones</div>
+              <div className="text-4xl font-bold text-navy-800 mb-2">Dow Jones</div>
+              <div className="text-lg text-gray-600 mb-4">Blue-Chip Value</div>
               <p className="text-sm text-gray-500">
                 30 blue-chip industrial companies. Price-weighted with value-oriented characteristics.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm text-center">
-              <div className="text-4xl font-bold text-navy-800 mb-2">QQQ</div>
-              <div className="text-lg text-gray-600 mb-4">Nasdaq 100</div>
+              <div className="text-4xl font-bold text-navy-800 mb-2">Nasdaq 100</div>
+              <div className="text-lg text-gray-600 mb-4">Growth &amp; Technology</div>
               <p className="text-sm text-gray-500">
                 100 largest non-financial Nasdaq companies. Technology and growth-oriented.
               </p>
