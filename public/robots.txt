@@ -1,0 +1,6 @@
+# Robots.txt for thorfunds.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://thorfunds.com/sitemap.xml
