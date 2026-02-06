@@ -30,17 +30,17 @@ export default function Home() {
       {/* Stats Banner */}
       <section className="bg-gold-500 py-4">
         <div className="container-max mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 text-navy-700">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12" style={{ color: '#0e1f36' }}>
             <div className="text-center">
               <span className="font-bold text-2xl md:text-3xl">2</span>
               <span className="ml-2">Tactical ETFs</span>
             </div>
-            <div className="hidden md:block w-px h-8 bg-navy-700/30"></div>
+            <div className="hidden md:block w-px h-8 bg-navy-900/30"></div>
             <div className="text-center">
               <span className="font-bold text-2xl md:text-3xl">15+</span>
               <span className="ml-2">Years of Research</span>
             </div>
-            <div className="hidden md:block w-px h-8 bg-navy-700/30"></div>
+            <div className="hidden md:block w-px h-8 bg-navy-900/30"></div>
             <div className="text-center">
               <span className="font-bold text-lg md:text-xl">Robust model offerings</span>
               <span className="ml-2">and growing</span>
