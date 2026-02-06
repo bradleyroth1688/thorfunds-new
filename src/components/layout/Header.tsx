@@ -60,7 +60,7 @@ const navigation = [
       { name: "Our Story", href: "/about" },
       { name: "Investment Philosophy", href: "/about/philosophy" },
       { name: "Team", href: "/team" },
-      { name: "Press", href: "/about/press" },
+      { name: "Press", href: "/press" },
       { name: "Careers", href: "/about/careers" },
     ],
   },
