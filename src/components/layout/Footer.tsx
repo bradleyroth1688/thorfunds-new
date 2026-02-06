@@ -73,8 +73,8 @@ export function Footer() {
               height={42}
               className="h-10 w-auto"
             />
-            <p className="text-sm text-gray-400 max-w-xs">
-              Risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns.
+            <p className="text-sm text-gray-300 max-w-xs">
+              Tactical ETFs where managing risk is top of mind.
             </p>
             <p className="text-sm text-gold-500 font-medium">
               Participate. Protect. Prosper.
