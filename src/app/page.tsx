@@ -9,11 +9,10 @@ export default function Home() {
         <div className="container-max mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Tactical ETFs with the <span className="text-gold-500">downside</span> in mind.
+              ETFs That <span className="text-gold-500">Adapt</span> — So You Don't Have To
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
-              We use science not math to react to changes in market cycles in real time.
-              Where managing risk is top of mind.
+              Systematic risk management through every market environment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/funds" className="btn-primary text-lg px-8 py-4">
@@ -33,7 +32,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12" style={{ color: '#0e1f36' }}>
             <div className="text-center">
               <span className="font-bold text-2xl md:text-3xl">2</span>
-              <span className="ml-2">Tactical ETFs</span>
+              <span className="ml-2">Risk-Managed ETFs</span>
             </div>
             <div className="hidden md:block w-px h-8 bg-navy-900/30"></div>
             <div className="text-center">
