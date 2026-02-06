@@ -56,14 +56,6 @@ const mediaAppearances = [
     description: "Brad discusses healthy rotation out of large caps and tech's current limits."
   },
   {
-    title: "Trading 360",
-    outlet: "Trading 360",
-    type: "Video",
-    date: "2024",
-    url: "https://www.youtube.com/watch?v=H6-nyqtEmCs",
-    description: "Trading and market strategy discussion."
-  },
-  {
     title: "ETF Leaders: Brad Roth at Exchange 2023",
     outlet: "NYSE",
     type: "Video",
@@ -126,22 +118,10 @@ const pressReleases = [
 
 const articles = [
   {
-    title: "THOR Funds Are 'Still Worthy': ETF 360",
-    outlet: "ETF Database / VettaFi",
-    date: "May 2025",
-    url: "https://etfdb.com/news/2025/05/01/thor-funds-still-worthy-etf-360/",
-  },
-  {
     title: "Behind the Ticker Podcast Launches on ETF.com",
     outlet: "Yahoo Finance",
     date: "January 2026",
     url: "https://finance.yahoo.com/news/thor-financial-technologies-brad-roth-130000403.html",
-  },
-  {
-    title: "NYSE's ETF Leaders: THOR Financial Technologies' Brad Roth",
-    outlet: "ETF Trends",
-    date: "April 2023",
-    url: "https://www.etftrends.com/nyses-etf-leaders-thor-financial-technologies-brad-roth/",
   },
   {
     title: "THOR Debuts With Volatility-Focused ETF",
