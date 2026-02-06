@@ -31,7 +31,7 @@ const navigation = [
     name: "Insights",
     href: "/insights",
     children: [
-      { name: "Podcast Episodes", href: "/insights" },
+      { name: "Podcast Episodes", href: "/podcast" },
       { name: "The Book", href: "/book" },
     ],
   },

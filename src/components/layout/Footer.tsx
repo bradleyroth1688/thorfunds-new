@@ -25,7 +25,7 @@ const footerNavigation = {
     { name: "About Us", href: "/about" },
     { name: "Investment Philosophy", href: "/about/philosophy" },
     { name: "Team", href: "/team" },
-    { name: "Podcast", href: "/insights" },
+    { name: "Podcast", href: "/podcast" },
     { name: "Press", href: "/press" },
     { name: "Careers", href: "/about/careers" },
     { name: "Contact", href: "/contact" },
