@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FUNDS, getNavData, getHoldings, formatCurrency, formatPercent, formatNav, formatNumber } from "@/lib/api";
+import { FUNDS, getNavData, getHoldings, getPremiumDiscount, getDistributions, formatCurrency, formatPercent, formatNav, formatNumber } from "@/lib/api";
 
 interface FundPageProps {
   params: Promise<{ ticker: string }>;
@@ -41,10 +41,71 @@ export default async function FundPage({ params }: FundPageProps) {
     notFound();
   }
 
-  const [navData, holdings] = await Promise.all([
+  const [navData, holdings, premiumDiscountData, distributionsRaw] = await Promise.all([
     getNavData(fund.ticker),
     getHoldings(fund.ticker),
+    getPremiumDiscount(fund.ticker),
+    getDistributions(fund.ticker),
   ]);
+
+  // Process premium/discount data into calendar year summaries
+  const premiumDiscountSummary: { year: string; daysAtPremium: number; daysAtNav: number; daysAtDiscount: number }[] = [];
+  if (premiumDiscountData && premiumDiscountData.length > 0) {
+    const yearMap: Record<string, { premium: number; nav: number; discount: number }> = {};
+    for (const quarter of premiumDiscountData) {
+      for (const day of quarter.premiumDiscounts) {
+        const year = new Date(day.asOfDate).getFullYear().toString();
+        if (!yearMap[year]) yearMap[year] = { premium: 0, nav: 0, discount: 0 };
+        if (day.premiumDiscount > 0) yearMap[year].premium++;
+        else if (day.premiumDiscount < 0) yearMap[year].discount++;
+        else yearMap[year].nav++;
+      }
+    }
+    const currentYear = new Date().getFullYear().toString();
+    const sortedYears = Object.keys(yearMap).sort((a, b) => parseInt(b) - parseInt(a));
+    for (const year of sortedYears) {
+      premiumDiscountSummary.push({
+        year: year === currentYear ? `${year} YTD` : year,
+        daysAtPremium: yearMap[year].premium,
+        daysAtNav: yearMap[year].nav,
+        daysAtDiscount: yearMap[year].discount,
+      });
+    }
+  }
+
+  // Process distributions
+  interface Distribution {
+    exDate: string;
+    recordDate: string;
+    payDate: string;
+    income: number | null;
+    shortTermGains: number | null;
+    longTermGains: number | null;
+    totalDistribution: number | null;
+  }
+  const distributions: Distribution[] = [];
+  if (distributionsRaw && Array.isArray(distributionsRaw)) {
+    for (const d of distributionsRaw) {
+      const parseDistDate = (s: string) => {
+        if (!s) return "—";
+        // Handle "MM/DD/YYYY HH:MM:SS" format
+        const parts = s.split(" ")[0];
+        if (!parts) return s;
+        const [mm, dd, yyyy] = parts.split("/");
+        if (!mm || !dd || !yyyy) return s;
+        return new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd)).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+      };
+      distributions.push({
+        exDate: parseDistDate(d.exDate),
+        recordDate: parseDistDate(d.recordDate),
+        payDate: parseDistDate(d.payDate),
+        income: d.income != null ? parseFloat(d.income) : null,
+        shortTermGains: d.shortTermGains != null ? parseFloat(d.shortTermGains) : null,
+        longTermGains: d.longTermGains != null ? parseFloat(d.longTermGains) : null,
+        totalDistribution: d.totalDistribution != null ? parseFloat(d.totalDistribution) : null,
+      });
+    }
+  }
 
   const topHoldings = holdings?.slice(0, 10) || [];
 
@@ -389,9 +450,6 @@ export default async function FundPage({ params }: FundPageProps) {
             <div className="card">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-navy-800 dark:text-white">Premium/Discount History</h2>
-                <span className="text-xs bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 px-2 py-1 rounded">
-                  Coming Soon
-                </span>
               </div>
               
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
@@ -409,31 +467,83 @@ export default async function FundPage({ params }: FundPageProps) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                    <tr>
-                      <td className="py-3 text-gray-700 dark:text-gray-300">2026 YTD</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 text-gray-700 dark:text-gray-300">2025</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 text-gray-700 dark:text-gray-300">2024</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                      <td className="py-3 text-center text-gray-400">—</td>
-                    </tr>
+                    {premiumDiscountSummary.length > 0 ? (
+                      premiumDiscountSummary.map((row, i) => (
+                        <tr key={i}>
+                          <td className="py-3 text-gray-700 dark:text-gray-300 font-medium">{row.year}</td>
+                          <td className="py-3 text-center text-green-600 font-medium">{row.daysAtPremium}</td>
+                          <td className="py-3 text-center text-gray-600 dark:text-gray-300 font-medium">{row.daysAtNav}</td>
+                          <td className="py-3 text-center text-red-600 font-medium">{row.daysAtDiscount}</td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={4} className="py-6 text-center text-gray-500 dark:text-gray-400">
+                          Premium/discount history data unavailable
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>
               
               <div className="mt-6 p-4 bg-gray-50 dark:bg-navy-800 rounded-lg">
                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                  Premium/discount data shows the number of days the fund traded above (premium), at, or below (discount) its net asset value. Data will be populated once API integration is complete.
+                  Premium/discount data shows the number of days the fund traded above (premium), at, or below (discount) its net asset value.
+                </p>
+              </div>
+            </div>
+
+            {/* Distribution History */}
+            <div className="card">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-semibold text-navy-800 dark:text-white">Distribution History</h2>
+              </div>
+              
+              {distributions.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-gray-200 dark:border-gray-600">
+                        <th className="text-left py-3 font-semibold text-navy-800 dark:text-white">Ex-Date</th>
+                        <th className="text-left py-3 font-semibold text-navy-800 dark:text-white">Record Date</th>
+                        <th className="text-left py-3 font-semibold text-navy-800 dark:text-white">Pay Date</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">Income</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">ST Gains</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">LT Gains</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                      {distributions.map((dist, i) => (
+                        <tr key={i} className="hover:bg-gray-50 dark:hover:bg-navy-700/50">
+                          <td className="py-3 text-gray-700 dark:text-gray-300">{dist.exDate}</td>
+                          <td className="py-3 text-gray-700 dark:text-gray-300">{dist.recordDate}</td>
+                          <td className="py-3 text-gray-700 dark:text-gray-300">{dist.payDate}</td>
+                          <td className="py-3 text-right font-mono text-gray-700 dark:text-gray-300">
+                            {dist.income != null ? `$${dist.income.toFixed(4)}` : "—"}
+                          </td>
+                          <td className="py-3 text-right font-mono text-gray-700 dark:text-gray-300">
+                            {dist.shortTermGains != null ? `$${dist.shortTermGains.toFixed(4)}` : "—"}
+                          </td>
+                          <td className="py-3 text-right font-mono text-gray-700 dark:text-gray-300">
+                            {dist.longTermGains != null ? `$${dist.longTermGains.toFixed(4)}` : "—"}
+                          </td>
+                          <td className="py-3 text-right font-mono font-semibold text-navy-800 dark:text-white">
+                            {dist.totalDistribution != null ? `$${dist.totalDistribution.toFixed(4)}` : "—"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p className="text-gray-500 dark:text-gray-400 py-8 text-center">No distribution history available</p>
+              )}
+              
+              <div className="mt-6 p-4 bg-gray-50 dark:bg-navy-800 rounded-lg">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Past distributions are not indicative of future distributions. The fund may pay distributions of income and/or capital gains to shareholders.
                 </p>
               </div>
             </div>

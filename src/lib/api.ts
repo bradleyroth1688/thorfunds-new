@@ -24,7 +24,7 @@ export const FUNDS: Record<string, FundInfo> = {
     description: "A risk-managed ETF that rotates between major U.S. equity indexes (S&P 500, Dow Jones, Nasdaq 100) based on risk signals, with the ability to move to 100% short-term treasuries.",
     benchmark: "SPDR S&P 500 ETF Trust (SPY)",
     strategy: "Index Rotation",
-    expenseRatio: 0.99,
+    expenseRatio: 0.70,
   },
   THLV: {
     ticker: "THLV",
@@ -34,7 +34,7 @@ export const FUNDS: Record<string, FundInfo> = {
     description: "An equal-weight low volatility ETF that dynamically allocates across 10 S&P 500 sectors based on risk signals, with the ability to move to cash when markets deteriorate.",
     benchmark: "iShares MSCI USA Min Vol Factor ETF (USMV)",
     strategy: "Low Volatility",
-    expenseRatio: 0.99,
+    expenseRatio: 0.64,
   },
 };
 
