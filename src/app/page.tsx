@@ -168,44 +168,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why THOR Section */}
-      <section className="section-padding bg-navy-700 text-white">
-        <div className="container-max mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                Why Missing the Worst Days Matters More
-              </h2>
-              <p className="text-white/80 mb-6 text-lg">
-                Over 85 years of market history, $1 invested with buy-and-hold grew to $80.76. 
-                But missing just the 10 worst days? <span className="text-gold-400 font-bold">$256.46</span>.
-              </p>
-              <Link href="/why-thor" className="btn-primary">
-                See What Makes Us Different
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 rounded-lg p-6 text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold-400">$256</div>
-                <div className="text-white/70 text-sm mt-1">Miss 10 Worst Days</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-6 text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white/90">$81</div>
-                <div className="text-white/70 text-sm mt-1">Buy & Hold</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-6 text-center">
-                <div className="text-3xl md:text-4xl font-bold text-red-400">$27</div>
-                <div className="text-white/70 text-sm mt-1">Miss 10 Best Days</div>
-              </div>
-              <div className="bg-white/10 rounded-lg p-6 text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold-400">85</div>
-                <div className="text-white/70 text-sm mt-1">Years of Data</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* White Paper CTA */}
       <section className="section-padding bg-white">
         <div className="container-max mx-auto">
@@ -223,6 +185,50 @@ export default function Home() {
             <Link href="/resources/white-papers" className="btn-primary text-lg px-8 py-4">
               Download White Paper →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why THOR Section */}
+      <section className="section-padding bg-navy-700 text-white">
+        <div className="container-max mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                Volatility Comes in Pockets
+              </h2>
+              <p className="text-white/80 mb-4 text-lg">
+                Over 85 years of market history, $1 invested with buy-and-hold grew to $81. 
+                Miss the 10 worst days? <span className="text-gold-400 font-bold">$256</span>. 
+                Miss the 10 best days? <span className="text-red-400 font-bold">$27</span>.
+              </p>
+              <p className="text-white/80 mb-6 text-lg">
+                Here&apos;s the key insight: <span className="text-gold-400 font-semibold">the best and worst days cluster together</span>. 
+                Miss both the 10 best AND 10 worst days? <span className="text-gold-400 font-bold">$86</span> — 
+                still better than buy-and-hold. When you avoid the volatility pocket entirely, you come out ahead.
+              </p>
+              <Link href="/why-thor" className="btn-primary">
+                See What Makes Us Different
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white/10 rounded-lg p-6 text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gold-400">$256</div>
+                <div className="text-white/70 text-sm mt-1">Miss 10 Worst Days</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-6 text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gold-400">$86</div>
+                <div className="text-white/70 text-sm mt-1">Miss Best & Worst 10</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-6 text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white/90">$81</div>
+                <div className="text-white/70 text-sm mt-1">Buy & Hold</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-6 text-center">
+                <div className="text-3xl md:text-4xl font-bold text-red-400">$27</div>
+                <div className="text-white/70 text-sm mt-1">Miss 10 Best Days</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
