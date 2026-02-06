@@ -64,14 +64,14 @@ export default function Home() {
             <div className="card-hover">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-navy-700">THIR</h3>
-                  <p className="text-gray-600">THOR SDQ Index Rotation ETF</p>
+                  <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THIR</h3>
+                  <p className="text-gray-600 dark:text-gray-300">THOR SDQ Index Rotation ETF</p>
                 </div>
                 <span className="bg-navy-700 text-white px-3 py-1 rounded-full text-sm font-medium">
                   Index Rotation
                 </span>
               </div>
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Rotates between major U.S. indices (S&P 500, Dow Jones, Nasdaq) based on proprietary signals. 
                 Can move to 100% short-duration treasuries when all signals turn risk-off.
               </p>
@@ -90,14 +90,14 @@ export default function Home() {
             <div className="card-hover">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-navy-700">THLV</h3>
-                  <p className="text-gray-600">THOR Low Volatility ETF</p>
+                  <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THLV</h3>
+                  <p className="text-gray-600 dark:text-gray-300">THOR Low Volatility ETF</p>
                 </div>
-                <span className="bg-gold-500 text-navy-700 px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-medium">
                   Low Volatility
                 </span>
               </div>
-              <p className="text-gray-700 mb-6">
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Equal-weight exposure across 10 S&P sectors with dynamic risk management. 
                 Sectors going risk-off are replaced with short-duration treasuries.
               </p>

@@ -104,9 +104,9 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
     return (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-pulse">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-gray-100 rounded-lg p-4">
-            <div className="h-8 bg-gray-200 rounded mb-2"></div>
-            <div className="h-4 bg-gray-200 rounded w-16 mx-auto"></div>
+          <div key={i} className="bg-gray-100 dark:bg-navy-700/50 rounded-lg p-4">
+            <div className="h-8 bg-gray-200 dark:bg-navy-600 rounded mb-2"></div>
+            <div className="h-4 bg-gray-200 dark:bg-navy-600 rounded w-16 mx-auto"></div>
           </div>
         ))}
       </div>
@@ -115,7 +115,7 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
 
   if (error || !data) {
     return (
-      <div className="text-center py-8 text-gray-500">
+      <div className="text-center py-8 text-gray-500 dark:text-gray-400">
         {error || 'Unable to load data'}
       </div>
     );
@@ -127,61 +127,61 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-gray-50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700">{formatCurrency(data.nav)}</div>
-          <div className="text-sm text-gray-600">NAV</div>
-          <div className={`text-sm mt-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+          <div className="text-2xl font-bold text-navy-700 dark:text-white">{formatCurrency(data.nav)}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">NAV</div>
+          <div className={`text-sm mt-1 ${isPositive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
             {formatPercent(data.nav_change_pct)}
           </div>
         </div>
-        <div className="bg-gray-50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700">{formatAUM(data.aum)}</div>
-          <div className="text-sm text-gray-600">AUM</div>
+        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+          <div className="text-2xl font-bold text-navy-700 dark:text-white">{formatAUM(data.aum)}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">AUM</div>
         </div>
-        <div className="bg-gray-50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700">
+        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+          <div className="text-2xl font-bold text-navy-700 dark:text-white">
             {parseInt(data.shares_outstanding).toLocaleString()}
           </div>
-          <div className="text-sm text-gray-600">Shares</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Shares</div>
         </div>
-        <div className="bg-gray-50 rounded-lg p-4 text-center">
-          <div className={`text-2xl font-bold ${parseFloat(data.ytd_return) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+        <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+          <div className={`text-2xl font-bold ${parseFloat(data.ytd_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
             {formatPercent(data.ytd_return)}
           </div>
-          <div className="text-sm text-gray-600">YTD</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">YTD</div>
         </div>
       </div>
 
       {showReturns && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-gray-50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.ytd_return) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${parseFloat(data.ytd_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
               {formatPercent(data.ytd_return)}
             </div>
-            <div className="text-sm text-gray-600">YTD</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">YTD</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.one_year_return) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${parseFloat(data.one_year_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
               {formatPercent(data.one_year_return)}
             </div>
-            <div className="text-sm text-gray-600">1 Year</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">1 Year</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.three_year_return) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${parseFloat(data.three_year_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
               {formatPercent(data.three_year_return)}
             </div>
-            <div className="text-sm text-gray-600">3 Year</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">3 Year</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-4 text-center">
-            <div className={`text-xl font-bold ${parseFloat(data.since_inception_return) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-center">
+            <div className={`text-xl font-bold ${parseFloat(data.since_inception_return) >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
               {formatPercent(data.since_inception_return)}
             </div>
-            <div className="text-sm text-gray-600">Since Inception</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">Since Inception</div>
           </div>
         </div>
       )}
 
-      <p className="text-xs text-gray-500 text-center">
+      <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
         Data as of {formatDate(data.as_of_date)}. Past performance does not guarantee future results.
       </p>
     </div>
