@@ -9,6 +9,7 @@ const footerNavigation = {
     { name: "Compare Funds", href: "/funds/compare" },
   ],
   learn: [
+    { name: "Free White Paper", href: "/resources/white-papers" },
     { name: "Education Hub", href: "/learn" },
     { name: "Low Volatility Guide", href: "/investing/low-volatility" },
     { name: "Dynamic Allocation", href: "/investing/tactical-allocation" },

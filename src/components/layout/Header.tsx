@@ -47,6 +47,7 @@ const navigation = [
     name: "Resources",
     href: "/resources",
     children: [
+      { name: "Free White Paper", href: "/resources/white-papers" },
       { name: "For Advisors", href: "/resources/advisors" },
       { name: "Documents", href: "/resources/documents" },
       { name: "FAQ", href: "/resources/faq" },

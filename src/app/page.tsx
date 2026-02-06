@@ -206,6 +206,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* White Paper CTA */}
+      <section className="section-padding bg-white">
+        <div className="container-max mx-auto">
+          <div className="bg-gradient-to-br from-navy-800 to-navy-900 rounded-2xl p-8 md:p-12 text-center">
+            <span className="inline-block px-4 py-1 bg-gold-500 text-navy-900 rounded-full text-sm font-semibold mb-4">
+              Free Download
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Signal Processing 101: A New Framework for Risk Management
+            </h2>
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-300">
+              Learn how we apply signal processing principles to filter market noise and detect regime changes. 
+              Get the institutional white paper that explains our systematic approach.
+            </p>
+            <Link href="/resources/white-papers" className="btn-primary text-lg px-8 py-4">
+              Download White Paper →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter CTA */}
       <section className="section-padding bg-gradient-to-br from-gold-400 to-gold-500">
         <div className="container-max mx-auto text-center">
