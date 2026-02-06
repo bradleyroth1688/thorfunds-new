@@ -196,7 +196,7 @@ export default function PressPage() {
                 </p>
                 <p className="text-sm">
                   <strong>Phone:</strong> 1-800-974-6964<br />
-                  <strong>Email:</strong> info@thorfunds.com
+                  <strong>Email:</strong> welcome@thoranalytics.com
                 </p>
               </div>
 

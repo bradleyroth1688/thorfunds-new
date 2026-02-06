@@ -146,7 +146,7 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <div className="text-sm text-gray-500">Email</div>
-                      <a href="mailto:info@thorfunds.com" className="text-navy-700 hover:text-gold-600">info@thorfunds.com</a>
+                      <a href="mailto:welcome@thoranalytics.com" className="text-navy-700 hover:text-gold-600">welcome@thoranalytics.com</a>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
