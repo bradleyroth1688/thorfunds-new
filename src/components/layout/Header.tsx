@@ -2,7 +2,39 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface TickerData {
+  nav: number;
+  changePct: number;
+}
+
+function useTickerData() {
+  const [data, setData] = useState<Record<string, TickerData>>({});
+
+  useEffect(() => {
+    async function fetchTicker(fundId: string, ticker: string) {
+      try {
+        const res = await fetch(`/api/fund?fundId=${fundId}&endpoint=performance`);
+        if (!res.ok) return;
+        const json = await res.json();
+        if (Array.isArray(json) && json.length > 0) {
+          setData(prev => ({
+            ...prev,
+            [ticker]: {
+              nav: json[0].naV_NoLoad || 0,
+              changePct: json[0].oneDay_NoLoad || 0,
+            }
+          }));
+        }
+      } catch { /* silent */ }
+    }
+    fetchTicker("1469", "THIR");
+    fetchTicker("1468", "THLV");
+  }, []);
+
+  return data;
+}
 
 const navigation = [
   {
@@ -62,6 +94,12 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const tickerData = useTickerData();
+
+  const formatChange = (pct: number) => {
+    const sign = pct >= 0 ? "+" : "";
+    return `${sign}${pct.toFixed(2)}%`;
+  };
 
   return (
     <header className="bg-navy-800 dark:bg-navy-900 sticky top-0 z-50 transition-colors duration-200">
@@ -70,17 +108,25 @@ export function Header() {
         <span className="inline-flex items-center gap-4">
           <span className="flex items-center gap-1">
             <span className="font-semibold text-gold-500">THIR</span>
-            <span>$27.43</span>
-            <span className="text-green-400">+0.52%</span>
+            <span>{tickerData.THIR ? `$${tickerData.THIR.nav.toFixed(2)}` : "—"}</span>
+            {tickerData.THIR && (
+              <span className={tickerData.THIR.changePct >= 0 ? "text-green-400" : "text-red-400"}>
+                {formatChange(tickerData.THIR.changePct)}
+              </span>
+            )}
           </span>
           <span className="text-navy-600">|</span>
           <span className="flex items-center gap-1">
             <span className="font-semibold text-gold-500">THLV</span>
-            <span>$31.18</span>
-            <span className="text-green-400">+0.34%</span>
+            <span>{tickerData.THLV ? `$${tickerData.THLV.nav.toFixed(2)}` : "—"}</span>
+            {tickerData.THLV && (
+              <span className={tickerData.THLV.changePct >= 0 ? "text-green-400" : "text-red-400"}>
+                {formatChange(tickerData.THLV.changePct)}
+              </span>
+            )}
           </span>
           <span className="text-navy-600">|</span>
-          <span className="text-gray-500">Data delayed 15 min</span>
+          <span className="text-gray-500">As of prior close</span>
         </span>
       </div>
       
