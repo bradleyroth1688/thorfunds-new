@@ -132,6 +132,18 @@ const articles = [
     url: "https://finance.yahoo.com/news/thor-financial-technologies-brad-roth-130000403.html",
   },
   {
+    title: "THOR Funds Are 'Still Worthy': ETF 360",
+    outlet: "ETF Database / VettaFi",
+    date: "May 2025",
+    url: "https://etfdb.com/news/2025/05/01/thor-funds-still-worthy-etf-360/",
+  },
+  {
+    title: "NYSE's ETF Leaders: THOR Financial Technologies' Brad Roth",
+    outlet: "ETF Trends",
+    date: "April 2023",
+    url: "https://www.etftrends.com/nyses-etf-leaders-thor-financial-technologies-brad-roth/",
+  },
+  {
     title: "THOR Debuts With Volatility-Focused ETF",
     outlet: "ETF.com / Yahoo Finance",
     date: "September 2022",
