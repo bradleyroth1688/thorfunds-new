@@ -622,7 +622,7 @@ export default async function FundPage({ params }: FundPageProps) {
                   </a>
                 </li>
                 <li>
-                  <a href="/documents/thir-summary-prospectus.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
+                  <a href={`/documents/${fund.ticker.toLowerCase()}-summary-prospectus.pdf`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
                     <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                     </svg>
@@ -630,7 +630,7 @@ export default async function FundPage({ params }: FundPageProps) {
                   </a>
                 </li>
                 <li>
-                  <a href="/documents/thir-annual-report.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
+                  <a href={`/documents/${fund.ticker.toLowerCase()}-annual-report.pdf`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
                     <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" />
                     </svg>
@@ -638,15 +638,25 @@ export default async function FundPage({ params }: FundPageProps) {
                   </a>
                 </li>
                 <li>
-                  <a href="/documents/thir-semi-annual-report.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
+                  <a href={`/documents/${fund.ticker.toLowerCase()}-semi-annual-report.pdf`} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
                     <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" />
                     </svg>
                     Semi-Annual Report
                   </a>
                 </li>
+                {fund.ticker === "THLV" && (
+                  <li>
+                    <a href="/documents/thlv-q1-holdings.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
+                      <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" />
+                      </svg>
+                      Q1 Holdings Report
+                    </a>
+                  </li>
+                )}
                 <li>
-                  <a href="/documents/thor-funds-ncrs.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
+                  <a href="/documents/thor-funds-sai.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-gold-600 hover:text-gold-700 font-medium">
                     <svg className="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                     </svg>
