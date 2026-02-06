@@ -27,27 +27,27 @@ export default function LowVolatilityPage() {
             <p className="text-xl text-gray-700 mb-8">
               THLV (THOR Low Volatility ETF) takes a fundamentally different approach to low volatility investing. 
               While traditional low vol ETFs use backward-looking beta and must stay fully invested, THLV uses 
-              forward-looking signals and equal-weight sector allocation with the ability to move to cash.
+              forward-looking signals and equal-weight sector allocation with the ability to move to 100% cash.
             </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-4">The Problem with Traditional Low Vol ETFs</h2>
             <div className="grid md:grid-cols-2 gap-6 my-8">
               <div className="card border-l-4 border-red-500">
-                <h3 className="font-semibold mb-2">Traditional Approach (SPLV, USMV)</h3>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Use backward-looking beta</li>
-                  <li>• Cap-weighted (concentration risk)</li>
-                  <li>• Must stay fully invested</li>
-                  <li>• Get crushed in severe drawdowns</li>
+                <h3 className="font-semibold mb-2">Traditional Approach</h3>
+                <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                  <li>Use backward-looking beta</li>
+                  <li>Cap-weighted (concentration risk)</li>
+                  <li>Must stay fully invested</li>
+                  <li>Still exposed during market stress</li>
                 </ul>
               </div>
               <div className="card border-l-4 border-green-500">
                 <h3 className="font-semibold mb-2">THLV Approach</h3>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Forward-looking signals</li>
-                  <li>• Equal-weight (diversified)</li>
-                  <li>• Can go 100% to cash</li>
-                  <li>• Better capture ratios</li>
+                <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                  <li>Forward-looking signals</li>
+                  <li>Equal-weight (diversified)</li>
+                  <li>Can go 100% to cash</li>
+                  <li>Designed to reduce volatility drag</li>
                 </ul>
               </div>
             </div>
@@ -105,24 +105,51 @@ export default function LowVolatilityPage() {
               </p>
             </div>
 
-            <h2 className="text-2xl font-bold mt-12 mb-4">Capture Ratio Advantage</h2>
-            <div className="grid grid-cols-2 gap-6 my-8">
-              <div className="card text-center">
-                <div className="text-4xl font-bold text-green-600">106%</div>
-                <div className="text-sm text-gray-600">Up Capture</div>
-                <div className="text-xs text-gray-500 mt-1">Participates in more upside</div>
+            <h2 className="text-2xl font-bold mt-12 mb-4">The Academic Case for Low Volatility</h2>
+            <p className="text-gray-700 mb-6">
+              The low volatility anomaly is one of the most well-documented findings in academic finance. 
+              Lower-risk stocks have historically delivered comparable or better returns than higher-risk stocks — 
+              the opposite of what traditional theory predicts.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6 my-8">
+              <div className="card">
+                <h3 className="font-semibold text-navy-700 mb-2">Compounding Benefits</h3>
+                <p className="text-sm text-gray-600">
+                  Lower standard deviation leads to less volatility drag on compounding. A portfolio that 
+                  loses 10% needs an 11% gain to recover. One that loses 30% needs a 43% gain. By reducing 
+                  the magnitude of drawdowns, low volatility strategies allow compounding to work more efficiently over time.
+                </p>
               </div>
-              <div className="card text-center">
-                <div className="text-4xl font-bold text-green-600">86%</div>
-                <div className="text-sm text-gray-600">Down Capture</div>
-                <div className="text-xs text-gray-500 mt-1">Avoids more downside</div>
+              <div className="card">
+                <h3 className="font-semibold text-navy-700 mb-2">Volatility Drag</h3>
+                <p className="text-sm text-gray-600">
+                  Arithmetic returns overstate what investors actually earn. The geometric (compounded) return 
+                  is always lower, and the gap grows with volatility. Reducing standard deviation narrows this gap, 
+                  meaning more of your returns translate into actual wealth accumulation.
+                </p>
               </div>
             </div>
-            <p className="text-gray-700">
-              This asymmetric capture profile — capturing more upside than downside — is the holy grail 
-              of risk management. Traditional low vol ETFs often sacrifice significant upside to 
-              achieve modest downside reduction. THLV does the opposite.
-            </p>
+            <div className="bg-navy-50 rounded-xl p-6 my-8">
+              <h3 className="font-semibold text-navy-700 mb-2">The Math of Recovery</h3>
+              <div className="grid grid-cols-3 gap-4 text-center text-sm">
+                <div>
+                  <div className="font-bold text-red-600">-10%</div>
+                  <div className="text-gray-500">needs +11% to recover</div>
+                </div>
+                <div>
+                  <div className="font-bold text-red-600">-20%</div>
+                  <div className="text-gray-500">needs +25% to recover</div>
+                </div>
+                <div>
+                  <div className="font-bold text-red-600">-50%</div>
+                  <div className="text-gray-500">needs +100% to recover</div>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 mt-4">
+                This is why managing downside volatility is mathematically more important than chasing upside returns. 
+                Less variance in returns leads to better long-term compounding outcomes.
+              </p>
+            </div>
           </div>
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
