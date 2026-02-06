@@ -18,9 +18,6 @@ interface Holding {
   asOfDate?: string;
 }
 
-const AUTH_URL = "https://uauth.ultimusfundsolutions.com/server/api/login";
-const DATA_URL = "https://funddata.ultimusfundsolutions.com/funds";
-
 const FUND_IDS: Record<string, string> = {
   THIR: '1469',
   THLV: '1468',
@@ -44,35 +41,11 @@ export default function HoldingsTable({ ticker, limit }: HoldingsTableProps) {
   useEffect(() => {
     async function fetchHoldings() {
       try {
-        // Get auth token
-        const authResponse = await fetch(AUTH_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: 'broth@thoranalytics.com',
-            password: '000b6e14-48a9-46fb-8113-f1d0cc2166ef',
-          }),
-        });
-
-        if (!authResponse.ok) throw new Error('Auth failed');
-        const token = (await authResponse.text()).replace(/"/g, '');
-
-        // Get holdings
-        const holdResponse = await fetch(
-          `${DATA_URL}/${FUND_IDS[ticker]}/etfholdings`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
-        if (!holdResponse.ok) throw new Error(`API error: ${holdResponse.status}`);
-        const data = await holdResponse.json();
+        const res = await fetch(`/api/fund?fundId=${FUND_IDS[ticker]}&endpoint=etfholdings`);
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        const data = await res.json();
 
         if (Array.isArray(data)) {
-          // Sort by market value descending
           const sorted = data.sort((a: Holding, b: Holding) =>
             (b.marketValueBase || 0) - (a.marketValueBase || 0)
           );

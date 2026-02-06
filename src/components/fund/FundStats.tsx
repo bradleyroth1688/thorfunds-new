@@ -7,7 +7,7 @@ interface FundStatsProps {
   showReturns?: boolean;
 }
 
-interface UltimusData {
+interface PerfData {
   performDate: string;
   fundName: string;
   naV_NoLoad: number;
@@ -25,9 +25,6 @@ interface UltimusData {
   premiumDiscountPct: number;
   volume: number;
 }
-
-const AUTH_URL = "https://uauth.ultimusfundsolutions.com/server/api/login";
-const DATA_URL = "https://funddata.ultimusfundsolutions.com/funds";
 
 const FUND_IDS: Record<string, string> = {
   THIR: '1469',
@@ -56,56 +53,27 @@ function formatPercent(value: number | null): string {
 
 function formatDate(dateString: string): string {
   try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
     });
-  } catch {
-    return dateString;
-  }
+  } catch { return dateString; }
 }
 
 export default function FundStats({ ticker, showReturns = false }: FundStatsProps) {
-  const [data, setData] = useState<UltimusData | null>(null);
+  const [data, setData] = useState<PerfData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        // Get auth token
-        const authResponse = await fetch(AUTH_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: 'broth@thoranalytics.com',
-            password: '000b6e14-48a9-46fb-8113-f1d0cc2166ef',
-          }),
-        });
-
-        if (!authResponse.ok) throw new Error('Auth failed');
-        const token = (await authResponse.text()).replace(/"/g, '');
-
-        // Get performance data
-        const perfResponse = await fetch(
-          `${DATA_URL}/${FUND_IDS[ticker]}/performance`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
-        if (!perfResponse.ok) throw new Error(`API error: ${perfResponse.status}`);
-        const perfData = await perfResponse.json();
-
-        if (Array.isArray(perfData) && perfData.length > 0) {
-          setData(perfData[0]);
+        const res = await fetch(`/api/fund?fundId=${FUND_IDS[ticker]}&endpoint=performance`);
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        const json = await res.json();
+        if (Array.isArray(json) && json.length > 0) {
+          setData(json[0]);
         } else {
-          throw new Error('No data returned');
+          throw new Error('No data');
         }
       } catch (err) {
         setError('Unable to load fund data');

@@ -54,7 +54,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: https: blob:",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://www.google-analytics.com https://plausible.io https://api.thorfunds.com",
+      "connect-src 'self' https://www.google-analytics.com https://plausible.io https://api.thorfunds.com https://uauth.ultimusfundsolutions.com https://funddata.ultimusfundsolutions.com",
       "media-src 'self' https://www.buzzsprout.com",
       "frame-src 'self' https://www.youtube.com https://player.vimeo.com",
       "frame-ancestors 'none'",
@@ -66,16 +66,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // Static export for hosting flexibility
-  output: "export",
+  // Server-side rendering (needed for API routes)
+  // output: "export",
 
-  // Image optimization config (unoptimized for static export)
+  // Image optimization
   images: {
     unoptimized: true,
-    // If using server-side rendering later, enable optimization:
-    // formats: ['image/avif', 'image/webp'],
-    // deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
   // Consistent trailing slashes (important for canonicalization)
