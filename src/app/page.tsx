@@ -209,10 +209,10 @@ export default function Home() {
       {/* Newsletter CTA */}
       <section className="section-padding bg-gradient-to-br from-gold-400 to-gold-500">
         <div className="container-max mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy-700 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0e1f36' }}>
             Stay Informed
           </h2>
-          <p className="text-navy-700/80 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: 'rgba(14, 31, 54, 0.85)' }}>
             Get weekly market insights and signal updates delivered to your inbox.
           </p>
           <Link href="/newsletter" className="btn-secondary">
@@ -222,12 +222,12 @@ export default function Home() {
       </section>
 
       {/* For Advisors CTA */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-navy-900">
         <div className="container-max mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <div className="bg-white dark:bg-navy-800 rounded-2xl shadow-xl p-8 md:p-12">
             <div className="max-w-2xl">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">For Financial Advisors</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-navy-800 dark:text-white">For Financial Advisors</h2>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
                 Access institutional-quality research and learn how THOR can complement your client portfolios.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
