@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THOR Risk Gauge</title>
+<style>
+  /* ============================================
+     THOR RISK GAUGE — Configuration
+     Change the score in the script below (line ~180)
+     ============================================ */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .gauge-container {
+    width: 600px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px 40px 28px;
+    text-align: center;
+    position: relative;
+  }
+
+  .gauge-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #1a1a2e;
+    margin-bottom: 24px;
+  }
+
+  .gauge-title span {
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  .gauge-svg-wrapper {
+    position: relative;
+    width: 440px;
+    height: 240px;
+    margin: 0 auto 16px;
+  }
+
+  .gauge-svg-wrapper svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .score-display {
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .score-number {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .score-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .score-sublabel {
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 0 30px;
+  }
+
+  .gauge-label-left, .gauge-label-right {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #9ca3af;
+  }
+
+  .gauge-scale {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 56px 0;
+    margin-top: 4px;
+  }
+
+  .gauge-scale-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: #d1d5db;
+    width: 24px;
+    text-align: center;
+  }
+
+  .gauge-scale-num.active {
+    color: #1a1a2e;
+    font-weight: 800;
+    font-size: 14px;
+    position: relative;
+    top: -1px;
+  }
+
+  .gauge-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .gauge-footer-logo {
+    font-size: 12px;
+    font-weight: 800;
+    color: #1a1a2e;
+    letter-spacing: 2px;
+  }
+
+  .gauge-footer-divider {
+    width: 1px;
+    height: 12px;
+    background: #d1d5db;
+  }
+
+  .gauge-footer-text {
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="gauge-container" id="gaugeContainer">
+  <div class="gauge-title">THOR Risk Gauge <span>— Fund Positioning</span></div>
+
+  <div class="gauge-svg-wrapper">
+    <svg viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Gradient for the arc: red → orange → yellow → green -->
+        <linearGradient id="arcGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" style="stop-color:#dc2626" />
+          <stop offset="20%" style="stop-color:#ef4444" />
+          <stop offset="35%" style="stop-color:#f97316" />
+          <stop offset="50%" style="stop-color:#eab308" />
+          <stop offset="65%" style="stop-color:#84cc16" />
+          <stop offset="80%" style="stop-color:#22c55e" />
+          <stop offset="100%" style="stop-color:#16a34a" />
+        </linearGradient>
+
+        <!-- Shadow for needle -->
+        <filter id="needleShadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
+        </filter>
+      </defs>
+
+      <!-- Background track (light gray) -->
+      <path id="bgArc"
+        d="M 40 210 A 180 180 0 0 1 400 210"
+        fill="none"
+        stroke="#f0f0f0"
+        stroke-width="28"
+        stroke-linecap="round"
+      />
+
+      <!-- Colored arc (gradient) -->
+      <path id="colorArc"
+        d="M 40 210 A 180 180 0 0 1 400 210"
+        fill="none"
+        stroke="url(#arcGradient)"
+        stroke-width="28"
+        stroke-linecap="round"
+      />
+
+      <!-- Tick marks -->
+      <g id="ticks" stroke="#ffffff" stroke-width="2.5"></g>
+
+      <!-- Needle -->
+      <g id="needle" filter="url(#needleShadow)">
+        <line x1="220" y1="210" x2="220" y2="80" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="220" cy="210" r="8" fill="#1a1a2e"/>
+        <circle cx="220" cy="210" r="4" fill="#ffffff"/>
+      </g>
+    </svg>
+
+  </div>
+
+  <div class="score-display">
+    <div class="score-number" id="scoreNumber">8</div>
+    <div class="score-label" id="scoreLabel">Bullish</div>
+  </div>
+
+  <div class="gauge-labels">
+    <div class="gauge-label-left">Extremely Bearish</div>
+    <div class="gauge-label-right">Extremely Bullish</div>
+  </div>
+
+  <div class="gauge-scale" id="gaugeScale"></div>
+
+  <div class="gauge-footer">
+    <div class="gauge-footer-logo">THOR</div>
+    <div class="gauge-footer-divider"></div>
+    <div class="gauge-footer-text">Updated Daily</div>
+  </div>
+</div>
+
+<script>
+  // ============================================
+  // CONFIGURATION — Change score here (1-10)
+  // ============================================
+  const SCORE = 8;
+  // ============================================
+
+  const LABELS = {
+    1:  'Extremely Bearish',
+    2:  'Extremely Bearish',
+    3:  'Bearish',
+    4:  'Bearish',
+    5:  'Cautious',
+    6:  'Cautious',
+    7:  'Bullish',
+    8:  'Bullish',
+    9:  'Extremely Bullish',
+    10: 'Extremely Bullish'
+  };
+
+  // Color for score number/label
+  function getScoreColor(score) {
+    const colors = {
+      1: '#dc2626', 2: '#ef4444', 3: '#f97316', 4: '#f59e0b',
+      5: '#eab308', 6: '#84cc16', 7: '#22c55e', 8: '#16a34a',
+      9: '#15803d', 10: '#166534'
+    };
+    return colors[score] || '#1a1a2e';
+  }
+
+  // Calculate needle angle (180° arc, left to right)
+  // Score 1 = far left (180°), Score 10 = far right (0°)
+  function scoreToAngle(score) {
+    return 180 - ((score - 1) / 9) * 180;
+  }
+
+  // Generate tick marks between segments
+  function generateTicks() {
+    const ticksGroup = document.getElementById('ticks');
+    const cx = 220, cy = 210, r = 180;
+
+    for (let i = 1; i <= 9; i++) {
+      const angle = Math.PI - (i / 10) * Math.PI;
+      const x1 = cx + (r - 14) * Math.cos(angle);
+      const y1 = cy - (r - 14) * Math.sin(angle);
+      const x2 = cx + (r + 14) * Math.cos(angle);
+      const y2 = cy - (r + 14) * Math.sin(angle);
+
+      const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      tick.setAttribute('x1', x1);
+      tick.setAttribute('y1', y1);
+      tick.setAttribute('x2', x2);
+      tick.setAttribute('y2', y2);
+      ticksGroup.appendChild(tick);
+    }
+  }
+
+  // Position the needle
+  function setNeedle(score) {
+    const needle = document.getElementById('needle');
+    const angleDeg = scoreToAngle(score);
+    const cx = 220, cy = 210;
+    needle.querySelector('line').setAttribute('x1', cx);
+    needle.querySelector('line').setAttribute('y1', cy);
+
+    const angleRad = (angleDeg * Math.PI) / 180;
+    const needleLength = 130;
+    const tipX = cx + needleLength * Math.cos(angleRad);
+    const tipY = cy - needleLength * Math.sin(angleRad);
+
+    needle.querySelector('line').setAttribute('x2', tipX.toFixed(1));
+    needle.querySelector('line').setAttribute('y2', tipY.toFixed(1));
+  }
+
+  // Build the scale numbers
+  function buildScale(score) {
+    const container = document.getElementById('gaugeScale');
+    for (let i = 1; i <= 10; i++) {
+      const el = document.createElement('div');
+      el.className = 'gauge-scale-num' + (i === score ? ' active' : '');
+      el.textContent = i;
+      if (i === score) {
+        el.style.color = getScoreColor(score);
+      }
+      container.appendChild(el);
+    }
+  }
+
+  // Set score display
+  function setDisplay(score) {
+    const color = getScoreColor(score);
+    document.getElementById('scoreNumber').textContent = score;
+    document.getElementById('scoreNumber').style.color = color;
+    document.getElementById('scoreLabel').textContent = LABELS[score];
+    document.getElementById('scoreLabel').style.color = color;
+  }
+
+  // Initialize
+  generateTicks();
+  setNeedle(SCORE);
+  buildScale(SCORE);
+  setDisplay(SCORE);
+</script>
+
+</body>
+</html>

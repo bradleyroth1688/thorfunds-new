@@ -31,8 +31,8 @@ const navigation = [
     name: "Insights",
     href: "/insights",
     children: [
-      { name: "All Insights", href: "/insights" },
       { name: "Podcast Episodes", href: "/insights" },
+      { name: "The Book", href: "/book" },
     ],
   },
   {
@@ -44,7 +44,17 @@ const navigation = [
       { name: "FAQ", href: "/resources/faq" },
     ],
   },
-  { name: "About", href: "/about" },
+  {
+    name: "About",
+    href: "/about",
+    children: [
+      { name: "Our Story", href: "/about" },
+      { name: "Investment Philosophy", href: "/about/philosophy" },
+      { name: "Team", href: "/team" },
+      { name: "Press", href: "/about/press" },
+      { name: "Careers", href: "/about/careers" },
+    ],
+  },
   { name: "Contact", href: "/contact" },
 ];
 

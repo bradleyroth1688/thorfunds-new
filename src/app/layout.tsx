@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://thorfunds.com"),
   title: {
     default: "THOR Funds | Risk-Managed ETFs for Advisors",
     template: "%s | THOR Funds",

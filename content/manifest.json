@@ -1,0 +1,116 @@
+{
+  "generated": "2026-02-05",
+  "version": "1.0",
+  "description": "THOR Funds website content assets",
+  "content": {
+    "book": {
+      "title": "Little Reasons, Big Consequences: Why Your Investment Returns Stink",
+      "author": "Brad Roth",
+      "files": {
+        "full": "book/full.md",
+        "metadata": "book/metadata.json",
+        "chapters": [
+          "book/chapters/00-preface.md",
+          "book/chapters/01-buy-and-hold-lie.md",
+          "book/chapters/02-concentration-risk.md",
+          "book/chapters/03-emotion-tax.md",
+          "book/chapters/04-fees.md",
+          "book/chapters/05-strategy-switching.md",
+          "book/chapters/06-chasing-winners.md",
+          "book/chapters/07-volatility.md",
+          "book/chapters/08-time-horizon.md",
+          "book/chapters/09-complexity.md",
+          "book/chapters/10-rules-beat-intelligence.md",
+          "book/chapters/11-small-mistakes-compound.md",
+          "book/chapters/12-what-actually-works.md",
+          "book/chapters/13-what-we-built.md",
+          "book/chapters/14-conclusion.md"
+        ]
+      },
+      "totalChapters": 15
+    },
+    "whitepapers": {
+      "files": [
+        "whitepapers/thlv-vs-splv.md"
+      ],
+      "count": 1
+    },
+    "company": {
+      "files": {
+        "about": "company/about.md",
+        "strategy": "company/strategy.md",
+        "bradBio": "company/brad-bio.md",
+        "philosophy": "company/philosophy.md"
+      }
+    },
+    "newsletters": {
+      "directory": "newsletters/",
+      "files": [
+        "newsletters/2026-02-05.md",
+        "newsletters/2026-01-31.md",
+        "newsletters/2026-02-01-weekly.md",
+        "newsletters/2026-02-02.md",
+        "newsletters/2026-02-03.md",
+        "newsletters/2026-02-04.md"
+      ],
+      "template": "newsletters/2026-02-05.md"
+    },
+    "images": {
+      "directory": "images/",
+      "files": [
+        "thor-funds-logo-white.png",
+        "thor-funds-logo-black.png",
+        "thor-funds-logo-gold.png",
+        "thor-logo-white.png",
+        "thor-shield-white.png",
+        "thor-text-white.png"
+      ]
+    },
+    "riskGauge": {
+      "directory": "risk-gauge/",
+      "files": {
+        "methodology": "risk-gauge/methodology.md",
+        "readme": "risk-gauge/README.md",
+        "gauge": "risk-gauge/gauge.html",
+        "images": [
+          "risk-gauge/thor-risk-gauge-1.png",
+          "risk-gauge/thor-risk-gauge-2.png",
+          "risk-gauge/thor-risk-gauge-3.png",
+          "risk-gauge/thor-risk-gauge-4.png",
+          "risk-gauge/thor-risk-gauge-5.png",
+          "risk-gauge/thor-risk-gauge-6.png",
+          "risk-gauge/thor-risk-gauge-7.png",
+          "risk-gauge/thor-risk-gauge-8.png",
+          "risk-gauge/thor-risk-gauge-9.png",
+          "risk-gauge/thor-risk-gauge-10.png"
+        ]
+      }
+    }
+  },
+  "sources": {
+    "book": "/Users/bradleyroth/clawd/projects/book-final.md",
+    "whitepaper": "/Users/bradleyroth/clawd/projects/sales/thlv-lowvol-whitepaper.html",
+    "companyKnowledge": [
+      "/Users/bradleyroth/clawd/memory/thor-company.md",
+      "/Users/bradleyroth/clawd/memory/thor-strategy-mechanics.md",
+      "/Users/bradleyroth/clawd/memory/brad-voice-profile.md"
+    ],
+    "riskGauge": "/Users/bradleyroth/clawd/tasks/risk-gauge/",
+    "images": [
+      "/Users/bradleyroth/clawd/assets/",
+      "/Users/bradleyroth/clawd/projects/"
+    ]
+  },
+  "websiteUsage": {
+    "homepage": {
+      "hero": "company/philosophy.md (key message)",
+      "bookPromo": "book/metadata.json + chapters preview",
+      "riskGauge": "risk-gauge/ (live gauge widget)"
+    },
+    "aboutPage": "company/about.md + company/brad-bio.md",
+    "strategyPage": "company/strategy.md + whitepapers/",
+    "bookPage": "book/ (all chapters)",
+    "blogNewsletter": "newsletters/ (archive)",
+    "resourcesPage": "whitepapers/ + risk-gauge/methodology.md"
+  }
+}

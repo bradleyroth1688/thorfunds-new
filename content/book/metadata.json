@@ -1,0 +1,30 @@
+{
+  "title": "Little Reasons, Big Consequences: Why Your Investment Returns Stink",
+  "author": "Brad Roth",
+  "subtitle": "Why Your Investment Returns Stink",
+  "chapters": [
+    {"file": "00-preface.md", "title": "Preface: Why This Book Exists"},
+    {"file": "01-buy-and-hold-lie.md", "title": "Chapter 1: The Buy-and-Hold Lie"},
+    {"file": "02-concentration-risk.md", "title": "Chapter 2: Concentration Feels Smart Until It Isn't"},
+    {"file": "03-emotion-tax.md", "title": "Chapter 3: Emotion Is the Tax You Pay for Being Human"},
+    {"file": "04-fees.md", "title": "Chapter 4: Fees Matter Less Than You Think (And More Than You Want Them To)"},
+    {"file": "05-strategy-switching.md", "title": "Chapter 5: Strategy Switching: The Patience Problem"},
+    {"file": "06-chasing-winners.md", "title": "Chapter 6: Chasing Winners: The Timing Problem"},
+    {"file": "07-volatility.md", "title": "Chapter 7: Volatility Isn't Risk, But It's Treated Like One"},
+    {"file": "08-time-horizon.md", "title": "Chapter 8: Time Horizon Mismatch: The Measurement Problem"},
+    {"file": "09-complexity.md", "title": "Chapter 9: Complexity Feels Intelligent Until It Breaks"},
+    {"file": "10-rules-beat-intelligence.md", "title": "Chapter 10: Rules Beat Intelligence: Why Systems Win When Humans Don't"},
+    {"file": "11-small-mistakes-compound.md", "title": "Chapter 11: The Real Cost of Doing Nothing Wrong"},
+    {"file": "12-what-actually-works.md", "title": "Chapter 12: What Actually Works: A More Realistic Framework"},
+    {"file": "13-what-we-built.md", "title": "What We Built: A Note from the Author"},
+    {"file": "14-conclusion.md", "title": "Conclusion: The Uncomfortable Truth About Better Returns"}
+  ],
+  "theme": "Behavioral investing - the gap between market returns and investor returns",
+  "keyMessage": "The market is not the problem. Behavior is.",
+  "targetAudience": ["Financial advisors", "Individual investors", "RIAs"],
+  "callsToAction": {
+    "newsletter": "thorsignals.com",
+    "company": "thorfunds.com",
+    "signals": "thorsignals.com"
+  }
+}
