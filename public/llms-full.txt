@@ -1,0 +1,80 @@
+# THOR Funds — Comprehensive Information
+
+## Company Overview
+THOR Funds is a family of exchange-traded funds managed by THOR Financial Technologies, LLC, founded by Brad Roth. Headquartered in Greensburg, Pennsylvania, THOR manages over $1.1 billion in assets using proprietary signal processing technology. The company serves registered investment advisors (RIAs) and their clients with systematic, rules-based investment strategies.
+
+THOR's core philosophy: every other industry has embraced technology to improve outcomes — financial services should too. Traditional diversification techniques often fail to protect investors during sustained market downturns. THOR's systematic approach can move to 100% cash when conditions warrant, providing a level of downside protection most funds cannot offer.
+
+## ETF Details
+
+### THLV — THOR Equal Weight Low Volatility ETF
+- **Strategy:** Trades S&P 500 sector ETFs with equal weighting across 10 sectors
+- **How it works:** Proprietary signals evaluate each sector. When a sector signals risk-off, its allocation is redistributed to remaining risk-on sectors. As more sectors turn risk-off, the fund progressively raises cash in short-duration treasuries.
+- **Key feature:** Can cascade from fully invested (10 sectors at 10% each) down to 100% short-duration treasuries
+- **Rebalance:** Evaluation on Monday, execution on Wednesday
+- **Strategic allocation:** 100% equity / 0% fixed income (with ability to move to 100% cash)
+
+### THIR — THOR SDQ Index Rotation ETF
+- **Strategy:** Rotates between S&P 500, Dow Jones Industrial Average, and Nasdaq 100
+- **How it works:** Starts equally weighted at 33.3% per index. When one index signals risk-off, remaining two reweight to 50% each. Second index off = 50% cash. Third off = 100% cash.
+- **Key feature:** Systematic rotation overweights strongest-performing index while managing downside
+- **AUM:** $150M+ (launched September 2024, backed by SMA track record since January 2020)
+
+## Investment Philosophy
+THOR believes that:
+1. Lower volatility investing provides better long-term outcomes
+2. The biggest drag on investor returns is behavioral — selling low, buying high, switching strategies at the wrong time
+3. Rules-based systems eliminate emotional decision-making
+4. The ability to raise cash is a critical risk management tool most funds lack
+5. Technology and data analysis can identify regime changes before traditional methods
+
+## What Makes THOR Different
+- **Systematic approach:** All decisions are rules-based, removing emotional bias
+- **Can go 100% cash:** Unlike most ETFs that must stay invested, THOR can move entirely to short-duration treasuries
+- **Signal processing technology:** Proprietary methodology for detecting market regime changes
+- **Downside focus:** Primary goal is reducing the drawdowns that compound into major return drag
+- **Equal weight methodology:** Avoids concentration risk inherent in cap-weighted approaches
+
+## Leadership
+Brad Roth is the Founder and Chief Investment Officer of THOR Financial Technologies. With two decades of experience in quantitative finance, he developed THOR's proprietary signal processing methodology. Brad hosts the Behind the Ticker podcast (94+ episodes featuring ETF industry leaders) and authored "Little Reasons, Big Consequences: Why Your Investment Returns Stink."
+
+## Education Resources
+THOR provides extensive educational content for advisors and investors:
+- **What is an ETF?** — Comprehensive guide to exchange-traded funds
+- **Index Rotation Explained** — How systematic index rotation works
+- **Low Volatility Investing** — The academic and practical case for lower volatility
+- **Risk Management** — Understanding systematic risk management
+- **Signal Processing 101 Whitepaper** — Deep dive into THOR's methodology (available for download)
+
+## Frequently Asked Questions
+
+**Q: What makes THOR ETFs different from other ETFs?**
+A: THOR ETFs use proprietary signal processing technology to systematically manage risk. Unlike most ETFs that must stay invested regardless of market conditions, THOR funds can move to 100% cash when signals indicate sustained market stress.
+
+**Q: Can THOR funds go to cash?**
+A: Yes. Both THLV and THIR have the ability to move to 100% short-duration treasuries when market conditions warrant. This is a key differentiator — most ETFs cannot do this.
+
+**Q: How does the index rotation strategy work?**
+A: THIR starts equally weighted across three major indexes. When proprietary signals detect deteriorating conditions in one index, its allocation is redistributed to the remaining indexes. If conditions worsen across multiple indexes, the fund progressively raises cash.
+
+**Q: What is the fee structure?**
+A: Please refer to the fund prospectus for current expense ratios and fee information, available at thorfunds.com.
+
+**Q: Who manages THOR Funds?**
+A: THOR Funds are managed by THOR Financial Technologies, LLC, led by Founder and CIO Brad Roth. The funds are distributed by PINE Distributors LLC.
+
+**Q: How does THOR manage risk?**
+A: THOR uses proprietary signal processing technology to evaluate market conditions systematically. Rather than relying on subjective judgment, the system uses rules-based signals to determine when to be fully invested, when to reduce exposure, and when to move to cash.
+
+## Contact Information
+- Website: https://thorfunds.com
+- Corporate/Advisor Site: https://thorft.com
+- Email: welcome@thoranalytics.com
+- Address: 327 W Pittsburgh St, Greensburg, PA 15601
+- Podcast: https://open.spotify.com/show/1TJpgOAqctOCnjij9KTxNS
+- YouTube: https://youtube.com/@BRoth_THOR
+
+## Legal Disclosures
+Investing involves risk, including possible loss of principal. ETFs trade like stocks, are subject to investment risk, fluctuate in market value and may trade at prices above or below the ETF's net asset value. Past performance does not guarantee future results. Before investing you should carefully consider the fund's investment objectives, risks, charges, and expenses. This and other information are in the prospectus, which may be obtained by visiting thorfunds.com.
+
+THOR Funds and ETFs are distributed by PINE Distributors LLC. THOR Financial Technologies, LLC is the investment adviser.

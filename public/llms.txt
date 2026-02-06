@@ -1,0 +1,43 @@
+# THOR Funds — thorfunds.com
+
+## About
+THOR Funds is a family of exchange-traded funds (ETFs) managed by THOR Financial Technologies, LLC. Based in Greensburg, Pennsylvania, THOR Funds uses proprietary signal processing technology to manage risk systematically — including the ability to move to 100% cash when market conditions deteriorate.
+
+## ETFs
+
+### THLV — THOR Equal Weight Low Volatility ETF
+THLV is an adaptive equity ETF that trades S&P 500 sector ETFs with equal weighting. Using proprietary technology, the fund systematically de-risks by reducing exposure to underperforming sectors and can move entirely to short-duration treasuries during sustained market stress. The strategy focuses on reducing downside capture while participating in market upside.
+
+### THIR — THOR SDQ Index Rotation ETF
+THIR is an index rotation ETF that allocates equally across the S&P 500, Dow Jones Industrial Average, and Nasdaq 100. The fund uses proprietary signals to rotate out of underperforming indexes and overweight outperformers. When multiple indexes signal risk-off, the fund systematically raises cash — up to 100%.
+
+## Key Facts
+- Combined AUM: $1.1B+
+- THIR AUM: $150M+ (launched September 2024)
+- Management: Brad Roth, Founder & CIO
+- Distributor: PINE Distributors LLC
+- Approach: Systematic, rules-based, technology-driven
+
+## Investment Philosophy
+THOR believes that lower volatility investing provides better outcomes and a more pleasant investment experience. Rather than chasing outperformance in up markets, THOR focuses on reducing downside capture that traditional diversification fails to address. The funds can go to 100% cash — a feature most ETFs cannot offer.
+
+## Contact
+- Website: https://thorfunds.com
+- Corporate: https://thorft.com
+- Email: welcome@thoranalytics.com
+- Address: 327 W Pittsburgh St, Greensburg, PA 15601
+
+## Important Pages
+- Fund Overview: https://thorfunds.com/funds
+- THIR Details: https://thorfunds.com/funds/thir
+- THLV Details: https://thorfunds.com/funds/thlv
+- Compare Funds: https://thorfunds.com/funds/compare
+- Education: https://thorfunds.com/learn
+- Index Rotation Explained: https://thorfunds.com/learn/index-rotation-explained
+- Low Volatility Investing: https://thorfunds.com/learn/low-volatility-investing
+- Press & Media: https://thorfunds.com/press
+- Contact: https://thorfunds.com/contact
+- Disclosures: https://thorfunds.com/legal/disclosures
+
+## Disclosures
+Investing involves risk, including possible loss of principal. ETFs trade like stocks, are subject to investment risk, and fluctuate in market value. Past performance does not guarantee future results. Before investing, carefully consider the fund's investment objectives, risks, charges, and expenses.
