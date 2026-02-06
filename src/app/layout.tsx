@@ -100,12 +100,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#1a365d" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0d1b2e" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#1a365d" />
         {/* Organization Schema - Site Wide */}
         <SchemaScript schema={organizationSchema} />
       </head>
-      <body className={`${inter.className} antialiased bg-white dark:bg-navy-900 text-navy-800 dark:text-white transition-colors duration-200`}>
+      <body className={`${inter.className} antialiased bg-white text-navy-800`}>
         {/* Skip to main content for accessibility */}
         <a 
           href="#main-content" 
@@ -121,21 +120,7 @@ export default function RootLayout({
         <Footer />
         
         {/* Dark mode initialization script - runs before React hydration */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (theme === 'dark' || (!theme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
+{/* Light mode only - dark mode toggle removed */}
       </body>
     </html>
   );

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { DarkModeToggle } from "@/components/ui/DarkModeToggle";
 
 const navigation = [
   {
@@ -160,7 +159,6 @@ export function Header() {
             <a href="tel:1-800-974-6964" className="text-sm text-gray-300 hover:text-gold-500 transition-colors">
               1-800-974-6964
             </a>
-            <DarkModeToggle />
             <Link
               href="/newsletter"
               className="btn-primary btn-sm"
@@ -171,7 +169,6 @@ export function Header() {
 
           {/* Mobile menu button */}
           <div className="flex items-center gap-2 lg:hidden">
-            <DarkModeToggle />
             <button
               type="button"
               className="text-white p-2 hover:bg-navy-700 rounded-lg transition-colors"
