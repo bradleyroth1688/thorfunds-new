@@ -385,12 +385,65 @@ export default async function FundPage({ params }: FundPageProps) {
               </Link>
             </div>
 
-            {/* Top Holdings */}
+            {/* Historical Premium/Discount */}
+            <div className="card">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-semibold text-navy-800 dark:text-white">Premium/Discount History</h2>
+                <span className="text-xs bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 px-2 py-1 rounded">
+                  Coming Soon
+                </span>
+              </div>
+              
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Historical data showing the difference between the fund&apos;s market price and NAV over time.
+              </p>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200 dark:border-gray-600">
+                      <th className="text-left py-3 font-semibold text-navy-800 dark:text-white">Calendar Year</th>
+                      <th className="text-center py-3 font-semibold text-navy-800 dark:text-white">Days at Premium</th>
+                      <th className="text-center py-3 font-semibold text-navy-800 dark:text-white">Days at NAV</th>
+                      <th className="text-center py-3 font-semibold text-navy-800 dark:text-white">Days at Discount</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                    <tr>
+                      <td className="py-3 text-gray-700 dark:text-gray-300">2026 YTD</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-700 dark:text-gray-300">2025</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-700 dark:text-gray-300">2024</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                      <td className="py-3 text-center text-gray-400">—</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="mt-6 p-4 bg-gray-50 dark:bg-navy-800 rounded-lg">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Premium/discount data shows the number of days the fund traded above (premium), at, or below (discount) its net asset value. Data will be populated once API integration is complete.
+                </p>
+              </div>
+            </div>
+
+            {/* Holdings */}
             <div className="card">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-navy-800 dark:text-white">Top 10 Holdings</h2>
+                <h2 className="text-xl font-semibold text-navy-800 dark:text-white">Current Holdings</h2>
                 <span className="text-xs text-gray-500 dark:text-gray-400">
-                  {topHoldings.length > 0 ? `${topHoldings.length} positions shown` : ""}
+                  {topHoldings.length > 0 ? `As of ${navData?.navDate || "—"}` : ""}
                 </span>
               </div>
               
@@ -398,34 +451,64 @@ export default async function FundPage({ params }: FundPageProps) {
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b border-gray-200 dark:border-gray-700">
-                        <th className="text-left py-3 font-medium text-gray-700 dark:text-gray-300">#</th>
-                        <th className="text-left py-3 font-medium text-gray-700 dark:text-gray-300">Ticker</th>
-                        <th className="text-left py-3 font-medium text-gray-700 dark:text-gray-300">Name</th>
-                        <th className="text-right py-3 font-medium text-gray-700 dark:text-gray-300">Weight</th>
+                      <tr className="border-b-2 border-gray-200 dark:border-gray-600">
+                        <th className="text-left py-3 font-semibold text-navy-800 dark:text-white">Holding</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">Shares</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">Market Value</th>
+                        <th className="text-right py-3 font-semibold text-navy-800 dark:text-white">Weight</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                       {topHoldings.map((holding, i) => (
                         <tr key={i} className="hover:bg-gray-50 dark:hover:bg-navy-700/50">
-                          <td className="py-3 text-gray-500 dark:text-gray-400">{i + 1}</td>
-                          <td className="py-3 font-semibold text-navy-800 dark:text-white">{holding.ticker}</td>
-                          <td className="py-3 text-gray-600 dark:text-gray-300">{holding.name}</td>
-                          <td className="py-3 text-right font-medium text-navy-800 dark:text-white">
-                            {holding.weight.toFixed(2)}%
+                          <td className="py-3">
+                            <div className="font-semibold text-navy-800 dark:text-white">{holding.ticker}</div>
+                            <div className="text-xs text-gray-500 dark:text-gray-400 truncate max-w-[200px]">{holding.name}</div>
+                          </td>
+                          <td className="py-3 text-right text-gray-700 dark:text-gray-300 font-mono text-xs">
+                            {holding.shares ? holding.shares.toLocaleString() : "—"}
+                          </td>
+                          <td className="py-3 text-right text-gray-700 dark:text-gray-300">
+                            {holding.marketValue ? formatCurrency(holding.marketValue) : "—"}
+                          </td>
+                          <td className="py-3 text-right">
+                            <span className="font-semibold text-navy-800 dark:text-white">
+                              {holding.weight.toFixed(2)}%
+                            </span>
+                            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
+                              <div 
+                                className="bg-gold-500 h-1.5 rounded-full" 
+                                style={{ width: `${Math.min(holding.weight * 5, 100)}%` }}
+                              ></div>
+                            </div>
                           </td>
                         </tr>
                       ))}
                     </tbody>
+                    <tfoot>
+                      <tr className="border-t-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-navy-800">
+                        <td className="py-3 font-semibold text-navy-800 dark:text-white">Total (Top {topHoldings.length})</td>
+                        <td className="py-3 text-right text-gray-700 dark:text-gray-300">—</td>
+                        <td className="py-3 text-right text-gray-700 dark:text-gray-300">—</td>
+                        <td className="py-3 text-right font-bold text-navy-800 dark:text-white">
+                          {topHoldings.reduce((sum, h) => sum + h.weight, 0).toFixed(2)}%
+                        </td>
+                      </tr>
+                    </tfoot>
                   </table>
                 </div>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400 py-8 text-center">Holdings data unavailable</p>
               )}
               
-              <Link href={`/funds/${ticker}/holdings`} className="mt-4 inline-flex items-center text-gold-600 font-medium text-sm hover:text-gold-700">
-                View All Holdings →
-              </Link>
+              <div className="mt-6 flex items-center justify-between">
+                <Link href={`/funds/${ticker}/holdings`} className="inline-flex items-center text-gold-600 font-medium text-sm hover:text-gold-700">
+                  View All Holdings & Sector Breakdown →
+                </Link>
+                <Link href={`/funds/${ticker}/holdings`} className="text-xs text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                  Download CSV
+                </Link>
+              </div>
             </div>
           </div>
 
