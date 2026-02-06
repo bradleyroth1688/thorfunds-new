@@ -56,6 +56,14 @@ const mediaAppearances = [
     description: "Brad discusses healthy rotation out of large caps and tech's current limits."
   },
   {
+    title: "Trading 360",
+    outlet: "Trading 360",
+    type: "Video",
+    date: "2024",
+    url: "https://www.youtube.com/watch?v=H6-nyqtEmCs",
+    description: "Trading and market strategy discussion."
+  },
+  {
     title: "ETF Leaders: Brad Roth at Exchange 2023",
     outlet: "NYSE",
     type: "Video",
