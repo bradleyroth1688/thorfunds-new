@@ -8,12 +8,15 @@ export const metadata: Metadata = {
 };
 
 type Episode = {
-  id: string;
   slug: string;
   title: string;
   guest: string;
-  company: string | null;
-  publishedAt: string;
+  company: string;
+  date: string;
+  duration: string;
+  youtubeId: string;
+  audioUrl: string;
+  description: string;
 };
 
 const typedEpisodes = episodes as Episode[];

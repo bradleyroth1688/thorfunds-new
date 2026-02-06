@@ -15,9 +15,10 @@ import path from "path";
 
 interface Episode {
   slug: string;
-  publishedAt: string;
+  date: string;
   guest?: string;
   company?: string;
+  [key: string]: unknown;
 }
 
 const episodes = episodesData as unknown as Episode[];
@@ -101,7 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const episodePages: MetadataRoute.Sitemap = episodes.map((episode) => {
     let lastModified: Date;
     try {
-      lastModified = new Date(episode.publishedAt);
+      lastModified = new Date(episode.date);
       if (isNaN(lastModified.getTime())) {
         lastModified = new Date();
       }
