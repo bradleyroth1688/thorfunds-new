@@ -160,7 +160,7 @@ export function getOrganizationSchema(): OrganizationSchema {
       "Low Volatility Investing",
       "Index Rotation Strategy",
       "Risk Management",
-      "Tactical Asset Allocation",
+      "Dynamic Asset Allocation",
       "Market Cycle Analysis",
       "Digital Signal Processing in Finance"
     ],

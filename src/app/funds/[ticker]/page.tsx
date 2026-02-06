@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FUNDS, getNavData, getHoldings, formatCurrency, formatPercent, formatNav } from "@/lib/api";
+import { FUNDS, getNavData, getHoldings, formatCurrency, formatPercent, formatNav, formatNumber } from "@/lib/api";
 
 interface FundPageProps {
   params: Promise<{ ticker: string }>;
@@ -50,10 +50,10 @@ export default async function FundPage({ params }: FundPageProps) {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero with NAV + Market Price + Premium/Discount */}
       <section className="bg-navy-800 py-12 lg:py-16">
         <div className="container-wide">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
             <div>
               <div className="flex items-center gap-4">
                 <span className="text-4xl lg:text-5xl font-bold text-gold-500">{fund.ticker}</span>
@@ -63,58 +63,100 @@ export default async function FundPage({ params }: FundPageProps) {
               </div>
               <h1 className="mt-2 text-2xl lg:text-3xl font-semibold text-white">{fund.name}</h1>
               <p className="mt-4 text-gray-300 max-w-2xl">{fund.description}</p>
+              <div className="mt-4 flex gap-3">
+                <Link href={`/funds/${ticker}/holdings`} className="btn-outline border-white text-white hover:bg-white hover:text-navy-800 text-sm">
+                  Holdings
+                </Link>
+                <Link href={`/funds/${ticker}/performance`} className="btn-outline border-white text-white hover:bg-white hover:text-navy-800 text-sm">
+                  Performance
+                </Link>
+                <Link href={`/funds/${ticker}/documents`} className="btn-outline border-white text-white hover:bg-white hover:text-navy-800 text-sm">
+                  Documents
+                </Link>
+              </div>
             </div>
-            <div className="flex gap-3">
-              <Link href={`/funds/${ticker}/holdings`} className="btn-outline border-white text-white hover:bg-white hover:text-navy-800 text-sm">
-                Holdings
-              </Link>
-              <Link href={`/funds/${ticker}/performance`} className="btn-outline border-white text-white hover:bg-white hover:text-navy-800 text-sm">
-                Performance
-              </Link>
-              <Link href={`/funds/${ticker}/documents`} className="btn-outline border-white text-white hover:bg-white hover:text-navy-800 text-sm">
-                Documents
-              </Link>
+            
+            {/* Price Cards */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* NAV Card */}
+              <div className="bg-navy-700/50 rounded-xl p-5 min-w-[180px]">
+                <div className="text-sm text-gray-400 mb-1">NAV</div>
+                <div className="text-3xl font-bold text-white">
+                  {navData ? formatNav(navData.nav) : "—"}
+                </div>
+                {navData && (
+                  <div className={`text-sm mt-1 ${navData.navDailyChangePct >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                    {navData.navDailyChange >= 0 ? '+' : ''}{navData.navDailyChange.toFixed(2)} ({formatPercent(navData.navDailyChangePct)})
+                  </div>
+                )}
+                <div className="text-xs text-gray-500 mt-1">
+                  {navData?.navDate ? `As of ${navData.navDate}` : ""}
+                </div>
+              </div>
+              
+              {/* Market Price Card */}
+              <div className="bg-navy-700/50 rounded-xl p-5 min-w-[180px]">
+                <div className="text-sm text-gray-400 mb-1">Market Price</div>
+                <div className="text-3xl font-bold text-white">
+                  {navData ? formatNav(navData.marketPrice) : "—"}
+                </div>
+                {navData && (
+                  <div className={`text-sm mt-1 ${navData.marketDailyChangePct >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                    {navData.marketDailyChange >= 0 ? '+' : ''}{navData.marketDailyChange.toFixed(2)} ({formatPercent(navData.marketDailyChangePct)})
+                  </div>
+                )}
+                <div className="text-xs text-gray-500 mt-1">
+                  {navData && (
+                    <span className={navData.premiumDiscountPct >= 0 ? 'text-green-400' : 'text-red-400'}>
+                      {navData.premiumDiscountPct >= 0 ? 'Premium' : 'Discount'}: {Math.abs(navData.premiumDiscountPct).toFixed(2)}%
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Stats */}
-      <section className="bg-white py-8 border-b border-gray-100">
+      {/* Key Stats Bar */}
+      <section className="bg-navy-900 py-6">
         <div className="container-wide">
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-navy-800">
-                {navData ? formatNav(navData.nav) : "—"}
-              </div>
-              <div className="text-sm text-gray-600 mt-1">NAV</div>
-              <div className="text-xs text-gray-400">
-                {navData?.navDate ? `As of ${navData.navDate}` : ""}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-navy-800">
+              <div className="text-xl font-bold text-white">
                 {navData ? formatCurrency(navData.aum) : "—"}
               </div>
-              <div className="text-sm text-gray-600 mt-1">AUM</div>
+              <div className="text-xs text-gray-400 mt-1">AUM</div>
             </div>
             <div className="text-center">
-              <div className={`text-2xl lg:text-3xl font-bold ${navData && navData.returns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
+              <div className={`text-xl font-bold ${navData && navData.returns.ytd >= 0 ? "text-green-400" : "text-red-400"}`}>
                 {navData ? formatPercent(navData.returns.ytd) : "—"}
               </div>
-              <div className="text-sm text-gray-600 mt-1">YTD Return</div>
+              <div className="text-xs text-gray-400 mt-1">YTD Return</div>
             </div>
             <div className="text-center">
-              <div className={`text-2xl lg:text-3xl font-bold ${navData && navData.returns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+              <div className={`text-xl font-bold ${navData && navData.returns.oneYear >= 0 ? "text-green-400" : "text-red-400"}`}>
                 {navData ? formatPercent(navData.returns.oneYear) : "—"}
               </div>
-              <div className="text-sm text-gray-600 mt-1">1 Year</div>
+              <div className="text-xs text-gray-400 mt-1">1 Year</div>
             </div>
             <div className="text-center">
-              <div className={`text-2xl lg:text-3xl font-bold ${navData && navData.returns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+              <div className={`text-xl font-bold ${navData && navData.returns.sinceInception >= 0 ? "text-green-400" : "text-red-400"}`}>
                 {navData ? formatPercent(navData.returns.sinceInception) : "—"}
               </div>
-              <div className="text-sm text-gray-600 mt-1">Since Inception</div>
+              <div className="text-xs text-gray-400 mt-1">Since Inception</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xl font-bold text-white">
+                {navData ? formatNumber(navData.volume) : "—"}
+              </div>
+              <div className="text-xs text-gray-400 mt-1">Volume</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xl font-bold text-white">
+                {fund.expenseRatio.toFixed(2)}%
+              </div>
+              <div className="text-xs text-gray-400 mt-1">Expense Ratio</div>
             </div>
           </div>
         </div>
@@ -124,69 +166,137 @@ export default async function FundPage({ params }: FundPageProps) {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Performance Table */}
+            {/* Full Performance Table */}
             <div className="card">
-              <h2 className="text-xl font-semibold text-navy-800 mb-4">Performance</h2>
+              <h2 className="text-xl font-semibold text-navy-800 dark:text-white mb-4">Performance</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="text-left py-3 font-medium text-gray-700">Period</th>
-                      <th className="text-right py-3 font-medium text-gray-700">{fund.ticker}</th>
-                      <th className="text-right py-3 font-medium text-gray-700">Benchmark</th>
+                    <tr className="border-b border-gray-200 dark:border-gray-700">
+                      <th className="text-left py-3 font-medium text-gray-700 dark:text-gray-300">Period</th>
+                      <th className="text-right py-3 font-medium text-gray-700 dark:text-gray-300">NAV Return</th>
+                      <th className="text-right py-3 font-medium text-gray-700 dark:text-gray-300">Market Return</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                     <tr>
-                      <td className="py-3 text-gray-600">1 Month</td>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">1 Day</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.returns.oneDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.returns.oneDay) : "—"}
+                      </td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.oneDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.oneDay) : "—"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">5 Days</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.returns.fiveDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.returns.fiveDay) : "—"}
+                      </td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.fiveDay >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.fiveDay) : "—"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">MTD</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.returns.monthToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.returns.monthToDate) : "—"}
+                      </td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.monthToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.monthToDate) : "—"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">1 Month</td>
                       <td className={`py-3 text-right font-medium ${navData && navData.returns.oneMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
                         {navData ? formatPercent(navData.returns.oneMonth) : "—"}
                       </td>
-                      <td className="py-3 text-right text-gray-500">—</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.oneMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.oneMonth) : "—"}
+                      </td>
                     </tr>
                     <tr>
-                      <td className="py-3 text-gray-600">3 Months</td>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">QTD</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.returns.quarterToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.returns.quarterToDate) : "—"}
+                      </td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.quarterToDate >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.quarterToDate) : "—"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">3 Months</td>
                       <td className={`py-3 text-right font-medium ${navData && navData.returns.threeMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
                         {navData ? formatPercent(navData.returns.threeMonth) : "—"}
                       </td>
-                      <td className="py-3 text-right text-gray-500">—</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.threeMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.threeMonth) : "—"}
+                      </td>
                     </tr>
                     <tr>
-                      <td className="py-3 text-gray-600">YTD</td>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">6 Months</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.returns.sixMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.returns.sixMonth) : "—"}
+                      </td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.sixMonth >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.sixMonth) : "—"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">YTD</td>
                       <td className={`py-3 text-right font-medium ${navData && navData.returns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
                         {navData ? formatPercent(navData.returns.ytd) : "—"}
                       </td>
-                      <td className="py-3 text-right text-gray-500">—</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.ytd >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.ytd) : "—"}
+                      </td>
                     </tr>
                     <tr>
-                      <td className="py-3 text-gray-600">1 Year</td>
+                      <td className="py-3 text-gray-600 dark:text-gray-400">1 Year</td>
                       <td className={`py-3 text-right font-medium ${navData && navData.returns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
                         {navData ? formatPercent(navData.returns.oneYear) : "—"}
                       </td>
-                      <td className="py-3 text-right text-gray-500">—</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 text-gray-600">3 Years (Ann.)</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {navData ? formatPercent(navData.returns.threeYear) : "—"}
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.oneYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.oneYear) : "—"}
                       </td>
-                      <td className="py-3 text-right text-gray-500">—</td>
                     </tr>
-                    <tr>
-                      <td className="py-3 text-gray-600">Since Inception</td>
-                      <td className={`py-3 text-right font-medium ${navData && navData.returns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                    {navData && navData.returns.threeYear !== null && (
+                      <tr>
+                        <td className="py-3 text-gray-600 dark:text-gray-400">3 Years (Ann.)</td>
+                        <td className={`py-3 text-right font-medium ${navData.returns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {formatPercent(navData.returns.threeYear)}
+                        </td>
+                        <td className={`py-3 text-right font-medium ${navData.marketReturns.threeYear && navData.marketReturns.threeYear >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {formatPercent(navData.marketReturns.threeYear)}
+                        </td>
+                      </tr>
+                    )}
+                    <tr className="border-t-2 border-gray-200 dark:border-gray-600">
+                      <td className="py-3 font-medium text-navy-800 dark:text-white">Since Inception</td>
+                      <td className={`py-3 text-right font-bold ${navData && navData.returns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
                         {navData ? formatPercent(navData.returns.sinceInception) : "—"}
                       </td>
-                      <td className="py-3 text-right text-gray-500">—</td>
+                      <td className={`py-3 text-right font-bold ${navData && navData.marketReturns.sinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.sinceInception) : "—"}
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-50 dark:bg-navy-700">
+                      <td className="py-3 text-gray-600 dark:text-gray-400">Cumulative Return</td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.returns.cummSinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.returns.cummSinceInception) : "—"}
+                      </td>
+                      <td className={`py-3 text-right font-medium ${navData && navData.marketReturns.cummSinceInception >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {navData ? formatPercent(navData.marketReturns.cummSinceInception) : "—"}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="mt-4 text-xs text-gray-500">
-                Performance data is historical and does not guarantee future results. Current performance may be higher or lower.
+              <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                Performance data is historical and does not guarantee future results. Current performance may be higher or lower. Returns for periods less than one year are not annualized.
               </p>
               <Link href={`/funds/${ticker}/performance`} className="mt-4 inline-flex items-center text-gold-600 font-medium text-sm hover:text-gold-700">
-                View Full Performance
+                View Full Performance History
                 <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
@@ -195,24 +305,24 @@ export default async function FundPage({ params }: FundPageProps) {
 
             {/* Top Holdings */}
             <div className="card">
-              <h2 className="text-xl font-semibold text-navy-800 mb-4">Top Holdings</h2>
+              <h2 className="text-xl font-semibold text-navy-800 dark:text-white mb-4">Top Holdings</h2>
               {topHoldings.length > 0 ? (
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b border-gray-200">
-                        <th className="text-left py-3 font-medium text-gray-700">Holding</th>
-                        <th className="text-right py-3 font-medium text-gray-700">Weight</th>
+                      <tr className="border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left py-3 font-medium text-gray-700 dark:text-gray-300">Holding</th>
+                        <th className="text-right py-3 font-medium text-gray-700 dark:text-gray-300">Weight</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
+                    <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
                       {topHoldings.map((holding, i) => (
                         <tr key={i}>
                           <td className="py-3">
-                            <span className="font-medium text-navy-800">{holding.ticker}</span>
-                            <span className="text-gray-500 ml-2">{holding.name}</span>
+                            <span className="font-medium text-navy-800 dark:text-white">{holding.ticker}</span>
+                            <span className="text-gray-500 dark:text-gray-400 ml-2">{holding.name}</span>
                           </td>
-                          <td className="py-3 text-right font-medium text-navy-800">
+                          <td className="py-3 text-right font-medium text-navy-800 dark:text-white">
                             {holding.weight.toFixed(2)}%
                           </td>
                         </tr>
@@ -221,7 +331,7 @@ export default async function FundPage({ params }: FundPageProps) {
                   </table>
                 </div>
               ) : (
-                <p className="text-gray-500">Holdings data unavailable</p>
+                <p className="text-gray-500 dark:text-gray-400">Holdings data unavailable</p>
               )}
               <Link href={`/funds/${ticker}/holdings`} className="mt-4 inline-flex items-center text-gold-600 font-medium text-sm hover:text-gold-700">
                 View All Holdings
@@ -234,32 +344,85 @@ export default async function FundPage({ params }: FundPageProps) {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Fund Details */}
+            {/* Fund Facts */}
             <div className="card">
-              <h3 className="text-lg font-semibold text-navy-800 mb-4">Fund Details</h3>
+              <h3 className="text-lg font-semibold text-navy-800 dark:text-white mb-4">Fund Facts</h3>
               <dl className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Ticker</dt>
-                  <dd className="font-medium text-navy-800">{fund.ticker}</dd>
+                  <dt className="text-gray-500 dark:text-gray-400">Ticker</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{fund.ticker}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Strategy</dt>
-                  <dd className="font-medium text-navy-800">{fund.strategy}</dd>
+                  <dt className="text-gray-500 dark:text-gray-400">CUSIP</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{navData?.cusip || "—"}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Benchmark</dt>
-                  <dd className="font-medium text-navy-800 text-right max-w-[180px]">{fund.benchmark}</dd>
+                  <dt className="text-gray-500 dark:text-gray-400">Inception Date</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{navData?.inceptionDate || "—"}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Distributor</dt>
-                  <dd className="font-medium text-navy-800">PINE Distributors</dd>
+                  <dt className="text-gray-500 dark:text-gray-400">Expense Ratio</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{fund.expenseRatio.toFixed(2)}%</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-gray-500 dark:text-gray-400">Shares Outstanding</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{navData ? formatNumber(navData.shares) : "—"}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-gray-500 dark:text-gray-400">AUM</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{navData ? formatCurrency(navData.aum) : "—"}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-gray-500 dark:text-gray-400">Strategy</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">{fund.strategy}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-gray-500 dark:text-gray-400">Benchmark</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white text-right max-w-[180px]">{fund.benchmark}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-gray-500 dark:text-gray-400">Distributor</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white">PINE Distributors</dd>
                 </div>
               </dl>
             </div>
 
+            {/* Distribution History */}
+            {navData && (navData.dividendPerShare > 0 || navData.exDate) && (
+              <div className="card">
+                <h3 className="text-lg font-semibold text-navy-800 dark:text-white mb-4">Distribution Info</h3>
+                <dl className="space-y-3 text-sm">
+                  {navData.dividendPerShare > 0 && (
+                    <div className="flex justify-between">
+                      <dt className="text-gray-500 dark:text-gray-400">Dividend/Share</dt>
+                      <dd className="font-medium text-navy-800 dark:text-white">${navData.dividendPerShare.toFixed(4)}</dd>
+                    </div>
+                  )}
+                  {navData.exDate && (
+                    <div className="flex justify-between">
+                      <dt className="text-gray-500 dark:text-gray-400">Ex-Date</dt>
+                      <dd className="font-medium text-navy-800 dark:text-white">{navData.exDate}</dd>
+                    </div>
+                  )}
+                  {navData.recordDate && (
+                    <div className="flex justify-between">
+                      <dt className="text-gray-500 dark:text-gray-400">Record Date</dt>
+                      <dd className="font-medium text-navy-800 dark:text-white">{navData.recordDate}</dd>
+                    </div>
+                  )}
+                  {navData.paymentDate && (
+                    <div className="flex justify-between">
+                      <dt className="text-gray-500 dark:text-gray-400">Payment Date</dt>
+                      <dd className="font-medium text-navy-800 dark:text-white">{navData.paymentDate}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+            )}
+
             {/* Documents */}
             <div className="card">
-              <h3 className="text-lg font-semibold text-navy-800 mb-4">Documents</h3>
+              <h3 className="text-lg font-semibold text-navy-800 dark:text-white mb-4">Documents</h3>
               <ul className="space-y-2">
                 <li>
                   <Link href={`/funds/${ticker}/documents`} className="flex items-center text-sm text-gold-600 hover:text-gold-700">
@@ -309,10 +472,10 @@ export default async function FundPage({ params }: FundPageProps) {
       </div>
 
       {/* Disclaimer */}
-      <section className="bg-gray-50 py-8">
+      <section className="bg-gray-50 dark:bg-navy-800 py-8">
         <div className="container-wide">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            <strong>Important Information:</strong> Investors should consider the investment objectives, risks, charges, and expenses carefully before investing. The prospectus contains this and other information about the fund. Please read the prospectus carefully before investing. Investing involves risk, including the possible loss of principal. Past performance does not guarantee future results. ETF shares are bought and sold at market price (not NAV) and are not individually redeemed from the fund.
+          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            <strong>Important Information:</strong> Investors should consider the investment objectives, risks, charges, and expenses carefully before investing. The prospectus contains this and other information about the fund. Please read the prospectus carefully before investing. Investing involves risk, including the possible loss of principal. Past performance does not guarantee future results. ETF shares are bought and sold at market price (not NAV) and are not individually redeemed from the fund. Market price returns are based upon the midpoint of the bid/ask spread at 4:00 PM Eastern time.
           </p>
         </div>
       </section>

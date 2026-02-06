@@ -48,7 +48,7 @@ export function PersonSchema({ person, isAuthor = false }: PersonSchemaProps) {
       knowsAbout: [
         "Exchange-Traded Funds",
         "Risk Management",
-        "Tactical Investing",
+        "Adaptive Investing",
         "Portfolio Management",
         "Financial Markets",
       ],
@@ -67,7 +67,7 @@ export function PersonSchema({ person, isAuthor = false }: PersonSchemaProps) {
 export const BRAD_ROTH: PersonData = {
   name: "Brad Roth",
   jobTitle: "Chief Investment Officer",
-  description: "Brad Roth is the founder and CIO of THOR Financial Technologies, where he leads the development of risk-managed ETF strategies. With over 15 years of experience in investment management, Brad is a recognized thought leader in tactical and defensive investing.",
+  description: "Brad Roth is the founder and CIO of THOR Financial Technologies, where he leads the development of risk-managed ETF strategies. With over 15 years of experience in investment management, Brad is a recognized thought leader in adaptive and defensive investing.",
   image: "https://thorfunds.com/team/brad-roth.jpg",
   company: "THOR Financial Technologies",
   companyUrl: "https://thorfunds.com",

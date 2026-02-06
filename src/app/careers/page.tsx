@@ -13,7 +13,7 @@ export default function CareersPage() {
         <div className="container-max mx-auto px-4 md:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Join Our Team</h1>
           <p className="text-xl text-white/80 max-w-2xl">
-            Help us build the future of tactical investing. We're looking for talented individuals 
+            Help us build the future of adaptive investing. We're looking for talented individuals 
             who want to make a real impact.
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function CareersPage() {
                   <span className="bg-gold-100 text-gold-700 px-3 py-1 rounded-full text-xs font-medium">Now Hiring</span>
                 </div>
                 <p className="text-gray-600 text-sm mt-3">
-                  Join our distribution team to help bring THOR's tactical ETF strategies to financial advisors nationwide.
+                  Join our distribution team to help bring THOR's adaptive ETF strategies to financial advisors nationwide.
                 </p>
                 <Link href="/contact" className="text-navy-700 font-medium text-sm mt-3 inline-block hover:text-gold-600">
                   Apply Now →

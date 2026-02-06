@@ -89,8 +89,8 @@ export default async function PerformancePage({ params }: PerformancePageProps) 
                   ].map((row) => (
                     <tr key={row.label}>
                       <td className="py-4 text-gray-600">{row.label}</td>
-                      <td className={`py-4 text-right font-semibold ${row.value !== undefined && row.value >= 0 ? "text-green-600" : "text-red-600"}`}>
-                        {row.value !== undefined ? formatPercent(row.value) : "—"}
+                      <td className={`py-4 text-right font-semibold ${row.value !== undefined && row.value !== null && row.value >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {row.value !== undefined && row.value !== null ? formatPercent(row.value) : "—"}
                       </td>
                       <td className="py-4 text-right text-gray-400">—</td>
                     </tr>

@@ -68,7 +68,7 @@ const comparisonData = [
 const faqs = [
   {
     question: "What is the best low volatility ETF to buy in 2026?",
-    answer: "The best low volatility ETF depends on your specific needs. THLV offers unique tactical overlay that can move to treasuries during downturns. USMV has the lowest expense ratio. SPLV focuses on the 100 lowest volatility S&P 500 stocks. For investors wanting downside protection beyond just stock selection, THLV's ability to go to cash makes it stand out.",
+    answer: "The best low volatility ETF depends on your specific needs. THLV offers a unique adaptive overlay that can move to treasuries during downturns. USMV has the lowest expense ratio. SPLV focuses on the 100 lowest volatility S&P 500 stocks. For investors wanting downside protection beyond just stock selection, THLV's ability to go to cash makes it stand out.",
   },
   {
     question: "Is SPLV or USMV better?",
@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     question: "What makes THLV different from other low vol ETFs?",
-    answer: "THLV is the only low volatility ETF that can tactically rotate to short-term treasuries when market conditions deteriorate. Traditional low-vol ETFs like SPLV and USMV are always 100% invested in equities. THLV's defensive mechanism means it can protect capital during severe downturns, not just moderate volatility.",
+    answer: "THLV is the only low volatility ETF that can dynamically rotate to short-term treasuries when market conditions deteriorate. Traditional low-vol ETFs like SPLV and USMV are always 100% invested in equities. THLV's defensive mechanism means it can protect capital during severe downturns, not just moderate volatility.",
   },
   {
     question: "Are low volatility ETFs good for retirees?",
@@ -296,7 +296,7 @@ export default function BestLowVolETF2026Page() {
               Ready to Explore THLV?
             </h2>
             <p className="text-navy-700/80 mb-6">
-              Learn more about our low volatility ETF with tactical risk management.
+              Learn more about our low volatility ETF with adaptive risk management.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/funds/thlv" className="btn-secondary">

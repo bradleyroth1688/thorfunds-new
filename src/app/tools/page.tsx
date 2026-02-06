@@ -99,7 +99,7 @@ export default function ToolsPage() {
             New to Investing?
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Start with our educational content to understand the basics of ETFs, risk management, and tactical investing.
+            Start with our educational content to understand the basics of ETFs, risk management, and adaptive investing.
           </p>
           <Link href="/learn" className="btn-primary">
             Visit Learning Center

@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     question: "How does THLV differ from other low vol ETFs like SPLV?",
-    answer: "THLV adds a tactical overlay to its low-volatility approach. While SPLV stays fully invested at all times, THLV can rotate sectors to short-term treasuries when risk signals turn negative, providing an additional layer of downside protection.",
+    answer: "THLV adds an adaptive overlay to its low-volatility approach. While SPLV stays fully invested at all times, THLV can rotate sectors to short-term treasuries when risk signals turn negative, providing an additional layer of downside protection.",
   },
   {
     question: "Who should consider low volatility investing?",
@@ -277,7 +277,7 @@ export default function LowVolatilityPillarPage() {
           {/* THOR's Approach */}
           <section id="thor-approach" className="mb-16 scroll-mt-32">
             <h2 className="heading-2 text-navy-800 dark:text-white mb-6">
-              THOR's Approach: Low Vol + Tactical
+              THOR's Approach: Low Vol + Adaptive
             </h2>
             <div className="prose-content">
               <p>
@@ -288,7 +288,7 @@ export default function LowVolatilityPillarPage() {
 
               <p>
                 <strong>THLV takes a different approach.</strong> We combine low-volatility sector 
-                selection with tactical risk management. When our signals detect elevated market risk, 
+                selection with adaptive risk management. When our signals detect elevated market risk, 
                 we can rotate from equities to short-term treasuries—the same approach used in our 
                 flagship THIR fund.
               </p>

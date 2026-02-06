@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Press & Media | THOR Funds",
-  description: "Media coverage, press releases, and news about THOR Funds and our tactical ETF strategies.",
+  description: "Media coverage, press releases, and news about THOR Funds and our adaptive ETF strategies.",
   openGraph: {
     title: "Press & Media | THOR Funds",
     description: "News and media coverage about THOR Funds.",
@@ -14,7 +14,7 @@ const pressReleases = [
   {
     date: "September 2024",
     title: "THOR Funds Launches THIR ETF",
-    description: "THOR Financial Technologies announces the launch of THIR, a tactical index rotation ETF designed to provide risk-managed equity exposure.",
+    description: "THOR Financial Technologies announces the launch of THIR, an adaptive index rotation ETF designed to provide risk-managed equity exposure.",
     link: "#",
   },
   {
@@ -28,13 +28,13 @@ const pressReleases = [
 const mediaFeatures = [
   {
     outlet: "ETF.com",
-    title: "New ETF Launches: THIR and THLV Enter the Tactical Space",
+    title: "New ETF Launches: THIR and THLV Enter the Adaptive Space",
     date: "October 2024",
     link: "#",
   },
   {
     outlet: "Citywire",
-    title: "The Case for Tactical ETFs in Modern Portfolios",
+    title: "The Case for Adaptive ETFs in Modern Portfolios",
     date: "November 2024",
     link: "#",
   },

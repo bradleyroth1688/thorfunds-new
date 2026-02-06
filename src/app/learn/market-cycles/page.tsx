@@ -3,8 +3,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Understanding Market Cycles | THOR Funds Education",
-  description: "Learn about market cycles, regime changes, and how tactical strategies can adapt to changing market conditions.",
-  keywords: ["market cycles", "regime change", "bull market", "bear market", "tactical investing"],
+  description: "Learn about market cycles, regime changes, and how adaptive strategies can respond to changing market conditions.",
+  keywords: ["market cycles", "regime change", "bull market", "bear market", "adaptive investing"],
 };
 
 export default function MarketCyclesPage() {
@@ -21,7 +21,7 @@ export default function MarketCyclesPage() {
           <h1 className="text-3xl lg:text-4xl font-bold mb-4">Understanding Market Cycles</h1>
           <p className="text-xl text-gray-300 max-w-3xl">
             Markets move in cycles. Understanding these cycles—and when they change—is fundamental 
-            to tactical investing.
+            to adaptive investing.
           </p>
         </div>
       </section>

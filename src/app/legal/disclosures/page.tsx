@@ -36,7 +36,7 @@ export default function DisclosuresPage() {
 
           <h3>Strategy-Specific Risks</h3>
           <p>
-            <strong>THIR (Index Rotation):</strong> The fund uses a tactical rotation strategy that may result in frequent trading, which could increase costs and taxes. The strategy may not accurately identify market turning points, and the fund may be fully invested in declining markets or in cash during rising markets.
+            <strong>THIR (Index Rotation):</strong> The fund uses an adaptive rotation strategy that may result in frequent trading, which could increase costs and taxes. The strategy may not accurately identify market turning points, and the fund may be fully invested in declining markets or in cash during rising markets.
           </p>
           <p>
             <strong>THLV (Low Volatility):</strong> Low volatility investing does not guarantee lower risk or positive returns. The fund may underperform in rapidly rising markets. Sector concentration may increase volatility.

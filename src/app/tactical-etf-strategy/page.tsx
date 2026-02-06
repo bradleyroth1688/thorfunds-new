@@ -2,11 +2,11 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tactical ETF Strategy | Active Risk Management for Advisors",
-  description: "THOR's tactical ETF strategies use digital signal processing to detect market regime changes. Learn how our risk-managed approach helps protect portfolios during downturns.",
-  keywords: ["tactical ETF", "risk management", "active ETF", "market timing", "defensive strategy", "signal processing"],
+  title: "Adaptive ETF Strategy | Active Risk Management for Advisors",
+  description: "THOR's adaptive ETF strategies use digital signal processing to detect market regime changes. Learn how our risk-managed approach helps protect portfolios during downturns.",
+  keywords: ["adaptive ETF", "risk management", "active ETF", "market timing", "defensive strategy", "signal processing"],
   openGraph: {
-    title: "Tactical ETF Strategy | THOR Funds",
+    title: "Adaptive ETF Strategy | THOR Funds",
     description: "Active risk management using digital signal processing. Strategies that can move to cash when conditions deteriorate.",
   },
 };
@@ -19,13 +19,13 @@ export default function TacticalETFStrategyPage() {
         <div className="container-wide">
           <div className="max-w-3xl">
             <span className="inline-block bg-gold-500 text-navy-900 px-3 py-1 rounded text-sm font-medium mb-4">
-              Tactical Investing
+              Adaptive Investing
             </span>
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Tactical ETF Strategies That React, Not Predict
+              Adaptive ETF Strategies That React, Not Predict
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
-              Most tactical strategies try to predict the future. We don&apos;t. Our signal processing 
+              Most active strategies try to predict the future. We don&apos;t. Our signal processing 
               technology detects market regime changes as they happen, allowing systematic 
               adjustments to portfolio positioning.
             </p>
@@ -96,7 +96,7 @@ export default function TacticalETFStrategyPage() {
       {/* Tactical vs Traditional */}
       <section className="section-padding bg-gray-50">
         <div className="container-wide">
-          <h2 className="text-3xl font-bold text-navy-800 text-center mb-12">Tactical vs. Traditional Approaches</h2>
+          <h2 className="text-3xl font-bold text-navy-800 text-center mb-12">Adaptive vs. Traditional Approaches</h2>
           
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -105,7 +105,7 @@ export default function TacticalETFStrategyPage() {
                   <tr>
                     <th className="px-6 py-4 text-left font-medium">Approach</th>
                     <th className="px-6 py-4 text-left font-medium">Traditional Index</th>
-                    <th className="px-6 py-4 text-left font-medium">THOR Tactical</th>
+                    <th className="px-6 py-4 text-left font-medium">THOR Adaptive</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -144,7 +144,7 @@ export default function TacticalETFStrategyPage() {
       {/* The Process */}
       <section className="section-padding bg-white">
         <div className="container-wide">
-          <h2 className="text-3xl font-bold text-navy-800 text-center mb-4">Our Tactical Process</h2>
+          <h2 className="text-3xl font-bold text-navy-800 text-center mb-4">Our Adaptive Process</h2>
           <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
             A systematic approach that monitors markets continuously and adjusts positioning based on signal strength
           </p>
@@ -196,7 +196,7 @@ export default function TacticalETFStrategyPage() {
       {/* Two Funds */}
       <section className="section-padding bg-navy-800 text-white">
         <div className="container-wide">
-          <h2 className="text-3xl font-bold text-center mb-4">Two Tactical ETF Strategies</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">Two Adaptive ETF Strategies</h2>
           <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
             Different approaches, same philosophy: participate in upside, protect against downside
           </p>
@@ -242,9 +242,9 @@ export default function TacticalETFStrategyPage() {
       {/* CTA */}
       <section className="section-padding bg-gradient-to-br from-gold-400 to-gold-500">
         <div className="container-wide text-center">
-          <h2 className="text-3xl font-bold text-navy-800 mb-4">Ready to Add Tactical Exposure?</h2>
+          <h2 className="text-3xl font-bold text-navy-800 mb-4">Ready to Add Adaptive Exposure?</h2>
           <p className="text-lg text-navy-700/80 max-w-2xl mx-auto mb-8">
-            Contact us to learn how THOR&apos;s tactical ETF strategies can complement your portfolio.
+            Contact us to learn how THOR&apos;s adaptive ETF strategies can complement your portfolio.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/resources/advisors" className="btn-secondary">

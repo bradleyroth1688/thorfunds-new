@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Learn",
-  description: "Educational resources about ETFs, risk management, and THOR's investment strategies. Understand index rotation, low volatility investing, and tactical asset allocation.",
+  description: "Educational resources about ETFs, risk management, and THOR's investment strategies. Understand index rotation, low volatility investing, and dynamic asset allocation.",
 };
 
 const articles = [

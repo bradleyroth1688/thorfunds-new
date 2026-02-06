@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   keywords: ["risk managed ETF", "drawdown protection", "risk management", "active ETF", "volatility management"],
   openGraph: {
     title: "Risk-Managed ETFs | THOR Funds",
-    description: "Tactical ETFs with built-in drawdown protection through systematic signal processing.",
+    description: "Adaptive ETFs with built-in drawdown protection through systematic signal processing.",
   },
 };
 

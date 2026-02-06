@@ -81,7 +81,7 @@ export function OrganizationSchema({ includeFinancialServices = true }: Organiza
     knowsAbout: [
       "Exchange-Traded Funds",
       "Risk Management",
-      "Tactical Asset Allocation",
+      "Dynamic Asset Allocation",
       "Index Rotation",
       "Low Volatility Investing",
       "Downside Protection",

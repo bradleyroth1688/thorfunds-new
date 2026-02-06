@@ -16,7 +16,7 @@ const faqs = [
       },
       {
         q: "How much does THOR manage?",
-        a: "THOR Financial Technologies offers robust model offerings across two tactical ETFs and separately managed accounts.",
+        a: "THOR Financial Technologies offers robust model offerings across two adaptive ETFs and separately managed accounts.",
       },
       {
         q: "Who is THOR designed for?",
@@ -29,7 +29,7 @@ const faqs = [
     questions: [
       {
         q: "What's the difference between THIR and THLV?",
-        a: "THIR (Index Rotation) tactically rotates between three major U.S. equity indexes—SPY, DIA, and QQQ—and is best used as a satellite allocation. THLV (Low Volatility) equal-weights 10 S&P 500 sectors and is designed as a core equity holding. Both can move to 100% cash when conditions warrant.",
+        a: "THIR (Index Rotation) dynamically rotates between three major U.S. equity indexes—SPY, DIA, and QQQ—and is best used as a satellite allocation. THLV (Low Volatility) equal-weights 10 S&P 500 sectors and is designed as a core equity holding. Both can move to 100% cash when conditions warrant.",
       },
       {
         q: "Can THOR's ETFs really go to 100% cash?",

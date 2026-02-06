@@ -102,11 +102,11 @@ export function ProductSchema({ fund }: ProductSchemaProps) {
 export const THIR_FUND: FundData = {
   ticker: "THIR",
   name: "THOR Index Rotation ETF",
-  description: "A tactical ETF that rotates between major equity indices and cash based on market conditions, seeking to participate in upside while protecting against significant drawdowns.",
+  description: "An adaptive ETF that rotates between major equity indices and cash based on market conditions, seeking to participate in upside while protecting against significant drawdowns.",
   inceptionDate: "2022-08-16",
   expenseRatio: "0.80%",
   exchange: "NYSE Arca",
-  category: "Tactical Equity ETF",
+  category: "Adaptive Equity ETF",
   benchmark: "S&P 500 Total Return Index",
 };
 

@@ -95,7 +95,7 @@ export function generateMetadata(seo: PageSEO): Metadata {
  * Meta title templates by page type
  */
 export const TITLE_TEMPLATES = {
-  homepage: 'THOR Funds | Tactical ETFs for Downside Protection',
+  homepage: 'THOR Funds | Adaptive ETFs for Downside Protection',
   fund: (ticker: string, name: string) => `${ticker} - ${name} | THOR Funds`,
   fundPerformance: (ticker: string) => `${ticker} Performance & Returns | THOR Funds`,
   fundHoldings: (ticker: string) => `${ticker} Holdings & Composition | THOR Funds`,
@@ -169,7 +169,7 @@ export function generateFundMetadata(
     description: descriptions[page],
     path: paths[page],
     type: 'website', // Use website for fund pages (product not valid in OG)
-    keywords: [tickerUpper, name, 'ETF', 'risk management', 'tactical investing'],
+    keywords: [tickerUpper, name, 'ETF', 'risk management', 'adaptive investing'],
   });
 }
 

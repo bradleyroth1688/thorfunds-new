@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "White Papers & Research | THOR Funds",
-  description: "In-depth research and white papers on tactical investing, risk management, and our signal-based methodology.",
+  description: "In-depth research and white papers on adaptive investing, risk management, and our signal-based methodology.",
   openGraph: {
     title: "White Papers & Research | THOR Funds",
     description: "Research papers and in-depth analysis from THOR Funds.",
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 const whitePapers = [
   {
-    title: "The Case for Tactical ETFs",
-    description: "An examination of how tactical strategies can complement traditional buy-and-hold portfolios, with historical analysis of drawdown protection.",
+    title: "The Case for Adaptive ETFs",
+    description: "An examination of how adaptive strategies can complement traditional buy-and-hold portfolios, with historical analysis of drawdown protection.",
     category: "Strategy",
     date: "2024",
     comingSoon: true,
@@ -40,7 +40,7 @@ const whitePapers = [
     comingSoon: true,
   },
   {
-    title: "Index Rotation: A Framework for Tactical Equity",
+    title: "Index Rotation: A Framework for Adaptive Equity",
     description: "How rotating between major indexes based on risk signals can provide both participation and protection.",
     category: "Strategy",
     date: "2024",
@@ -57,7 +57,7 @@ export default function WhitePapersPage() {
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">White Papers & Research</h1>
             <p className="text-xl text-gray-300 leading-relaxed">
-              In-depth research on tactical investing, risk management, and our methodology. 
+              In-depth research on adaptive investing, risk management, and our methodology. 
               These papers explain the science and data behind THOR strategies.
             </p>
           </div>

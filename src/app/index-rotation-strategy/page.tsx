@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import FundStats from "@/components/fund/FundStats";
 
 export const metadata: Metadata = {
-  title: "Index Rotation Strategy | THIR ETF - Tactical Index Switching",
-  description: "THIR rotates between S&P 500, Dow Jones, and Nasdaq based on risk signals. Learn how our index rotation strategy provides tactical equity exposure with downside protection.",
-  keywords: ["index rotation", "THIR", "tactical ETF", "SPY", "QQQ", "DIA", "index switching", "rotation strategy"],
+  title: "Index Rotation Strategy | THIR ETF - Adaptive Index Switching",
+  description: "THIR rotates between S&P 500, Dow Jones, and Nasdaq based on risk signals. Learn how our index rotation strategy provides adaptive equity exposure with downside protection.",
+  keywords: ["index rotation", "THIR", "adaptive ETF", "SPY", "QQQ", "DIA", "index switching", "rotation strategy"],
   openGraph: {
     title: "Index Rotation Strategy | THIR - THOR Funds",
-    description: "Tactical ETF that rotates between major U.S. indexes with the ability to move to 100% treasuries.",
+    description: "Adaptive ETF that rotates between major U.S. indexes with the ability to move to 100% treasuries.",
   },
 };
 
@@ -199,7 +199,7 @@ export default function IndexRotationStrategyPage() {
             <h2 className="text-3xl font-bold mb-6">Satellite Exposure, Not Core Replacement</h2>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
               THIR is designed as satellite exposure alongside existing long-only equity holdings. 
-              It&apos;s not meant to replace your core allocation—it enhances it by adding tactical 
+              It&apos;s not meant to replace your core allocation—it enhances it by adding adaptive 
               risk management that can protect during severe drawdowns.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

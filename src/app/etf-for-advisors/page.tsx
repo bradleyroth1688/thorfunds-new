@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ETFs for Financial Advisors | Tactical Strategies for Client Portfolios",
-  description: "THOR ETFs are designed for financial advisors seeking risk-managed strategies. Add tactical allocation to client portfolios with institutional-quality research.",
-  keywords: ["ETF for advisors", "RIA ETF", "advisor ETF", "tactical allocation", "risk management for advisors"],
+  title: "ETFs for Financial Advisors | Adaptive Strategies for Client Portfolios",
+  description: "THOR ETFs are designed for financial advisors seeking risk-managed strategies. Add adaptive allocation to client portfolios with institutional-quality research.",
+  keywords: ["ETF for advisors", "RIA ETF", "advisor ETF", "adaptive allocation", "risk management for advisors"],
   openGraph: {
     title: "ETFs for Financial Advisors | THOR Funds",
-    description: "Institutional-quality tactical ETFs designed for advisor use in client portfolios.",
+    description: "Institutional-quality adaptive ETFs designed for advisor use in client portfolios.",
   },
 };
 
@@ -23,11 +23,11 @@ export default function ETFForAdvisorsPage() {
                 For Financial Advisors
               </span>
               <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-                Tactical ETFs Built for Advisors
+                Adaptive ETFs Built for Advisors
               </h1>
               <p className="text-xl text-gray-300 leading-relaxed mb-8">
                 Give your clients sophisticated risk management without the complexity. 
-                THOR ETFs deliver institutional-quality tactical strategies in a simple, 
+                THOR ETFs deliver institutional-quality adaptive strategies in a simple, 
                 liquid, tax-efficient wrapper.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -43,7 +43,7 @@ export default function ETFForAdvisorsPage() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-gold-400">2</div>
-                  <div className="text-gray-300 text-sm mt-1">Tactical ETFs</div>
+                  <div className="text-gray-300 text-sm mt-1">Adaptive ETFs</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-gold-400">15+</div>
@@ -85,7 +85,7 @@ export default function ETFForAdvisorsPage() {
               </div>
               <h3 className="text-xl font-semibold text-navy-800 mb-2">Client Retention</h3>
               <p className="text-gray-600">
-                Clients who see tactical protection during volatile markets are more likely to stay invested and stay with you.
+                Clients who see adaptive protection during volatile markets are more likely to stay invested and stay with you.
               </p>
             </div>
 
@@ -97,7 +97,7 @@ export default function ETFForAdvisorsPage() {
               </div>
               <h3 className="text-xl font-semibold text-navy-800 mb-2">Tax Efficiency</h3>
               <p className="text-gray-600">
-                ETF structure provides better tax efficiency than mutual funds or SMAs for the same tactical strategies.
+                ETF structure provides better tax efficiency than mutual funds or SMAs for the same adaptive strategies.
               </p>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function ETFForAdvisorsPage() {
               <div className="bg-white rounded-xl p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-navy-800 mb-4">THIR - Satellite Equity</h3>
                 <p className="text-gray-600 mb-4">
-                  Position alongside existing long-only equity holdings. Provides tactical overlay 
+                  Position alongside existing long-only equity holdings. Provides adaptive overlay 
                   that can protect during severe drawdowns while participating in upside.
                 </p>
                 <p className="text-sm text-gray-500">

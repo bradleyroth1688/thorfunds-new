@@ -55,7 +55,7 @@ const commonFAQs = {
     },
     {
       q: "How should THIR be used in a portfolio?",
-      a: "THIR is designed as satellite equity exposure alongside existing long-only holdings. It provides tactical risk management that complements core positions.",
+      a: "THIR is designed as satellite equity exposure alongside existing long-only holdings. It provides adaptive risk management that complements core positions.",
     },
     {
       q: "What are the risks of investing in THIR?",

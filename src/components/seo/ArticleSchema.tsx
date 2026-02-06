@@ -107,13 +107,13 @@ export const LEARN_ARTICLES: Record<string, ArticleData> = {
     readingTime: 10,
   },
   "index-rotation-explained": {
-    title: "Index Rotation Explained: A Tactical Investment Strategy",
+    title: "Index Rotation Explained: An Adaptive Investment Strategy",
     description: "Learn how index rotation strategies work, when to rotate between market indices, and how THOR's approach seeks to capture upside while managing downside risk.",
     slug: "learn/index-rotation-explained",
     publishedAt: "2024-02-01",
     modifiedAt: "2025-02-01",
     category: "Investment Strategies",
-    keywords: ["index rotation", "tactical investing", "THIR", "market timing"],
+    keywords: ["index rotation", "adaptive investing", "THIR", "market timing"],
     readingTime: 12,
   },
   "low-volatility-investing": {

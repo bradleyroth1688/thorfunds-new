@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   keywords: ["go to cash ETF", "cash ETF", "defensive ETF", "risk-off ETF", "treasury rotation", "market protection"],
   openGraph: {
     title: "ETFs That Can Go to Cash | THOR Funds",
-    description: "Tactical ETFs with the ability to move to 100% treasuries when all signals turn risk-off.",
+    description: "Adaptive ETFs with the ability to move to 100% treasuries when all signals turn risk-off.",
   },
 };
 

@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold text-white">About THOR Funds</h1>
             <p className="mt-6 text-xl text-gray-300 leading-relaxed">
-              We use science, not math, to react to changes in market cycles in real time. Tactical ETFs where managing risk is top of mind.
+              We use science, not math, to react to changes in market cycles in real time. Adaptive ETFs where managing risk is top of mind.
             </p>
             <p className="mt-4 text-2xl text-gold-500 font-medium">
               Participate. Protect. Prosper.
@@ -92,7 +92,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <span className="font-medium">Advisor-Focused</span>
-                    <p className="text-gray-400 text-sm mt-1">Built to fit within diversified portfolios as a tactical allocation</p>
+                    <p className="text-gray-400 text-sm mt-1">Built to fit within diversified portfolios as an adaptive allocation</p>
                   </div>
                 </li>
               </ul>

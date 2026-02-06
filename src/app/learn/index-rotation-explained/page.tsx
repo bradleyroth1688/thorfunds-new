@@ -29,7 +29,7 @@ export default function IndexRotationPage() {
         <div className="container-narrow prose-content">
           <h2>What is Index Rotation?</h2>
           <p>
-            Index rotation is a tactical investment strategy that shifts allocation between different market indexes based on their relative strength and risk characteristics. Unlike static index investing where you buy and hold a single benchmark, index rotation actively adjusts which indexes you own—and how much of each—based on changing market conditions.
+            Index rotation is an adaptive investment strategy that shifts allocation between different market indexes based on their relative strength and risk characteristics. Unlike static index investing where you buy and hold a single benchmark, index rotation actively adjusts which indexes you own—and how much of each—based on changing market conditions.
           </p>
           <p>
             THOR&apos;s THIR ETF implements a specific version of this approach: it monitors three major U.S. equity indexes—the S&P 500 (SPY), Dow Jones Industrial Average (DIA), and Nasdaq 100 (QQQ)—and dynamically allocates between them based on proprietary risk signals.
@@ -118,7 +118,7 @@ export default function IndexRotationPage() {
 
           <h2>Portfolio Positioning</h2>
           <p>
-            THIR is designed as a <strong>satellite allocation</strong>, not a core equity replacement. It works best alongside traditional long-only equity exposure, providing tactical protection when markets turn.
+            THIR is designed as a <strong>satellite allocation</strong>, not a core equity replacement. It works best alongside traditional long-only equity exposure, providing adaptive protection when markets turn.
           </p>
           <p>
             Typical use cases include:

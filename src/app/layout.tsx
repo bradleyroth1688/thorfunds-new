@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | THOR Funds",
   },
   description: "THOR Funds offers innovative, risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns. $1.1B AUM.",
-  keywords: ["ETF", "risk management", "low volatility", "tactical ETF", "THIR", "THLV", "index rotation", "defensive investing"],
+  keywords: ["ETF", "risk management", "low volatility", "adaptive ETF", "THIR", "THLV", "index rotation", "defensive investing"],
   authors: [{ name: "THOR Financial Technologies" }],
   creator: "THOR Financial Technologies",
   publisher: "THOR Financial Technologies",

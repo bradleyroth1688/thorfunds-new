@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact THOR Funds',
-  description: 'Get in touch with THOR Funds. Contact us for advisor inquiries, investor questions, or to learn more about our tactical ETF strategies.',
+  description: 'Get in touch with THOR Funds. Contact us for advisor inquiries, investor questions, or to learn more about our adaptive ETF strategies.',
 };
 
 export default function ContactPage() {

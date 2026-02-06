@@ -11,7 +11,7 @@ const footerNavigation = {
   learn: [
     { name: "Education Hub", href: "/learn" },
     { name: "Low Volatility Guide", href: "/investing/low-volatility" },
-    { name: "Tactical Allocation", href: "/investing/tactical-allocation" },
+    { name: "Dynamic Allocation", href: "/investing/tactical-allocation" },
     { name: "What is an ETF?", href: "/learn/what-is-an-etf" },
     { name: "Glossary", href: "/learn/glossary" },
     { name: "The Book", href: "/book" },
@@ -83,7 +83,7 @@ export function Footer() {
               className="h-10 w-auto"
             />
             <p className="text-sm text-gray-300 max-w-xs">
-              Tactical ETFs where managing risk is top of mind.
+              Adaptive ETFs where managing risk is top of mind.
             </p>
             <p className="text-sm text-gold-500 font-medium">
               Participate. Protect. Prosper.

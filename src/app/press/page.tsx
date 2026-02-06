@@ -173,7 +173,7 @@ export default function PressPage() {
                   <span className="text-xs text-gold-600 font-medium">PRESS RELEASE</span>
                   <h3 className="font-semibold text-lg mt-1 mb-2">THOR Launches THIR Index Rotation ETF</h3>
                   <p className="text-gray-600 text-sm mb-3">
-                    THOR Financial Technologies launches THIR on NYSE Arca, expanding tactical ETF offerings with an index rotation strategy.
+                    THOR Financial Technologies launches THIR on NYSE Arca, expanding adaptive ETF offerings with an index rotation strategy.
                   </p>
                   <span className="text-xs text-gray-500">September 2024</span>
                 </div>

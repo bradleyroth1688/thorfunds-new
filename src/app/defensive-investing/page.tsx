@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Defensive Investing | Risk-Managed ETFs for Market Protection",
-  description: "Defensive investing strategies that can reduce exposure during downturns. Learn how THOR's tactical ETFs protect portfolios while maintaining upside participation.",
+  description: "Defensive investing strategies that can reduce exposure during downturns. Learn how THOR's adaptive ETFs protect portfolios while maintaining upside participation.",
   keywords: ["defensive investing", "risk management", "market protection", "drawdown protection", "bear market ETF"],
   openGraph: {
     title: "Defensive Investing | THOR Funds",
