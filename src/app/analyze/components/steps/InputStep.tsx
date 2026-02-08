@@ -72,16 +72,8 @@ function FileUploadZone({ onHoldingsParsed, tickerLookup, onFallbackManual }: {
         const text = await file.text();
         result = parseCSV(text);
       } else if (file.name.endsWith('.pdf') || file.type === 'application/pdf') {
-        // Use server-side API for reliable PDF parsing
-        const formData = new FormData();
-        formData.append('file', file);
-        const resp = await fetch('/api/parse-statement', { method: 'POST', body: formData });
-        const json = await resp.json();
-        if (!resp.ok || json.error) {
-          result = { holdings: [], error: json.error || 'Failed to parse PDF.' };
-        } else {
-          result = { holdings: json.holdings }; 
-        }
+        const arrayBuffer = await file.arrayBuffer();
+        result = await parsePDF(arrayBuffer);
       } else {
         setParseMessage({ type: 'error', text: 'Please upload a .csv or .pdf file.' });
         setParsing(false);
