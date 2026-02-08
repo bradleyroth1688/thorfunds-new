@@ -33,12 +33,23 @@ export async function POST(req: Request) {
 
     const errors: string[] = [];
 
-    // 1. Store in Supabase if configured
+    // 1. Store in Supabase (leads table)
     const supabaseUrl = process.env.SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
     if (supabaseUrl && supabaseKey) {
       try {
-        const res = await fetch(`${supabaseUrl}/rest/v1/analyzer_leads`, {
+        const sourceMeta = JSON.stringify({
+          type: 'analyzer',
+          company: lead.company,
+          holdingsCount: lead.holdingsCount,
+          tickers: lead.tickers,
+          riskScore: lead.riskScore,
+          currentRiskScore: lead.currentRiskScore,
+          optimizedRiskScore: lead.optimizedRiskScore,
+          thorAllocation: lead.thorAllocation,
+          step: lead.step,
+        });
+        const res = await fetch(`${supabaseUrl}/rest/v1/leads`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -46,7 +57,11 @@ export async function POST(req: Request) {
             'Authorization': `Bearer ${supabaseKey}`,
             'Prefer': 'return=minimal',
           },
-          body: JSON.stringify(lead),
+          body: JSON.stringify({
+            email: lead.email,
+            first_name: lead.name,
+            source: sourceMeta,
+          }),
         });
         if (!res.ok) {
           const errText = await res.text();
