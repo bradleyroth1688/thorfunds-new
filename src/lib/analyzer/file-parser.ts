@@ -236,16 +236,7 @@ export async function parsePDF(arrayBuffer: ArrayBuffer): Promise<ParseResult> {
     return extractHoldingsFromText(fullText);
   } catch (e) {
     console.error('PDF parse error:', e);
-    // Fallback: try treating as text
-    try {
-      const text = new TextDecoder().decode(arrayBuffer);
-      if (text.includes(',') || text.includes('\t')) {
-        return parseCSV(text);
-      }
-      return extractHoldingsFromText(text);
-    } catch {
-      return { holdings: [], error: "We couldn't read this PDF. Try exporting your statement as CSV instead, or enter holdings manually." };
-    }
+    return { holdings: [], error: "We couldn't read this PDF. Try exporting your statement as CSV instead, or enter holdings manually." };
   }
 }
 
