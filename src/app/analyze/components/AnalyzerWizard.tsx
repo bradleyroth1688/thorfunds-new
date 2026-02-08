@@ -66,6 +66,11 @@ export default function AnalyzerWizard() {
     setStep(1);
   }, []);
 
+  // Scroll to top on every step change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   if (!dataLoaded) {
     return (
       <div className="text-center py-20">
