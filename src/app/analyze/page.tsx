@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Script from 'next/script';
 import AnalyzerWizard from './components/AnalyzerWizard';
 
 export const metadata: Metadata = {
@@ -10,12 +9,6 @@ export const metadata: Metadata = {
 export default function AnalyzePage() {
   return (
     <>
-      {/* Load pdf.js for statement parsing */}
-      <Script
-        src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
-        strategy="lazyOnload"
-      />
-
       {/* Hero */}
       <section className="bg-navy-800 py-16 lg:py-20">
         <div className="container-wide">

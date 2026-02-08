@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useRef, DragEvent, ChangeEvent } from 'react';
 import { Holding, PortfolioTemplate, TickerInfo, InputMode } from '@/lib/analyzer/types';
 import { usePortfolioStore } from '@/lib/analyzer/stores/portfolio-store';
-import { parseCSV, parsePDF } from '@/lib/analyzer/file-parser';
+import { parseCSV } from '@/lib/analyzer/file-parser';
 
 interface Props {
   templates: PortfolioTemplate[];
@@ -71,11 +71,8 @@ function FileUploadZone({ onHoldingsParsed, tickerLookup, onFallbackManual }: {
       if (file.name.endsWith('.csv') || file.type === 'text/csv') {
         const text = await file.text();
         result = parseCSV(text);
-      } else if (file.name.endsWith('.pdf') || file.type === 'application/pdf') {
-        const arrayBuffer = await file.arrayBuffer();
-        result = await parsePDF(arrayBuffer);
       } else {
-        setParseMessage({ type: 'error', text: 'Please upload a .csv or .pdf file.' });
+        setParseMessage({ type: 'error', text: 'Please upload a .csv file. See format instructions below.' });
         setParsing(false);
         return;
       }
@@ -123,36 +120,32 @@ function FileUploadZone({ onHoldingsParsed, tickerLookup, onFallbackManual }: {
         <input
           ref={fileRef}
           type="file"
-          accept=".pdf,.csv"
+          accept=".csv"
           className="hidden"
           onChange={onFileInput}
         />
         <div className="text-5xl mb-4">{parsing ? '⏳' : '📄'}</div>
-        <h3 className="heading-3 text-navy-800 mb-2">Upload Statement</h3>
-        <p className="text-gray-500 mb-2">Drop a PDF or CSV file here, or click to browse</p>
-        <p className="text-xs text-gray-400">Supports Schwab, Fidelity, Vanguard, and most brokerage PDF statements</p>
+        <h3 className="heading-3 text-navy-800 mb-2">Upload CSV</h3>
+        <p className="text-gray-500 mb-2">Drop a CSV file here, or click to browse</p>
+        <p className="text-xs text-gray-400">Export your holdings from your brokerage as CSV</p>
       </div>
 
       {/* CSV Format Instructions */}
-      <details className="mb-4 text-sm">
-        <summary className="cursor-pointer text-gray-500 hover:text-navy-800 font-medium">
-          📋 Uploading a CSV? See required format
-        </summary>
-        <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200 text-gray-600">
-          <p className="mb-2">Your CSV should have columns for <strong>ticker</strong> and <strong>allocation %</strong> (or <strong>market value</strong>). Example:</p>
-          <pre className="bg-white rounded p-3 text-xs font-mono overflow-x-auto border border-gray-100 mb-3">{`Ticker,Allocation
+      <div className="mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200 text-sm text-gray-600">
+        <p className="font-medium text-navy-800 mb-2">📋 CSV Format</p>
+        <p className="mb-2">Your CSV should have columns for <strong>ticker</strong> and <strong>allocation %</strong> (or <strong>market value</strong>):</p>
+        <pre className="bg-white rounded p-3 text-xs font-mono overflow-x-auto border border-gray-100 mb-3">{`Ticker,Allocation
 SPY,40
 AGG,30
 GLD,15
 BIL,15`}</pre>
-          <p className="mb-1">Accepted column names:</p>
-          <ul className="list-disc list-inside space-y-0.5 text-xs">
-            <li><strong>Ticker:</strong> ticker, symbol, fund, holding, security</li>
-            <li><strong>Allocation:</strong> weight, allocation, percent, pct, %</li>
-            <li><strong>Value:</strong> value, market value, amount, balance (auto-converts to %)</li>
-          </ul>
-        </div>
-      </details>
+        <p className="mb-1">Accepted column names:</p>
+        <ul className="list-disc list-inside space-y-0.5 text-xs">
+          <li><strong>Ticker:</strong> ticker, symbol, fund, holding, security</li>
+          <li><strong>Allocation:</strong> weight, allocation, percent, pct, %</li>
+          <li><strong>Value:</strong> value, market value, amount, balance (auto-converts to %)</li>
+        </ul>
+      </div>
 
       {parseMessage && (
         <div className={`p-4 rounded-lg mb-4 text-sm ${
