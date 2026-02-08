@@ -422,8 +422,20 @@ function HoldingRow({ index, holding, tickerLookup, onUpdate, onRemove }: {
           type="text"
           value={searchQuery}
           onChange={(e) => {
-            setSearchQuery(e.target.value.toUpperCase());
+            const val = e.target.value.toUpperCase();
+            setSearchQuery(val);
             setShowSuggestions(true);
+            // Update store immediately so validation stays current
+            if (val.trim()) {
+              const match = tickerLookup[val.trim()];
+              if (match) {
+                onUpdate({ ticker: match.ticker, name: match.name, type: match.type as Holding['type'], sector: match.sector });
+              } else {
+                onUpdate({ ticker: val.trim() });
+              }
+            } else {
+              onUpdate({ ticker: '' });
+            }
           }}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => {
@@ -439,7 +451,7 @@ function HoldingRow({ index, holding, tickerLookup, onUpdate, onRemove }: {
             }
           }}
           className="w-24 px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-gold-500 focus:border-gold-500"
-          placeholder="SPY"
+          placeholder="e.g. SPY"
         />
         {showSuggestions && suggestions.length > 0 && (
           <div className="absolute z-50 top-full left-2 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg w-72 max-h-48 overflow-y-auto">
