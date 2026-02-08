@@ -8,6 +8,7 @@ export interface Holding {
   sector?: string;
   annualizedReturn?: number;
   volatility?: number;
+  proxyTicker?: string; // If set, this ticker's data is proxied from another
 }
 
 export interface ReturnsData {
@@ -43,6 +44,8 @@ export interface PortfolioMetrics {
 
 export interface OptimizationResult {
   thorAllocation: number;
+  thirPct: number;
+  thlvPct: number;
   holdings: Holding[];
   metrics: PortfolioMetrics;
   riskScore: number;

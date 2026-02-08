@@ -106,7 +106,8 @@ export function portfolioMonthlyReturns(holdings: Holding[], returnsData: Return
 
     for (const h of holdings) {
       const weight = h.allocation / 100;
-      const secReturns = returns[h.ticker];
+      const ticker = h.proxyTicker || h.ticker;
+      const secReturns = returns[ticker];
       if (secReturns && secReturns[t] !== undefined) {
         monthReturn += weight * secReturns[t];
         coveredWeight += weight;
@@ -140,7 +141,7 @@ function covariance(a: number[], b: number[]): number {
 
 export function portfolioVolatility(holdings: Holding[], returnsData: ReturnsData): number {
   const weights = holdings.map(h => h.allocation / 100);
-  const tickers = holdings.map(h => h.ticker);
+  const tickers = holdings.map(h => h.proxyTicker || h.ticker);
   const n = tickers.length;
 
   // Build covariance matrix from monthly returns

@@ -114,6 +114,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Portfolio Analyzer CTA */}
+      <section className="py-16 bg-gradient-to-br from-navy-800 to-navy-900">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How Risky Is Your Portfolio?</h2>
+          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            Upload your brokerage statement or enter your holdings to get a free risk analysis
+            — and see how THOR&apos;s systematic strategies could improve your outcomes.
+          </p>
+          <Link href="/analyze" className="btn-primary text-lg px-8 py-4">
+            Analyze My Portfolio →
+          </Link>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <section className="section-padding">
         <div className="container-max mx-auto">

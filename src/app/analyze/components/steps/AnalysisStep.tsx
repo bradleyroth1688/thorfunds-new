@@ -8,7 +8,7 @@ import {
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { useAnalysisStore } from '@/lib/analyzer/stores/analysis-store';
 import { usePortfolioStore } from '@/lib/analyzer/stores/portfolio-store';
-import { getRiskCategory, getRiskColor } from '@/lib/analyzer/types';
+import { getRiskCategory } from '@/lib/analyzer/types';
 
 const COLORS = ['#1a365d', '#d69e2e', '#41699b', '#10b981', '#f97316', '#8b5cf6', '#ef4444', '#06b6d4', '#84cc16', '#ec4899'];
 
@@ -21,6 +21,12 @@ export default function AnalysisStep({ onContinue, onBack }: Props) {
   const metrics = useAnalysisStore(s => s.metrics)!;
   const benchmarks = useAnalysisStore(s => s.benchmarks);
   const holdings = usePortfolioStore(s => s.holdings);
+  const userRiskScore = usePortfolioStore(s => s.normalizedScore);
+  const providerName = usePortfolioStore(s => s.providerName);
+
+  // Check for proxied holdings
+  const proxiedHoldings = holdings.filter(h => h.proxyTicker);
+  const riskMismatch = userRiskScore !== null ? metrics.riskScore - userRiskScore : null;
 
   // Scatter data: portfolio + benchmarks
   const scatterData = useMemo(() => {
@@ -61,13 +67,78 @@ export default function AnalysisStep({ onContinue, onBack }: Props) {
         <div className="text-7xl font-bold text-gold-500 mb-2">
           <AnimatedCounter end={metrics.riskScore} duration={1500} />
         </div>
-        <div className="text-2xl text-white mb-4">Risk Score</div>
-        <div className="inline-block px-4 py-2 bg-navy-700 rounded-full">
+        <div className="text-2xl text-white mb-4">Portfolio Risk Score</div>
+        <div className="inline-block px-4 py-2 bg-navy-700 rounded-full mb-4">
           <span className="text-gray-300">Your portfolio has </span>
           <span className="text-gold-500 font-semibold">{getRiskCategory(metrics.riskScore)}</span>
           <span className="text-gray-300"> risk</span>
         </div>
+
+        {/* Risk Score Comparison */}
+        {userRiskScore !== null && (
+          <div className="mt-4 max-w-md mx-auto">
+            <div className="flex items-center justify-between text-sm mb-2">
+              <span className="text-gray-400">Your Risk Tolerance{providerName !== 'none' && providerName !== 'quiz' ? ` (${providerName})` : ''}</span>
+              <span className="text-white font-semibold">{userRiskScore}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm mb-3">
+              <span className="text-gray-400">Actual Portfolio Risk</span>
+              <span className="text-gold-500 font-semibold">{metrics.riskScore}</span>
+            </div>
+            <div className="h-2 bg-navy-700 rounded-full relative">
+              <div className="absolute h-4 w-1 bg-white rounded-full top-1/2 -translate-y-1/2 transition-all"
+                style={{ left: `${Math.min(userRiskScore, 100)}%` }} title="Your tolerance" />
+              <div className="absolute h-4 w-1 bg-gold-500 rounded-full top-1/2 -translate-y-1/2 transition-all"
+                style={{ left: `${Math.min(metrics.riskScore, 100)}%` }} title="Portfolio risk" />
+            </div>
+            <div className="flex justify-between text-xs text-gray-500 mt-1">
+              <span>Conservative</span>
+              <span>Aggressive</span>
+            </div>
+            {riskMismatch !== null && Math.abs(riskMismatch) > 10 && (
+              <div className={`mt-3 px-4 py-2 rounded-lg text-sm ${
+                riskMismatch > 0 
+                  ? 'bg-amber-900/30 text-amber-300 border border-amber-700/50' 
+                  : 'bg-blue-900/30 text-blue-300 border border-blue-700/50'
+              }`}>
+                {riskMismatch > 0 
+                  ? `⚠️ Your portfolio is riskier than your stated tolerance by ${Math.round(riskMismatch)} points`
+                  : `Your portfolio is more conservative than your tolerance by ${Math.round(Math.abs(riskMismatch))} points`}
+              </div>
+            )}
+          </div>
+        )}
       </div>
+
+      {/* CTA */}
+      <div className="card bg-gold-50 border border-gold-200 p-8 text-center mb-8">
+        <h3 className="heading-2 text-navy-800 mb-4">
+          See How THOR Funds Can Complement Your Portfolio
+        </h3>
+        <p className="body-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+          Discover how THOR&apos;s systematic strategies can potentially enhance your outcomes
+          — reducing risk without sacrificing returns.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button onClick={onBack} className="btn-outline">← Edit Portfolio</button>
+          <button onClick={onContinue} className="btn-primary btn-lg">See THOR Optimization →</button>
+        </div>
+      </div>
+
+      {/* Proxy Notice */}
+      {proxiedHoldings.length > 0 && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 text-sm text-blue-700">
+          <span className="font-semibold">📊 Proxy Notice:</span> Some holdings were analyzed using proxy data due to limited history:
+          <ul className="mt-2 space-y-1">
+            {proxiedHoldings.map((h, i) => (
+              <li key={i}>
+                <span className="font-medium">{h.ticker}</span> → proxied with <span className="font-medium">{h.proxyTicker}</span>
+                {h.ticker === 'SWVXX' || h.ticker === 'SPAXX' || h.ticker === 'VMFXX' ? ' (money market ≈ short-term treasuries)' : ''}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Metrics Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -173,19 +244,6 @@ export default function AnalysisStep({ onContinue, onBack }: Props) {
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="card bg-gold-50 border border-gold-200 p-8 text-center">
-        <h3 className="heading-2 text-navy-800 mb-4">
-          Want to reduce risk without sacrificing returns?
-        </h3>
-        <p className="body-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-          See how adding THOR products can improve your risk-adjusted returns.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onClick={onBack} className="btn-outline">← Edit Portfolio</button>
-          <button onClick={onContinue} className="btn-primary btn-lg">See THOR Optimization →</button>
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,16 +1,18 @@
 'use client';
 
-import { useState, useCallback, useMemo, useRef } from 'react';
+import { useState, useCallback, useMemo, useRef, DragEvent, ChangeEvent } from 'react';
 import { Holding, PortfolioTemplate, TickerInfo, InputMode } from '@/lib/analyzer/types';
 import { usePortfolioStore } from '@/lib/analyzer/stores/portfolio-store';
+import { parseCSV, parsePDF } from '@/lib/analyzer/file-parser';
 
 interface Props {
   templates: PortfolioTemplate[];
   tickerLookup: Record<string, TickerInfo>;
   onAnalyze: () => void;
+  onBack?: () => void;
 }
 
-export default function InputStep({ templates, tickerLookup, onAnalyze }: Props) {
+export default function InputStep({ templates, tickerLookup, onAnalyze, onBack }: Props) {
   const [mode, setMode] = useState<InputMode | null>(null);
   const {
     holdings, totalAllocation, isValid, validationErrors,
@@ -18,7 +20,7 @@ export default function InputStep({ templates, tickerLookup, onAnalyze }: Props)
   } = usePortfolioStore();
 
   if (!mode && holdings.length === 0) {
-    return <InitialView onMode={setMode} />;
+    return <InitialView onMode={setMode} tickerLookup={tickerLookup} onSetHoldings={setHoldings} onBack={onBack} />;
   }
 
   if (mode === 'template' && holdings.length === 0) {
@@ -43,27 +45,139 @@ export default function InputStep({ templates, tickerLookup, onAnalyze }: Props)
       onUpdate={updateHolding}
       onAnalyze={onAnalyze}
       onSwitchTemplate={() => { setHoldings([]); setMode('template'); }}
+      onBack={onBack}
     />
   );
 }
 
-function InitialView({ onMode }: { onMode: (m: InputMode) => void }) {
+/* ─── File Upload Zone ─── */
+
+function FileUploadZone({ onHoldingsParsed, tickerLookup, onFallbackManual }: {
+  onHoldingsParsed: (holdings: Holding[]) => void;
+  tickerLookup: Record<string, TickerInfo>;
+  onFallbackManual: () => void;
+}) {
+  const [isDragging, setIsDragging] = useState(false);
+  const [parsing, setParsing] = useState(false);
+  const [parseMessage, setParseMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleFile = useCallback(async (file: File) => {
+    setParsing(true);
+    setParseMessage(null);
+
+    try {
+      let result;
+      if (file.name.endsWith('.csv') || file.type === 'text/csv') {
+        const text = await file.text();
+        result = parseCSV(text);
+      } else if (file.name.endsWith('.pdf') || file.type === 'application/pdf') {
+        // Use server-side API for reliable PDF parsing
+        const formData = new FormData();
+        formData.append('file', file);
+        const resp = await fetch('/api/parse-statement', { method: 'POST', body: formData });
+        const json = await resp.json();
+        if (!resp.ok || json.error) {
+          result = { holdings: [], error: json.error || 'Failed to parse PDF.' };
+        } else {
+          result = { holdings: json.holdings }; 
+        }
+      } else {
+        setParseMessage({ type: 'error', text: 'Please upload a .csv or .pdf file.' });
+        setParsing(false);
+        return;
+      }
+
+      if (result.error || result.holdings.length === 0) {
+        setParseMessage({ type: 'error', text: result.error || "We couldn't automatically read this file. Try adding your holdings manually below." });
+      } else {
+        // Enrich with ticker lookup
+        const enriched = result.holdings.map((h: Holding) => {
+          const info = tickerLookup[h.ticker];
+          return info ? { ...h, name: info.name, type: info.type as Holding['type'], sector: info.sector } : h;
+        });
+        setParseMessage({ type: 'success', text: `We found ${enriched.length} holdings from your file.` });
+        onHoldingsParsed(enriched);
+      }
+    } catch {
+      setParseMessage({ type: 'error', text: "We couldn't automatically read this file. Try adding your holdings manually below." });
+    }
+
+    setParsing(false);
+  }, [tickerLookup, onHoldingsParsed]);
+
+  const onDrop = useCallback((e: DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+  }, [handleFile]);
+
+  const onFileInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) handleFile(file);
+  }, [handleFile]);
+
   return (
-    <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
-      <h2 className="heading-2 text-navy-800">Enter Your Portfolio</h2>
-      <p className="body-lg text-gray-600 mt-4 mb-12">
+    <div>
+      <div
+        className={`card-interactive border-2 border-dashed p-12 mb-4 cursor-pointer transition-colors text-center
+          ${isDragging ? 'border-gold-500 bg-gold-50' : 'border-gray-300 hover:border-gold-500'}`}
+        onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+        onDragLeave={() => setIsDragging(false)}
+        onDrop={onDrop}
+        onClick={() => fileRef.current?.click()}
+      >
+        <input
+          ref={fileRef}
+          type="file"
+          accept=".pdf,.csv"
+          className="hidden"
+          onChange={onFileInput}
+        />
+        <div className="text-5xl mb-4">{parsing ? '⏳' : '📄'}</div>
+        <h3 className="heading-3 text-navy-800 mb-2">Upload Statement</h3>
+        <p className="text-gray-500 mb-2">Drop a PDF or CSV file here, or click to browse</p>
+        <p className="text-xs text-gray-400">Supports brokerage statements and portfolio exports</p>
+      </div>
+
+      {parseMessage && (
+        <div className={`p-4 rounded-lg mb-4 text-sm ${
+          parseMessage.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
+        }`}>
+          {parseMessage.type === 'success' ? '✅' : '⚠️'} {parseMessage.text}
+          {parseMessage.type === 'error' && (
+            <button onClick={onFallbackManual} className="ml-2 underline font-medium">Enter manually</button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── Initial View ─── */
+
+function InitialView({ onMode, tickerLookup, onSetHoldings, onBack }: {
+  onMode: (m: InputMode) => void;
+  tickerLookup: Record<string, TickerInfo>;
+  onSetHoldings: (h: Holding[]) => void;
+  onBack?: () => void;
+}) {
+  return (
+    <div className="max-w-3xl mx-auto animate-fade-in-up">
+      <div className="flex items-center justify-between mb-2">
+        <h2 className="heading-2 text-navy-800">Enter Your Portfolio</h2>
+        {onBack && <button onClick={onBack} className="btn-ghost text-sm">← Back to Risk Score</button>}
+      </div>
+      <p className="body-lg text-gray-600 mt-2 mb-8 text-center">
         Upload a statement, enter holdings manually, or start from a template.
       </p>
 
-      <div
-        className="card-interactive border-2 border-dashed border-gray-300 hover:border-gold-500 p-12 mb-8 cursor-pointer transition-colors"
-        onClick={() => onMode('manual')}
-      >
-        <div className="text-5xl mb-4">📄</div>
-        <h3 className="heading-3 text-navy-800 mb-2">Upload Statement</h3>
-        <p className="text-gray-500 mb-4">Drop PDF or CSV here, or click to browse</p>
-        <p className="text-sm text-gray-400">Coming soon — use manual entry or templates for now</p>
-      </div>
+      <FileUploadZone
+        tickerLookup={tickerLookup}
+        onHoldingsParsed={(holdings) => { onSetHoldings(holdings); onMode('manual'); }}
+        onFallbackManual={() => onMode('manual')}
+      />
 
       <div className="flex items-center gap-4 my-8">
         <div className="flex-1 h-px bg-gray-200" />
@@ -125,7 +239,7 @@ function TemplateSelector({ templates, onSelect, onBack }: {
 
 function ManualEntry({
   holdings, totalAllocation, isValid, validationErrors, tickerLookup,
-  onAdd, onRemove, onUpdate, onAnalyze, onSwitchTemplate,
+  onAdd, onRemove, onUpdate, onAnalyze, onSwitchTemplate, onBack,
 }: {
   holdings: Holding[];
   totalAllocation: number;
@@ -137,11 +251,15 @@ function ManualEntry({
   onUpdate: (i: number, h: Partial<Holding>) => void;
   onAnalyze: () => void;
   onSwitchTemplate: () => void;
+  onBack?: () => void;
 }) {
   return (
     <div className="max-w-4xl mx-auto animate-fade-in-up">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="heading-2 text-navy-800">Your Holdings</h2>
+        <div className="flex items-center gap-4">
+          {onBack && <button onClick={onBack} className="btn-ghost text-sm">← Back</button>}
+          <h2 className="heading-2 text-navy-800">Your Holdings</h2>
+        </div>
         <button onClick={onSwitchTemplate} className="btn-ghost text-sm">Use Template Instead</button>
       </div>
 
@@ -172,12 +290,22 @@ function ManualEntry({
         </table>
       </div>
 
-      <button
-        onClick={() => onAdd({ ticker: '', name: '', allocation: 0, type: 'etf' })}
-        className="btn-ghost mt-4 w-full border border-dashed border-gray-300"
-      >
-        + Add Another Holding
-      </button>
+      <div className="flex gap-3 mt-4">
+        <button
+          onClick={() => onAdd({ ticker: '', name: '', allocation: 0, type: 'etf' })}
+          className="btn-ghost flex-1 border border-dashed border-gray-300"
+        >
+          + Add Another Holding
+        </button>
+        {totalAllocation < 99 && (
+          <button
+            onClick={() => onAdd({ ticker: 'BIL', name: 'SPDR Bloomberg 1-3 Month T-Bill', allocation: Math.round((100 - totalAllocation) * 10) / 10, type: 'etf' })}
+            className="btn-ghost border border-dashed border-green-300 text-green-700 hover:bg-green-50 whitespace-nowrap"
+          >
+            💵 Add Cash ({(100 - totalAllocation).toFixed(1)}%)
+          </button>
+        )}
+      </div>
 
       {/* Allocation Progress */}
       <div className="mt-8 p-4 bg-gray-50 rounded-lg">

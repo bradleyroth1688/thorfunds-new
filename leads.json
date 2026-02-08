@@ -1,0 +1,56 @@
+[
+  {
+    "name": "brad",
+    "email": "bradleyroth1688@gmail.com",
+    "currentRiskScore": 51,
+    "optimizedRiskScore": 29,
+    "thorAllocation": 19,
+    "timestamp": "2026-02-08T14:54:25.279Z"
+  },
+  {
+    "name": "brad",
+    "email": "bradleyroth1688@gmail.com",
+    "currentRiskScore": 48,
+    "optimizedRiskScore": 38,
+    "thorAllocation": 15,
+    "timestamp": "2026-02-08T15:01:41.476Z"
+  },
+  {
+    "name": "brad",
+    "email": "bradleyroth1688@gmail.com",
+    "currentRiskScore": 30,
+    "optimizedRiskScore": 39,
+    "thorAllocation": 40,
+    "timestamp": "2026-02-08T15:10:44.719Z"
+  },
+  {
+    "name": "b",
+    "email": "bradleyroth1688@gmail.com",
+    "company": "",
+    "holdingsCount": 4,
+    "tickers": "RSP, SWVXX, AGG, BIL",
+    "riskScore": 79,
+    "step": "pre-analysis",
+    "timestamp": "2026-02-08T15:15:31.896Z"
+  },
+  {
+    "name": "b",
+    "email": "braldeyroth1688@gmail.com",
+    "company": "asdc",
+    "holdingsCount": 4,
+    "tickers": "RSP, SWVXX, AGG, BIL",
+    "riskScore": 8,
+    "step": "pre-analysis",
+    "timestamp": "2026-02-08T15:16:55.015Z"
+  },
+  {
+    "name": "b",
+    "email": "braldeyroth1688@gmail.com",
+    "company": "as",
+    "holdingsCount": 6,
+    "tickers": "SPY, QQQ, VXUS, IWM, AGG, GLD",
+    "riskScore": 77,
+    "step": "pre-analysis",
+    "timestamp": "2026-02-08T15:22:31.918Z"
+  }
+]

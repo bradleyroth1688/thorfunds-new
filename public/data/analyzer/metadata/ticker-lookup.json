@@ -334,5 +334,23 @@
     "name": "THOR Low Volatility ETF",
     "type": "etf",
     "sector": "THOR"
+  },
+  "RSP": {
+    "ticker": "RSP",
+    "name": "Invesco S&P 500 Equal Weight ETF",
+    "type": "etf",
+    "sector": "Broad Market"
+  },
+  "BIL": {
+    "ticker": "BIL",
+    "name": "SPDR Bloomberg 1-3 Month T-Bill ETF",
+    "type": "etf",
+    "sector": "Short-Term Treasury"
+  },
+  "SWVXX": {
+    "ticker": "SWVXX",
+    "name": "Schwab Value Advantage Money Fund",
+    "type": "mutual_fund",
+    "sector": "Money Market"
   }
 }

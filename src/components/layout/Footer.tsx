@@ -17,7 +17,7 @@ const footerNavigation = {
     { name: "Glossary", href: "/learn/glossary" },
   ],
   tools: [
-    { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
+    { name: "Portfolio Analyzer", href: "/analyze" },
     { name: "Compare Funds", href: "/funds/compare" },
   ],
   company: [

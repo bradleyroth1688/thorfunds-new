@@ -64,7 +64,6 @@ const navigation = [
     href: "/tools",
     children: [
       { name: "Fund Comparison", href: "/funds/compare" },
-      { name: "Risk Profile Quiz", href: "/tools/risk-profile" },
       { name: "Portfolio Analyzer", href: "/analyze" },
     ],
   },

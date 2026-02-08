@@ -2,6 +2,7 @@
 
 import { create } from 'zustand';
 import { Holding, InputMode, PortfolioTemplate } from '../types';
+import { normalizeToInternal } from '../risk-providers';
 
 interface PortfolioState {
   holdings: Holding[];
@@ -9,7 +10,11 @@ interface PortfolioState {
   isValid: boolean;
   validationErrors: string[];
   totalAllocation: number;
+  providerName: string;
+  providerScore: number | null;
+  normalizedScore: number | null;
 
+  setProvider: (name: string, score: number | null) => void;
   setHoldings: (holdings: Holding[]) => void;
   addHolding: (holding: Holding) => void;
   removeHolding: (index: number) => void;
@@ -40,6 +45,14 @@ export const usePortfolioStore = create<PortfolioState>((set, get) => ({
   isValid: false,
   validationErrors: [],
   totalAllocation: 0,
+  providerName: 'none',
+  providerScore: null,
+  normalizedScore: null,
+
+  setProvider: (name, score) => {
+    const normalized = name !== 'none' && score !== null ? normalizeToInternal(score, name) : null;
+    set({ providerName: name, providerScore: score, normalizedScore: normalized });
+  },
 
   setHoldings: (holdings) => {
     const v = computeValidation(holdings);
@@ -89,5 +102,8 @@ export const usePortfolioStore = create<PortfolioState>((set, get) => ({
     isValid: false,
     validationErrors: [],
     totalAllocation: 0,
+    providerName: 'none',
+    providerScore: null,
+    normalizedScore: null,
   }),
 }));
