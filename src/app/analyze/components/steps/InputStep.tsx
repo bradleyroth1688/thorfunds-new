@@ -361,6 +361,15 @@ function ManualEntry({
         )}
       </div>
 
+      {/* Validation Errors */}
+      {validationErrors.length > 0 && holdings.length > 0 && (
+        <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+          {validationErrors.map((err, i) => (
+            <p key={i} className="text-sm text-red-600">{err}</p>
+          ))}
+        </div>
+      )}
+
       {/* Analyze Button */}
       <div className="mt-8 text-center">
         <button
@@ -442,6 +451,7 @@ function HoldingRow({ index, holding, tickerLookup, onUpdate, onRemove }: {
           type="number"
           value={holding.allocation || ''}
           onChange={(e) => onUpdate({ allocation: parseFloat(e.target.value) || 0 })}
+          onBlur={(e) => onUpdate({ allocation: parseFloat(e.target.value) || 0 })}
           className="w-20 px-2 py-1.5 border border-gray-300 rounded-md text-sm text-right focus:ring-2 focus:ring-gold-500 focus:border-gold-500"
           min={0}
           max={100}

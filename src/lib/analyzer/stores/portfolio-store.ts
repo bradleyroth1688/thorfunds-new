@@ -27,10 +27,10 @@ interface PortfolioState {
 
 function computeValidation(holdings: Holding[]) {
   const errors: string[] = [];
-  const total = holdings.reduce((s, h) => s + h.allocation, 0);
+  const total = Math.round(holdings.reduce((s, h) => s + h.allocation, 0) * 100) / 100;
   
   if (holdings.length === 0) errors.push('Add at least one holding');
-  if (Math.abs(total - 100) > 1) errors.push(`Allocations sum to ${total.toFixed(1)}%, must be ~100%`);
+  if (Math.abs(total - 100) > 2) errors.push(`Allocations sum to ${total.toFixed(1)}%, must be ~100%`);
   for (const h of holdings) {
     if (!h.ticker) errors.push('All holdings must have a ticker');
     if (h.allocation <= 0) errors.push(`${h.ticker}: allocation must be > 0`);
