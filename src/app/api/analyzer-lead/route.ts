@@ -5,6 +5,16 @@ import { Resend } from 'resend';
 
 const LEADS_FILE = path.join(process.cwd(), 'leads.json');
 
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: CORS_HEADERS });
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -93,9 +103,9 @@ export async function POST(req: Request) {
       }
     }
 
-    return NextResponse.json({ success: true, message: `We'll prepare your personalized report and send it to ${email} shortly.` });
+    return NextResponse.json({ success: true, message: `We'll prepare your personalized report and send it to ${email} shortly.` }, { headers: CORS_HEADERS });
   } catch (error) {
     console.error('[Analyzer Lead Error]', error);
-    return NextResponse.json({ success: false, error: 'Failed to process lead' }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Failed to process lead' }, { status: 500, headers: CORS_HEADERS });
   }
 }
