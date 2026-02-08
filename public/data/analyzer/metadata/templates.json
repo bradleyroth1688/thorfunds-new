@@ -1,0 +1,278 @@
+[
+  {
+    "id": "conservative",
+    "name": "Conservative",
+    "description": "Heavy bond allocation for capital preservation",
+    "equity": 20,
+    "bonds": 70,
+    "other": 10,
+    "expectedRisk": 25,
+    "holdings": [
+      {
+        "ticker": "AGG",
+        "name": "iShares Core US Aggregate Bond",
+        "allocation": 40,
+        "type": "bond"
+      },
+      {
+        "ticker": "BND",
+        "name": "Vanguard Total Bond Market",
+        "allocation": 20,
+        "type": "bond"
+      },
+      {
+        "ticker": "TIP",
+        "name": "iShares TIPS",
+        "allocation": 10,
+        "type": "bond"
+      },
+      {
+        "ticker": "SPY",
+        "name": "SPDR S&P 500 ETF",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "VIG",
+        "name": "Vanguard Dividend Appreciation",
+        "allocation": 5,
+        "type": "etf"
+      },
+      {
+        "ticker": "GLD",
+        "name": "SPDR Gold Shares",
+        "allocation": 10,
+        "type": "etf"
+      }
+    ]
+  },
+  {
+    "id": "balanced",
+    "name": "Balanced 60/40",
+    "description": "Classic balanced allocation — 60% stocks, 40% bonds",
+    "equity": 60,
+    "bonds": 40,
+    "other": 0,
+    "expectedRisk": 55,
+    "holdings": [
+      {
+        "ticker": "SPY",
+        "name": "SPDR S&P 500 ETF",
+        "allocation": 35,
+        "type": "etf"
+      },
+      {
+        "ticker": "VXUS",
+        "name": "Vanguard Total International",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "IWM",
+        "name": "iShares Russell 2000",
+        "allocation": 10,
+        "type": "etf"
+      },
+      {
+        "ticker": "AGG",
+        "name": "iShares Core US Aggregate Bond",
+        "allocation": 25,
+        "type": "bond"
+      },
+      {
+        "ticker": "TLT",
+        "name": "iShares 20+ Year Treasury",
+        "allocation": 15,
+        "type": "bond"
+      }
+    ]
+  },
+  {
+    "id": "growth",
+    "name": "Growth",
+    "description": "Equity-heavy for long-term capital appreciation",
+    "equity": 80,
+    "bonds": 15,
+    "other": 5,
+    "expectedRisk": 70,
+    "holdings": [
+      {
+        "ticker": "SPY",
+        "name": "SPDR S&P 500 ETF",
+        "allocation": 30,
+        "type": "etf"
+      },
+      {
+        "ticker": "QQQ",
+        "name": "Invesco QQQ Trust",
+        "allocation": 20,
+        "type": "etf"
+      },
+      {
+        "ticker": "VXUS",
+        "name": "Vanguard Total International",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "IWM",
+        "name": "iShares Russell 2000",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "AGG",
+        "name": "iShares Core US Aggregate Bond",
+        "allocation": 15,
+        "type": "bond"
+      },
+      {
+        "ticker": "GLD",
+        "name": "SPDR Gold Shares",
+        "allocation": 5,
+        "type": "etf"
+      }
+    ]
+  },
+  {
+    "id": "aggressive",
+    "name": "Aggressive",
+    "description": "Maximum growth focus with concentrated equity",
+    "equity": 95,
+    "bonds": 5,
+    "other": 0,
+    "expectedRisk": 82,
+    "holdings": [
+      {
+        "ticker": "QQQ",
+        "name": "Invesco QQQ Trust",
+        "allocation": 30,
+        "type": "etf"
+      },
+      {
+        "ticker": "SPY",
+        "name": "SPDR S&P 500 ETF",
+        "allocation": 25,
+        "type": "etf"
+      },
+      {
+        "ticker": "IWM",
+        "name": "iShares Russell 2000",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "VXUS",
+        "name": "Vanguard Total International",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "XLK",
+        "name": "Technology Select Sector",
+        "allocation": 10,
+        "type": "etf"
+      },
+      {
+        "ticker": "AGG",
+        "name": "iShares Core US Aggregate Bond",
+        "allocation": 5,
+        "type": "bond"
+      }
+    ]
+  },
+  {
+    "id": "all-weather",
+    "name": "All Weather",
+    "description": "Ray Dalio-inspired diversified portfolio",
+    "equity": 30,
+    "bonds": 55,
+    "other": 15,
+    "expectedRisk": 35,
+    "holdings": [
+      {
+        "ticker": "VTI",
+        "name": "Vanguard Total Stock Market",
+        "allocation": 30,
+        "type": "etf"
+      },
+      {
+        "ticker": "TLT",
+        "name": "iShares 20+ Year Treasury",
+        "allocation": 40,
+        "type": "bond"
+      },
+      {
+        "ticker": "IEF",
+        "name": "iShares 7-10 Year Treasury",
+        "allocation": 15,
+        "type": "bond"
+      },
+      {
+        "ticker": "GLD",
+        "name": "SPDR Gold Shares",
+        "allocation": 7.5,
+        "type": "etf"
+      },
+      {
+        "ticker": "DBC",
+        "name": "Invesco DB Commodity Index",
+        "allocation": 7.5,
+        "type": "etf"
+      }
+    ]
+  },
+  {
+    "id": "income",
+    "name": "Income Focus",
+    "description": "Dividend and income-generating investments",
+    "equity": 50,
+    "bonds": 40,
+    "other": 10,
+    "expectedRisk": 45,
+    "holdings": [
+      {
+        "ticker": "SCHD",
+        "name": "Schwab US Dividend Equity",
+        "allocation": 25,
+        "type": "etf"
+      },
+      {
+        "ticker": "VIG",
+        "name": "Vanguard Dividend Appreciation",
+        "allocation": 15,
+        "type": "etf"
+      },
+      {
+        "ticker": "JEPI",
+        "name": "JPMorgan Equity Premium Income",
+        "allocation": 10,
+        "type": "etf"
+      },
+      {
+        "ticker": "AGG",
+        "name": "iShares Core US Aggregate Bond",
+        "allocation": 20,
+        "type": "bond"
+      },
+      {
+        "ticker": "LQD",
+        "name": "iShares Investment Grade Corp",
+        "allocation": 10,
+        "type": "bond"
+      },
+      {
+        "ticker": "HYG",
+        "name": "iShares High Yield Corp",
+        "allocation": 10,
+        "type": "bond"
+      },
+      {
+        "ticker": "VNQ",
+        "name": "Vanguard Real Estate",
+        "allocation": 10,
+        "type": "etf"
+      }
+    ]
+  }
+]

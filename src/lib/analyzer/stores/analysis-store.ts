@@ -1,0 +1,61 @@
+'use client';
+
+import { create } from 'zustand';
+import { PortfolioMetrics, ReturnsData, Holding } from '../types';
+import { calculateAllMetrics } from '../risk-engine';
+import { calculateRiskScore } from '../scoring';
+
+interface AnalysisState {
+  metrics: PortfolioMetrics | null;
+  isLoading: boolean;
+  returnsData: ReturnsData | null;
+  benchmarks: Record<string, PortfolioMetrics>;
+
+  setReturnsData: (data: ReturnsData) => void;
+  runAnalysis: (holdings: Holding[]) => void;
+  reset: () => void;
+}
+
+export const useAnalysisStore = create<AnalysisState>((set, get) => ({
+  metrics: null,
+  isLoading: false,
+  returnsData: null,
+  benchmarks: {},
+
+  setReturnsData: (data) => set({ returnsData: data }),
+
+  runAnalysis: (holdings) => {
+    const returnsData = get().returnsData;
+    if (!returnsData) return;
+
+    set({ isLoading: true });
+
+    // Use setTimeout to avoid blocking the UI
+    setTimeout(() => {
+      const metrics = calculateAllMetrics(holdings, returnsData);
+      const riskScore = calculateRiskScore(holdings, metrics);
+      metrics.riskScore = riskScore;
+
+      // Compute benchmark metrics
+      const benchmarkPortfolios: Record<string, Holding[]> = {
+        'S&P 500': [{ ticker: 'SPY', name: 'S&P 500', allocation: 100, type: 'etf' }],
+        '60/40': [
+          { ticker: 'SPY', name: 'S&P 500', allocation: 60, type: 'etf' },
+          { ticker: 'AGG', name: 'Agg Bond', allocation: 40, type: 'bond' },
+        ],
+        'Bonds': [{ ticker: 'AGG', name: 'Agg Bond', allocation: 100, type: 'bond' }],
+      };
+
+      const benchmarks: Record<string, PortfolioMetrics> = {};
+      for (const [name, bHoldings] of Object.entries(benchmarkPortfolios)) {
+        const bMetrics = calculateAllMetrics(bHoldings, returnsData);
+        bMetrics.riskScore = calculateRiskScore(bHoldings, bMetrics);
+        benchmarks[name] = bMetrics;
+      }
+
+      set({ metrics, benchmarks, isLoading: false });
+    }, 50);
+  },
+
+  reset: () => set({ metrics: null, isLoading: false, benchmarks: {} }),
+}));
