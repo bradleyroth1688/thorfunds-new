@@ -130,8 +130,29 @@ function FileUploadZone({ onHoldingsParsed, tickerLookup, onFallbackManual }: {
         <div className="text-5xl mb-4">{parsing ? '⏳' : '📄'}</div>
         <h3 className="heading-3 text-navy-800 mb-2">Upload Statement</h3>
         <p className="text-gray-500 mb-2">Drop a PDF or CSV file here, or click to browse</p>
-        <p className="text-xs text-gray-400">Supports brokerage statements and portfolio exports</p>
+        <p className="text-xs text-gray-400">Supports Schwab, Fidelity, Vanguard, and most brokerage PDF statements</p>
       </div>
+
+      {/* CSV Format Instructions */}
+      <details className="mb-4 text-sm">
+        <summary className="cursor-pointer text-gray-500 hover:text-navy-800 font-medium">
+          📋 Uploading a CSV? See required format
+        </summary>
+        <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200 text-gray-600">
+          <p className="mb-2">Your CSV should have columns for <strong>ticker</strong> and <strong>allocation %</strong> (or <strong>market value</strong>). Example:</p>
+          <pre className="bg-white rounded p-3 text-xs font-mono overflow-x-auto border border-gray-100 mb-3">{`Ticker,Allocation
+SPY,40
+AGG,30
+GLD,15
+BIL,15`}</pre>
+          <p className="mb-1">Accepted column names:</p>
+          <ul className="list-disc list-inside space-y-0.5 text-xs">
+            <li><strong>Ticker:</strong> ticker, symbol, fund, holding, security</li>
+            <li><strong>Allocation:</strong> weight, allocation, percent, pct, %</li>
+            <li><strong>Value:</strong> value, market value, amount, balance (auto-converts to %)</li>
+          </ul>
+        </div>
+      </details>
 
       {parseMessage && (
         <div className={`p-4 rounded-lg mb-4 text-sm ${
