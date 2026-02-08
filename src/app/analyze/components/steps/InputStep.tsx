@@ -169,34 +169,63 @@ function InitialView({ onMode, tickerLookup, onSetHoldings, onBack }: {
   onSetHoldings: (h: Holding[]) => void;
   onBack?: () => void;
 }) {
+  const [showUpload, setShowUpload] = useState(false);
+
+  if (showUpload) {
+    return (
+      <div className="max-w-3xl mx-auto animate-fade-in-up">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="heading-2 text-navy-800">Upload CSV</h2>
+          <button onClick={() => setShowUpload(false)} className="btn-ghost text-sm">← Back</button>
+        </div>
+        <FileUploadZone
+          tickerLookup={tickerLookup}
+          onHoldingsParsed={(holdings) => { onSetHoldings(holdings); onMode('manual'); }}
+          onFallbackManual={() => onMode('manual')}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-3xl mx-auto animate-fade-in-up">
       <div className="flex items-center justify-between mb-2">
         <h2 className="heading-2 text-navy-800">Enter Your Portfolio</h2>
         {onBack && <button onClick={onBack} className="btn-ghost text-sm">← Back to Risk Score</button>}
       </div>
-      <p className="body-lg text-gray-600 mt-2 mb-8 text-center">
-        Upload a statement, enter holdings manually, or start from a template.
+      <p className="body-lg text-gray-600 mt-2 mb-10 text-center">
+        Choose how you&apos;d like to enter your holdings.
       </p>
 
-      <FileUploadZone
-        tickerLookup={tickerLookup}
-        onHoldingsParsed={(holdings) => { onSetHoldings(holdings); onMode('manual'); }}
-        onFallbackManual={() => onMode('manual')}
-      />
-
-      <div className="flex items-center gap-4 my-8">
-        <div className="flex-1 h-px bg-gray-200" />
-        <span className="text-gray-400 text-sm">OR</span>
-        <div className="flex-1 h-px bg-gray-200" />
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <button onClick={() => onMode('manual')} className="btn-outline">
-          ✏️ Enter Manually
+      <div className="grid md:grid-cols-3 gap-6">
+        {/* Upload CSV */}
+        <button
+          onClick={() => setShowUpload(true)}
+          className="card-interactive p-8 text-center hover:border-gold-400/50 transition-all group"
+        >
+          <div className="text-5xl mb-4">📄</div>
+          <h3 className="text-lg font-bold text-navy-800 group-hover:text-gold-600 transition-colors mb-2">Upload CSV</h3>
+          <p className="text-sm text-gray-500">Import holdings from a CSV export from your brokerage</p>
         </button>
-        <button onClick={() => onMode('template')} className="btn-outline">
-          📋 Start from Template
+
+        {/* Enter Manually */}
+        <button
+          onClick={() => onMode('manual')}
+          className="card-interactive p-8 text-center hover:border-gold-400/50 transition-all group"
+        >
+          <div className="text-5xl mb-4">✏️</div>
+          <h3 className="text-lg font-bold text-navy-800 group-hover:text-gold-600 transition-colors mb-2">Enter Manually</h3>
+          <p className="text-sm text-gray-500">Type in your tickers and allocations by hand</p>
+        </button>
+
+        {/* Start from Template */}
+        <button
+          onClick={() => onMode('template')}
+          className="card-interactive p-8 text-center hover:border-gold-400/50 transition-all group"
+        >
+          <div className="text-5xl mb-4">📋</div>
+          <h3 className="text-lg font-bold text-navy-800 group-hover:text-gold-600 transition-colors mb-2">Use a Template</h3>
+          <p className="text-sm text-gray-500">Start from a common portfolio type and customize</p>
         </button>
       </div>
     </div>
