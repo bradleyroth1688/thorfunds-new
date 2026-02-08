@@ -426,7 +426,18 @@ function HoldingRow({ index, holding, tickerLookup, onUpdate, onRemove }: {
             setShowSuggestions(true);
           }}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+          onBlur={() => {
+            setTimeout(() => setShowSuggestions(false), 200);
+            const typed = searchQuery.trim().toUpperCase();
+            if (typed && typed !== holding.ticker) {
+              const match = tickerLookup[typed];
+              if (match) {
+                onUpdate({ ticker: match.ticker, name: match.name, type: match.type as Holding['type'], sector: match.sector });
+              } else {
+                onUpdate({ ticker: typed, name: typed, type: 'etf' as Holding['type'] });
+              }
+            }
+          }}
           className="w-24 px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-gold-500 focus:border-gold-500"
           placeholder="SPY"
         />
