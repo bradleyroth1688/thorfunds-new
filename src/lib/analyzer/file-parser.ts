@@ -64,13 +64,23 @@ function looksLikeTicker(s: string): boolean {
     'ANNUAL','INCOME','DEPOSIT','WITHDRAWAL','PURCHASE','SALE','CREDIT',
     'DEBIT','TRANSFER','BROKERAGE','ACCOUNT','SCHWAB','FIDELITY','VANGUARD',
     'MERRILL','MORGAN','STANLEY','AMERITRADE','IRA','ROTH','BENE','CUST',
+    // Fund description words that look like tickers
+    'INVSC','EQUAL','ISHARES','SPDR','PROSHARES','DIREXION','FIRST','TRUST',
+    'ULTRA','SHORT','LONG','BOND','STOCK','INDEX','GROWTH','SMALL','LARGE',
+    'MID','CAP','BLEND','INTER','GOVT','CORP','MUNI','HIGH','LOW','REAL',
+    'WORLD','EMRG','INTL','GLOBAL','DOMESTIC','FIXED','EQUITY','MULTI',
+    'ASSET','SECTOR','TECH','HEALTH','ENERGY','UTIL','STAPL','DISC',
+    'MATERIAL','INDUS','COMMUN','STATE','CITY','COUNTY',
+    // Positions table headers and common PDF words
+    'POSITIONS','EXCHANGE','TRADED','FUNDS','INVESTMENTS','SECURITIES',
+    'UNREALIZED','REALIZED','ESTIMATED','INFORMATION','CHARLES','COMPANY',
+    'ADVANTAGE','INVESTOR','ONEY','STTM','WHLD','JOURNALED','BENE',
   ]);
   if (skipWords.has(s)) return false;
   
-  // Single-letter symbols: only accept if it's a KNOWN ticker AND appears in a holdings context
-  // (we'll be more strict — require it to be in KNOWN_TICKERS)
+  // Single-letter tickers: NEVER accept from PDF parsing (too many false positives: V, T, S, P, M, etc.)
   if (s.length === 1) {
-    return KNOWN_TICKERS.has(s);
+    return false;
   }
   
   // 2-letter symbols: require known ticker (too many false positives otherwise)
@@ -313,18 +323,22 @@ function extractHoldingsFromText(text: string): ParseResult {
       if (!looksLikeTicker(candidate)) continue;
       const isKnown = KNOWN_TICKERS.has(candidate);
       
-      // Build context: rest of current line + potentially next line
+      // For known tickers: must be in first 3 tokens of the line (brokerage tables put ticker first)
+      // For unknown tickers: must be the FIRST token
+      if (isKnown && t > 2) continue;
+      if (!isKnown && t > 0) continue;
+      
+      // Build context from rest of current line only (not next line — too many false matches)
       const restOfLine = tokens.slice(t + 1).join(' ');
-      const nextLine = (i + 1 < lines.length) ? lines[i + 1].trim() : '';
-      const context = restOfLine + ' ' + nextLine;
       
       // Look for financial values in context
-      const dollarValues = extractDollarValues(context);
-      const percentages = extractPercentages(context);
+      const dollarValues = extractDollarValues(restOfLine);
+      const percentages = extractPercentages(restOfLine);
       const hasMoney = dollarValues.length > 0;
       const hasPct = percentages.length > 0;
       
-      // Accept if: known ticker + any financial data, OR unknown ticker + both money and pct
+      // Known tickers: need money OR percentage on same line
+      // Unknown tickers: need BOTH money AND percentage on same line
       if ((isKnown && (hasMoney || hasPct)) || (!isKnown && hasMoney && hasPct)) {
         let allocation = 0;
         let value = 0;
