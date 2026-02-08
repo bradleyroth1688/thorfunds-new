@@ -194,11 +194,41 @@ function extractHoldingsFromRows(rows: string[][]): ParseResult {
   return { holdings };
 }
 
+// Load pdfjs from CDN (npm package doesn't bundle reliably in Next.js static builds)
+async function loadPdfJs(): Promise<any> {
+  // Check if already loaded
+  if (typeof window !== 'undefined' && (window as any).pdfjsLib) {
+    return (window as any).pdfjsLib;
+  }
+  
+  // Try npm package first
+  try {
+    const mod = await import('pdfjs-dist/legacy/build/pdf.mjs');
+    if (mod && typeof mod.getDocument === 'function') return mod;
+  } catch { /* fall through to CDN */ }
+  
+  // Load from CDN
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') return reject(new Error('No window'));
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.9.155/pdf.min.mjs';
+    script.type = 'module';
+    // For non-module fallback
+    const scriptFallback = document.createElement('script');
+    scriptFallback.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    scriptFallback.onload = () => {
+      const lib = (window as any).pdfjsLib;
+      if (lib) resolve(lib);
+      else reject(new Error('pdfjsLib not found on window'));
+    };
+    scriptFallback.onerror = () => reject(new Error('Failed to load pdfjs from CDN'));
+    document.head.appendChild(scriptFallback);
+  });
+}
+
 export async function parsePDF(arrayBuffer: ArrayBuffer): Promise<ParseResult> {
   try {
-    // Dynamic import pdfjs-dist with legacy build (no worker needed)
-    // @ts-ignore - pdfjs-dist types have TS target issues
-    const pdfjsLib = await import('pdfjs-dist/legacy/build/pdf.mjs');
+    const pdfjsLib = await loadPdfJs();
     
     const loadingTask = pdfjsLib.getDocument({
       data: new Uint8Array(arrayBuffer),
