@@ -249,90 +249,77 @@ export async function parsePDF(arrayBuffer: ArrayBuffer): Promise<ParseResult> {
   }
 }
 
+// Money market / cash-equivalent tickers → map to BIL
+const CASH_TICKERS = new Set(['SWVXX','SPAXX','VMFXX','FDRXX','SWTSX','SNVXX','SWRXX','SWYXX']);
+const CASH_KEYWORDS = ['SCHWAB BANK', 'BANK SWEEP', 'SWEEP ACCOUNT', 'MONEY MARKET', 'MONEY FUND',
+  'CASH INVESTMENTS', 'PRIME ADVANTAGE', 'GOVERNMENT MONEY', 'TREASURY MONEY'];
+
 function extractHoldingsFromText(text: string): ParseResult {
   const holdings: Holding[] = [];
   const seen = new Set<string>();
   const valueByTicker: Record<string, number> = {};
+  let cashValue = 0;
   const lines = text.split(/\n/);
+  const fullTextUpper = text.toUpperCase();
 
-  // First pass: try to find structured holdings sections (Schwab, Fidelity, etc.)
-  // Look for lines that start with a ticker followed by a description and numbers
-  // Pattern: TICKER DESCRIPTION_WORDS NUMBER% or $NUMBER
-  const structuredPattern = /^([A-Z]{1,6})\s+[A-Z][A-Za-z\s&]{3,40}\s+[\d,.]+/;
+  // ── Strategy 1: Find "Top Account Holdings" or "Positions" table sections ──
+  // Schwab format: SYMBOL ... Market Value ... % of Account
+  // Look for lines containing a known ticker followed by dollar amounts and percentages
   
-  for (const line of lines) {
-    const trimmed = line.trim();
-    const match = trimmed.match(structuredPattern);
-    if (match) {
-      const candidate = match[1];
-      if (!looksLikeTicker(candidate)) continue;
-      if (seen.has(candidate)) continue;
-      
-      // Extract dollar values and percentages from the line
-      let allocation = 0;
-      let value = 0;
-      
-      // Find all percentages — take the last one that looks like a portfolio %
-      const pctMatches = Array.from(trimmed.matchAll(/([\d.]+)\s*%/g));
-      for (const pm of pctMatches) {
-        const pctVal = parseFloat(pm[1]);
-        if (pctVal > 0 && pctVal <= 100) allocation = pctVal;
-      }
-      
-      // Find dollar values (comma-separated numbers > 100)
-      const numMatches = Array.from(trimmed.matchAll(/\b([\d,]+\.\d{2})\b/g));
-      for (const nm of numMatches) {
-        const numVal = parseFloat(nm[1].replace(/,/g, ''));
-        if (numVal > 100) { value = numVal; break; }
-      }
-      
-      seen.add(candidate);
-      if (value > 0) valueByTicker[candidate] = value;
-      holdings.push({
-        ticker: candidate,
-        name: '',
-        allocation: Math.round(allocation * 10) / 10,
-        type: 'etf',
-      });
-    }
-  }
-  
-  // If structured pass found holdings, use those
-  if (holdings.length > 0) {
-    computeAllocationsFromValues(holdings, valueByTicker);
-    return { holdings };
-  }
-
-  // Fallback: scan for known tickers near financial data
-  for (const line of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    
+    // Split into tokens
     const tokens = line.split(/\s+/);
     
-    for (let i = 0; i < tokens.length; i++) {
-      const candidate = tokens[i].replace(/[^A-Z]/g, '').toUpperCase();
-      if (!looksLikeTicker(candidate)) continue;
+    for (let t = 0; t < tokens.length; t++) {
+      const candidate = tokens[t].replace(/[^A-Z]/g, '').toUpperCase();
+      if (!candidate) continue;
       if (seen.has(candidate)) continue;
-
+      
+      // Check if it's a cash-equivalent ticker
+      if (CASH_TICKERS.has(candidate)) {
+        // Extract the dollar value from this line or nearby
+        const lineValues = extractDollarValues(line);
+        if (lineValues.length > 0) {
+          // Use the largest value that's reasonable (market value, not quantity)
+          const val = lineValues.find(v => v > 50) || lineValues[0];
+          if (val > 0) cashValue += val;
+        }
+        seen.add(candidate);
+        continue;
+      }
+      
+      if (!looksLikeTicker(candidate)) continue;
       const isKnown = KNOWN_TICKERS.has(candidate);
       
-      const restOfLine = tokens.slice(i + 1).join(' ');
-      const hasMoney = /\$[\d,.]+/.test(restOfLine);
-      const hasPct = /[\d.]+\s*%/.test(restOfLine);
-
-      // Require stronger evidence: known ticker with financial context, or unknown with both money and pct
-      if ((isKnown && (hasMoney || hasPct)) || (hasMoney && hasPct)) {
+      // Build context: rest of current line + potentially next line
+      const restOfLine = tokens.slice(t + 1).join(' ');
+      const nextLine = (i + 1 < lines.length) ? lines[i + 1].trim() : '';
+      const context = restOfLine + ' ' + nextLine;
+      
+      // Look for financial values in context
+      const dollarValues = extractDollarValues(context);
+      const percentages = extractPercentages(context);
+      const hasMoney = dollarValues.length > 0;
+      const hasPct = percentages.length > 0;
+      
+      // Accept if: known ticker + any financial data, OR unknown ticker + both money and pct
+      if ((isKnown && (hasMoney || hasPct)) || (!isKnown && hasMoney && hasPct)) {
         let allocation = 0;
-        const pctMatch = restOfLine.match(/([\d.]+)\s*%/);
-        if (pctMatch) {
-          const pctVal = parseFloat(pctMatch[1]);
-          if (pctVal > 0 && pctVal <= 100) allocation = pctVal;
-        }
-
         let value = 0;
-        const moneyMatch = restOfLine.match(/\$?([\d,]+\.\d{2})/);
-        if (moneyMatch) {
-          value = parseFloat(moneyMatch[1].replace(/,/g, ''));
+        
+        // Use the last reasonable percentage (usually "% of Account")
+        for (const pct of percentages) {
+          if (pct > 0 && pct <= 100) allocation = pct;
         }
-
+        
+        // Use the first dollar value > $50 as market value
+        for (const dv of dollarValues) {
+          if (dv > 50) { value = dv; break; }
+        }
+        
         seen.add(candidate);
         if (value > 0) valueByTicker[candidate] = value;
         holdings.push({
@@ -344,14 +331,84 @@ function extractHoldingsFromText(text: string): ParseResult {
       }
     }
   }
+  
+  // ── Strategy 2: Find cash held at bank (Schwab Bank, etc.) ──
+  for (const line of lines) {
+    const upper = line.toUpperCase();
+    const isCashLine = CASH_KEYWORDS.some(kw => upper.includes(kw));
+    if (isCashLine && !seen.has('__BANK_CASH__')) {
+      const values = extractDollarValues(line);
+      // Look for the "Ending Balance" or a value that looks like a cash position
+      // Usually the last or second-to-last number on the line
+      if (values.length > 0) {
+        // For Schwab Bank lines in the positions table, take the ending balance
+        // Heuristic: if there are multiple values, the second one is often ending balance
+        const cashVal = values.length >= 2 ? values[1] : values[0];
+        if (cashVal > 0 && cashVal < 10_000_000) {
+          cashValue += cashVal;
+          seen.add('__BANK_CASH__');
+        }
+      }
+    }
+  }
+  
+  // Add cash as BIL if we found any
+  if (cashValue > 0 && !seen.has('BIL')) {
+    valueByTicker['BIL'] = cashValue;
+    holdings.push({
+      ticker: 'BIL',
+      name: 'Cash & Cash Equivalents',
+      allocation: 0,
+      type: 'etf',
+    });
+  }
 
+  // Compute allocations from dollar values if percentages weren't found
   computeAllocationsFromValues(holdings, valueByTicker);
+  
+  // Fill remaining allocation gap with BIL (cash)
+  const totalAlloc = holdings.reduce((sum, h) => sum + h.allocation, 0);
+  if (holdings.length > 0 && totalAlloc > 0 && totalAlloc < 95) {
+    const existing = holdings.find(h => h.ticker === 'BIL');
+    if (existing) {
+      existing.allocation = Math.round((100 - totalAlloc + existing.allocation) * 10) / 10;
+    } else {
+      holdings.push({
+        ticker: 'BIL',
+        name: 'Cash & Cash Equivalents',
+        allocation: Math.round((100 - totalAlloc) * 10) / 10,
+        type: 'etf',
+      });
+    }
+  }
 
   if (holdings.length === 0) {
-    return { holdings: [], error: "We couldn't find any holdings in this file. Try exporting as CSV or entering manually." };
+    return { holdings: [], error: "We couldn't find any holdings in this file. Try exporting as CSV or entering holdings manually." };
   }
 
   return { holdings };
+}
+
+/** Extract all dollar-like values from text (numbers with decimals, with or without $ and commas) */
+function extractDollarValues(text: string): number[] {
+  const values: number[] = [];
+  const matches = Array.from(text.matchAll(/\$?([\d,]+\.\d{2})\b/g));
+  for (const m of matches) {
+    const val = parseFloat(m[1].replace(/,/g, ''));
+    if (val > 0) values.push(val);
+  }
+  return values;
+}
+
+/** Extract all percentage values from text */
+function extractPercentages(text: string): number[] {
+  const pcts: number[] = [];
+  const matches = Array.from(text.matchAll(/([\d.]+)\s*%/g));
+  for (const m of matches) {
+    const val = parseFloat(m[1]);
+    if (val > 0 && val <= 100) pcts.push(val);
+  }
+  return pcts;
 }
 
 function computeAllocationsFromValues(holdings: Holding[], valueByTicker: Record<string, number>) {
