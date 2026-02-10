@@ -1,5 +1,77 @@
 [
   {
+    "id": "18640204",
+    "slug": "david-auerbach-hoya-capital-homz-riet",
+    "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+    "guest": "David Auerbach",
+    "company": "Hoya Capital",
+    "topic": "HOMZ & RIET",
+    "description": "David Auerbach, CIO of Hoya Capital, spent over a decade trading REITs at Green Street Advisors in Dallas before getting a front-row seat to the ETF industry's explosive growth at Esposito Securities. Now he runs two REIT-focused ETFs — HOMZ and RIET — managing over $135 million. In this episode, David breaks down the two biggest misconceptions advisors have about REITs: that they're all high yield and that they're all interest rate sensitive. He makes the case that most passive REIT ETFs are far more concentrated than people realize, with just a handful of large-cap names yielding 2–3% dominating the top holdings. David explains how RIET takes the opposite approach — overweighting small caps, mid caps, mortgage REITs, and REIT preferred stocks to deliver a 10%+ annualized monthly dividend across roughly 100 holdings with no single position above 1.5%. We also dig into the housing supply shortage driving the HOMZ thesis, why 4% on the 10-year Treasury is the magic number for REIT investors, and the current M&A wave that's seen 17 REITs merge or pursue strategic alternatives in just the past four months. David shares why private equity is scooping up REIT platforms trading below net asset value, how advisors should think about using HOMZ and RIET as complements to traditional exposure like VNQ, and why boring is exactly what you want from this corner of your portfolio.",
+    "descriptionHtml": "<p>David Auerbach, CIO of Hoya Capital, spent over a decade trading REITs at Green Street Advisors in Dallas before getting a front-row seat to the ETF industry&apos;s explosive growth at Esposito Securities. Now he runs two REIT-focused ETFs — HOMZ and RIET — managing over $135 million. In this episode, David breaks down the two biggest misconceptions advisors have about REITs: that they&apos;re all high yield and that they&apos;re all interest rate sensitive. He makes the case that most passive REIT ETFs are far more concentrated than people realize, with just a handful of large-cap names yielding 2–3% dominating the top holdings.</p><p>David explains how RIET takes the opposite approach — overweighting small caps, mid caps, mortgage REITs, and REIT preferred stocks to deliver a 10%+ annualized monthly dividend across roughly 100 holdings with no single position above 1.5%. We also dig into the housing supply shortage driving the HOMZ thesis, why 4% on the 10-year Treasury is the magic number for REIT investors, and the current M&amp;A wave that&apos;s seen 17 REITs merge or pursue strategic alternatives in just the past four months. David shares why private equity is scooping up REIT platforms trading below net asset value, how advisors should think about using HOMZ and RIET as complements to traditional exposure like VNQ, and why boring is exactly what you want from this corner of your portfolio.</p>",
+    "summary": "David Auerbach, CIO of Hoya Capital, spent over a decade trading REITs at Green Street Advisors in Dallas before getting a front-row seat to the ETF industry's explosive growth at Esposito Securities. Now he runs two REIT-focused ETFs — HOMZ and RIET — managing over $135 million. In this episode, David breaks down the two biggest misconceptions advisors have about REITs: that they're all high yield and that they're all interest rate sensitive. He makes the case that most passive REIT ETFs are...",
+    "pubDate": "Sun, 08 Feb 2026 00:00:00 -0500",
+    "publishedAt": "2026-02-08T05:00:00.000Z",
+    "mp3Url": "https://www.buzzsprout.com/2162961/episodes/18640204-david-auerbach-hoya-capital-homz-riet.mp3",
+    "duration": 1903,
+    "durationFormatted": "31:43",
+    "seo": {
+      "title": "David Auerbach on REIT ETF | HOMZ & RIET",
+      "metaDescription": "David Auerbach discusses the REIT ETF strategy. David Auerbach, CIO of Hoya Capital, spent over a decade trading REITs at Green St...",
+      "keywords": [
+        "david auerbach",
+        "david auerbach interview",
+        "hoya capital",
+        "reit",
+        "reit etf",
+        "reit etf strategy",
+        "homz & riet",
+        "passive etf"
+      ]
+    },
+    "ticker": "REIT",
+    "categories": [
+      "ETF Strategy",
+      "Fixed Income",
+      "Alternatives",
+      "Growth Investing",
+      "Value Investing",
+      "Small & Mid Cap"
+    ],
+    "keyTakeaways": [
+      "Now he runs two REIT-focused ETFs — HOMZ and RIET — managing over $135 million",
+      "David Auerbach, CIO of Hoya Capital, spent over a decade trading REITs at Green Street Advisors in Dallas before getting a front-row seat to the ETF industry's explosive growth at Esposito Securities",
+      "In this episode, David breaks down the two biggest misconceptions advisors have about REITs: that they're all high yield and that they're all interest rate sensitive",
+      "He makes the case that most passive REIT ETFs are far more concentrated than people realize, with just a handful of large-cap names yielding 2–3% dominating the top holdings"
+    ],
+    "notableQuotes": [],
+    "relatedEpisodes": [
+      {
+        "slug": "seth-cogswell-running-oak",
+        "title": "Seth Cogswell - Running Oak",
+        "guest": "Seth Cogswell",
+        "company": "Running Oak"
+      },
+      {
+        "slug": "wayne-penello-nextgen-emp",
+        "title": "Wayne Penello - NextGen EMP",
+        "guest": "Wayne Penello",
+        "company": "NextGen EMP"
+      },
+      {
+        "slug": "clark-allen-horizon-investments",
+        "title": "Clark Allen - Horizon Investments",
+        "guest": "Clark Allen",
+        "company": "Horizon Investments"
+      },
+      {
+        "slug": "david-allen-octane-investments",
+        "title": "David Allen - Octane Investments",
+        "guest": "David Allen",
+        "company": "Octane Investments"
+      }
+    ]
+  },
+  {
     "id": "18580525",
     "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
     "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
@@ -5239,6 +5311,12 @@
     ],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
         "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
         "guest": "Raymond Micaletti",
@@ -5255,12 +5333,6 @@
         "title": "Eric Lutton - Sound Income Strategies",
         "guest": "Eric Lutton",
         "company": "Sound Income Strategies"
-      },
-      {
-        "slug": "kirk-mcdonald-argent-capital",
-        "title": "Kirk McDonald - Argent Capital",
-        "guest": "Kirk McDonald",
-        "company": "Argent Capital"
       }
     ]
   },
@@ -5375,6 +5447,12 @@
     "notableQuotes": [],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
         "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
         "guest": "Raymond Micaletti",
@@ -5391,12 +5469,6 @@
         "title": "Seth Cogswell - Running Oak",
         "guest": "Seth Cogswell",
         "company": "Running Oak"
-      },
-      {
-        "slug": "eric-lutton-sound-income-strategies",
-        "title": "Eric Lutton - Sound Income Strategies",
-        "guest": "Eric Lutton",
-        "company": "Sound Income Strategies"
       }
     ]
   },
@@ -5512,6 +5584,12 @@
     "notableQuotes": [],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
         "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
         "guest": "Raymond Micaletti",
@@ -5528,12 +5606,6 @@
         "title": "Seth Cogswell - Running Oak",
         "guest": "Seth Cogswell",
         "company": "Running Oak"
-      },
-      {
-        "slug": "eric-lutton-sound-income-strategies",
-        "title": "Eric Lutton - Sound Income Strategies",
-        "guest": "Eric Lutton",
-        "company": "Sound Income Strategies"
       }
     ]
   },
@@ -5580,6 +5652,12 @@
     "notableQuotes": [],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "seth-cogswell-running-oak",
         "title": "Seth Cogswell - Running Oak",
         "guest": "Seth Cogswell",
@@ -5596,12 +5674,6 @@
         "title": "Bob Elliot - Unlimited Funds",
         "guest": "Bob Elliot",
         "company": "Unlimited Funds"
-      },
-      {
-        "slug": "wayne-penello-nextgen-emp",
-        "title": "Wayne Penello - NextGen EMP",
-        "guest": "Wayne Penello",
-        "company": "NextGen EMP"
       }
     ]
   },
@@ -6274,6 +6346,12 @@
     "notableQuotes": [],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
         "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
         "guest": "Raymond Micaletti",
@@ -6290,12 +6368,6 @@
         "title": "Eric Lutton - Sound Income Strategies",
         "guest": "Eric Lutton",
         "company": "Sound Income Strategies"
-      },
-      {
-        "slug": "kirk-mcdonald-argent-capital",
-        "title": "Kirk McDonald - Argent Capital",
-        "guest": "Kirk McDonald",
-        "company": "Argent Capital"
       }
     ]
   },
@@ -6615,6 +6687,12 @@
     ],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
         "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
         "guest": "Raymond Micaletti",
@@ -6631,12 +6709,6 @@
         "title": "Seth Cogswell - Running Oak",
         "guest": "Seth Cogswell",
         "company": "Running Oak"
-      },
-      {
-        "slug": "eric-lutton-sound-income-strategies",
-        "title": "Eric Lutton - Sound Income Strategies",
-        "guest": "Eric Lutton",
-        "company": "Sound Income Strategies"
       }
     ]
   },
@@ -6675,6 +6747,12 @@
     "notableQuotes": [],
     "relatedEpisodes": [
       {
+        "slug": "david-auerbach-hoya-capital-homz-riet",
+        "title": "David Auerbach - Hoya Capital - HOMZ & RIET",
+        "guest": "David Auerbach",
+        "company": "Hoya Capital"
+      },
+      {
         "slug": "raymond-micaletti-relative-sentiment-technologies-mood-etf",
         "title": "Raymond Micaletti - Relative Sentiment Technologies - MOOD ETF",
         "guest": "Raymond Micaletti",
@@ -6691,12 +6769,6 @@
         "title": "Seth Cogswell - Running Oak",
         "guest": "Seth Cogswell",
         "company": "Running Oak"
-      },
-      {
-        "slug": "eric-lutton-sound-income-strategies",
-        "title": "Eric Lutton - Sound Income Strategies",
-        "guest": "Eric Lutton",
-        "company": "Sound Income Strategies"
       }
     ]
   }
