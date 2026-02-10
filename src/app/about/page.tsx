@@ -45,7 +45,7 @@ export default function AboutPage() {
                 THOR was built on a different premise: math is linear, but markets are not. We use principles from physics and engineering—specifically digital signal processing—to analyze market data the same way noise-canceling headphones analyze sound waves.
               </p>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                The result: strategies that can detect market regime changes and adjust positioning accordingly. When signals deteriorate, we can move to cash. When conditions improve, we re-enter. It&apos;s not about predicting the future—it&apos;s about reacting intelligently to the present.
+                It detects market regime changes that traditional indicators may miss. When signals deteriorate, we can move to cash. When conditions improve, we re-enter. It&apos;s not about predicting the future—it&apos;s about reacting intelligently to the present.
               </p>
             </div>
             <div className="bg-navy-800 rounded-2xl p-8 text-white">

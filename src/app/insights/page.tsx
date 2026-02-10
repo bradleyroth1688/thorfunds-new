@@ -144,7 +144,7 @@ export default async function InsightsPage() {
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Behind the Ticker</h1>
           <p className="text-xl text-slate-300 max-w-2xl">
-            In-depth conversations with ETF managers, portfolio strategists, and investment thought leaders.
+            Real conversations with the people building some of today&apos;s most innovative ETFs — strategy, structure, and the stories behind each fund.
             Hosted by Brad Roth, CIO of THOR Funds.
           </p>
           <div className="mt-6 flex gap-4">

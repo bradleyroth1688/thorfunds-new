@@ -87,7 +87,7 @@ export default function TeamPage() {
                     This insight led Brad to develop THOR&apos;s signature approach: using digital signal processing to identify market regime changes in real time. The methodology, inspired by the same science behind noise-canceling headphones, allows THOR&apos;s strategies to dynamically adjust positioning based on actual market conditions rather than predictions or forecasts.
                   </p>
                   <p className="text-gray-600 leading-relaxed mt-4">
-                    Under Brad&apos;s leadership, THOR has grown with robust model offerings across two adaptive ETFs and serves financial advisors across the country. He hosts the &quot;Behind the Ticker&quot; podcast, where he interviews leaders in the ETF and wealth management industry.
+                    Under Brad&apos;s leadership, THOR has launched six distinct model portfolios and two actively managed ETFs, serving financial advisors across the country. He hosts the &quot;Behind the Ticker&quot; podcast, where he interviews leaders in the ETF and wealth management industry.
                   </p>
                 </div>
 
