@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { rateLimit } from '@/lib/rate-limit';
 
 // Known tickers for validation
 const KNOWN_TICKERS = new Set([
@@ -53,6 +54,12 @@ interface Holding {
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit: 5 per 10 minutes per IP
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    if (!rateLimit(ip, 'parse-statement', 5, 10 * 60 * 1000)) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
+    }
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
     if (!file) {

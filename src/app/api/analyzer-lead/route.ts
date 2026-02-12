@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { verifyTurnstile } from '@/lib/turnstile';
+import { rateLimit } from '@/lib/rate-limit';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -12,7 +14,23 @@ export async function OPTIONS() {
 
 export async function POST(req: Request) {
   try {
+    // Rate limit: 5 per 10 minutes per IP
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    if (!rateLimit(ip, 'analyzer-lead', 5, 10 * 60 * 1000)) {
+      return NextResponse.json({ success: false, error: 'Too many requests. Please try again later.' }, { status: 429, headers: CORS_HEADERS });
+    }
+
     const body = await req.json();
+
+    // Turnstile: optional (cross-origin callers may not have it), but verify if present
+    const { turnstileToken } = body || {};
+    if (turnstileToken) {
+      const valid = await verifyTurnstile(turnstileToken);
+      if (!valid) {
+        return NextResponse.json({ success: false, error: 'CAPTCHA verification failed.' }, { status: 403, headers: CORS_HEADERS });
+      }
+    }
+
     const { name, email, company, holdingsCount, tickers, riskScore, currentRiskScore, optimizedRiskScore, thorAllocation, step } = body;
 
     const lead = {
