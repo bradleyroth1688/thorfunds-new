@@ -88,7 +88,10 @@ function MetricDelta({ label, current, optimized, pct = false, inverted = false 
           <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
             isGood ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
           }`}>
-            {delta > 0 ? '+' : ''}{pct ? `${(delta * 100).toFixed(1)}%` : delta.toFixed(2)}
+            {(() => {
+              const displayD = inverted ? -delta : delta;
+              return `${displayD > 0 ? '+' : ''}${pct ? `${(displayD * 100).toFixed(1)}%` : displayD.toFixed(2)}`;
+            })()}
           </span>
         )}
       </div>
