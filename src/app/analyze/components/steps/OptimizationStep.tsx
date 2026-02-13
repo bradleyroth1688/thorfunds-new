@@ -70,14 +70,15 @@ function SliderInput({ label, subtitle, value, max, color, onChange }: {
 function MetricDelta({ label, current, optimized, pct = false, inverted = false }: {
   label: string; current: number; optimized: number; pct?: boolean; inverted?: boolean;
 }) {
-  const delta = optimized - current;
-  // For drawdown: values are negative (e.g., -0.30). More negative = worse.
-  // inverted=true means lower is better. For drawdown, if optimized is more negative, that's bad.
-  const isGood = inverted ? delta < 0 : delta > 0;
+  // For inverted metrics (drawdown, volatility), compare magnitudes
+  // Drawdown: -24% → -23% means magnitude decreased by 1 (good)
+  // Volatility: 10.9% → 10.6% means value decreased by 0.3 (good)
+  const effectiveDelta = inverted
+    ? Math.abs(optimized) - Math.abs(current)
+    : optimized - current;
+  const isGood = inverted ? effectiveDelta < 0 : effectiveDelta > 0;
   const displayVal = pct ? `${(optimized * 100).toFixed(1)}%` : optimized.toFixed(2);
-  const absDelta = Math.abs(delta);
-  const displayDelta = pct ? `${(absDelta * 100).toFixed(1)}%` : absDelta.toFixed(2);
-  const hasChange = absDelta > 0.001;
+  const hasChange = Math.abs(effectiveDelta) > 0.001;
 
   return (
     <div className="flex items-center justify-between">
@@ -88,10 +89,7 @@ function MetricDelta({ label, current, optimized, pct = false, inverted = false 
           <span className={`text-xs font-semibold px-1.5 py-0.5 rounded ${
             isGood ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
           }`}>
-            {(() => {
-              const displayD = inverted ? -delta : delta;
-              return `${displayD > 0 ? '+' : ''}${pct ? `${(displayD * 100).toFixed(1)}%` : displayD.toFixed(2)}`;
-            })()}
+            {effectiveDelta > 0 ? '+' : ''}{pct ? `${(effectiveDelta * 100).toFixed(1)}%` : effectiveDelta.toFixed(2)}
           </span>
         )}
       </div>
