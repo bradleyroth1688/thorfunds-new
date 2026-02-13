@@ -85,7 +85,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EY5JJGCQVH"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VE6TEH2MEJ"
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -93,7 +93,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-EY5JJGCQVH');
+            gtag('config', 'G-VE6TEH2MEJ');
           `}
         </Script>
         {/* Preload critical fonts */}
