@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+const WHITEPAPER_URL = "/documents/signal-processing-101-whitepaper.pdf";
+
 export default function WhitePapersPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -11,13 +13,19 @@ export default function WhitePapersPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
-    // In production, send to your email service/CRM
-    console.log("Lead captured for whitepaper:", email);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
+
+    // Immediately open the PDF in a new tab
+    window.open(WHITEPAPER_URL, "_blank");
+
+    // Send email in background (don't block the user)
+    fetch("/api/whitepaper", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    }).catch(() => {
+      // Silent fail — they already have the PDF open
+    });
+
     setSubmitted(true);
     setLoading(false);
   };
@@ -57,28 +65,28 @@ export default function WhitePapersPage() {
                   </p>
                   <ul className="space-y-2 text-gray-600 mb-6">
                     <li className="flex items-center gap-2">
-                      <svg className="h-5 w-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="h-5 w-5 text-gold-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       The noise-canceling headphones analogy for investing
                     </li>
                     <li className="flex items-center gap-2">
-                      <svg className="h-5 w-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="h-5 w-5 text-gold-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       Why &quot;detect, don&apos;t predict&quot; outperforms forecasting
                     </li>
                     <li className="flex items-center gap-2">
-                      <svg className="h-5 w-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="h-5 w-5 text-gold-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       How systematic rules remove emotional bias
                     </li>
                     <li className="flex items-center gap-2">
-                      <svg className="h-5 w-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="h-5 w-5 text-gold-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      Real-world application to THIR and THLV strategies
+                      Real-world application to THOR&apos;s adaptive strategies
                     </li>
                   </ul>
                 </div>
@@ -87,10 +95,10 @@ export default function WhitePapersPage() {
                   {!submitted ? (
                     <>
                       <h3 className="text-xl font-bold text-navy-800 mb-2">
-                        Download Free White Paper
+                        Get the White Paper
                       </h3>
                       <p className="text-gray-600 text-sm mb-6">
-                        Enter your email to receive the full PDF instantly.
+                        Enter your email and we&apos;ll open it right away — plus send you a copy to keep.
                       </p>
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
@@ -108,7 +116,7 @@ export default function WhitePapersPage() {
                           disabled={loading}
                           className="w-full btn-primary py-3 disabled:opacity-50"
                         >
-                          {loading ? "Processing..." : "Download White Paper"}
+                          {loading ? "Opening..." : "Read It Now"}
                         </button>
                         <p className="text-xs text-gray-500 text-center">
                           We respect your privacy. Unsubscribe anytime.
@@ -122,18 +130,23 @@ export default function WhitePapersPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                       </div>
-                      <h3 className="text-xl font-bold text-navy-800 mb-2">Thank You!</h3>
-                      <p className="text-gray-600 mb-6">Click below to download your white paper.</p>
+                      <h3 className="text-xl font-bold text-navy-800 mb-2">You&apos;re All Set</h3>
+                      <p className="text-gray-600 mb-4">
+                        The whitepaper should be open in a new tab. We also sent a copy to your email.
+                      </p>
+                      <p className="text-gray-500 text-sm mb-6">
+                        Didn&apos;t open? Click below:
+                      </p>
                       <a
-                        href="/documents/signal-processing-101-whitepaper.pdf"
+                        href={WHITEPAPER_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary inline-flex items-center gap-2"
                       >
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                         </svg>
-                        Download PDF
+                        Open White Paper
                       </a>
                     </div>
                   )}
