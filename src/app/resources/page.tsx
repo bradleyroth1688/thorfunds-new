@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: "Signal Processing 101: How THOR's systematic approach filters market noise to detect regime changes. Download the whitepaper.",
     images: [
       {
-        url: "/images/signal-processing-og.png",
+        url: "/images/whitepaper-og.png",
         width: 1200,
         height: 600,
         alt: "Signal Processing 101 - THOR Funds Whitepaper",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Resources | THOR Funds",
     description: "Signal Processing 101: How THOR's systematic approach filters market noise to detect regime changes.",
-    images: ["/images/signal-processing-og.png"],
+    images: ["/images/whitepaper-og.png"],
   },
 };
 
