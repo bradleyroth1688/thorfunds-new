@@ -3,7 +3,25 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Resources",
-  description: "Access THOR Funds resources including advisor materials, fund documents, FAQ, and educational content for financial professionals.",
+  description: "Access THOR Funds resources including Signal Processing 101 whitepaper, advisor materials, fund documents, and educational content.",
+  openGraph: {
+    title: "Resources | THOR Funds",
+    description: "Signal Processing 101: How THOR's systematic approach filters market noise to detect regime changes. Download the whitepaper.",
+    images: [
+      {
+        url: "/images/signal-processing-og.png",
+        width: 1200,
+        height: 600,
+        alt: "Signal Processing 101 - THOR Funds Whitepaper",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources | THOR Funds",
+    description: "Signal Processing 101: How THOR's systematic approach filters market noise to detect regime changes.",
+    images: ["/images/signal-processing-og.png"],
+  },
 };
 
 const resources = [
