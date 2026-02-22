@@ -37,7 +37,7 @@ export default function TeamPage() {
                 </div>
                 <div className="mt-6 flex gap-4 justify-center">
                   <a
-                    href="https://twitter.com/Bradr_thor"
+                    href="https://x.com/Bradr_thor"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-gold-500 transition-colors"
@@ -48,7 +48,7 @@ export default function TeamPage() {
                     </svg>
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/brad-roth-8a4a8619a/"
+                    href="https://www.linkedin.com/in/brad-roth-thor/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-gold-500 transition-colors"

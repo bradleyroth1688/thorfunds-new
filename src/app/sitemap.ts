@@ -36,13 +36,13 @@ function getBookChapterSlugs(): string[] {
 
 // Static dates for lastmod (update these when content changes)
 const CONTENT_DATES = {
-  homepage: "2025-02-05",
-  funds: "2025-02-05",
-  fundThir: "2025-02-05",
-  fundThlv: "2025-02-05",
-  about: "2025-01-15",
-  learn: "2025-01-20",
-  legal: "2024-06-01",
+  homepage: "2026-02-22",
+  funds: "2026-02-22",
+  fundThir: "2026-02-22",
+  fundThlv: "2026-02-22",
+  about: "2026-02-22",
+  learn: "2026-02-22",
+  legal: "2025-06-01",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

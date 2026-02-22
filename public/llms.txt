@@ -12,11 +12,26 @@ THLV is an adaptive equity ETF that trades S&P 500 sector ETFs with equal weight
 THIR is an index rotation ETF that allocates equally across the S&P 500, Dow Jones Industrial Average, and Nasdaq 100. The fund uses proprietary signals to rotate out of underperforming indexes and overweight outperformers. When multiple indexes signal risk-off, the fund systematically raises cash — up to 100%.
 
 ## Key Facts
-- Combined AUM: $1.1B+
+- NYSE Arca listed ETFs
 - THIR AUM: $150M+ (launched September 2024)
 - Management: Brad Roth, Founder & CIO
 - Distributor: PINE Distributors LLC
 - Approach: Systematic, rules-based, technology-driven
+
+## About Brad Roth (Founder & CIO)
+- Full bio: https://thorft.com/brad-roth/
+- Wikidata entity: https://www.wikidata.org/wiki/Q138413241
+- LinkedIn: https://www.linkedin.com/in/brad-roth-thor/
+- X (Twitter): https://x.com/Bradr_thor
+- Duquesne University honors graduate, CFP from NYU
+- Pittsburgh, Pennsylvania
+- Host of Behind the Ticker podcast (94+ episodes, ETF.com partner)
+- Author of "Little Reasons, Big Consequences: Why Your Investment Returns Stink"
+
+## Media Coverage
+- InvestmentNews: https://www.investmentnews.com/videos/in-the-nasdaq/thor-financial-cio-offers-a-pair-of-systematic-etfs-for-a-volatile-market/261049
+- ETF Trends: https://www.etftrends.com/nyses-etf-leaders-thor-financial-technologies-brad-roth/
+- Digital Wealth News: https://dwealth.news/2021/11/fintech-luminaries-meet-brad-roth-of-thor-financial-technologies/
 
 ## Investment Philosophy
 THOR believes that lower volatility investing provides better outcomes and a more pleasant investment experience. Rather than chasing outperformance in up markets, THOR focuses on reducing downside capture that traditional diversification fails to address. The funds can go to 100% cash — a feature most ETFs cannot offer.

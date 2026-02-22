@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     default: "THOR Funds | Risk-Managed ETFs for Advisors",
     template: "%s | THOR Funds",
   },
-  description: "THOR Funds offers innovative, risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns. $1.1B AUM.",
-  keywords: ["ETF", "risk management", "low volatility", "adaptive ETF", "THIR", "THLV", "index rotation", "defensive investing"],
-  authors: [{ name: "THOR Financial Technologies" }],
+  description: "THOR Funds offers risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns. NYSE Arca listed. Managed by Brad Roth, Founder & CIO.",
+  keywords: ["ETF", "risk management", "low volatility", "adaptive ETF", "THIR", "THLV", "index rotation", "defensive investing", "Brad Roth", "Brad Roth Pittsburgh", "THOR Financial Technologies"],
+  authors: [{ name: "Brad Roth", url: "https://thorft.com/brad-roth/" }],
   creator: "THOR Financial Technologies",
   publisher: "THOR Financial Technologies",
   formatDetection: {

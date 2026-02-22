@@ -4,14 +4,19 @@
 export interface OrganizationSchema {
   "@context": "https://schema.org";
   "@type": "FinancialService";
+  "@id"?: string;
   name: string;
+  alternateName?: string;
   description: string;
   url: string;
   logo: string;
   founder: {
     "@type": "Person";
+    "@id"?: string;
     name: string;
     jobTitle: string;
+    url?: string;
+    sameAs?: string[];
   };
   foundingDate: string;
   areaServed: string;
@@ -144,14 +149,23 @@ export function getOrganizationSchema(): OrganizationSchema {
   return {
     "@context": "https://schema.org",
     "@type": "FinancialService",
+    "@id": "https://thorfunds.com/#organization",
     name: "THOR Financial Technologies",
-    description: "THOR Funds offers innovative, risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns.",
+    alternateName: "THOR Funds",
+    description: "THOR Funds offers risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns. NYSE Arca listed.",
     url: "https://thorfunds.com",
     logo: "https://thorfunds.com/images/thor-funds-logo-gold.png",
     founder: {
       "@type": "Person",
+      "@id": "https://thorft.com/brad-roth/#person",
       name: "Brad Roth",
-      jobTitle: "Chief Investment Officer"
+      jobTitle: "Founder & Chief Investment Officer",
+      url: "https://thorft.com/brad-roth/",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q138413241",
+        "https://www.linkedin.com/in/brad-roth-thor/",
+        "https://x.com/Bradr_thor",
+      ],
     },
     foundingDate: "2020",
     areaServed: "United States",
@@ -165,13 +179,15 @@ export function getOrganizationSchema(): OrganizationSchema {
       "Digital Signal Processing in Finance"
     ],
     sameAs: [
-      "https://twitter.com/Bradr_thor",
-      "https://linkedin.com/company/thor-funds"
+      "https://x.com/Bradr_thor",
+      "https://www.linkedin.com/in/brad-roth-thor/",
+      "https://www.wikidata.org/wiki/Q138413241",
+      "https://thorft.com",
     ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
-      email: "info@thorfunds.com"
+      email: "welcome@thoranalytics.com"
     }
   };
 }

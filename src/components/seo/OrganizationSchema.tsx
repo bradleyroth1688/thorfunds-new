@@ -50,7 +50,7 @@ export function OrganizationSchema({ includeFinancialServices = true }: Organiza
       },
     ],
     sameAs: [
-      "https://twitter.com/Bradr_thor",
+      "https://x.com/Bradr_thor",
       "https://www.linkedin.com/company/thor-financial-technologies",
       "https://www.youtube.com/@BehindtheTicker",
     ],
