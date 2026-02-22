@@ -156,7 +156,7 @@ export default async function InsightsPage() {
               className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition-colors">
               Spotify
             </a>
-            <a href="https://podcasts.apple.com/us/podcast/behind-the-ticker" target="_blank" rel="noopener noreferrer"
+            <a href="https://podcasts.apple.com/us/podcast/behind-the-ticker/id1682702118" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors">
               Apple Podcasts
             </a>

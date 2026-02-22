@@ -61,7 +61,7 @@ export function PodcastSeriesSchema({ totalEpisodes, latestEpisodeDate }: Podcas
     },
     sameAs: [
       "https://open.spotify.com/show/behindtheticker",
-      "https://podcasts.apple.com/us/podcast/behind-the-ticker",
+      "https://podcasts.apple.com/us/podcast/behind-the-ticker/id1682702118",
       "https://www.youtube.com/@BehindtheTicker",
     ],
   };
