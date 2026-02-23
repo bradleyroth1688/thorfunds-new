@@ -116,6 +116,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#1a365d" />
         {/* Organization Schema - Site Wide */}
         <SchemaScript schema={organizationSchema} />
+        <Script
+          src="https://app.advizorpro.com/i/kOVu3E.ap.js"
+          strategy="afterInteractive"
+        />
         {/* LinkedIn Insight Tag */}
         <Script id="linkedin-insight" strategy="afterInteractive">
           {`
