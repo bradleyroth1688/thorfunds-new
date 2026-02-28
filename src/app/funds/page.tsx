@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { FUNDS } from "@/lib/api";
+import GrowthOfInvestmentChart from "@/components/fund/GrowthOfInvestmentChart";
 
 export const metadata: Metadata = {
   title: "Our ETFs",
@@ -145,6 +146,12 @@ export default function FundsPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Growth of $10,000 */}
+          <div className="mt-12 grid lg:grid-cols-2 gap-6">
+            <GrowthOfInvestmentChart ticker="THLV" />
+            <GrowthOfInvestmentChart ticker="THIR" />
           </div>
 
           {/* Compare CTA */}

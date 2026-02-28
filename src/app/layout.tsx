@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SchemaScript } from "@/components/seo/SchemaScript";
+import WebsiteSchema from "@/components/seo/WebsiteSchema";
 import { getOrganizationSchema } from "@/lib/schema";
 
 const inter = Inter({ 
@@ -114,8 +115,12 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#1a365d" />
-        {/* Organization Schema - Site Wide */}
+        {/* LLM discovery files */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLMs Full" />
+        {/* Organization + Website Schema */}
         <SchemaScript schema={organizationSchema} />
+        <WebsiteSchema />
         <Script
           src="https://app.advizorpro.com/i/kOVu3E.ap.js"
           strategy="afterInteractive"

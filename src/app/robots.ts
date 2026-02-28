@@ -1,41 +1,31 @@
 import { MetadataRoute } from "next";
 
-/**
- * Robots.txt Configuration
- * 
- * Controls search engine crawler access:
- * - Allows indexing of all public pages
- * - Blocks API routes and Next.js internal paths
- * - Points to sitemap index
- */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/_next/",
-          "/admin/",
-          "/private/",
-          "/*.json$",  // Block direct JSON access
-        ],
+        disallow: ["/api/", "/_next/", "/admin/", "/private/", "/*.json$"],
       },
       {
-        // Specific rules for Googlebot
         userAgent: "Googlebot",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/_next/",
-        ],
+        disallow: ["/api/", "/_next/"],
       },
-      {
-        // Allow Googlebot-Image for image indexing
-        userAgent: "Googlebot-Image",
-        allow: "/",
-      },
+      { userAgent: "Googlebot-Image", allow: "/" },
+      // LLM / AI crawlers
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "Claude-Web", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "Applebot-Extended", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "CCBot", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "Cohere-ai", allow: "/" },
+      { userAgent: "Meta-ExternalAgent", allow: "/" },
+      { userAgent: "Bytespider", allow: "/" },
     ],
     sitemap: "https://thorfunds.com/sitemap.xml",
     host: "https://thorfunds.com",
