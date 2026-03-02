@@ -31,7 +31,7 @@ export default function Home() {
         <div className="container-max mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12" style={{ color: '#0e1f36' }}>
             <div className="text-center">
-              <span className="font-bold text-2xl md:text-3xl">2</span>
+              <span className="font-bold text-2xl md:text-3xl">3</span>
               <span className="ml-2">Risk-Managed ETFs</span>
             </div>
             <div className="hidden md:block w-px h-8 bg-navy-900/30"></div>
@@ -54,11 +54,11 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our ETFs</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Two distinct adaptive strategies designed with risk management as a core principle.
+              Three distinct adaptive strategies designed with risk management as a core principle.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {/* THIR Card */}
             <div className="card-hover">
               <div className="flex items-center justify-between mb-4">
@@ -108,6 +108,42 @@ export default function Home() {
                 <Link href="/funds/thlv/holdings" className="btn-outline flex-1 text-center">
                   View Holdings
                 </Link>
+              </div>
+            </div>
+
+            {/* THMR Card */}
+            <div className="relative card-hover ring-1 ring-gold-200">
+              <div className="absolute top-4 right-4">
+                <span className="inline-flex items-center bg-navy-900 text-gold-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
+                  COMING SOON
+                </span>
+              </div>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THMR</h3>
+                  <p className="text-gray-600 dark:text-gray-300">THOR AdaptiveRisk Dynamic ETF</p>
+                </div>
+                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-medium">
+                  AdaptiveRisk Dynamic
+                </span>
+              </div>
+              <p className="text-gray-700 dark:text-gray-200 mb-6">
+                Multi-strategy, rules-based exposure across equities, fixed income, commodities, and alternatives.
+                Can move from fully invested to defensive cash positioning as conditions change.
+              </p>
+              <div className="rounded-xl border border-gold-200 bg-gold-50 p-6 text-center">
+                <p className="text-lg font-semibold text-navy-800">Coming Soon</p>
+                <p className="mt-2 text-sm text-gray-600">
+                  Live fund statistics will be available after launch.
+                </p>
+              </div>
+              <div className="mt-6 flex gap-4">
+                <Link href="/funds/thmr" className="btn-primary flex-1 text-center">
+                  Fund Details
+                </Link>
+                <span className="btn-outline flex-1 text-center cursor-default opacity-60">
+                  Holdings After Launch
+                </span>
               </div>
             </div>
           </div>

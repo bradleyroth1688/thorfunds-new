@@ -2,298 +2,180 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Compare THIR vs THLV | Which ETF is Right for You?",
-  description: "Understand the key differences between THOR's two ETF strategies. Compare investment approach, holdings, and risk management to find the right fit.",
+  title: "Compare THIR, THLV, and THMR | Which ETF is Right for You?",
+  description: "Understand the key differences across THOR's three ETF strategies. Compare investment approach, risk controls, and portfolio role to find the right fit.",
 };
 
 export default function ComparePage() {
   return (
     <>
-      {/* Hero */}
       <section className="bg-navy-800 py-16">
         <div className="container-wide">
           <h1 className="text-4xl lg:text-5xl font-bold text-white">Which THOR ETF is Right for You?</h1>
-          <p className="mt-4 text-xl text-gray-300 max-w-2xl">
-            Two distinct approaches to risk-managed investing. Same philosophy, different execution.
+          <p className="mt-4 text-xl text-gray-300 max-w-3xl">
+            Three distinct approaches to risk-managed investing. Same philosophy, different execution.
           </p>
         </div>
       </section>
 
-      {/* Quick Chooser */}
       <section className="section-padding bg-gray-50 dark:bg-navy-900">
         <div className="container-wide">
           <h2 className="text-2xl font-bold text-center mb-8 text-navy-800 dark:text-white">Quick Guide</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* THIR Card */}
+
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="bg-white dark:bg-navy-800 rounded-xl p-8 shadow-lg border-t-4 border-gold-500">
               <div className="text-center mb-6">
                 <span className="text-3xl font-bold text-gold-500">THIR</span>
                 <p className="text-navy-700 dark:text-gray-300 font-medium mt-1">Index Rotation ETF</p>
               </div>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Want exposure to major U.S. indexes</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Prefer concentrated, high-conviction positions</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Comfortable with market-cap weighting</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Want adaptive rotation between indexes</span>
-                </div>
+              <div className="space-y-4 mb-8 text-gray-700 dark:text-gray-200">
+                <p>Want exposure to major U.S. indexes.</p>
+                <p>Prefer concentrated, high-conviction positioning.</p>
+                <p>Comfortable with market-cap weighted ETFs.</p>
+                <p>Want adaptive rotation between major equity indexes.</p>
               </div>
-
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 italic">
-                "I want to be in the strongest index at any given time, with full downside protection."
+                "I want the strongest index exposure with systematic downside mitigation."
               </p>
-
               <Link href="/funds/thir" className="btn-primary w-full text-center block">
                 Learn More About THIR
               </Link>
             </div>
 
-            {/* THLV Card */}
             <div className="bg-white dark:bg-navy-800 rounded-xl p-8 shadow-lg border-t-4 border-navy-600">
               <div className="text-center mb-6">
                 <span className="text-3xl font-bold text-navy-700 dark:text-white">THLV</span>
                 <p className="text-navy-700 dark:text-gray-300 font-medium mt-1">Low Volatility ETF</p>
               </div>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-navy-600 dark:text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Want broad sector diversification</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-navy-600 dark:text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Prefer equal-weight allocation</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-navy-600 dark:text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Want lower volatility than the market</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-navy-600 dark:text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700 dark:text-gray-200">Gradual risk reduction sector by sector</span>
-                </div>
+              <div className="space-y-4 mb-8 text-gray-700 dark:text-gray-200">
+                <p>Want broad sector diversification.</p>
+                <p>Prefer equal-weight allocation.</p>
+                <p>Want lower volatility than the broad market.</p>
+                <p>Prefer gradual risk reduction sector by sector.</p>
               </div>
-
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 italic">
-                "I want steady, diversified exposure with systematic risk management."
+                "I want steadier equity exposure with systematic risk controls."
               </p>
-
               <Link href="/funds/thlv" className="btn-outline w-full text-center block">
                 Learn More About THLV
+              </Link>
+            </div>
+
+            <div className="relative bg-white dark:bg-navy-800 rounded-xl p-8 shadow-lg border-t-4 border-gold-400 ring-1 ring-gold-200">
+              <div className="absolute top-4 right-4">
+                <span className="inline-flex items-center bg-navy-900 text-gold-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
+                  COMING SOON
+                </span>
+              </div>
+              <div className="text-center mb-6">
+                <span className="text-3xl font-bold text-gold-500">THMR</span>
+                <p className="text-navy-700 dark:text-gray-300 font-medium mt-1">AdaptiveRisk Dynamic ETF</p>
+              </div>
+              <div className="space-y-4 mb-8 text-gray-700 dark:text-gray-200">
+                <p>Want a multi-asset diversifier in one ETF.</p>
+                <p>Prefer dynamic, rules-based allocation across strategies.</p>
+                <p>Need flexibility across equities, fixed income, commodities, and alternatives.</p>
+                <p>Want an adaptive sleeve that can hold defensive cash when needed.</p>
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 italic">
+                "I want one adaptive strategy that can shift across asset classes."
+              </p>
+              <Link href="/funds/thmr" className="btn-primary w-full text-center block">
+                Learn More About THMR
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Detailed Comparison */}
       <section className="section-padding">
         <div className="container-wide">
           <h2 className="text-3xl font-bold text-center mb-12 text-navy-800 dark:text-white">Side-by-Side Comparison</h2>
 
-          <div className="max-w-5xl mx-auto space-y-8">
-            
-            {/* Investment Universe */}
+          <div className="max-w-6xl mx-auto space-y-8">
             <div className="bg-white dark:bg-navy-800 rounded-xl shadow-md overflow-hidden">
               <div className="bg-navy-700 px-6 py-4">
                 <h3 className="text-lg font-semibold text-white">What They Invest In</h3>
               </div>
-              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-navy-600">
+              <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-gray-200 dark:divide-navy-600">
                 <div className="p-6">
                   <div className="text-gold-500 font-bold text-lg mb-3">THIR</div>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">Rotates between 3 major U.S. equity indexes:</p>
-                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-gold-500 rounded-full"></span>
-                      <strong>S&P 500</strong> — Large Cap Broad Market
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-gold-500 rounded-full"></span>
-                      <strong>Dow Jones</strong> — Industrial Average
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 bg-gold-500 rounded-full"></span>
-                      <strong>Nasdaq 100</strong> — Growth &amp; Technology
-                    </li>
-                  </ul>
+                  <p className="text-gray-700 dark:text-gray-200">Three major U.S. equity indexes with adaptive rotation and treasury sleeves.</p>
                 </div>
                 <div className="p-6">
                   <div className="text-navy-700 dark:text-white font-bold text-lg mb-3">THLV</div>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">Equal-weight across 10 S&P 500 sectors:</p>
-                  <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-300">
-                    <span>• Technology (XLK)</span>
-                    <span>• Healthcare (XLV)</span>
-                    <span>• Financials (XLF)</span>
-                    <span>• Consumer Disc. (XLY)</span>
-                    <span>• Industrials (XLI)</span>
-                    <span>• Consumer Staples (XLP)</span>
-                    <span>• Energy (XLE)</span>
-                    <span>• Utilities (XLU)</span>
-                    <span>• Materials (XLB)</span>
-                    <span>• Real Estate (XLRE)</span>
-                  </div>
+                  <p className="text-gray-700 dark:text-gray-200">Ten S&P 500 sectors with equal-weight construction and adaptive treasury allocation.</p>
+                </div>
+                <div className="p-6">
+                  <div className="text-gold-500 font-bold text-lg mb-3">THMR</div>
+                  <p className="text-gray-700 dark:text-gray-200">Multi-asset universe: equities, fixed income, commodities, and alternatives.</p>
                 </div>
               </div>
             </div>
 
-            {/* Weighting Approach */}
             <div className="bg-white dark:bg-navy-800 rounded-xl shadow-md overflow-hidden">
               <div className="bg-navy-700 px-6 py-4">
                 <h3 className="text-lg font-semibold text-white">Weighting Approach</h3>
               </div>
-              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-navy-600">
+              <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-gray-200 dark:divide-navy-600">
                 <div className="p-6">
-                  <div className="text-gold-500 font-bold text-lg mb-3">THIR — Market-Cap Weighted</div>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">
-                    Invests in index ETFs that are market-cap weighted. Larger companies have bigger positions.
-                  </p>
-                  <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300">
-                    <strong>Example:</strong> In the S&P 500, Apple and Microsoft alone can represent 10%+ of the fund.
-                  </div>
+                  <div className="text-gold-500 font-bold text-lg mb-3">THIR</div>
+                  <p className="text-gray-700 dark:text-gray-200">Underlying index exposures remain market-cap weighted.</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-navy-700 dark:text-white font-bold text-lg mb-3">THLV — Equal Weight</div>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">
-                    Each sector receives equal allocation (~10% each when fully invested). No single sector dominates.
-                  </p>
-                  <div className="bg-gray-50 dark:bg-navy-700/50 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-300">
-                    <strong>Benefit:</strong> Reduces concentration risk. Tech bubble won't sink the whole portfolio.
-                  </div>
+                  <div className="text-navy-700 dark:text-white font-bold text-lg mb-3">THLV</div>
+                  <p className="text-gray-700 dark:text-gray-200">Active sectors are equally weighted to limit concentration risk.</p>
+                </div>
+                <div className="p-6">
+                  <div className="text-gold-500 font-bold text-lg mb-3">THMR</div>
+                  <p className="text-gray-700 dark:text-gray-200">Coming Soon: dynamic risk-budgeting across a multi-strategy portfolio.</p>
                 </div>
               </div>
             </div>
 
-            {/* Risk Management */}
             <div className="bg-white dark:bg-navy-800 rounded-xl shadow-md overflow-hidden">
               <div className="bg-navy-700 px-6 py-4">
-                <h3 className="text-lg font-semibold text-white">How Risk is Managed</h3>
+                <h3 className="text-lg font-semibold text-white">Cash and Defensive Mechanism</h3>
               </div>
-              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-navy-600">
+              <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-gray-200 dark:divide-navy-600">
                 <div className="p-6">
-                  <div className="text-gold-500 font-bold text-lg mb-3">THIR — All-or-Nothing</div>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">
-                    Each index gets its own signal. When an index turns risk-off, that allocation moves to short-term treasuries.
-                  </p>
-                  <div className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
-                    <div className="flex justify-between">
-                      <span>Minimum equity exposure:</span>
-                      <span className="font-semibold">0%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Maximum cash position:</span>
-                      <span className="font-semibold">100%</span>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-                    Can go fully defensive when all signals turn risk-off.
-                  </p>
+                  <div className="text-gold-500 font-bold text-lg mb-3">THIR</div>
+                  <p className="text-gray-700 dark:text-gray-200">Signal-driven equity reduction with ability to move to 100% short-duration treasuries.</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-navy-700 dark:text-white font-bold text-lg mb-3">THLV — Gradual</div>
-                  <p className="text-gray-700 dark:text-gray-200 mb-4">
-                    Each sector has its own signal. Sectors turn off individually, creating a gradual de-risking.
-                  </p>
-                  <div className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
-                    <div className="flex justify-between">
-                      <span>Minimum equity exposure:</span>
-                      <span className="font-semibold">0%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Typical risk-off:</span>
-                      <span className="font-semibold">3-5 sectors</span>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-                    Smoother transitions as individual sectors rotate to treasuries.
-                  </p>
+                  <div className="text-navy-700 dark:text-white font-bold text-lg mb-3">THLV</div>
+                  <p className="text-gray-700 dark:text-gray-200">Progressive sector de-risking and treasury allocation as risk-off signals increase.</p>
+                </div>
+                <div className="p-6">
+                  <div className="text-gold-500 font-bold text-lg mb-3">THMR</div>
+                  <p className="text-gray-700 dark:text-gray-200">Coming Soon: can shift from fully invested to 100% defensive cash positioning.</p>
                 </div>
               </div>
             </div>
 
-            {/* Best For */}
             <div className="bg-white dark:bg-navy-800 rounded-xl shadow-md overflow-hidden">
               <div className="bg-navy-700 px-6 py-4">
                 <h3 className="text-lg font-semibold text-white">Best Suited For</h3>
               </div>
-              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-navy-600">
+              <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-gray-200 dark:divide-navy-600">
                 <div className="p-6">
                   <div className="text-gold-500 font-bold text-lg mb-3">THIR</div>
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-200">
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold-500">→</span>
-                      Growth-oriented investors
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold-500">→</span>
-                      Those who want adaptive index selection
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold-500">→</span>
-                      Investors comfortable with concentrated bets
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold-500">→</span>
-                      Higher risk tolerance
-                    </li>
-                  </ul>
+                  <p className="text-gray-700 dark:text-gray-200">Growth-oriented investors seeking adaptive index exposure.</p>
                 </div>
                 <div className="p-6">
                   <div className="text-navy-700 dark:text-white font-bold text-lg mb-3">THLV</div>
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-200">
-                    <li className="flex items-start gap-2">
-                      <span className="text-navy-600 dark:text-gray-400">→</span>
-                      Conservative or moderate investors
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-navy-600 dark:text-gray-400">→</span>
-                      Those seeking lower volatility
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-navy-600 dark:text-gray-400">→</span>
-                      Investors wanting broad diversification
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-navy-600 dark:text-gray-400">→</span>
-                      Smoother ride preference
-                    </li>
-                  </ul>
+                  <p className="text-gray-700 dark:text-gray-200">Conservative-to-moderate investors seeking diversified equity risk controls.</p>
+                </div>
+                <div className="p-6">
+                  <div className="text-gold-500 font-bold text-lg mb-3">THMR</div>
+                  <p className="text-gray-700 dark:text-gray-200">Moderate investors seeking a multi-asset diversifier and alternative sleeve.</p>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-navy-800 py-16">
         <div className="container-wide text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Still Have Questions?</h2>

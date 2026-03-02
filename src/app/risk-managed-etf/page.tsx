@@ -25,7 +25,7 @@ export default function RiskManagedETFPage() {
               Risk-Managed ETFs: Because Volatility Destroys Compounding
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
-              Two portfolios with the same average return but different volatility end up with 
+              Three portfolios with adaptive controls can still produce different outcomes when volatility changes. Even with similar average return assumptions, different volatility profiles end up with
               dramatically different ending values. Risk management isn&apos;t about avoiding loss—
               it&apos;s about protecting the math that makes long-term wealth possible.
             </p>
@@ -202,9 +202,9 @@ export default function RiskManagedETFPage() {
       {/* Two Approaches */}
       <section className="section-padding bg-white">
         <div className="container-wide">
-          <h2 className="text-3xl font-bold text-navy-800 text-center mb-12">Two Risk-Managed ETFs</h2>
+          <h2 className="text-3xl font-bold text-navy-800 text-center mb-12">Three Risk-Managed ETFs</h2>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="bg-gray-50 rounded-xl p-8">
               <span className="inline-block bg-navy-800 text-white px-3 py-1 rounded text-sm font-medium mb-4">
                 Index Rotation
@@ -230,6 +230,19 @@ export default function RiskManagedETFPage() {
               </p>
               <Link href="/funds/thlv" className="text-gold-600 font-medium hover:text-gold-700">
                 Learn About THLV →
+              </Link>
+            </div>
+
+            <div className="relative bg-gray-50 rounded-xl p-8 ring-1 ring-gold-200">
+              <span className="inline-block bg-navy-800 text-gold-400 px-3 py-1 rounded text-sm font-medium mb-4">
+                COMING SOON
+              </span>
+              <h3 className="text-2xl font-bold text-navy-800 mb-2">THMR</h3>
+              <p className="text-gray-600 mb-6">
+                Multi-asset adaptive strategy designed to rotate across equities, fixed income, commodities, alternatives, and defensive cash as risk regimes evolve.
+              </p>
+              <Link href="/funds/thmr" className="text-gold-600 font-medium hover:text-gold-700">
+                Learn About THMR →
               </Link>
             </div>
           </div>

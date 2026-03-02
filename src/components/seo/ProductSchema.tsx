@@ -11,7 +11,6 @@ interface FundData {
   expenseRatio: string;
   exchange: string;
   category: string;
-  aum?: string;
   nav?: string;
   ytdReturn?: string;
   benchmark?: string;
@@ -63,11 +62,6 @@ export function ProductSchema({ fund }: ProductSchemaProps) {
         name: "Expense Ratio",
         value: fund.expenseRatio,
       },
-      ...(fund.aum ? [{
-        "@type": "PropertyValue",
-        name: "Assets Under Management",
-        value: fund.aum,
-      }] : []),
       ...(fund.nav ? [{
         "@type": "PropertyValue",
         name: "Net Asset Value",
@@ -119,6 +113,17 @@ export const THLV_FUND: FundData = {
   exchange: "NYSE Arca",
   category: "Low Volatility Equity ETF",
   benchmark: "S&P 500 Low Volatility Index",
+};
+
+export const THMR_FUND: FundData = {
+  ticker: "THMR",
+  name: "THOR AdaptiveRisk Dynamic ETF",
+  description: "A multi-strategy, rules-based ETF that dynamically allocates across equities, fixed income, commodities, and alternatives with the ability to move between risk-on and defensive positioning.",
+  inceptionDate: "Coming Soon",
+  expenseRatio: "TBD",
+  exchange: "NYSE Arca",
+  category: "Adaptive Multi-Asset ETF",
+  benchmark: "S&P 500",
 };
 
 export default ProductSchema;

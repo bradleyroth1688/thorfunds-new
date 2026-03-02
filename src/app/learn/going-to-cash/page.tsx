@@ -54,6 +54,9 @@ export default function GoingToCashPage() {
           <p>
             This prevents excessive whipsawing while still providing protection during sustained downturns.
           </p>
+          <p>
+            THOR AdaptiveRisk Dynamic ETF is also designed with 0-100% defensive cash flexibility and is expected to provide a multi-asset complement to these equity-focused approaches after launch.
+          </p>
 
           <h2>The Cost of Going to Cash</h2>
           <p>

@@ -98,6 +98,9 @@ export default function IndexRotationPage() {
             THIR is designed as a <strong>satellite allocation</strong>, not a core equity replacement. It works best alongside traditional long-only equity exposure, providing adaptive protection when markets turn.
           </p>
           <p>
+            Within the broader THOR lineup, this equity-index approach is complemented by THOR Low Volatility ETF and the coming-soon THOR AdaptiveRisk Dynamic ETF for advisors who want additional diversification across strategy types.
+          </p>
+          <p>
             Typical use cases include:
           </p>
           <ul>
@@ -120,7 +123,7 @@ export default function IndexRotationPage() {
           <ul>
             <li><Link href="/learn/risk-management">Risk Management: Why It Matters More Than Returns</Link></li>
             <li><Link href="/learn/going-to-cash">Going to Cash: When and Why</Link></li>
-            <li><Link href="/learn/tactical-vs-strategic">Tactical vs. Strategic Asset Allocation</Link></li>
+            <li><Link href="/learn/tactical-vs-strategic">Adaptive vs. Strategic Asset Allocation</Link></li>
           </ul>
         </div>
       </article>

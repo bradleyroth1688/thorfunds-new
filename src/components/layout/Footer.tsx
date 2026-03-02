@@ -6,6 +6,7 @@ const footerNavigation = {
     { name: "All Funds", href: "/funds" },
     { name: "THIR - Index Rotation", href: "/funds/thir" },
     { name: "THLV - Low Volatility", href: "/funds/thlv" },
+    { name: "THMR - AdaptiveRisk Dynamic", href: "/funds/thmr" },
     { name: "Compare Funds", href: "/funds/compare" },
   ],
   learn: [

@@ -88,7 +88,7 @@ export default function MarketCyclesPage() {
               strong rallies
             </li>
             <li>
-              <strong>Tactical strategies</strong> attempt to adapt positioning based on the 
+              <strong>Adaptive strategies</strong> attempt to adjust positioning based on the 
               current cycle phase
             </li>
           </ul>
@@ -153,6 +153,9 @@ export default function MarketCyclesPage() {
               is to avoid the worst of markdowns while participating in markups.
             </p>
           </div>
+          <p>
+            THOR&apos;s three adaptive ETFs apply this framework in different ways: index rotation, sector-based low volatility, and a coming-soon multi-asset dynamic strategy.
+          </p>
         </div>
       </section>
 
@@ -166,7 +169,7 @@ export default function MarketCyclesPage() {
               <p className="text-sm text-gray-600 mt-2">How THIR rotates between indexes based on signals.</p>
             </Link>
             <Link href="/learn/tactical-vs-strategic" className="card-hover">
-              <h3 className="font-semibold text-navy-700">Tactical vs Strategic</h3>
+              <h3 className="font-semibold text-navy-700">Adaptive vs Strategic</h3>
               <p className="text-sm text-gray-600 mt-2">Different approaches to adapting to markets.</p>
             </Link>
             <Link href="/about/philosophy" className="card-hover">

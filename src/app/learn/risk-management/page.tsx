@@ -73,6 +73,9 @@ export default function RiskManagementPage() {
           <p>
             That&apos;s why THOR&apos;s strategies include the ability to go to cash. Sometimes the best diversification is having no market exposure at all.
           </p>
+          <p>
+            THOR now offers three adaptive ETFs: an index-rotation strategy, a sector-based low volatility strategy, and a coming-soon multi-asset dynamic strategy.
+          </p>
 
           <h2>THOR&apos;s Approach</h2>
           <p>
@@ -104,6 +107,7 @@ export default function RiskManagementPage() {
             <div className="flex flex-wrap gap-4">
               <Link href="/funds/thir" className="btn-primary">THIR</Link>
               <Link href="/funds/thlv" className="btn-secondary">THLV</Link>
+              <Link href="/funds/thmr" className="btn-outline">THMR (Coming Soon)</Link>
             </div>
           </div>
 

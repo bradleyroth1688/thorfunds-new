@@ -75,6 +75,14 @@ export function OrganizationSchema({ includeFinancialServices = true }: Organiza
               url: "https://thorfunds.com/funds/thlv/",
             },
           },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "FinancialProduct",
+              name: "THMR - THOR AdaptiveRisk Dynamic ETF",
+              url: "https://thorfunds.com/funds/thmr/",
+            },
+          },
         ],
       },
     }),
@@ -84,7 +92,7 @@ export function OrganizationSchema({ includeFinancialServices = true }: Organiza
       "Dynamic Asset Allocation",
       "Index Rotation",
       "Low Volatility Investing",
-      "Downside Protection",
+      "Downside Mitigation",
       "Portfolio Construction",
     ],
     award: [

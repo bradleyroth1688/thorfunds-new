@@ -150,6 +150,9 @@ export default function SectorRotationPage() {
               traditional approaches lack.
             </p>
           </div>
+          <p>
+            In the broader lineup, THOR SDQ Index Rotation ETF applies similar signal-driven logic across major indexes, while THOR AdaptiveRisk Dynamic ETF (coming soon) extends adaptive allocation to a multi-asset universe.
+          </p>
         </div>
       </section>
 

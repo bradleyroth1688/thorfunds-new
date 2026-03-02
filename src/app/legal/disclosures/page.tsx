@@ -41,6 +41,9 @@ export default function DisclosuresPage() {
           <p>
             <strong>THLV (Low Volatility):</strong> Low volatility investing does not guarantee lower risk or positive returns. The fund may underperform in rapidly rising markets. Sector concentration may increase volatility.
           </p>
+          <p>
+            <strong>THMR (AdaptiveRisk Dynamic):</strong> This coming-soon fund is expected to use a multi-strategy, multi-asset process and may shift allocations across equities, fixed income, commodities, alternatives, and defensive cash. The strategy may underperform static allocations in certain environments, and there is no assurance that dynamic allocation decisions will achieve the intended outcome.
+          </p>
 
           <h3>General Risks</h3>
           <ul>

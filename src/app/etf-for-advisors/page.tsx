@@ -42,7 +42,7 @@ export default function ETFForAdvisorsPage() {
             <div className="bg-white/10 rounded-2xl p-8">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-gold-400">2</div>
+                  <div className="text-4xl font-bold text-gold-400">3</div>
                   <div className="text-gray-300 text-sm mt-1">Adaptive ETFs</div>
                 </div>
                 <div className="text-center">
@@ -109,11 +109,11 @@ export default function ETFForAdvisorsPage() {
         <div className="container-wide">
           <h2 className="text-3xl font-bold text-navy-800 text-center mb-4">Portfolio Positioning</h2>
           <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-            THOR ETFs are designed as satellite allocations, not core replacements
+            THOR ETFs are designed to support core-plus-satellite portfolio construction
           </p>
 
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white rounded-xl p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-navy-800 mb-4">THIR - Satellite Equity</h3>
                 <p className="text-gray-600 mb-4">
@@ -129,10 +129,20 @@ export default function ETFForAdvisorsPage() {
                 <h3 className="text-xl font-semibold text-navy-800 mb-4">THLV - Defensive Equity</h3>
                 <p className="text-gray-600 mb-4">
                   Can serve as a core defensive equity position or complement growth-oriented holdings. 
-                  Equal-weight sector exposure with downside protection.
+                  Equal-weight sector exposure with downside mitigation.
                 </p>
                 <p className="text-sm text-gray-500">
                   <strong>Typical allocation:</strong> 10-30% of equity sleeve
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-sm ring-1 ring-gold-200">
+                <h3 className="text-xl font-semibold text-navy-800 mb-4">THMR - Multi-Asset Diversifier</h3>
+                <p className="text-gray-600 mb-4">
+                  Designed as a complementary sleeve to equity-only allocations. THMR provides adaptive, systematic exposure across equities, fixed income, commodities, and alternatives.
+                </p>
+                <p className="text-sm text-gray-500">
+                  <strong>Use case:</strong> Moderate-risk diversifier or alternative sleeve (Coming Soon)
                 </p>
               </div>
             </div>

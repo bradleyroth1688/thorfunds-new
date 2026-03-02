@@ -21,6 +21,7 @@ const documents = {
     { name: 'Fact Sheet', type: 'PDF' },
     { name: 'Annual Report', type: 'PDF' },
   ],
+  thmr: [],
 };
 
 export default function DocumentsPage() {
@@ -46,7 +47,7 @@ export default function DocumentsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {/* THIR Documents */}
             <div className="card">
               <h2 className="text-xl font-bold mb-4">THIR - Index Rotation ETF</h2>
@@ -84,6 +85,14 @@ export default function DocumentsPage() {
                     </button>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* THMR Documents */}
+            <div className="card ring-1 ring-gold-200">
+              <h2 className="text-xl font-bold mb-4">THMR - AdaptiveRisk Dynamic ETF</h2>
+              <div className="rounded-lg border border-gold-200 bg-gold-50 p-4 text-sm text-gray-700">
+                Documents will be available after launch.
               </div>
             </div>
           </div>

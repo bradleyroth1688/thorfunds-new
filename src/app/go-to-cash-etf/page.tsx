@@ -79,7 +79,7 @@ export default function GoToCashETFPage() {
               </div>
 
               <div className="bg-green-50 rounded-xl p-6 border border-green-100">
-                <h3 className="text-xl font-semibold text-green-800 mb-4">THOR Tactical ETFs</h3>
+                <h3 className="text-xl font-semibold text-green-800 mb-4">THOR Adaptive ETFs</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-green-700">
                     <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -120,7 +120,7 @@ export default function GoToCashETFPage() {
             Cash allocation isn&apos;t all-or-nothing—it scales based on the number of risk-off signals
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* THIR */}
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <h3 className="text-xl font-semibold text-navy-800 mb-4">THIR (Index Rotation)</h3>
@@ -140,6 +140,17 @@ export default function GoToCashETFPage() {
                 <li className="text-gold-600 font-medium">4 sectors on → 20% treasuries</li>
                 <li className="text-gold-600 font-medium">3 sectors on → 40% treasuries</li>
                 <li className="text-gold-600 font-medium">0 sectors on → 100% treasuries</li>
+              </ul>
+            </div>
+
+            {/* THMR */}
+            <div className="bg-white rounded-xl p-6 shadow-sm ring-1 ring-gold-200">
+              <h3 className="text-xl font-semibold text-navy-800 mb-4">THMR (AdaptiveRisk Dynamic)</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>Multi-asset strategies active → risk-on posture</li>
+                <li>Risk signals deteriorating → progressive defensive shift</li>
+                <li className="text-gold-600 font-medium">Severe risk-off regime → can move to 100% cash</li>
+                <li className="text-gold-600 font-medium">Status: Coming Soon</li>
               </ul>
             </div>
           </div>

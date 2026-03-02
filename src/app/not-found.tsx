@@ -99,10 +99,13 @@ export default function NotFound() {
               Our Funds
             </Link>
             <Link href="/funds/thir" className="btn-ghost btn-sm">
-              THIR ETF
+              THOR SDQ Index Rotation ETF
             </Link>
             <Link href="/funds/thlv" className="btn-ghost btn-sm">
-              THLV ETF
+              THOR Low Volatility ETF
+            </Link>
+            <Link href="/funds/thmr" className="btn-ghost btn-sm">
+              THOR AdaptiveRisk Dynamic ETF
             </Link>
             <Link href="/learn" className="btn-ghost btn-sm">
               Education

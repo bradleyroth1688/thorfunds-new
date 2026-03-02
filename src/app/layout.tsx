@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -8,8 +8,8 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import WebsiteSchema from "@/components/seo/WebsiteSchema";
 import { getOrganizationSchema } from "@/lib/schema";
 
-const inter = Inter({ 
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./fonts/GeistVF.woff",
   display: "swap",
   variable: "--font-inter",
 });
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | THOR Funds",
   },
   description: "THOR Funds offers risk-managed ETFs designed to participate in market upside while protecting against significant drawdowns. NYSE Arca listed. Managed by Brad Roth, Founder & CIO.",
-  keywords: ["ETF", "risk management", "low volatility", "adaptive ETF", "THIR", "THLV", "index rotation", "defensive investing", "Brad Roth", "Brad Roth Pittsburgh", "THOR Financial Technologies"],
+  keywords: ["ETF", "risk management", "low volatility", "adaptive ETF", "THIR", "THLV", "THMR", "index rotation", "defensive investing", "Brad Roth", "Brad Roth Pittsburgh", "THOR Financial Technologies"],
   authors: [{ name: "Brad Roth", url: "https://thorft.com/brad-roth/" }],
   creator: "THOR Financial Technologies",
   publisher: "THOR Financial Technologies",

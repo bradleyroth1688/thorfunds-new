@@ -22,7 +22,7 @@ const tools = [
   },
   {
     name: "Fund Comparison",
-    description: "Compare THIR and THLV side-by-side. See performance, strategy, and find the right fit for your portfolio.",
+    description: "Compare THIR, THLV, and THMR side-by-side. See performance, strategy, and find the right fit for your portfolio.",
     href: "/funds/compare",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

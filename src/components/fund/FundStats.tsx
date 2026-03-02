@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 interface FundStatsProps {
-  ticker: 'THIR' | 'THLV';
+  ticker: 'THIR' | 'THLV' | 'THMR';
   showReturns?: boolean;
 }
 
@@ -29,6 +29,7 @@ interface PerfData {
 const FUND_IDS: Record<string, string> = {
   THIR: '1469',
   THLV: '1468',
+  THMR: '',
 };
 
 function formatCurrency(value: number): string {
@@ -38,12 +39,6 @@ function formatCurrency(value: number): string {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value);
-}
-
-function formatAUM(value: number): string {
-  if (value >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;
-  if (value >= 1e6) return `$${(value / 1e6).toFixed(1)}M`;
-  return formatCurrency(value);
 }
 
 function formatShares(value: number): string {
@@ -72,8 +67,14 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
 
   useEffect(() => {
     async function fetchData() {
+      const fundId = FUND_IDS[ticker];
+      if (!fundId) {
+        setLoading(false);
+        return;
+      }
+
       try {
-        const res = await fetch(`/api/fund?fundId=${FUND_IDS[ticker]}&endpoint=performance`);
+        const res = await fetch(`/api/fund?fundId=${fundId}&endpoint=performance`);
         if (!res.ok) throw new Error(`API error: ${res.status}`);
         const json = await res.json();
         if (Array.isArray(json) && json.length > 0) {
@@ -105,6 +106,17 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
   }
 
   if (error || !data) {
+    if (ticker === 'THMR') {
+      return (
+        <div className="rounded-xl border border-gold-200 bg-gold-50 p-6 text-center">
+          <p className="text-lg font-semibold text-navy-800">Coming Soon</p>
+          <p className="mt-2 text-sm text-gray-600">
+            Live fund data for THOR AdaptiveRisk Dynamic ETF will appear here after launch.
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div className="text-center py-8 text-gray-500">
         {error || 'Unable to load data'}
@@ -116,17 +128,13 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div className="bg-gray-50 rounded-lg p-4 text-center">
           <div className="text-2xl font-bold text-navy-700">{formatCurrency(data.naV_NoLoad)}</div>
           <div className="text-sm text-gray-600">NAV</div>
           <div className={`text-sm mt-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
             {formatPercent(data.oneDay_NoLoad)}
           </div>
-        </div>
-        <div className="bg-gray-50 rounded-lg p-4 text-center">
-          <div className="text-2xl font-bold text-navy-700">{formatAUM(data.totalNetAssets)}</div>
-          <div className="text-sm text-gray-600">AUM</div>
         </div>
         <div className="bg-gray-50 rounded-lg p-4 text-center overflow-hidden">
           <div className="text-2xl font-bold text-navy-700 truncate">

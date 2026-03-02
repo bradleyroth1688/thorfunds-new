@@ -44,6 +44,7 @@ const navigation = [
       { name: "All Funds", href: "/funds" },
       { name: "THIR - Index Rotation", href: "/funds/thir" },
       { name: "THLV - Low Volatility", href: "/funds/thlv" },
+      { name: "THMR - AdaptiveRisk Dynamic", href: "/funds/thmr" },
       { name: "Compare Funds", href: "/funds/compare" },
     ],
   },
@@ -124,6 +125,11 @@ export function Header() {
                 {formatChange(tickerData.THLV.changePct)}
               </span>
             )}
+          </span>
+          <span className="text-navy-600">|</span>
+          <span className="flex items-center gap-1">
+            <span className="font-semibold text-gold-500">THMR</span>
+            <span className="text-gold-300">Coming Soon</span>
           </span>
           <span className="text-navy-600">|</span>
           <span className="text-gray-500">As of prior close</span>

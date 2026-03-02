@@ -29,6 +29,9 @@ export default function LowVolatilityPage() {
               While traditional low vol ETFs use backward-looking beta and must stay fully invested, THLV uses 
               forward-looking signals and equal-weight sector allocation with the ability to move to 100% cash.
             </p>
+            <p className="text-gray-700 mb-6">
+              THOR&apos;s three-fund lineup pairs this low-volatility equity approach with THOR SDQ Index Rotation ETF and the coming-soon THOR AdaptiveRisk Dynamic ETF for broader portfolio construction flexibility.
+            </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-4">The Problem with Traditional Low Vol ETFs</h2>
             <div className="grid md:grid-cols-2 gap-6 my-8">
@@ -101,7 +104,7 @@ export default function LowVolatilityPage() {
               <p className="text-gray-700">
                 When sectors go risk-off above the threshold, weight redistributes to remaining sectors (max 20% each). 
                 Once you drop below 5 sectors, each additional sector going off adds a 20% cash tranche. 
-                This prevents over-concentration while providing meaningful downside protection.
+                This prevents over-concentration while providing meaningful downside mitigation.
               </p>
             </div>
 

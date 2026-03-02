@@ -102,18 +102,19 @@ const riskProfiles: Record<string, RiskProfile> = {
   moderate: {
     name: "Moderate Investor",
     description: "You seek a balance between growth and capital preservation. You can tolerate some market fluctuations but want protection during severe downturns.",
-    fundRecommendation: "A combination of THLV and THIR would suit you well. THLV provides stability while THIR offers growth potential with built-in risk management.",
-    fundTicker: "THLV + THIR",
+    fundRecommendation: "A blend of THLV and THMR can suit this profile well. THLV provides stability while THMR adds a multi-asset diversifier sleeve with adaptive risk controls.",
+    fundTicker: "THLV + THMR",
     allocation: [
-      { name: "THLV", percentage: 50, color: "bg-gold-500" },
-      { name: "THIR", percentage: 40, color: "bg-navy-600" },
+      { name: "THLV", percentage: 45, color: "bg-gold-500" },
+      { name: "THMR", percentage: 35, color: "bg-navy-600" },
+      { name: "THIR", percentage: 10, color: "bg-green-500" },
       { name: "Cash/Treasuries", percentage: 10, color: "bg-gray-400" },
     ],
   },
   growth: {
     name: "Growth-Oriented Investor",
     description: "You're focused on long-term wealth accumulation and can tolerate market volatility. You understand that higher potential returns come with higher risk.",
-    fundRecommendation: "THIR is your primary choice. Its index rotation strategy captures market upside while the systematic risk management provides downside protection.",
+    fundRecommendation: "THIR is your primary choice. Its index rotation strategy captures market upside while the systematic risk management targets downside mitigation.",
     fundTicker: "THIR",
     allocation: [
       { name: "THIR", percentage: 70, color: "bg-navy-600" },
@@ -173,6 +174,9 @@ export default function RiskProfileQuiz() {
   const totalScore = answers.reduce((sum, score) => sum + score, 0);
   const profile = getProfile(totalScore);
   const progress = ((currentQuestion + 1) / questions.length) * 100;
+  const recommendationHref = profile.fundTicker.includes("+")
+    ? "/funds/compare"
+    : `/funds/${profile.fundTicker.toLowerCase()}`;
 
   const restartQuiz = () => {
     setCurrentQuestion(0);
@@ -252,7 +256,7 @@ export default function RiskProfileQuiz() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
-                href={profile.fundTicker === "THLV + THIR" ? "/funds/compare" : `/funds/${profile.fundTicker.toLowerCase()}`}
+                href={recommendationHref}
                 className="btn-primary flex-1 text-center"
               >
                 View {profile.fundTicker} Details

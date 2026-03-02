@@ -10,8 +10,8 @@ const timeline = [
   { year: "2000s", event: "THOR Analytics founded, focusing on private hedge funds and accredited investors" },
   { year: "2010s", event: "Developed and refined digital signal processing methodology for markets" },
   { year: "2020", event: "Launched SMA strategy for index rotation" },
-  { year: "2024", event: "Launched THIR and THLV ETFs for broader investor access" },
-  { year: "Today", event: "Robust model offerings across two ETFs and growing" },
+  { year: "2024", event: "Launched THIR and THLV ETFs for broader investor access, followed by THMR as the third ETF in the lineup" },
+  { year: "Today", event: "Robust model offerings across three ETFs and growing" },
 ];
 
 export default function AboutPage() {
