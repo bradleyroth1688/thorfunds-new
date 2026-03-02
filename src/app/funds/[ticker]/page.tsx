@@ -26,9 +26,22 @@ export async function generateMetadata({ params }: FundPageProps): Promise<Metad
   return {
     title: `${fund.ticker} - ${fund.name}`,
     description: fund.description,
+    alternates: {
+      canonical: `/funds/${ticker.toLowerCase()}`,
+    },
     openGraph: {
       title: `${fund.ticker} - ${fund.name} | THOR Funds`,
       description: fund.description,
+      url: `https://thorfunds.com/funds/${ticker.toLowerCase()}`,
+      type: "website",
+      images: [
+        {
+          url: "https://thorfunds.com/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${fund.name} | THOR Funds`,
+        },
+      ],
     },
   };
 }
@@ -39,6 +52,102 @@ export default async function FundPage({ params }: FundPageProps) {
 
   if (!fund) {
     notFound();
+  }
+
+  if (!fund.fundId) {
+    return (
+      <>
+        <section className="bg-navy-800 py-10 lg:py-14">
+          <div className="container-wide">
+            <div className="max-w-4xl">
+              <div className="flex flex-wrap items-center gap-3 mb-3">
+                <span className="text-4xl lg:text-5xl font-bold text-gold-500">{fund.ticker}</span>
+                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded text-sm font-medium">
+                  {fund.strategy}
+                </span>
+                <span className="bg-white/15 text-white px-3 py-1 rounded text-sm font-medium">
+                  COMING SOON
+                </span>
+              </div>
+              <h1 className="text-xl lg:text-2xl font-semibold text-white">{fund.name}</h1>
+              <p className="mt-3 text-gray-300 max-w-3xl text-sm lg:text-base">{fund.description}</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-10 border-b border-gray-200">
+          <div className="container-wide">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="bg-gray-50 rounded-xl p-5">
+                <div className="text-sm text-gray-500 mb-1">Fund Status</div>
+                <div className="text-xl font-bold text-navy-800">Coming Soon</div>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-5">
+                <div className="text-sm text-gray-500 mb-1">Strategy</div>
+                <div className="text-xl font-bold text-navy-800">{fund.strategy}</div>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-5">
+                <div className="text-sm text-gray-500 mb-1">Benchmark</div>
+                <div className="text-xl font-bold text-navy-800">{fund.benchmark}</div>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-5">
+                <div className="text-sm text-gray-500 mb-1">Sub-Adviser</div>
+                <div className="text-xl font-bold text-navy-800">{fund.subAdviser}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="container-wide py-10">
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-8">
+              <div className="card">
+                <h2 className="text-xl font-semibold text-navy-800 dark:text-white mb-4">Performance</h2>
+                <p className="text-gray-600">Performance data will be available after launch.</p>
+              </div>
+              <div className="card">
+                <h2 className="text-xl font-semibold text-navy-800 dark:text-white mb-4">Holdings</h2>
+                <p className="text-gray-600">Holdings will be available after launch.</p>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="card">
+                <h3 className="text-lg font-semibold text-navy-800 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                  Fund Facts
+                </h3>
+                <dl className="space-y-3 text-sm">
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500 dark:text-gray-400">Ticker</dt>
+                    <dd className="font-bold text-navy-800 dark:text-white">{fund.ticker}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500 dark:text-gray-400">Exchange</dt>
+                    <dd className="font-medium text-navy-800 dark:text-white">NYSE Arca</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500 dark:text-gray-400">Expense Ratio</dt>
+                    <dd className="font-bold text-gold-600">TBD</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500 dark:text-gray-400">Sub-Adviser</dt>
+                    <dd className="font-medium text-navy-800 dark:text-white">{fund.subAdviser}</dd>
+                  </div>
+                </dl>
+              </div>
+              <div className="card bg-navy-800 text-white">
+                <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
+                <p className="text-gray-300 text-sm mb-4">
+                  Launch updates and fund materials will be posted here as they become available.
+                </p>
+                <Link href="/contact" className="inline-flex items-center text-gold-500 font-medium text-sm hover:text-gold-400">
+                  Contact THOR Funds →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
   }
 
   const [navData, perfData, holdings, premiumDiscountData, distributionsRaw] = await Promise.all([

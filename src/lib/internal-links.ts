@@ -34,6 +34,15 @@ export const INTERNAL_LINKS: InternalLink[] = [
     category: 'fund',
   },
   {
+    url: '/funds/thmr/',
+    title: 'THMR - THOR AdaptiveRisk Dynamic ETF',
+    description: 'Multi-strategy adaptive ETF with dynamic risk management',
+    keywords: ['thmr', 'adaptive risk', 'multi-strategy etf', 'systematic etf', 'dynamic allocation'],
+    anchorVariants: ['THMR', 'THMR ETF', 'AdaptiveRisk Dynamic ETF', 'THOR AdaptiveRisk Dynamic ETF', 'our adaptive risk strategy'],
+    priority: 10,
+    category: 'fund',
+  },
+  {
     url: '/funds/',
     title: 'Our ETFs',
     description: 'Overview of THOR Fund offerings',
@@ -45,9 +54,9 @@ export const INTERNAL_LINKS: InternalLink[] = [
   {
     url: '/funds/compare/',
     title: 'Compare THOR Funds',
-    description: 'Side-by-side comparison of THIR and THLV',
-    keywords: ['compare funds', 'thir vs thlv', 'fund comparison'],
-    anchorVariants: ['compare our funds', 'THIR vs THLV', 'fund comparison'],
+    description: 'Side-by-side comparison of THOR ETF strategies',
+    keywords: ['compare funds', 'fund comparison', 'etf strategy comparison'],
+    anchorVariants: ['compare our funds', 'compare THOR ETFs', 'fund comparison'],
     priority: 8,
     category: 'fund',
   },

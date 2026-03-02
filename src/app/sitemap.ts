@@ -40,6 +40,7 @@ const CONTENT_DATES = {
   funds: "2026-02-22",
   fundThir: "2026-02-22",
   fundThlv: "2026-02-22",
+  fundThmr: "2026-03-02",
   about: "2026-02-22",
   learn: "2026-02-22",
   legal: "2025-06-01",
@@ -83,6 +84,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/funds/thlv/performance/`, lastModified: new Date(), changeFrequency: "daily", priority: 0.85 },
     { url: `${baseUrl}/funds/thlv/documents/`, lastModified: new Date(CONTENT_DATES.fundThlv), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/funds/thlv/faq/`, lastModified: new Date(CONTENT_DATES.fundThlv), changeFrequency: "monthly", priority: 0.7 },
+
+    // THMR Fund (Coming Soon)
+    { url: `${baseUrl}/funds/thmr/`, lastModified: new Date(CONTENT_DATES.fundThmr), changeFrequency: "weekly", priority: 0.85 },
     
     // Compare
     { url: `${baseUrl}/funds/compare/`, lastModified: new Date(CONTENT_DATES.funds), changeFrequency: "weekly", priority: 0.8 },

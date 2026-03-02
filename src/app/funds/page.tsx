@@ -4,7 +4,7 @@ import { FUNDS } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Our ETFs",
-  description: "Explore THOR Funds' risk-managed ETFs: THIR (Index Rotation) and THLV (Low Volatility). Designed to participate in market upside while protecting against significant drawdowns.",
+  description: "Explore THOR Funds' ETFs: THOR SDQ Index Rotation ETF, THOR Low Volatility ETF, and THOR AdaptiveRisk Dynamic ETF. Built for adaptive, systematic exposure with disciplined risk management.",
 };
 
 export default function FundsPage() {
@@ -16,7 +16,7 @@ export default function FundsPage() {
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold text-white">Our ETFs</h1>
             <p className="mt-4 text-xl text-gray-300">
-              Two distinct strategies designed to manage risk while capturing market opportunities. Both can move to 100% cash when conditions deteriorate.
+              Three distinct strategies designed to manage risk while capturing market opportunities. Each strategy uses an adaptive, rules-based process.
             </p>
           </div>
         </div>
@@ -25,7 +25,7 @@ export default function FundsPage() {
       {/* Fund Cards */}
       <section className="section-padding bg-gray-50">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* THIR Card */}
             <div className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 overflow-hidden">
               <div className="bg-navy-800 p-6">
@@ -145,12 +145,68 @@ export default function FundsPage() {
                 </div>
               </div>
             </div>
+
+            {/* THMR Card */}
+            <div className="relative bg-white rounded-2xl shadow-sm ring-1 ring-gold-200 overflow-hidden">
+              <div className="absolute top-3 right-3 z-10">
+                <span className="inline-flex items-center bg-navy-900 text-gold-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
+                  COMING SOON
+                </span>
+              </div>
+              <div className="bg-navy-800 p-6">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-3xl font-bold text-gold-500">THMR</span>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded text-sm font-medium">
+                      AdaptiveRisk Dynamic
+                    </span>
+                    <span className="bg-white/15 text-white px-3 py-1 rounded text-sm font-medium">
+                      COMING SOON
+                    </span>
+                  </div>
+                </div>
+                <h2 className="mt-2 text-xl font-semibold text-white">{FUNDS.THMR.name}</h2>
+              </div>
+              <div className="p-6">
+                <div className="mb-5 rounded-lg border border-gold-200 bg-gold-50 px-4 py-3 text-sm font-medium text-navy-800">
+                  Launching soon. Additional data will be available after launch.
+                </div>
+                <p className="text-gray-600">{FUNDS.THMR.description}</p>
+                
+                <div className="mt-6 space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Benchmark</span>
+                    <span className="font-medium text-navy-800">{FUNDS.THMR.benchmark}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Universe</span>
+                    <span className="font-medium text-navy-800">Equities, Fixed Income, Commodities, Alternatives</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Cash Position</span>
+                    <span className="font-medium text-navy-800">0% to 100%</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-gray-100 space-y-2">
+                  <Link
+                    href="/funds/thmr"
+                    className="block w-full text-center btn-primary"
+                  >
+                    Coming Soon - Learn More
+                  </Link>
+                  <div className="text-center py-2 text-sm text-gray-500">
+                    Performance and holdings will be added after launch
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Compare CTA */}
           <div className="mt-12 text-center">
             <Link href="/funds/compare" className="btn-secondary">
-              Compare THIR vs THLV
+              Compare All Three ETFs
             </Link>
           </div>
         </div>
@@ -161,7 +217,7 @@ export default function FundsPage() {
         <div className="container-wide">
           <h2 className="text-3xl font-bold text-navy-800 text-center mb-12">How Our ETFs Work</h2>
           
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-3 gap-12">
             {/* THIR Mechanics */}
             <div>
               <h3 className="text-xl font-semibold text-navy-800 mb-4">THIR: Index Rotation</h3>
@@ -232,6 +288,41 @@ export default function FundsPage() {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            {/* THMR Mechanics */}
+            <div>
+              <h3 className="text-xl font-semibold text-navy-800 mb-4">THMR: AdaptiveRisk Dynamic</h3>
+              <p className="text-gray-600 mb-6">
+                THMR evaluates multiple diversified strategies spanning equities, fixed income, commodities, and alternatives. Capital flows toward strategies demonstrating stronger risk-adjusted performance while limiting exposure to underperformers.
+              </p>
+              <div className="bg-gray-50 rounded-lg p-6">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-200">
+                      <th className="text-left py-2 font-medium text-gray-700">Mechanic</th>
+                      <th className="text-left py-2 font-medium text-gray-700">Implementation</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr>
+                      <td className="py-2 text-gray-600">Strategy competition</td>
+                      <td className="py-2 text-navy-800">Competitive allocation across diversified strategies</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 text-gray-600">Rebalancing process</td>
+                      <td className="py-2 text-navy-800">Adaptive rebalancing as risk-adjusted leadership shifts</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 text-gray-600">Defensive capability</td>
+                      <td className="py-2 text-navy-800 font-medium">Can move to 100% cash or defensive posture</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-sm text-gray-600">
+                Sub-advised by Ai Alpha LLC with an academic foundation informed by Professor Kumar Muthuraman (UT Austin).
+              </p>
             </div>
           </div>
         </div>

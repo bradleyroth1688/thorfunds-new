@@ -13,6 +13,7 @@ export interface FundInfo {
   benchmark: string;
   strategy: string;
   expenseRatio: number;
+  subAdviser: string;
 }
 
 export const FUNDS: Record<string, FundInfo> = {
@@ -25,6 +26,7 @@ export const FUNDS: Record<string, FundInfo> = {
     benchmark: "SPDR S&P 500 ETF Trust (SPY)",
     strategy: "Index Rotation",
     expenseRatio: 0.70,
+    subAdviser: "THOR Financial Technologies",
   },
   THLV: {
     ticker: "THLV",
@@ -35,6 +37,18 @@ export const FUNDS: Record<string, FundInfo> = {
     benchmark: "iShares MSCI USA Min Vol Factor ETF (USMV)",
     strategy: "Low Volatility",
     expenseRatio: 0.64,
+    subAdviser: "THOR Financial Technologies",
+  },
+  THMR: {
+    ticker: "THMR",
+    name: "THOR AdaptiveRisk Dynamic ETF",
+    fullName: "THOR AdaptiveRisk Dynamic ETF",
+    fundId: "",
+    description: "An actively managed, rules-based multi-strategy ETF that adapts to changing market conditions while prioritizing risk management. Allocates across equities, fixed income, commodities, and alternatives with the flexibility to move to cash during market stress.",
+    benchmark: "S&P 500 (SPY)",
+    strategy: "AdaptiveRisk Dynamic",
+    expenseRatio: 0,
+    subAdviser: "Ai Alpha LLC",
   },
 };
 
@@ -180,7 +194,7 @@ async function fetchUltimus(endpoint: string) {
 
 export async function getNavData(ticker: string): Promise<NavData | null> {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   const data = await fetchUltimus(`/${fund.fundId}/performance`);
   if (!data || !Array.isArray(data) || data.length === 0) return null;
@@ -253,7 +267,7 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
 
 export async function getStandardizedPerformance(ticker: string): Promise<NavData | null> {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   const data = await fetchUltimus(`/${fund.fundId}/performance/LastMonth`);
   if (!data || !Array.isArray(data) || data.length === 0) return null;
@@ -326,7 +340,7 @@ export async function getStandardizedPerformance(ticker: string): Promise<NavDat
 
 export async function getHoldings(ticker: string): Promise<Holding[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   const data = await fetchUltimus(`/${fund.fundId}/etfholdings`);
   if (!data || !Array.isArray(data)) return null;
@@ -345,7 +359,7 @@ export async function getHoldings(ticker: string): Promise<Holding[] | null> {
 
 export async function getQuarterlyPerformance(ticker: string): Promise<PerformanceData[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   const data = await fetchUltimus(`/${fund.fundId}/performance/LastQuarter`);
   if (!data || !Array.isArray(data) || data.length === 0) return null;
@@ -361,7 +375,7 @@ export async function getQuarterlyPerformance(ticker: string): Promise<Performan
 
 export async function getMonthlyPerformance(ticker: string): Promise<PerformanceData[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   const data = await fetchUltimus(`/${fund.fundId}/performance/LastMonth`);
   if (!data || !Array.isArray(data) || data.length === 0) return null;
@@ -377,7 +391,7 @@ export async function getMonthlyPerformance(ticker: string): Promise<Performance
 
 export async function getPremiumDiscount(ticker: string): Promise<QuarterlyPremiumDiscount[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   const data = await fetchUltimus(`/${fund.fundId}/premiumdiscount`);
   if (!data || !Array.isArray(data)) return null;
@@ -399,28 +413,28 @@ export async function getPremiumDiscount(ticker: string): Promise<QuarterlyPremi
 
 export async function getDistributions(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   return fetchUltimus(`/${fund.fundId}/distribution`);
 }
 
 export async function getAnalytics(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   return fetchUltimus(`/${fund.fundId}/analytics`);
 }
 
 export async function getGrowth(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   return fetchUltimus(`/${fund.fundId}/growth`);
 }
 
 export async function getHistoricalPrices(ticker: string, startDate?: string, endDate?: string) {
   const fund = FUNDS[ticker.toUpperCase()];
-  if (!fund) return null;
+  if (!fund || !fund.fundId) return null;
 
   if (startDate && endDate) {
     return fetchUltimus(`/${fund.fundId}/pricing/range/${startDate}/${endDate}`);
