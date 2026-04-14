@@ -137,31 +137,51 @@ export interface QuarterlyPremiumDiscount {
   premiumDiscounts: PremiumDiscountRecord[];
 }
 
-// Helper to fetch via internal proxy route (works in server-side and Vercel)
-async function fetchViaProxy(fundId: string, endpoint: string) {
+// Token cache for direct Ultimus API calls
+let cachedToken: string | null = null;
+let tokenExpiry = 0;
+
+async function getUltimusToken(): Promise<string> {
+  if (cachedToken && Date.now() < tokenExpiry) {
+    return cachedToken;
+  }
+  const response = await fetch(AUTH_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: API_EMAIL, password: API_PASSWORD }),
+    cache: 'no-store',
+  });
+  if (!response.ok) throw new Error(`Auth failed: ${response.status}`);
+  const token = await response.text();
+  cachedToken = token.replace(/"/g, "");
+  tokenExpiry = Date.now() + 10 * 60 * 60 * 1000;
+  return cachedToken;
+}
+
+// Direct Ultimus API fetch (works from both server-side and edge)
+async function fetchUltimus(fundId: string, endpoint: string) {
   try {
-    // Determine base URL - use VERCEL_URL in production, localhost in dev
-    const baseUrl = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}` 
-      : 'http://localhost:3000';
+    const token = await getUltimusToken();
     
-    const url = `${baseUrl}/api/fund?fundId=${fundId}&endpoint=${endpoint}`;
+    const url = `${DATA_URL}/${fundId}/${endpoint}`;
     
     const response = await fetch(url, {
       cache: 'no-store',
       headers: {
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
       },
     });
 
     if (!response.ok) {
-      console.error(`Proxy fetch failed for ${endpoint}: ${response.status}`);
+      console.error(`Ultimus fetch failed for ${fundId}/${endpoint}: ${response.status}`);
       return null;
     }
 
     return response.json();
   } catch (error) {
-    console.error(`Error fetching via proxy ${fundId}/${endpoint}:`, error);
+    console.error(`Error fetching ${fundId}/${endpoint}:`, error);
     return null;
   }
 }
@@ -170,7 +190,7 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchViaProxy(fund.fundId, 'performance');
+  const data = await fetchUltimus(fund.fundId, 'performance');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -243,7 +263,7 @@ export async function getStandardizedPerformance(ticker: string): Promise<NavDat
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchViaProxy(fund.fundId, 'performance/LastMonth');
+  const data = await fetchUltimus(fund.fundId, 'performance/LastMonth');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -316,7 +336,7 @@ export async function getHoldings(ticker: string): Promise<Holding[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchViaProxy(fund.fundId, 'etfholdings');
+  const data = await fetchUltimus(fund.fundId, 'etfholdings');
   if (!data || !Array.isArray(data)) return null;
 
   return data
@@ -335,7 +355,7 @@ export async function getQuarterlyPerformance(ticker: string): Promise<Performan
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchViaProxy(fund.fundId, 'performance/LastQuarter');
+  const data = await fetchUltimus(fund.fundId, 'performance/LastQuarter');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -351,7 +371,7 @@ export async function getMonthlyPerformance(ticker: string): Promise<Performance
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchViaProxy(fund.fundId, 'performance/LastMonth');
+  const data = await fetchUltimus(fund.fundId, 'performance/LastMonth');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -367,7 +387,7 @@ export async function getPremiumDiscount(ticker: string): Promise<QuarterlyPremi
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchViaProxy(fund.fundId, 'premiumdiscount');
+  const data = await fetchUltimus(fund.fundId, 'premiumdiscount');
   if (!data || !Array.isArray(data)) return null;
 
   return data.map((q: Record<string, unknown>) => ({
@@ -389,21 +409,21 @@ export async function getDistributions(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  return fetchViaProxy(fund.fundId, 'distribution');
+  return fetchUltimus(fund.fundId, 'distribution');
 }
 
 export async function getAnalytics(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  return fetchViaProxy(fund.fundId, 'analytics');
+  return fetchUltimus(fund.fundId, 'analytics');
 }
 
 export async function getGrowth(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  return fetchViaProxy(fund.fundId, 'growth');
+  return fetchUltimus(fund.fundId, 'growth');
 }
 
 export async function getHistoricalPrices(ticker: string, startDate?: string, endDate?: string) {
@@ -411,9 +431,9 @@ export async function getHistoricalPrices(ticker: string, startDate?: string, en
   if (!fund || !fund.fundId) return null;
 
   if (startDate && endDate) {
-    return fetchViaProxy(fund.fundId, `pricing/range/${startDate}/${endDate}`);
+    return fetchUltimus(fund.fundId, `pricing/range/${startDate}/${endDate}`);
   }
-  return fetchViaProxy(fund.fundId, 'pricing');
+  return fetchUltimus(fund.fundId, 'pricing');
 }
 
 // Utility functions
