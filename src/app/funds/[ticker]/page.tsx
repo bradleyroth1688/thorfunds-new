@@ -358,9 +358,21 @@ export default async function FundPage({ params }: FundPageProps) {
               <div className="text-lg font-bold text-gold-400">
                 {fund.expenseRatio.toFixed(2)}%
               </div>
-              <div className="text-xs text-gray-400">Expense Ratio</div>
+              <div className="text-xs text-gray-400">
+                {fund.ticker === 'THMR' ? 'Net Expense Ratio' : 'Expense Ratio'}
+              </div>
+              {fund.ticker === 'THMR' && (
+                <div className="text-xs text-gray-400 mt-1">
+                  1.10% Gross*
+                </div>
+              )}
             </div>
           </div>
+          {fund.ticker === 'THMR' && (
+            <div className="mt-4 text-xs text-gray-400 text-center">
+              *Gross expense ratio includes acquired fund fees and expenses.
+            </div>
+          )}
         </div>
       </section>
 
@@ -761,9 +773,15 @@ export default async function FundPage({ params }: FundPageProps) {
                   <dd className="font-medium text-navy-800 dark:text-white">{navData?.inceptionDate || "—"}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-gray-500 dark:text-gray-400">Expense Ratio</dt>
+                  <dt className="text-gray-500 dark:text-gray-400">{fund.ticker === 'THMR' ? 'Net Expense Ratio' : 'Expense Ratio'}</dt>
                   <dd className="font-bold text-gold-600">{fund.expenseRatio.toFixed(2)}%</dd>
                 </div>
+                {fund.ticker === 'THMR' && (
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500 dark:text-gray-400">Gross Expense Ratio*</dt>
+                    <dd className="font-bold text-gold-600">1.10%</dd>
+                  </div>
+                )}
                 <div className="border-t border-gray-100 dark:border-gray-700 pt-3 mt-3">
                   <div className="flex justify-between">
                     <dt className="text-gray-500 dark:text-gray-400">Total Net Assets</dt>
@@ -784,11 +802,29 @@ export default async function FundPage({ params }: FundPageProps) {
                   <dt className="text-gray-500 dark:text-gray-400">Benchmark</dt>
                   <dd className="font-medium text-navy-800 dark:text-white text-right max-w-[160px] text-xs">{fund.benchmark}</dd>
                 </div>
-                <div className="flex justify-between">
-                  <dt className="text-gray-500 dark:text-gray-400">Distributor</dt>
-                  <dd className="font-medium text-navy-800 dark:text-white">PINE Distributors</dd>
+                <div className="flex justify-between items-start">
+                  <dt className="text-gray-500 dark:text-gray-400">Sub-Adviser</dt>
+                  <dd className="font-medium text-navy-800 dark:text-white text-right">{fund.subAdviser}</dd>
+                </div>
+                {fund.ticker === 'THMR' && (
+                  <div className="bg-navy-50 dark:bg-navy-800/30 rounded-lg p-3 -mx-1">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                      The quantitative framework is developed in collaboration with Professor Kumar Muthuraman of The University of Texas at Austin.
+                    </p>
+                  </div>
+                )}
+                <div className="border-t border-gray-100 dark:border-gray-700 pt-3 mt-3">
+                  <div className="flex justify-between">
+                    <dt className="text-gray-500 dark:text-gray-400">Distributor</dt>
+                    <dd className="font-medium text-navy-800 dark:text-white">PINE Distributors</dd>
+                  </div>
                 </div>
               </dl>
+              {fund.ticker === 'THMR' && (
+                <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400">
+                  *Gross expense ratio includes acquired fund fees and expenses.
+                </div>
+              )}
             </div>
 
             {/* Distribution Info */}

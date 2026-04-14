@@ -147,30 +147,17 @@ export default function FundsPage() {
             </div>
 
             {/* THMR Card */}
-            <div className="relative bg-white rounded-2xl shadow-sm ring-1 ring-gold-200 overflow-hidden">
-              <div className="absolute top-3 right-3 z-10">
-                <span className="inline-flex items-center bg-navy-900 text-gold-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
-                  COMING SOON
-                </span>
-              </div>
+            <div className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 overflow-hidden">
               <div className="bg-navy-800 p-6">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gold-500">THMR</span>
-                  <div className="flex items-center gap-2">
-                    <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded text-sm font-medium">
-                      AdaptiveRisk Dynamic
-                    </span>
-                    <span className="bg-white/15 text-white px-3 py-1 rounded text-sm font-medium">
-                      COMING SOON
-                    </span>
-                  </div>
+                  <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded text-sm font-medium">
+                    AdaptiveRisk Dynamic
+                  </span>
                 </div>
                 <h2 className="mt-2 text-xl font-semibold text-white">{FUNDS.THMR.name}</h2>
               </div>
               <div className="p-6">
-                <div className="mb-5 rounded-lg border border-gold-200 bg-gold-50 px-4 py-3 text-sm font-medium text-navy-800">
-                  Launching soon. Additional data will be available after launch.
-                </div>
                 <p className="text-gray-600">{FUNDS.THMR.description}</p>
                 
                 <div className="mt-6 space-y-3">
@@ -193,10 +180,27 @@ export default function FundsPage() {
                     href="/funds/thmr"
                     className="block w-full text-center btn-primary"
                   >
-                    Coming Soon - Learn More
+                    View THMR Details
                   </Link>
-                  <div className="text-center py-2 text-sm text-gray-500">
-                    Performance and holdings will be added after launch
+                  <div className="flex gap-2">
+                    <Link
+                      href="/funds/thmr/holdings"
+                      className="flex-1 text-center py-2 text-sm text-navy-800 hover:text-gold-600"
+                    >
+                      Holdings
+                    </Link>
+                    <Link
+                      href="/funds/thmr/performance"
+                      className="flex-1 text-center py-2 text-sm text-navy-800 hover:text-gold-600"
+                    >
+                      Performance
+                    </Link>
+                    <Link
+                      href="/funds/thmr/documents"
+                      className="flex-1 text-center py-2 text-sm text-navy-800 hover:text-gold-600"
+                    >
+                      Documents
+                    </Link>
                   </div>
                 </div>
               </div>

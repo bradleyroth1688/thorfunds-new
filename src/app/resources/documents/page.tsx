@@ -8,20 +8,22 @@ export const metadata: Metadata = {
 
 const documents = {
   thir: [
-    { name: 'Prospectus', type: 'PDF' },
-    { name: 'Summary Prospectus', type: 'PDF' },
-    { name: 'SAI', type: 'PDF' },
-    { name: 'Fact Sheet', type: 'PDF' },
-    { name: 'Annual Report', type: 'PDF' },
+    { name: 'Prospectus', type: 'PDF', url: '/docs/THIR_Prospectus.pdf' },
+    { name: 'Summary Prospectus', type: 'PDF', url: '/docs/THIR_Summary_Prospectus.pdf' },
+    { name: 'SAI', type: 'PDF', url: '/docs/THIR_SAI.pdf' },
+    { name: 'Fact Sheet', type: 'PDF', url: null },
+    { name: 'Annual Report', type: 'PDF', url: null },
   ],
   thlv: [
-    { name: 'Prospectus', type: 'PDF' },
-    { name: 'Summary Prospectus', type: 'PDF' },
-    { name: 'SAI', type: 'PDF' },
-    { name: 'Fact Sheet', type: 'PDF' },
-    { name: 'Annual Report', type: 'PDF' },
+    { name: 'Prospectus', type: 'PDF', url: '/docs/THLV_Prospectus.pdf' },
+    { name: 'Summary Prospectus', type: 'PDF', url: '/docs/THLV_Summary_Prospectus.pdf' },
+    { name: 'SAI', type: 'PDF', url: '/docs/THLV_SAI.pdf' },
+    { name: 'Fact Sheet', type: 'PDF', url: null },
+    { name: 'Annual Report', type: 'PDF', url: null },
   ],
-  thmr: [],
+  thmr: [
+    { name: 'Summary Prospectus', type: 'PDF', url: '/docs/THMR_Summary_Prospectus.pdf' },
+  ],
 };
 
 export default function DocumentsPage() {
@@ -60,9 +62,18 @@ export default function DocumentsPage() {
                       </svg>
                       <span className="text-sm">{doc.name}</span>
                     </div>
-                    <button className="text-sm text-navy-700 hover:text-gold-600 font-medium">
-                      Download
-                    </button>
+                    {doc.url ? (
+                      <a 
+                        href={doc.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-sm text-navy-700 hover:text-gold-600 font-medium"
+                      >
+                        Download
+                      </a>
+                    ) : (
+                      <span className="text-sm text-gray-400 font-medium">Coming Soon</span>
+                    )}
                   </div>
                 ))}
               </div>
@@ -80,19 +91,49 @@ export default function DocumentsPage() {
                       </svg>
                       <span className="text-sm">{doc.name}</span>
                     </div>
-                    <button className="text-sm text-navy-700 hover:text-gold-600 font-medium">
-                      Download
-                    </button>
+                    {doc.url ? (
+                      <a 
+                        href={doc.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-sm text-navy-700 hover:text-gold-600 font-medium"
+                      >
+                        Download
+                      </a>
+                    ) : (
+                      <span className="text-sm text-gray-400 font-medium">Coming Soon</span>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
 
             {/* THMR Documents */}
-            <div className="card ring-1 ring-gold-200">
+            <div className="card">
               <h2 className="text-xl font-bold mb-4">THMR - AdaptiveRisk Dynamic ETF</h2>
-              <div className="rounded-lg border border-gold-200 bg-gold-50 p-4 text-sm text-gray-700">
-                Documents will be available after launch.
+              <div className="space-y-3">
+                {documents.thmr.map((doc) => (
+                  <div key={doc.name} className="flex items-center justify-between py-2 border-b last:border-0">
+                    <div className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-sm">{doc.name}</span>
+                    </div>
+                    {doc.url ? (
+                      <a 
+                        href={doc.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-sm text-navy-700 hover:text-gold-600 font-medium"
+                      >
+                        Download
+                      </a>
+                    ) : (
+                      <span className="text-sm text-gray-400 font-medium">Coming Soon</span>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

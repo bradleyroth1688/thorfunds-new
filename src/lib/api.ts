@@ -43,11 +43,11 @@ export const FUNDS: Record<string, FundInfo> = {
     ticker: "THMR",
     name: "THOR AdaptiveRisk Dynamic ETF",
     fullName: "THOR AdaptiveRisk Dynamic ETF",
-    fundId: "",
+    fundId: "1513",
     description: "An actively managed, rules-based multi-strategy ETF that adapts to changing market conditions while prioritizing risk management. Allocates across equities, fixed income, commodities, and alternatives with the flexibility to move to cash during market stress.",
     benchmark: "S&P 500 (SPY)",
     strategy: "AdaptiveRisk Dynamic",
-    expenseRatio: 0,
+    expenseRatio: 0.85,
     subAdviser: "Ai Alpha LLC",
   },
 };

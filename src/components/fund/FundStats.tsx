@@ -29,7 +29,7 @@ interface PerfData {
 const FUND_IDS: Record<string, string> = {
   THIR: '1469',
   THLV: '1468',
-  THMR: '',
+  THMR: '1513',
 };
 
 function formatCurrency(value: number): string {
@@ -106,17 +106,6 @@ export default function FundStats({ ticker, showReturns = false }: FundStatsProp
   }
 
   if (error || !data) {
-    if (ticker === 'THMR') {
-      return (
-        <div className="rounded-xl border border-gold-200 bg-gold-50 p-6 text-center">
-          <p className="text-lg font-semibold text-navy-800">Coming Soon</p>
-          <p className="mt-2 text-sm text-gray-600">
-            Live fund data for THOR AdaptiveRisk Dynamic ETF will appear here after launch.
-          </p>
-        </div>
-      );
-    }
-
     return (
       <div className="text-center py-8 text-gray-500">
         {error || 'Unable to load data'}

@@ -31,6 +31,7 @@ function useTickerData() {
     }
     fetchTicker("1469", "THIR");
     fetchTicker("1468", "THLV");
+    fetchTicker("1513", "THMR");
   }, []);
 
   return data;
@@ -129,7 +130,12 @@ export function Header() {
           <span className="text-navy-600">|</span>
           <span className="flex items-center gap-1">
             <span className="font-semibold text-gold-500">THMR</span>
-            <span className="text-gold-300">Coming Soon</span>
+            <span>{tickerData.THMR ? `$${tickerData.THMR.nav.toFixed(2)}` : "—"}</span>
+            {tickerData.THMR && (
+              <span className={tickerData.THMR.changePct >= 0 ? "text-green-400" : "text-red-400"}>
+                {formatChange(tickerData.THMR.changePct)}
+              </span>
+            )}
           </span>
           <span className="text-navy-600">|</span>
           <span className="text-gray-500">As of prior close</span>

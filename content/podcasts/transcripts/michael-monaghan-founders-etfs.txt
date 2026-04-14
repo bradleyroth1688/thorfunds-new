@@ -1,0 +1,208 @@
+Brad Roth (00:01.899)
+Hey Michael, welcome to the show.
+
+Michael Monaghan (00:03.874)
+Hey, good morning, Brad. Thanks for having me.
+
+Brad Roth (00:06.219)
+So why don't you take a little bit of time, give everybody a little bit about your background. It's very interesting as I was doing a little bit of a digging on you. You started Goldman Sachs, you moved into private equity, spent some time at UBS, and then you founded a tech company, which I wanna talk about. Can you just kind of walk me through your career path and how you ended up starting the Founders Fund?
+
+Michael Monaghan (00:30.466)
+Yeah, it's a great question. And I sort of tell people this is the third act of my life. So act one, as you saw, was very traditional Wall Street career. I started off at Goldman Sachs and ended up leaving there to work with a Goldman partner when he started his own private equity fund in conjunction with the Carlisle Group. Got interested in getting back on the public side of the business and spent some time at Sanford, Bernstein and UBS. And you're correct. About 15 years into my career, I really wanted to go on and
+
+entrepreneurial journey and had this great idea for a technology product that would allow smartphones to connect without cell service. So we started a company that did that. We originally thought it would be a consumer product company and it turned out that we ended up having a lot of defense business. We learned a lot about that business. And then this, as you mentioned, is kind of the third act, which is this ETF. And I was inspired, a former colleague of an eye that had, I'd worked with at Sanford Bernstein. We saw the Fort McHenry flag at the Smithsonian.
+
+in Washington DC and some of the other exhibits at the museum. And we said, wow, the people that built America, they're really different. These are iconoclasts, right? And we said, what if we built a portfolio of public securities of only iconoclasts and founders are really iconoclasts? that sort of got us to where we're at to start the Founders 100 ETF owning the 100 best founder-led companies.
+
+Brad Roth (01:57.579)
+That's great. We're going to talk a lot about that today and get deep into the fun. But I would like to ask, what do you like to do for fun when you're not working, when you're not trying to be an entrepreneur? I know you are skiing today, but any other hobbies?
+
+Michael Monaghan (02:10.658)
+Yeah, so I've got my life pretty simple at this point. So work, I like to run a lot. So I've completed a dozen plus marathons, including a few barefoot. I spend a fair amount of time if I'm on the West Coast surfing early in the morning. And then, yes, you're correct on my final hobby is skiing. So really those three things. it's work, running, surfing, or skiing.
+
+Brad Roth (02:37.995)
+So you touched on bare-tooth a little bit, but really the question I wanted to get to is you have lived the founder's life firsthand, right? You've co-invented this technology, you've raised capital, you've built a team. How much of that experience kind of directly shaped what you're doing now with the founder's ETF?
+
+Michael Monaghan (02:57.058)
+I think it was absolutely imperative. I think it inspired both the inspiration, which is being part of the founder community and working with other great founders and understanding the mindset of these people that build these founder-led companies is just different. And so I think it was important to do that. And I think it was also important to understand how to construct the business. I think had I just stayed as an employee of a well-run
+
+you know, Wall Street organization for 25 years. I don't think I would have built the skillset and understanding of how to create my own organization. there was a lot of, you know, we ultimately shipped some very good products with Beartooth, but over the 12 to 14 years that I worked on it, we certainly made a lot of mistakes that I think prepared us to create good products at the founder ETF. And if you'll allow me to make one more point, I tell people when I meet them,
+
+We're not an investment management company. We manage investments, but we're a product development company. And the idea was we wanted to build the best risk reward product for compounding your wealth. And in doing that, that's the product that we've created. So we think of ourselves as a product development company. It just so happens that we product that we've built is a tool to allow you to compound your wealth. And what we feel is a very good reward to risk.
+
+Profile.
+
+Brad Roth (04:25.035)
+Yeah. And so as we get into the fun here a little bit, I want to just kind of ask the core thesis really is, this founder factor. So can you walk us through what that actually means? How are you defining, how are you defining founder led and why do you believe it works as an investable, you know, an investable characteristic?
+
+Michael Monaghan (04:44.684)
+Yeah, so I think there's three pieces in there is how we're defining a founder. What does that factor look like and why do we think it works? So how we define a founder is the original creator of the company, the person that started it. Right? So if it's a Dell computer, it's Michael Dell. If it's Capital One, it's Rich Fairbank. If it's Nvidia, it's Jensen. And so it's the original company founders still running it. So we talk about
+
+Again, we own Dell because Michael's still running it. We don't own Apple because Steve's no longer running it. When we were originally building the portfolio last year, we had Berkshire Hathaway in, but obviously Warren retired, so we don't own a Berkshire. So that's how we define a founder run is that the original founder is the executive running the company. So they can't just be the chairman and they can't have stepped back and just run a division. They've got to be running the company.
+
+And then as far as the efficacy of the factor, we looked at 30 years of data. I think my partner built an 11,000 stock database looking at this and we built a histogram of when founders were coming in and out. And by the way, for other investment professionals, this data does not exist in Bloomberg or FactSet. So we had to hand build it going through old press clippings and old SEC filings to actually build the histogram of when founders came in and out. And if you look at that data,
+
+the founder led companies over a very long period of time tend to outperform the S &P by about three to 5%. There's a Bain study that you can reference that shows that the founder led companies in the S &P 500 outperformed by three X over 25 years. So we think there's a lot of efficacy in the factor. So that was one, two. And the third is why do we think the factor works is founders bring something special to their company. They're relentless, they're courageous.
+
+They have the moral authority to pivot and take their company in the right direction when they need to change direction. And I think it's a unique set that's hard to be replicated, this combination of both big vision and the ability to execute both large and small details.
+
+Brad Roth (06:53.065)
+Yeah, I would agree with both of those things. And I was going to go into the question, like, what specifically is it about founders that kind of drives that outperformance? I've solved both studies, right? I saw a quantitative analysis study that says, you know, they return about four and a half percent more return. I read your Bain study at 3.1 X over 15 years, but really it's ingrained, I think, in a founder.
+
+Is it, you know, the skin in the game, the long-term thinking, the willingness to take bigger swings? Like, what do you think is that core mechanism that really allows these founder-led companies to find, you know, some of this excess alpha over companies that, you know, have no longer been utilizing their founder as their head and running?
+
+Michael Monaghan (07:39.79)
+I think it's all of the above that you've named. They've set the original vision. They know where that vision needs to go. They know how to make the changes. So I'll give two examples. So a Metta is one of our top holdings. As you recall, a few years ago, Mark was investing aggressively in the Metaverse. Wall Street didn't like it. The stock got hammered. It wasn't working. And he instantly pivoted and went a new direction.
+
+and has created a ton of value since then. A couple of weeks ago, I was asked to weigh in on Elon merging SpaceX and XAI. And again, it's that vision to understand the constraints in a system, understanding that in artificial intelligence, you have compute constraints, you have cooling constraints. And as wild as it sounds to put these things in space, you're just solving the constraints. And now you have the execution to do it at a low cost.
+
+And I just, don't think a board hired CEO could do something that bold and number one, execute it and two have the internal support. So I think that it's, it's, it's, I don't think there's any one thing that a founder does. It's, it's kind of like Jensen talks about. He's like, there's nothing I won't do to drive Nvidia forward. And I believe it. I guarantee if there's a piece of trash on the floor, when he walks through the hallway, he's the first one to pick it up. And that's just, you can't replace that mentality.
+
+Brad Roth (09:09.323)
+So let's get into the founder fund specifically. The ticker is FFF and I'm going to put on the hat because I've done probably a hundred of these episodes and I'm a swag guy. So if you give me swag, I'm going to wear it. I pass out anything with Thor on it. So let's talk about the ticker FFF. You launched it in 2025, actively managed. What are the actual mechanics of this fund?
+
+Michael Monaghan (09:36.238)
+Awesome. So you're exactly right. Let's talk about how we manage the fund and then let's talk about why we chose FFF. So the way we manage the fund is very straightforward and it's an interesting intersection of fundamental and quantitative, which is how we've combined them, I think is a bit unique. So we start with the 200 largest founder led publicly traded companies. That's our starting universe with which we analyze.
+
+And we actually run in a separate index that you can look at under Bloomberg trades under founders, F O U N D D E R S. Um, and that's the 200 largest founder led companies within that we pick the, what we believe to be the a hundred best by running a factor model. So anyone who's familiar with, again, Bernstein research, my partner and I both came from Bernstein. We run a Bernstein ask a factor model over the top, which we believe picks out the a hundred best.
+
+from the 200 largest, then we do a modified market weighting of them. So rather than just running a true market weight where we'd end up with a portfolio with 40 % Nvidia, as much as we love Nvidia and as much as we love Jensen, our investors are hiring us to run a broad market portfolio. So we do a modified market cap weighting and we cap the top weightings so that nothing can exceed 7 % at rebalance. So it can grow into a quarter, but at each quarterly rebalance,
+
+We cap at 7 % and any excess capitalization flows down to some of the smaller companies, which oftentimes are growing very fast. And so it's a good place to put that capital.
+
+Brad Roth (11:13.227)
+Yeah, so I was looking at the prospectus. says like 80 % of it is rules-based, up to 20 % is discretionary. So that's an interesting split to me. Like why not go full systematic? Kind of what is the discretionary sleeve actually doing? Is that your weighting mechanism or can you talk about what, other than your factor, which is rules-based, what is that discretionary piece actually doing in order to utilizing it?
+
+Michael Monaghan (11:41.957)
+Great question. So effectively, it's all rules based. I'll get into why the 80-20 is written that way. So I think this is something that's really important to point out because it's rules based, there's no emotion in this portfolio, right? So it's just the computer model picking the stocks each quarter. The reason we wrote it 80-20 primarily was the ability to put in IPOs that meet our fundamental, that are founder led.
+
+and meet our criteria.
+
+Brad Roth (12:15.059)
+So will you, you just mentioned something there quarterly. So you're doing the factor analysis on a quarterly basis. say an IPO, you know, releases SpaceX does its IPO, right. And you want to get it in the portfolio. Do you wait till next quarterly rebalance or is that that discretionary piece that says, Hey, we want to get this SpaceX in here. Let's just put it in the portfolio.
+
+Michael Monaghan (12:32.054)
+That's that's
+
+That's the discretionary that we could buy on the IPO for companies that meet all the other requirements.
+
+Brad Roth (12:39.371)
+Got it. So you've got, go ahead.
+
+Yeah. So you've got some big mega tech, mega cap tech names in here. Like you mentioned, you got the Nvidia is in there, but you've also got names further down the list. You've got Robinhood, Carvana, Viking Holdings, Roblox. How important is that long tail of smaller and mid cap founder led companies to the overall thesis and I guess performance of them.
+
+Michael Monaghan (13:08.02)
+Yeah, that's a great question. And we looked at a fund size everywhere from 15 names to 200 names. And we really found 100 was sort of the sweet spot. And yes, some of those tail names are actually growing very fast. And so when we're cycling that excess capital back into them, it's providing performance to the fund.
+
+One of the things that we looked at was over that 30 year history of these types of names, where did the performance come from? And about 50 % of the performance came from about 500 names, meaning the performance is not just coming from the mega caps and the top holdings, the performance is coming all across the investment portfolio.
+
+Brad Roth (13:55.115)
+also took a look at the holdings like 10 % or their top 10 holdings are about 53 % of the portfolio. Is that a concentration feature by design you want or is that I don't view it as a risk, but is that by design? that a conviction bet in some way, or form?
+
+Michael Monaghan (14:13.58)
+I think that's driven by the market cap weightings. That's really what's driving it there. And yes, you're correct. We have about 50 % of the portfolio in the top 10 or 12 names, and then the other 50 % of the portfolio and the other 90 names.
+
+Brad Roth (14:32.907)
+So the fund is about two months or two months old, I think you're in the very early innings. It's very, it's a very crowded space. So what's the distribution, not for founder led ETFs, but the number of ETFs that have been launched over the last couple of years, I call it the ETF Thunderdome. think that's the term everybody's using now. You you have past experiences as a founder.
+
+What's the distribution strategy? How are you going to try to get in front of advisors? How are you going to try and make some noise in a very loud room?
+
+Michael Monaghan (15:09.682)
+Yeah, so I think the first one is the, I think it was Paul Graham says things that don't scale, right? So lot of it is personal outreach from my partner and I. And then there's the systematic things using some of the tools in an automated way to get in front of advisors, especially some of the smaller advisors that are looking for exciting new product to talk to their customers about. And what I would highlight is even though
+
+the ETF space is very noisy. think the statistics are 10 a week launch. Last time I talked to one of the exchanges. As you know, someone else who's built a really high quality, long-term compoundable product, 90, 95 % of these things are not long-term compounders, right? They're flavor of the day, double levered this, triple inverse levered that. They're not investable. They're not something that you can put your child, your grandma, your mom into.
+
+We've built a vehicle that compounds over very, long periods of time. We think it's unique. It's something an advisor can put into their portfolio and is not simply an overlap with the Qs or the spies. For example, we have 85 % active share with the S &P 500 and 70 % active share with the triple Qs. You know from your time in the industry that
+
+The old active managers used to brag about one to 7 % active share, right? We're running 85 to 70%. So we think that we're gonna slowly break out of the noise by an easy to understand strategy that resonates, right? If you're an RIA, your end investors got wealthy themselves by being founders. So it resonates with them at a very high level. The data shows that the factor should continue to be efficacious. I think you and I should probably note that.
+
+Past performance is not a guarantee of the future, but if the last 30 years keeps going, it should be very efficacious. And so to your point, it's a very noisy space, but we think just like you have, we think we've built something that's very unique and enduring. And so we'll put in the things that don't scale, and then we'll use some of the tools to continue to get in front of investors. And then we do a lot of things. We really appreciate talking with folks like you who want to do outreach with us, who've got a, you know, you're a trusted
+
+Michael Monaghan (17:23.204)
+source to your viewers on how to understand capital markets. And we'll do outreach like that so that people can start to learn our story and make a decision for themselves.
+
+Brad Roth (17:33.547)
+Yeah, so you brought up advisor discussions. Like, how would you, if you're sitting down with an advisor, he's got a diversified model portfolio suite that he's delivering to clients. Like, what is the recommendation here on how they should be viewing FFF? Where does it fit? We've talked at length about why it makes sense, but.
+
+You know, if you're looking at a diversified portfolio, I'm assuming somewhere in the large and mid cap equity is where you're going to try to pull some weighting from and add it to your product.
+
+Michael Monaghan (18:12.317)
+Absolutely. One of the things that we like about this product is we believe it's a core equity holding on the growthier side. So we think that we fit in that core growth sleeve. Given it's a broad market portfolio and that our sector weightings are relatively diverse, lining up relatively well with the S &P 500. There's a few places we're slightly overweight, a few places we're slightly underweight.
+
+We don't own any utilities, although I suspect we're going to see a cycle of founder led utilities to power this AI boom. So we believe we can sit down with an advisor and show them this is a one for one replacement for some of their core growth holdings. For example, and we didn't talk about FFF, but one of the reasons my partner chose FFF, we thought it was very easy to remember. And we believe over time,
+
+This is a one for one improvement over the QQQs. When the QQQs were released on March 10th of 1999, they were supposed to be the innovation ETF. was these technology stocks. What's happened over time is NASDAQ is trying to earn more and more listings. So over time, it's bleeding out innovation and they're putting in all these very old, slow growth companies that have nothing to do with innovation simply to earn listings. So when we sit down with an advisor,
+
+and we show them the opportunity to own broad market innovation by all these founder led companies, we see good uptake from them because they realize the cues are getting less and less innovative every day and we are driving pure innovation. So those are some of the conversations that we have and we think that make it easy for advisors to bring our product in.
+
+Brad Roth (19:57.779)
+Michael, it seems like you have your thumb on the pulse of a lot of these founder led companies and maybe future IPOs. What do you want to own that you can't own yet that you're hoping you get a chance to get your investors invested in it through FFF?
+
+Michael Monaghan (20:15.179)
+So we try to be agnostic to names, right, since we've built a model portfolio. We like the model just to pick them. I'm going to answer your question, by the way. I'm going to get there. But one of my
+
+Brad Roth (20:25.419)
+I would have given the same answer as a systematic manager. I would have said the same thing as the, as the clause, but you got to have it a little bit of opinion on something you want to.
+
+Michael Monaghan (20:34.399)
+Yeah, so I'll close it out and I'll give you the answer. You we love the, you know, my favorite comment is the Jim Simmons comment. He says that Renaissance, you could do anything you want except for override the computer. So we're big believer in the system. That being said, of course I'm excited to own, when we're going to be able to own some SpaceX. think that, you know, Elon, without restating the obvious is a generational entrepreneur and ability to create new things and see around corners and execute around those corners.
+
+The Collison Brothers, you know, I was an early user of Stripe at my old company. know, we were so early, I used to get to talk to them. Okay. That's how long I've been using Stripe. I'd be excited to buy some Stripe. I think they really have done some great things. And there's probably some really interesting companies that we don't even know about yet. I think Palmer's doing a nice job about
+
+Brad Roth (21:15.199)
+Yeah.
+
+Michael Monaghan (21:31.893)
+you know, really refocusing people on let's actually help our war fighters with tools that help them rather than just bleed the American taxpayer through kind of endless cost plus programs. So, you know, I think those probably won't surprise anyone. What I want to own are the ones that I don't even know about yet. Those I think will be interesting.
+
+Brad Roth (21:52.565)
+Great. So I was, I was curious to ask you because I've been an entrepreneur and a founder for 15 years. You had a 15 year stint as a technologist, you know, running a technology company and doing cool things. What is it about, you know, the ETF industry and launching your own product here and trying to grow this business that are similar to maybe some of your prior entrepreneurship journeys? Like it's,
+
+Kind of the same playbook, but a different game, but I think you need all the same characteristics. So what have you brought from your past into this business that might be a little bit unique and how is running an ETF company similar or very different than maybe running more of a technology driven company that you were doing in the past?
+
+Michael Monaghan (22:48.553)
+Yeah, so I think I'm still learning a lot about running an ETF as I, as I tell people really early on, said, look, before January 6th of last year, I really knew nothing about an ETF other than owning some. And we really dug in and had to learn about how to execute it and build it and work with the right partners. So I think we're still learning every day. but you know, there are some similarities that, you know, I think, really
+
+designing the product with the customer in mind, right? So it's not about creating a solution and finding a problem. It's understanding a problem and bringing that to the customer. My viewpoint is I like to have 30 year vision goals, but execute in 30 seconds, right? So I typically tell people I'm thinking about where I want to go 30 years from now, but I'm doing, but this week is what I want done this week. And so I think that's where those things overlap.
+
+our, we have a small team at the ETF, but we, kind of run our, our build the same way we used to do engineering cycles at Baratouth is we'll, we'll do a weekly sprint every week. And one of the disciplines is you can even decide, you know, hopefully something's done at the end of the sprint, but it's the discipline. If something new has become more important, it's just to not even finish what you're doing and move on. And that's a hard skill to teach yourself and others, but that's a discipline that we've built.
+
+And then I guess just on the customer acquisition side, think about, you know, we had our consumer side where we require customers for Beartooth and then also our long, obviously, selling to the government can be very long cycle. And so I think there's some analog in ETF world where retail or small RIAs can be very fast moving and creating some contact and interest with them. And on the institutional side or
+
+The the the wirehouse side could be very long lead cycle. So I think those are the parallels but really being direct it's like we're learning every day about ETFs, but you know, some of the tools are amazing, you know, for example speaking of AI a year ago, they weren't good enough to do your securities filings and legal work as of about last summer in my opinion, they're now better than any fancy New York law firm you could hire.
+
+Michael Monaghan (25:07.932)
+at their ability to write a document, analyze a document. Obviously, we still consult with our FortiAC lawyers to make sure everything is correct. But the ability to learn, if you want now, think, has never been better. So that's a long-winded way of saying, we're still learning a ton about ETFs, but we're really naturally curious people. And the tools exist to enable you on that learning journey.
+
+Brad Roth (25:31.391)
+Yeah, I have a similar sentiment and feeling with AI. think even in the last three weeks, it's made a major jump to allow us to do some other things. But I find it interesting. You and I are very similar. It's that longer term vision, where do we want to go? I might not say every 30 seconds, that every week being able to figure out what you want to get accomplished, run after it. But I find it very interesting.
+
+want to expand on it just a hair is that ability to pivot, right? Especially when you're building a new business, there's things that you learn. We always, my partners and I always say, none of us have a monopoly of the best ideas. And so when new things come, you have to have that ability to pivot. And I think that goes back to one of the reasons why the companies inside FFF can be successful and provide some excess alpha. So is it, how do you kind of look at making some of those decisions when they happen in real time?
+
+you for example, maybe you're working on, um, you know, a marketing plan, but something new comes up. Like how, how, how do you iterate? Or are you just kind of like, Hey, I love this. Let's go. Or are you saying sitting down with your team and saying, Hey, let's think this through. How does everything work together? Um, we want to make sure that this is right when we go or are you a run and Hey, if we break it, we'll fix it along.
+
+Michael Monaghan (26:54.034)
+Yeah, I try to borrow a little bit from Jeff Bezos on the one-way door and two-way door. If something is quickly reversible, i.e. just spending a little bit of money, we obviously want to be effective with our capital and have high returns on the ways we invest. But if it's a one-way door, we spend some money, it works, it doesn't work. Like we try to move quickly on those types of things. And if it's a two-way door, you know, we might want to be a little bit more deliberate. So an example would be a one-way door. We might hire a
+
+you know, a prospecting database or an outreach company, that's a one way door. We spend the money, it works, it doesn't work. If we're to partner with a wholesaler, that could be a three year, five year, 10 year lifetime commitment. That's something we're going to really dig in and make sure it's the right partnership. So I think it's just adjusting between those two risk parameters.
+
+Brad Roth (27:46.239)
+Michael, I appreciate you hanging out with me today. As you can tell, like the story of founders. I love the story of the fund. I wish you a ton of success. Before I let you go, where can people learn more information about the founders fund and get everything they need to know about?
+
+Michael Monaghan (28:06.996)
+Yeah, so the best place to learn about FFF is at Founder ETFs, FounderETFs.com. Michael at FounderETFs.com will go directly to me. I love talking to people if you want to reach out and learn more about the fund. And in the website there, we have a lot of materials we've written, whether it's be content on the website, a one-page or links to our SEC filings and prospectus.
+
+And the fund can be bought at any of your favorite brokers. So Charles Schwab, Fidelity, Vanguard, Interactive Brokers, public.com, all easy places to go buy the fund.
+
+Brad Roth (28:46.411)
+Again, Michael, thanks for hanging out with me today.
+
+Michael Monaghan (28:49.012)
+Fantastic, we really appreciate being on and think that hat looks great on you.
+
+Brad Roth (28:54.046)
+All right, man, we'll talk to you soon. Bye.
+
+Michael Monaghan (28:55.935)
+See ya.
+

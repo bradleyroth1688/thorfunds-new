@@ -107,7 +107,7 @@ export default function RiskManagementPage() {
             <div className="flex flex-wrap gap-4">
               <Link href="/funds/thir" className="btn-primary">THIR</Link>
               <Link href="/funds/thlv" className="btn-secondary">THLV</Link>
-              <Link href="/funds/thmr" className="btn-outline">THMR (Coming Soon)</Link>
+              <Link href="/funds/thmr" className="btn-outline">THMR</Link>
             </div>
           </div>
 

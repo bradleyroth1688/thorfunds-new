@@ -112,12 +112,7 @@ export default function Home() {
             </div>
 
             {/* THMR Card */}
-            <div className="relative card-hover ring-1 ring-gold-200">
-              <div className="absolute top-4 right-4">
-                <span className="inline-flex items-center bg-navy-900 text-gold-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
-                  COMING SOON
-                </span>
-              </div>
+            <div className="card-hover">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THMR</h3>
@@ -131,19 +126,14 @@ export default function Home() {
                 Multi-strategy, rules-based exposure across equities, fixed income, commodities, and alternatives.
                 Can move from fully invested to defensive cash positioning as conditions change.
               </p>
-              <div className="rounded-xl border border-gold-200 bg-gold-50 p-6 text-center">
-                <p className="text-lg font-semibold text-navy-800">Coming Soon</p>
-                <p className="mt-2 text-sm text-gray-600">
-                  Live fund statistics will be available after launch.
-                </p>
-              </div>
+              <FundStats ticker="THMR" />
               <div className="mt-6 flex gap-4">
                 <Link href="/funds/thmr" className="btn-primary flex-1 text-center">
                   Fund Details
                 </Link>
-                <span className="btn-outline flex-1 text-center cursor-default opacity-60">
-                  Holdings After Launch
-                </span>
+                <Link href="/funds/thmr/holdings" className="btn-outline flex-1 text-center">
+                  View Holdings
+                </Link>
               </div>
             </div>
           </div>
