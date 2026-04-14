@@ -5,7 +5,7 @@ const DATA_URL = "https://funddata.ultimusfundsolutions.com/funds";
 const API_EMAIL = "broth@thoranalytics.com";
 const API_PASSWORD = "000b6e14-48a9-46fb-8113-f1d0cc2166ef";
 
-const VALID_FUND_IDS = ['1468', '1469'];
+const VALID_FUND_IDS = ['1468', '1469', '1513'];
 const VALID_ENDPOINTS = [
   'performance',
   'performance/LastMonth',
