@@ -137,57 +137,31 @@ export interface QuarterlyPremiumDiscount {
   premiumDiscounts: PremiumDiscountRecord[];
 }
 
-// Token cache
-let cachedToken: string | null = null;
-let tokenExpiry: number = 0;
-
-async function getToken(): Promise<string> {
-  // Token is valid for ~12 hours, cache it
-  if (cachedToken && Date.now() < tokenExpiry) {
-    return cachedToken;
-  }
-
+// Helper to fetch via internal proxy route (works in server-side and Vercel)
+async function fetchViaProxy(fundId: string, endpoint: string) {
   try {
-    const response = await fetch(AUTH_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: API_EMAIL, password: API_PASSWORD }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Auth error: ${response.status}`);
-    }
-
-    const token = await response.text();
-    cachedToken = token.replace(/"/g, "");
-    tokenExpiry = Date.now() + 10 * 60 * 60 * 1000; // 10 hours
-    return cachedToken;
-  } catch (error) {
-    console.error("Error getting Ultimus token:", error);
-    throw error;
-  }
-}
-
-async function fetchUltimus(endpoint: string) {
-  try {
-    const token = await getToken();
-    const response = await fetch(`${DATA_URL}${endpoint}`, {
-      method: "GET",
+    // Determine base URL - use VERCEL_URL in production, localhost in dev
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : 'http://localhost:3000';
+    
+    const url = `${baseUrl}/api/fund?fundId=${fundId}&endpoint=${endpoint}`;
+    
+    const response = await fetch(url, {
+      cache: 'no-store',
       headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "Cache-Control": "no-cache",
+        'Content-Type': 'application/json',
       },
-      next: { revalidate: 3600 }, // Cache for 1 hour
     });
 
     if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
+      console.error(`Proxy fetch failed for ${endpoint}: ${response.status}`);
+      return null;
     }
 
     return response.json();
   } catch (error) {
-    console.error(`Error fetching ${endpoint}:`, error);
+    console.error(`Error fetching via proxy ${fundId}/${endpoint}:`, error);
     return null;
   }
 }
@@ -196,7 +170,7 @@ export async function getNavData(ticker: string): Promise<NavData | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchUltimus(`/${fund.fundId}/performance`);
+  const data = await fetchViaProxy(fund.fundId, 'performance');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -269,7 +243,7 @@ export async function getStandardizedPerformance(ticker: string): Promise<NavDat
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchUltimus(`/${fund.fundId}/performance/LastMonth`);
+  const data = await fetchViaProxy(fund.fundId, 'performance/LastMonth');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -342,7 +316,7 @@ export async function getHoldings(ticker: string): Promise<Holding[] | null> {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchUltimus(`/${fund.fundId}/etfholdings`);
+  const data = await fetchViaProxy(fund.fundId, 'etfholdings');
   if (!data || !Array.isArray(data)) return null;
 
   return data
@@ -361,7 +335,7 @@ export async function getQuarterlyPerformance(ticker: string): Promise<Performan
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchUltimus(`/${fund.fundId}/performance/LastQuarter`);
+  const data = await fetchViaProxy(fund.fundId, 'performance/LastQuarter');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -377,7 +351,7 @@ export async function getMonthlyPerformance(ticker: string): Promise<Performance
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchUltimus(`/${fund.fundId}/performance/LastMonth`);
+  const data = await fetchViaProxy(fund.fundId, 'performance/LastMonth');
   if (!data || !Array.isArray(data) || data.length === 0) return null;
 
   const d = data[0];
@@ -393,7 +367,7 @@ export async function getPremiumDiscount(ticker: string): Promise<QuarterlyPremi
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  const data = await fetchUltimus(`/${fund.fundId}/premiumdiscount`);
+  const data = await fetchViaProxy(fund.fundId, 'premiumdiscount');
   if (!data || !Array.isArray(data)) return null;
 
   return data.map((q: Record<string, unknown>) => ({
@@ -415,21 +389,21 @@ export async function getDistributions(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  return fetchUltimus(`/${fund.fundId}/distribution`);
+  return fetchViaProxy(fund.fundId, 'distribution');
 }
 
 export async function getAnalytics(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  return fetchUltimus(`/${fund.fundId}/analytics`);
+  return fetchViaProxy(fund.fundId, 'analytics');
 }
 
 export async function getGrowth(ticker: string) {
   const fund = FUNDS[ticker.toUpperCase()];
   if (!fund || !fund.fundId) return null;
 
-  return fetchUltimus(`/${fund.fundId}/growth`);
+  return fetchViaProxy(fund.fundId, 'growth');
 }
 
 export async function getHistoricalPrices(ticker: string, startDate?: string, endDate?: string) {
@@ -437,9 +411,9 @@ export async function getHistoricalPrices(ticker: string, startDate?: string, en
   if (!fund || !fund.fundId) return null;
 
   if (startDate && endDate) {
-    return fetchUltimus(`/${fund.fundId}/pricing/range/${startDate}/${endDate}`);
+    return fetchViaProxy(fund.fundId, `pricing/range/${startDate}/${endDate}`);
   }
-  return fetchUltimus(`/${fund.fundId}/pricing`);
+  return fetchViaProxy(fund.fundId, 'pricing');
 }
 
 // Utility functions
