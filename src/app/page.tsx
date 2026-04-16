@@ -60,22 +60,22 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* THIR Card */}
-            <div className="card-hover">
-              <div className="flex items-center justify-between mb-4">
+            <div className="card-hover flex flex-col">
+              <div className="flex items-start justify-between mb-4 min-h-[5rem]">
                 <div>
                   <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THIR</h3>
                   <p className="text-gray-600 dark:text-gray-300">THOR SDQ Index Rotation ETF</p>
                 </div>
-                <span className="bg-navy-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-navy-700 text-white px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                   Index Rotation
                 </span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Rotates between major U.S. indices (S&P 500, Dow Jones, Nasdaq) based on proprietary signals. 
+              <p className="text-gray-700 dark:text-gray-200 mb-6 min-h-[9.5rem]">
+                Rotates between major U.S. indices (S&P 500, Dow Jones, Nasdaq) based on proprietary signals.
                 Can move to 100% short-duration treasuries when all signals turn risk-off.
               </p>
               <FundStats ticker="THIR" />
-              <div className="mt-6 flex gap-4">
+              <div className="mt-auto pt-6 flex gap-4">
                 <Link href="/funds/thir" className="btn-primary flex-1 text-center">
                   Fund Details
                 </Link>
@@ -86,22 +86,22 @@ export default function Home() {
             </div>
 
             {/* THLV Card */}
-            <div className="card-hover">
-              <div className="flex items-center justify-between mb-4">
+            <div className="card-hover flex flex-col">
+              <div className="flex items-start justify-between mb-4 min-h-[5rem]">
                 <div>
                   <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THLV</h3>
                   <p className="text-gray-600 dark:text-gray-300">THOR Low Volatility ETF</p>
                 </div>
-                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                   Low Volatility
                 </span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-6">
-                Equal-weight exposure across 10 S&P sectors with dynamic risk management. 
+              <p className="text-gray-700 dark:text-gray-200 mb-6 min-h-[9.5rem]">
+                Equal-weight exposure across 10 S&P sectors with dynamic risk management.
                 Sectors going risk-off are replaced with short-duration treasuries.
               </p>
               <FundStats ticker="THLV" />
-              <div className="mt-6 flex gap-4">
+              <div className="mt-auto pt-6 flex gap-4">
                 <Link href="/funds/thlv" className="btn-primary flex-1 text-center">
                   Fund Details
                 </Link>
@@ -112,22 +112,22 @@ export default function Home() {
             </div>
 
             {/* THMR Card */}
-            <div className="card-hover">
-              <div className="flex items-center justify-between mb-4">
+            <div className="card-hover flex flex-col">
+              <div className="flex items-start justify-between mb-4 min-h-[5rem]">
                 <div>
                   <h3 className="text-2xl font-bold text-navy-700 dark:text-gold-500">THMR</h3>
                   <p className="text-gray-600 dark:text-gray-300">THOR AdaptiveRisk Dynamic ETF</p>
                 </div>
-                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                   AdaptiveRisk Dynamic
                 </span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-6">
+              <p className="text-gray-700 dark:text-gray-200 mb-6 min-h-[9.5rem]">
                 Multi-strategy, rules-based exposure across equities, fixed income, commodities, and alternatives.
                 Can move from fully invested to defensive cash positioning as conditions change.
               </p>
               <FundStats ticker="THMR" />
-              <div className="mt-6 flex gap-4">
+              <div className="mt-auto pt-6 flex gap-4">
                 <Link href="/funds/thmr" className="btn-primary flex-1 text-center">
                   Fund Details
                 </Link>
