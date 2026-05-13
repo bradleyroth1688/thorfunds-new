@@ -66,7 +66,6 @@ const navigation = [
     href: "/tools",
     children: [
       { name: "Fund Comparison", href: "/funds/compare" },
-      { name: "Portfolio Analyzer", href: "/analyze" },
     ],
   },
   {

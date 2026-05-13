@@ -18,7 +18,6 @@ const footerNavigation = {
     { name: "Glossary", href: "/learn/glossary" },
   ],
   tools: [
-    { name: "Portfolio Analyzer", href: "/analyze" },
     { name: "Compare Funds", href: "/funds/compare" },
   ],
   company: [

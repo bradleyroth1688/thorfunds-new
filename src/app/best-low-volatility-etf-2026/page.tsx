@@ -302,8 +302,8 @@ export default function BestLowVolETF2026Page() {
               <Link href="/funds/thlv" className="btn-secondary">
                 View THLV Details
               </Link>
-              <Link href="/tools/risk-profile" className="btn-outline border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white">
-                Take Risk Quiz
+              <Link href="/contact" className="btn-outline border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white">
+                Talk to Our Team
               </Link>
             </div>
           </div>

@@ -3,23 +3,11 @@ import { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Investment Tools | Free Calculators & Quizzes",
-  description: "Free investment tools including risk profile assessment and fund comparison. Make smarter investment decisions with THOR Funds.",
+  title: "Investment Tools | Fund Comparison",
+  description: "Free investment tools including side-by-side ETF comparison. Make smarter investment decisions with THOR Funds.",
 };
 
 const tools = [
-  {
-    name: "Risk Profile Quiz",
-    description: "Discover your investment risk tolerance in 5 minutes and get personalized fund recommendations.",
-    href: "/tools/risk-profile",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    badge: "Popular",
-    time: "5 min",
-  },
   {
     name: "Fund Comparison",
     description: "Compare THIR, THLV, and THMR side-by-side. See performance, strategy, and find the right fit for your portfolio.",
@@ -60,11 +48,6 @@ export default function ToolsPage() {
                 href={tool.href}
                 className="card-interactive group relative"
               >
-                {tool.badge && (
-                  <span className="absolute top-4 right-4 badge-gold">
-                    {tool.badge}
-                  </span>
-                )}
                 <div className="w-14 h-14 bg-gold-100 dark:bg-gold-500/20 rounded-xl flex items-center justify-center text-gold-600 dark:text-gold-400 mb-4 group-hover:scale-110 transition-transform">
                   {tool.icon}
                 </div>

@@ -388,11 +388,11 @@ export default function TacticalAllocationPillarPage() {
             Discover if THIR is right for your investment goals.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/tools/risk-profile" className="btn-secondary">
-              Take Risk Assessment
-            </Link>
-            <Link href="/funds/thir" className="btn-outline border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white">
+            <Link href="/funds/thir" className="btn-secondary">
               View THIR Fund Page
+            </Link>
+            <Link href="/contact" className="btn-outline border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white">
+              Talk to Our Team
             </Link>
           </div>
         </div>

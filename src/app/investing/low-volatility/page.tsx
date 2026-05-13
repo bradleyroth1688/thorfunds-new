@@ -57,7 +57,6 @@ const relatedContent = [
   { title: "Market Cycles Explained", href: "/learn/market-cycles", description: "Understanding bull and bear markets" },
   { title: "Tactical vs Strategic Investing", href: "/learn/tactical-vs-strategic", description: "When to use each approach" },
   { title: "THLV ETF Details", href: "/funds/thlv", description: "Explore our low volatility ETF" },
-  { title: "Risk Profile Quiz", href: "/tools/risk-profile", description: "Discover your risk tolerance" },
 ];
 
 export default function LowVolatilityPillarPage() {
@@ -393,11 +392,11 @@ export default function LowVolatilityPillarPage() {
             Discover if THLV is right for your investment goals with our free risk assessment.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/tools/risk-profile" className="btn-secondary">
-              Take Risk Assessment Quiz
-            </Link>
-            <Link href="/funds/thlv" className="btn-outline border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white">
+            <Link href="/funds/thlv" className="btn-secondary">
               View THLV Fund Page
+            </Link>
+            <Link href="/contact" className="btn-outline border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white">
+              Talk to Our Team
             </Link>
           </div>
         </div>
